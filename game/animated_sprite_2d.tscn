@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://1oqx2iyfguoc"]
+
+[ext_resource type="Texture2D" uid="uid://ctquf2nl08xdr" path="res://Orc-Walk.png" id="1_pw5to"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qexkg"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(0, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m5i0l"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(100, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4k4q"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(200, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taouq"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(300, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2ci5"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(400, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0toh"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(500, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tabe5"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(600, 0, 99, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tr7t"]
+atlas = ExtResource("1_pw5to")
+region = Rect2(700, 0, 99, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vi0xl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qexkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m5i0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4k4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taouq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2ci5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0toh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tabe5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tr7t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_vi0xl")
+frame_progress = 0.415272
