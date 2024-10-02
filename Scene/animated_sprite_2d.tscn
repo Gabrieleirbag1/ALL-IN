@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://trrjkm8nu8c0"]
+[gd_scene load_steps=34 format=3 uid="uid://trrjkm8nu8c0"]
 
 [ext_resource type="Texture2D" uid="uid://ctquf2nl08xdr" path="res://Assets/Character/Orc/Orc-Walk.png" id="1_pw5to"]
 [ext_resource type="Texture2D" uid="uid://rcnwq2h8tway" path="res://Assets/Character/Orc/Orc-Death.png" id="2_vimn3"]
@@ -192,9 +192,6 @@ bg_color = Color(0, 0.027451, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_185bb"]
 bg_color = Color(1, 0.254902, 0.196078, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_np0of"]
-size = Vector2(94, 82)
-
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("2_wc0kd")
 
@@ -207,21 +204,16 @@ animation = &"death"
 script = ExtResource("3_tuurq")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 567.0
-offset_top = 387.0
-offset_right = 605.0
-offset_bottom = 394.0
+offset_left = 534.0
+offset_top = 375.0
+offset_right = 572.0
+offset_bottom = 382.0
 theme_override_styles/background = SubResource("StyleBoxFlat_aqjvc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_185bb")
 max_value = 50.0
 step = 0.001
 show_percentage = false
 script = ExtResource("7_t4lsi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(423, 344)
-shape = SubResource("RectangleShape2D_np0of")
-debug_color = Color(0, 0.600798, 0.695383, 0.42)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(543, 307, 568, 307, 581, 333, 568, 371, 539, 371, 525, 358, 526, 328)

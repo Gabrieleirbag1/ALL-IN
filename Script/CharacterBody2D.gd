@@ -22,12 +22,19 @@ func _input(event):
 	if alive:
 		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_D):
 			animation.play("walk")
-			print(health)
 			check_health()
 		else:
 			animation.play("idle")
+			
+			
+func handleCollision():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		health -= 1
 
 func _physics_process(delta):
 	if alive:
+		handleCollision()
 		get_input()
 		move_and_slide()
