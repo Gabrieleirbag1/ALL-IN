@@ -111,7 +111,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kx8yw")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -191,7 +191,7 @@ bg_color = Color(0, 0.027451, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_185bb"]
 bg_color = Color(1, 0.254902, 0.196078, 1)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -199,20 +199,19 @@ texture_filter = 1
 position = Vector2(578, 347)
 scale = Vector2(4.22, 4.22)
 sprite_frames = SubResource("SpriteFrames_68fhg")
-animation = &"idle"
+animation = &"death"
 script = ExtResource("3_tuurq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 564.0
-offset_top = 293.0
-offset_right = 602.0
-offset_bottom = 304.0
+offset_left = 561.0
+offset_top = 390.0
+offset_right = 599.0
+offset_bottom = 397.0
 theme_override_styles/background = SubResource("StyleBoxFlat_aqjvc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_185bb")
-max_value = 5.0
-step = 1.0
-value = 5.0
+max_value = 50.0
+step = 0.001
 show_percentage = false
 script = ExtResource("7_t4lsi")
