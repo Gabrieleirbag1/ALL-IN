@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://trrjkm8nu8c0"]
+[gd_scene load_steps=47 format=3 uid="uid://trrjkm8nu8c0"]
 
 [ext_resource type="Texture2D" uid="uid://ctquf2nl08xdr" path="res://Assets/Character/Orc/Orc-Walk.png" id="1_pw5to"]
+[ext_resource type="Texture2D" uid="uid://b0ehoj3vwwhsq" path="res://Assets/Character/Orc/Orc.png" id="2_n87wn"]
 [ext_resource type="Texture2D" uid="uid://rcnwq2h8tway" path="res://Assets/Character/Orc/Orc-Death.png" id="2_vimn3"]
 [ext_resource type="Script" path="res://Script/CharacterBody2D.gd" id="2_wc0kd"]
 [ext_resource type="Texture2D" uid="uid://btaun13npn8cb" path="res://Assets/Character/Orc/Orc-Hurt.png" id="3_68qie"]
@@ -8,6 +9,54 @@
 [ext_resource type="Texture2D" uid="uid://b4ck4gy02w28a" path="res://Assets/Character/Orc/Orc-Idle.png" id="3_ufk3y"]
 [ext_resource type="Script" path="res://Script/progress_bar.gd" id="7_t4lsi"]
 [ext_resource type="Script" path="res://Scene/collision_polygon_2d.gd" id="8_w4vrf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhceq"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(0, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xomir"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(100, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4qkr"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(200, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i6fg"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(300, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilo8r"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(400, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a33ow"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(500, 200, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2aox"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(0, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5upx1"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(100, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ayukg"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(200, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6pyf"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(300, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7atl0"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(400, 300, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2kga"]
+atlas = ExtResource("2_n87wn")
+region = Rect2(500, 300, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i0y0w"]
 atlas = ExtResource("2_vimn3")
@@ -101,6 +150,52 @@ region = Rect2(700, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fhceq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xomir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4qkr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5i6fg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilo8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a33ow")
+}],
+"loop": true,
+"name": &"attack_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2aox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5upx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ayukg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6pyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7atl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2kga")
+}],
+"loop": true,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_i0y0w")
 }, {
 "duration": 1.0,
@@ -131,7 +226,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hurt",
-"speed": 5.0
+"speed": 45.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -197,10 +292,11 @@ script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(551, 341)
+position = Vector2(551, 338)
 scale = Vector2(4.22, 4.22)
 sprite_frames = SubResource("SpriteFrames_68fhg")
-animation = &"death"
+animation = &"attack_2"
+frame_progress = 0.207793
 script = ExtResource("3_tuurq")
 
 [node name="HealthBar" type="ProgressBar" parent="."]

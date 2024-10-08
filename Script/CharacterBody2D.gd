@@ -25,6 +25,8 @@ func _input(event):
 			check_health()
 		else:
 			animation.play("idle")
+		
+		
 			
 			
 func handleCollision():
@@ -32,6 +34,7 @@ func handleCollision():
 		var collision = get_slide_collision(i)
 		var collider = collision.get_collider()
 		health -= 1
+		animation.play("hurt")
 
 func _physics_process(delta):
 	if alive:
