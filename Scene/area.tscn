@@ -1,10 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt1akoe5q67jb"]
+[gd_scene load_steps=5 format=3 uid="uid://bt1akoe5q67jb"]
 
+[ext_resource type="Script" path="res://Scene/area_2d.gd" id="1_ggqv2"]
 [ext_resource type="PackedScene" uid="uid://trrjkm8nu8c0" path="res://Scene/animated_sprite_2d.tscn" id="1_kdq1q"]
+[ext_resource type="PackedScene" uid="uid://b6m5sun67sju4" path="res://Scene/enemies.tscn" id="2_xx6e5"]
+[ext_resource type="Script" path="res://Scene/label.gd" id="3_r18yw"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_ggqv2")
 
-[node name="CharacterBody2D" parent="Area2D" instance=ExtResource("1_kdq1q")]
-position = Vector2(-91, 14)
+[node name="Player" parent="Area2D" instance=ExtResource("1_kdq1q")]
+position = Vector2(276, -139)
+
+[node name="Enemies" parent="Area2D" instance=ExtResource("2_xx6e5")]
+position = Vector2(263, -107)
+
+[node name="Label" type="Label" parent="Area2D"]
+offset_left = 610.0
+offset_top = 64.0
+offset_right = 1004.0
+offset_bottom = 87.0
+text = "TES MORT XDDDDDDDDDDDD"
+script = ExtResource("3_r18yw")
