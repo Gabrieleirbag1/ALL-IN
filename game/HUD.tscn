@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5s5mjecos86l"]
+
+[ext_resource type="Texture2D" uid="uid://bq8nb8eq7cu7j" path="res://black.jpg" id="1_upnmo"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -175.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_upnmo")
+expand_mode = 1
