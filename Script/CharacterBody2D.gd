@@ -7,12 +7,15 @@ var health_max = 50
 var health_min = 0
 var alive : bool = true
 var death_animation_played : bool = false
+var immortal = true
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 
 func check_health():
+	if immortal:
+		return
 	if health <= 0 and not death_animation_played:
 		alive = false
 		animation.play("death")
