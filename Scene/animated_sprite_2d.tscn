@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://trrjkm8nu8c0"]
+[gd_scene load_steps=47 format=3 uid="uid://d1yme2tfg8o5v"]
 
 [ext_resource type="Texture2D" uid="uid://ctquf2nl08xdr" path="res://Assets/Character/Orc/Orc-Walk.png" id="1_pw5to"]
 [ext_resource type="Texture2D" uid="uid://b0ehoj3vwwhsq" path="res://Assets/Character/Orc/Orc.png" id="2_n87wn"]
@@ -292,8 +292,8 @@ script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(552, 338)
-scale = Vector2(2.19, 2.22)
+position = Vector2(551, 338)
+scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"attack_2"
 script = ExtResource("3_tuurq")
@@ -315,5 +315,5 @@ polygon = PackedVector2Array(547, 320, 562, 320, 568, 336, 560, 354, 547, 354, 5
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(550, 342)
+position = Vector2(553, 344)
 zoom = Vector2(2.5, 2.5)
