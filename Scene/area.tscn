@@ -23,3 +23,6 @@ offset_right = 1004.0
 offset_bottom = 87.0
 text = "TES MORT XDDDDDDDDDDDD"
 script = ExtResource("3_r18yw")
+
+[node name="Camera2D" type="Camera2D" parent="Area2D"]
+zoom = Vector2(0.5, 0.5)

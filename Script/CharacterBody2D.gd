@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-@export var speed = 300
+@export var speed = 250
 var health = 50
 var health_max = 50
 var health_min = 0
@@ -23,7 +23,7 @@ func check_health():
 
 func _input(event):
 	if alive:
-		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_D):
+		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_RIGHT):
 			animation.play("walk")
 			check_health()
 		else:
