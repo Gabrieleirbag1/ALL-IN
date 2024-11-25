@@ -292,7 +292,7 @@ script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(549, 338)
+position = Vector2(552, 338)
 scale = Vector2(2.19, 2.22)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"attack_2"
@@ -311,7 +311,7 @@ show_percentage = false
 script = ExtResource("7_t4lsi")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(543, 307, 568, 307, 581, 333, 568, 371, 539, 371, 525, 358, 526, 328)
+polygon = PackedVector2Array(547, 320, 562, 320, 568, 336, 560, 354, 547, 354, 539, 347, 539, 332)
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
