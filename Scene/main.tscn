@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://jm2f6nvyyng4"]
+
+[ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD.tscn" id="1_ocva4"]
+[ext_resource type="PackedScene" uid="uid://dbcc4tcankm2c" path="res://Scene/map.tscn" id="2_x1qr1"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Control" parent="." instance=ExtResource("1_ocva4")]
+
+[node name="World" parent="." instance=ExtResource("2_x1qr1")]
