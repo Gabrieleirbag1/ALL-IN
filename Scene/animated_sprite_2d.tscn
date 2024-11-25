@@ -300,9 +300,9 @@ script = ExtResource("3_tuurq")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 534.0
-offset_top = 375.0
+offset_top = 364.0
 offset_right = 572.0
-offset_bottom = 382.0
+offset_bottom = 371.0
 theme_override_styles/background = SubResource("StyleBoxFlat_aqjvc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_185bb")
 max_value = 50.0
