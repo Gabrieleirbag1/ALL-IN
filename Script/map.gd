@@ -72,7 +72,7 @@ func _spawn_skeleton() -> void:
 
 	# Choisir un point de spawn aléatoire
 	var random_spawn_point = spawn_points[randi() % spawn_points.size()]
-	var skeleton_instance = skeleton_scene
+	var skeleton_instance = skeleton_scene.instance()
 
 	# Positionner le squelette sur le point de spawn
 	skeleton_instance.position = random_spawn_point.position
