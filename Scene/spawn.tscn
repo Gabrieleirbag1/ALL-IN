@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://h6dc4gp83qp2"]
+
+[ext_resource type="Script" path="res://spawn.gd" id="1_yllm7"]
+[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/animated_sprite_2d.tscn" id="2_jqby1"]
+[ext_resource type="PackedScene" uid="uid://b6m5sun67sju4" path="res://Scene/enemies.tscn" id="3_6stlr"]
+
+[node name="Spawn" type="Node2D"]
+script = ExtResource("1_yllm7")
+
+[node name="Player" parent="." instance=ExtResource("2_jqby1")]
+
+[node name="Enemy" parent="." instance=ExtResource("3_6stlr")]
