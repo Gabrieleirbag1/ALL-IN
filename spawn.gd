@@ -5,7 +5,6 @@ extends Node2D
 @export var max_enemies: float = 10
 @export var enemy_scene = preload("res://Scene/enemies.tscn")
 
-
 # Liste des ennemis actifs
 var active_enemies = []
 
@@ -15,8 +14,8 @@ var active_enemies = []
 
 func _ready() -> void:
 	# Récupérer les références du joueur et de la caméra
-	player = get_node("/root/Map/Player")  # Ajuste le chemin selon ton projet
-	camera = get_node("/root/Map/Camera2D")  # Ajuste le chemin selon ton projet
+	player = get_node("Player")  
+	camera = get_node("Player/Camera2D")
 
 	# Vérifie que la scène d'ennemi est assignée
 	if not enemy_scene:
@@ -27,7 +26,7 @@ func _ready() -> void:
 	var timer = Timer.new()
 	timer.wait_time = spawn_interval
 	timer.one_shot = false
-	timer.connect("timeout", self, "_spawn_enemy")
+	timer.connect("timeout", callable(self._spawn_enemy))  # Correction
 	add_child(timer)
 	timer.start()
 
@@ -48,7 +47,7 @@ func _spawn_enemy() -> void:
 	active_enemies.append(enemy)
 
 	# Connecte le signal pour retirer l'ennemi lorsqu'il quitte la scène
-	enemy.connect("tree_exited", self, "_on_enemy_removed", [enemy])
+	enemy.connect("tree_exited", callable(self._on_enemy_removed), [enemy])  # Correction
 
 	# Oriente l'ennemi vers le joueur (optionnel)
 	if player:
@@ -59,6 +58,7 @@ func _get_spawn_position() -> Vector2:
 	if not camera:
 		return Vector2.ZERO
 
+	# Obtenir les dimensions visibles de la caméra
 	var viewport_rect = camera.get_visible_rect()
 	
 	# Calcule une position aléatoire hors de la caméra
@@ -75,4 +75,5 @@ func _get_spawn_position() -> Vector2:
 
 func _on_enemy_removed(enemy) -> void:
 	# Supprime l'ennemi de la liste des actifs lorsqu'il est retiré de la scène
-	active_enemies.erase(enemy)
+	if enemy in active_enemies:
+		active_enemies.erase(enemy)
