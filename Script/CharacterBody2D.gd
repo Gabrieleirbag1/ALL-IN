@@ -28,9 +28,6 @@ func _input(event):
 			check_health()
 		else:
 			animation.play("idle")
-		
-		
-			
 			
 func handleCollision():
 	for i in get_slide_collision_count():
