@@ -288,6 +288,7 @@ bg_color = Color(0, 0.027451, 0, 1)
 bg_color = Color(1, 0.254902, 0.196078, 1)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -296,24 +297,39 @@ position = Vector2(551, 338)
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"attack_2"
+offset = Vector2(0, -5)
 script = ExtResource("3_tuurq")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = 534.0
-offset_top = 375.0
+offset_top = 351.0
 offset_right = 572.0
-offset_bottom = 382.0
+offset_bottom = 358.0
 theme_override_styles/background = SubResource("StyleBoxFlat_aqjvc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_185bb")
 max_value = 50.0
 step = 0.001
 show_percentage = false
 script = ExtResource("7_t4lsi")
+metadata/_edit_use_anchors_ = true
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionHitbox" type="CollisionPolygon2D" parent="."]
+position = Vector2(-219, 172)
+scale = Vector2(1.39583, 0.490119)
+polygon = PackedVector2Array(560, 335.803, 560, 355.951, 545, 355.951, 545, 335.803)
+script = ExtResource("8_w4vrf")
+
+[node name="DamageHitbox" type="CollisionPolygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(547, 320, 562, 320, 568, 336, 560, 354, 547, 354, 539, 347, 539, 332)
+disabled = true
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(553, 344)
 zoom = Vector2(2.5, 2.5)
+limit_left = 0
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+editor_draw_limits = true
