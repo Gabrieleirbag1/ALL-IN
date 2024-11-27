@@ -24,10 +24,10 @@ func check_health():
 func _input(event):
 	if alive:
 		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_RIGHT):
-			animation.play("walk")
+			animation.play("walk_no-shadow")
 			check_health()
 		else:
-			animation.play("idle")
+			animation.play("idle_shadow")
 			
 func handleCollision():
 	for i in get_slide_collision_count():
