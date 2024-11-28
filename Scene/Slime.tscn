@@ -1,7 +1,51 @@
-[gd_scene load_steps=17 format=3 uid="uid://r0c5dnx4tx0m"]
+[gd_scene load_steps=28 format=3 uid="uid://r0c5dnx4tx0m"]
 
 [ext_resource type="Texture2D" uid="uid://crjmtbxltk7su" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_op2d7"]
 [ext_resource type="Script" path="res://Script/slime.gd" id="1_r3m15"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fqu8"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7mso"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fjcp"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4t4cy"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(300, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkgjr"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(400, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6w5l"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(500, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kcch"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(900, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d25cd"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(0, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d0esc"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(100, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvh1l"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(200, 400, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gehxi"]
+atlas = ExtResource("1_op2d7")
+region = Rect2(300, 400, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scjkm"]
 atlas = ExtResource("1_op2d7")
@@ -53,6 +97,49 @@ region = Rect2(500, 100, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mdcms"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fqu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7mso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fjcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4t4cy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkgjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6w5l")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kcch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d25cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d0esc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvh1l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gehxi")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_scjkm")
@@ -108,23 +195,23 @@ script = ExtResource("1_r3m15")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4.12, 4.12)
 sprite_frames = SubResource("SpriteFrames_mdcms")
-animation = &"walk"
+animation = &"hurt"
+frame_progress = 0.122807
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(62.4569, 62.7026)
+position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_2mdbw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-582, -670)
-scale = Vector2(4.91539, 5.27889)
-polygon = PackedVector2Array(118, 133, 106.594, 130.983, 113.584, 125.288, 116.205, 123.661, 122.321, 123.661, 126.541, 127.11, 126.689, 130.983, 124.942, 132.61)
+position = Vector2(-142.985, -152)
+scale = Vector2(1.21299, 1.19844)
+polygon = PackedVector2Array(110.458, 132.672, 106.594, 130.983, 107.985, 129.334, 113.584, 125.288, 116.205, 123.661, 122.321, 123.661, 126.541, 127.11, 126.689, 130.983, 124.942, 132.61)
 
 [connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
 [connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]

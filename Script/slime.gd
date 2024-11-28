@@ -10,7 +10,7 @@ var health_max = 50
 var health_min = 0
 var alive : bool = true
 var death_animation_played : bool = false
-var immortal = true
+var immortal = false
 
 func _ready():
 	$Area2D.connect("body_entered", Callable(self, "_on_area_2d_body_entered"))
@@ -29,9 +29,20 @@ func check_health():
 		play_animation("death")
 		death_animation_played = true
 
+func handleCollision():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		var collider = collision.get_collider()
+		health -= 1
+		animation.play("hurt")
+
 func _physics_process(delta: float) -> void:
-	if player_chase and player:
-		position += (player.position - position).normalized() * speed * delta
+	if alive:
+		handleCollision()
+		check_health()
+		if player_chase and player:
+			position += (player.position - position).normalized() * speed * delta
+			#rotation = position.angle_to(player.position)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

@@ -26220,4 +26220,5 @@ tile_set = SubResource("TileSet_sfi0s")
 position = Vector2(891, 780)
 
 [node name="Slime" parent="." instance=ExtResource("11_u3t4i")]
+y_sort_enabled = true
 position = Vector2(648, 782)
