@@ -41,3 +41,6 @@ func _physics_process(delta):
 		handleCollision()
 		get_input()
 		move_and_slide()
+		
+func _ready() -> void:
+	print(self.get_path())
