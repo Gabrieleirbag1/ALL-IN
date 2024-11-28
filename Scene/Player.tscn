@@ -355,7 +355,6 @@ script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(552, 340)
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"walk_no-shadow"
@@ -364,10 +363,10 @@ offset = Vector2(0, -5)
 script = ExtResource("3_tuurq")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 534.0
-offset_top = 351.0
-offset_right = 572.0
-offset_bottom = 358.0
+offset_left = -16.0
+offset_top = 12.0
+offset_right = 22.0
+offset_bottom = 19.0
 theme_override_styles/background = SubResource("StyleBoxFlat_aqjvc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_185bb")
 max_value = 50.0
@@ -377,7 +376,7 @@ script = ExtResource("7_t4lsi")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionHitbox" type="CollisionPolygon2D" parent="."]
-position = Vector2(-219, 172)
+position = Vector2(-770, -172)
 scale = Vector2(1.39583, 0.490119)
 polygon = PackedVector2Array(560, 335.803, 560, 355.951, 545, 355.951, 545, 335.803)
 script = ExtResource("8_w4vrf")
@@ -389,7 +388,6 @@ disabled = true
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(553, 344)
 zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0

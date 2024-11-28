@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://r0c5dnx4tx0m"]
+[gd_scene load_steps=17 format=3 uid="uid://r0c5dnx4tx0m"]
 
 [ext_resource type="Texture2D" uid="uid://crjmtbxltk7su" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_op2d7"]
 [ext_resource type="Script" path="res://Script/slime.gd" id="1_r3m15"]
@@ -100,17 +100,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2mdbw"]
+radius = 3.46875
+
 [node name="Slime" type="CharacterBody2D"]
 script = ExtResource("1_r3m15")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(274, 284)
 scale = Vector2(4.12, 4.12)
 sprite_frames = SubResource("SpriteFrames_mdcms")
 animation = &"walk"
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-306, -327)
+scale = Vector2(4.91539, 5.27889)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(62.4569, 62.7026)
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_2mdbw")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-306, -386)
+position = Vector2(-582, -670)
 scale = Vector2(4.91539, 5.27889)
 polygon = PackedVector2Array(118, 133, 106.594, 130.983, 113.584, 125.288, 116.205, 123.661, 122.321, 123.661, 126.541, 127.11, 126.689, 130.983, 124.942, 132.61)
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-@export var speed = 50
-var time = Time.get_time_dict_from_system()
+@export var speed = 20
 
+var player_chase = false
+var player = null
 var health = 50
 var health_max = 50
 var health_min = 0
@@ -11,34 +12,35 @@ var alive : bool = true
 var death_animation_played : bool = false
 var immortal = true
 
-var player_position
-var target_position
-@onready var player = get_parent().get_node("Player") as CharacterBody2D
-
 func _ready():
-	if player == null:
-		print("Player node not found")
-		return
-	animation.play("idle")
-	walking()
+	$Area2D.connect("body_entered", Callable(self, "_on_area_2d_body_entered"))
+	$Area2D.connect("body_exited", Callable(self, "_on_area_2d_body_exited"))
 
+func play_animation(animation_name: String) -> void:
+	if not alive:
+		return
+	animation.play(animation_name)
+	
 func check_health():
 	if immortal:
 		return
 	if health <= 0 and not death_animation_played:
 		alive = false
-		animation.play("death")
+		play_animation("death")
 		death_animation_played = true
 
-func walking():
-	if not alive:
-		return
-	animation.play("walk")
+func _physics_process(delta: float) -> void:
+	if player_chase and player:
+		position += (player.position - position).normalized() * speed * delta
 	
-func _physics_process(delta: float) -> void:	
-	player_position = player.position
-	target_position = (player_position - position).normalized()
-	
-	if position.distance_to(player_position) > 3:
-		position += target_position * speed * delta
-		rotation = position.angle_to(player_position)
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		player = body
+		player_chase = true
+		play_animation("walk")
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == player:
+		player = null
+		player_chase = false
+		play_animation("idle")
