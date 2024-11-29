@@ -21,6 +21,12 @@ func check_health():
 		animation.play("death")
 		death_animation_played = true
 
+func take_damage(enemyVelocity, knockback_force, damage):
+	health -= damage
+	var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
+	velocity = kb_direction
+	move_and_slide()
+
 func _input(event):
 	if alive:
 		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_RIGHT):
