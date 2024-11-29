@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dblsxbp5vjefb"
+=======
+uid="uid://driwu1rbsxbmm"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Knight Templar-Idle.png-163d1ed47f2b6c3f110398315df62254.ctex"
 metadata={
 "vram_texture": false

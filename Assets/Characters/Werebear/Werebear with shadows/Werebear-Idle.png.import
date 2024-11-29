@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://b5r8epstglbah"
+=======
+uid="uid://ckc40vmvp5yfp"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Werebear-Idle.png-f0fa285384b1cfa13faa391e9acc4035.ctex"
 metadata={
 "vram_texture": false

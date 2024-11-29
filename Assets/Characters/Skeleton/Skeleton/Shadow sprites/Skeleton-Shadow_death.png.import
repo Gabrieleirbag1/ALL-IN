@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bcbd580awelq7"
+=======
+uid="uid://rryoybcooyvr"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Skeleton-Shadow_death.png-4bac055734df1eb060c7d56768a212d2.ctex"
 metadata={
 "vram_texture": false

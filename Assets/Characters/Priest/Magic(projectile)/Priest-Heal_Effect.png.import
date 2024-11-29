@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://xrx6mtlpwo4l"
+=======
+uid="uid://bj4euw1hdabyq"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Priest-Heal_Effect.png-3d6b78a61b71ed95e61246ad7f9fb319.ctex"
 metadata={
 "vram_texture": false

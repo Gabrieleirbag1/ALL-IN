@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://s4euntnkex0w"
+=======
+uid="uid://bmphtgr0fk6k7"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Priest-Walk.png-dcc5a9aec184dce66c82b3376424c52a.ctex"
 metadata={
 "vram_texture": false

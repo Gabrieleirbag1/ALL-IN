@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bhca0qs23wn6t"
+=======
+uid="uid://b6flq7j7sceyl"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Knight-Walk.png-b037cd6bbdc56bc091b08cd8df7ee64c.ctex"
 metadata={
 "vram_texture": false

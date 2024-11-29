@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://o0dbfwel5us3"
+=======
+uid="uid://bdu5o05qprnhc"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Slime-Shadow_walk.png-b8e0738ad459953621387d4d2048f03a.ctex"
 metadata={
 "vram_texture": false

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dldlbp2kd3hf3"
+=======
+uid="uid://16a31gne66hq"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Knight-Block.png-c6982c6f3bc37e9519f697bd81310c9c.ctex"
 metadata={
 "vram_texture": false

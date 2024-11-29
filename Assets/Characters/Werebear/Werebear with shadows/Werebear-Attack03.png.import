@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://c5asfkwnwsne4"
+=======
+uid="uid://0eabus8r41yr"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Werebear-Attack03.png-9c38a546cb268025b7ca0c43b43991fa.ctex"
 metadata={
 "vram_texture": false

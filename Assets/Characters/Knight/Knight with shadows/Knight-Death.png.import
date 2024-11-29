@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dhpxxw4lw0rww"
+=======
+uid="uid://dh4l0davg7dpq"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Knight-Death.png-8d79730f46d39f5675c586c5d7946215.ctex"
 metadata={
 "vram_texture": false

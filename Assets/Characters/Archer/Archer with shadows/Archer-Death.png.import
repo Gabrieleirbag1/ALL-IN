@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://6qed70aq0yf4"
+=======
+uid="uid://ddqvomj71l8t6"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Archer-Death.png-83ceb767d96fd39d8142f24c77b5237c.ctex"
 metadata={
 "vram_texture": false

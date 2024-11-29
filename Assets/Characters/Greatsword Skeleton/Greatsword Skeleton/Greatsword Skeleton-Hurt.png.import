@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dglf123pis6vb"
+=======
+uid="uid://i51epefh4vmq"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Greatsword Skeleton-Hurt.png-3f5b2dfb5deaaa47c0d8d30657944df7.ctex"
 metadata={
 "vram_texture": false

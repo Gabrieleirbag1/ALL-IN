@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://uvxo7n6qckag"
+=======
+uid="uid://d3hepvv02686k"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Lancer-Attack01_Effect.png-e1a001c67250ab3aa858ee5363b56211.ctex"
 metadata={
 "vram_texture": false

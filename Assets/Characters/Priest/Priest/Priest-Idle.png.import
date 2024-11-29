@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://djdw611pydpck"
+=======
+uid="uid://dsf6mv6deq131"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Priest-Idle.png-82ae20b7305dfaa50e246b122d35cac6.ctex"
 metadata={
 "vram_texture": false

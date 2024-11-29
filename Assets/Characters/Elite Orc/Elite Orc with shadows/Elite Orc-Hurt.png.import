@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://d4aptangcnlah"
+=======
+uid="uid://bmfbuw1hreqie"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Elite Orc-Hurt.png-b917fccc0dfb4a52389d9bbecc80080d.ctex"
 metadata={
 "vram_texture": false

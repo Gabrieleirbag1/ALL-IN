@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://be0ml5j40d3m6"
+=======
+uid="uid://brm6pwua5pxui"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Priest-Shadow.png-d4fb14d1553a3affe5c18c33e329d033.ctex"
 metadata={
 "vram_texture": false

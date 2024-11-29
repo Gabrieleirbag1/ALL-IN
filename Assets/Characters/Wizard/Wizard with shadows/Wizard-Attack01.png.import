@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://xu3xh5nxc3gt"
+=======
+uid="uid://2wwh5qh7umuc"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Wizard-Attack01.png-933acb009d996827d503414c93ffaac3.ctex"
 metadata={
 "vram_texture": false

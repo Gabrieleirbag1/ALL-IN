@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bqxglwdhcua66"
+=======
+uid="uid://b7cvnmt8kwu1v"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Wizard-Idle.png-fc2b00dd0ec4dc90921e5d1a0bca01bb.ctex"
 metadata={
 "vram_texture": false

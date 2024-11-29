@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bwotswt4ihjv2"
+=======
+uid="uid://rl0u36p4hbdw"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Armored Axeman.png-32f9bd65ef29b94ffc8300528336a1c1.ctex"
 metadata={
 "vram_texture": false

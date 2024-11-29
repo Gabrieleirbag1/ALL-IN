@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dxo54umdwb8tc"
+=======
+uid="uid://0mllmvd7q6qr"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Werewolf-Attack01.png-ff219bccca69870106f5a2093624fb82.ctex"
 metadata={
 "vram_texture": false

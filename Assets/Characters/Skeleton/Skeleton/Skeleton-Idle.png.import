@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://fyyt4168xs53"
+=======
+uid="uid://ddreus3c41t8e"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Skeleton-Idle.png-e3d8d7c5120ac62075d16c5c063457c5.ctex"
 metadata={
 "vram_texture": false

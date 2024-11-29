@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://vnakpf3kaca1"
+=======
+uid="uid://dj0clwu22ibk5"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Armored Orc.png-c4783612eeb6539c1087177c387a9df0.ctex"
 metadata={
 "vram_texture": false

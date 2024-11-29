@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://jgfg7owtsu4y"
+=======
+uid="uid://0t3q4giorc66"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Werebear-Walk.png-a3fd042c77dfdf503099dc8228f7a5f1.ctex"
 metadata={
 "vram_texture": false

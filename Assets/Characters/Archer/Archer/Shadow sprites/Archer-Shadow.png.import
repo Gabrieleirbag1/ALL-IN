@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://djil2ne5ijmaw"
+=======
+uid="uid://cjj18gr46318x"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Archer-Shadow.png-1f805a65dd3c42eb925000fc40e58b7c.ctex"
 metadata={
 "vram_texture": false

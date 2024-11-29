@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://c0otms6rmgsdt"
+=======
+uid="uid://cnn62jfvpve4m"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Priest-Attack.png-3857f73085ab328d5e28ec55f267c630.ctex"
 metadata={
 "vram_texture": false

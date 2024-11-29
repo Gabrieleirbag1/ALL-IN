@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dqai27w1gqhmm"
+=======
+uid="uid://di0a2krhbg551"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Knight-Attack02.png-1eb80035d005c5ca327472e25fb656bb.ctex"
 metadata={
 "vram_texture": false

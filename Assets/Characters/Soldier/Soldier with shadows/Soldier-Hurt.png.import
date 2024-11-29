@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://di0ibule7srk2"
+=======
+uid="uid://b2ypx1e1vl5a4"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Soldier-Hurt.png-7f921bcfd73a0f4d36b9bfb7da6c692e.ctex"
 metadata={
 "vram_texture": false

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://cc05mskgmb0r5"
+=======
+uid="uid://dfa7m0tgeuxgf"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Slime-Hurt.png-867580fc35ff7f9e10278951e48c86c6.ctex"
 metadata={
 "vram_texture": false

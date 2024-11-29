@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://emasblavn36b"
+=======
+uid="uid://dhc0e7mps5lui"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Skeleton Archer-Walk.png-4b2ed1dd1e7a2de2f86ca05f9fa8d01d.ctex"
 metadata={
 "vram_texture": false

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dohie6rj8prdc"
+=======
+uid="uid://dleasb4evjdh5"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Werewolf.png-47081180242fa6fc1927c9dcefc8a467.ctex"
 metadata={
 "vram_texture": false

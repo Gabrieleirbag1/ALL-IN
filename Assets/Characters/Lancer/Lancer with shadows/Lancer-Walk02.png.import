@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://dsguprptiycvl"
+=======
+uid="uid://blqd58ukcepkl"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Lancer-Walk02.png-797f7c42c0aa215ba75f725d4bcc973f.ctex"
 metadata={
 "vram_texture": false

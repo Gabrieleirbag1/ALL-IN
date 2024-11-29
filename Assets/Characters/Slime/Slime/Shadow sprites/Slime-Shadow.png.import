@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://7hoip4m7lwr4"
+=======
+uid="uid://cv6j6micenkyl"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Slime-Shadow.png-54a8608293f6a34ec233c9783ee31073.ctex"
 metadata={
 "vram_texture": false

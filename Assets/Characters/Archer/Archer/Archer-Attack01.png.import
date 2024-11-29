@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://b4o3216qmtp6p"
+=======
+uid="uid://tmh8hjer8m0f"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Archer-Attack01.png-f9a017d930112cecb84c4e380129989a.ctex"
 metadata={
 "vram_texture": false

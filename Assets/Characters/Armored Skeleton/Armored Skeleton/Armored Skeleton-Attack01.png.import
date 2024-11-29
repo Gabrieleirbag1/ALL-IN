@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://birdaudtyi14b"
+=======
+uid="uid://chuww3fsoyogq"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Armored Skeleton-Attack01.png-8d7e8c7477a732c2ea16ae1a7a283340.ctex"
 metadata={
 "vram_texture": false

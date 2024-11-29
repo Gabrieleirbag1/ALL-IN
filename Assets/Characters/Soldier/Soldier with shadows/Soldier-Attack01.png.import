@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bcomktr6ipse0"
+=======
+uid="uid://b2r1kqct6625i"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Soldier-Attack01.png-ee86837223239a833b270fd009540df8.ctex"
 metadata={
 "vram_texture": false

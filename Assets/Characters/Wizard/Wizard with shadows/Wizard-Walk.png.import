@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://euui6uycutp8"
+=======
+uid="uid://c2ts8ttxr55ro"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Wizard-Walk.png-b1f0b58e39708ffd05260b44fc01c5c5.ctex"
 metadata={
 "vram_texture": false

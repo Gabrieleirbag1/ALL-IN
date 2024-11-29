@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://bog273i1drh6"
+=======
+uid="uid://ch4pwnp6qle7e"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Swordsman.png-dd1669023525bb8bd1b9f17adddb2ae2.ctex"
 metadata={
 "vram_texture": false

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://ckuepi82nrar"
+=======
+uid="uid://b8e42rn4ml4n"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Arrow02(100x100).png-cc9b543cde2adca91355593ad7847455.ctex"
 metadata={
 "vram_texture": false

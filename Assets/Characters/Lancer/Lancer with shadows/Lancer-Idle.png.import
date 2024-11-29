@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://6nme7srxbek3"
+=======
+uid="uid://br818mtdfx0m"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Lancer-Idle.png-15603ce41279191039a32058fb425379.ctex"
 metadata={
 "vram_texture": false

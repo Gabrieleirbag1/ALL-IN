@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://h1mbi47tpunr"
+=======
+uid="uid://yjbrsrve5jh3"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Slime-Walk.png-078fbfd219398178b9feeb9565696e53.ctex"
 metadata={
 "vram_texture": false

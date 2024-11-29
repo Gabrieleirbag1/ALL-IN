@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://baugbatr4bh6e"
+=======
+uid="uid://dnmv354t84m71"
+>>>>>>> 5dec3fc (spawning)
 path="res://.godot/imported/Elite Orc-Walk.png-24fecaba37c703a81581849ebf5fe558.ctex"
 metadata={
 "vram_texture": false
