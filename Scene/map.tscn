@@ -26227,4 +26227,5 @@ position = Vector2(891, 780)
 
 [node name="Slime" parent="." instance=ExtResource("11_u3t4i")]
 y_sort_enabled = true
+texture_filter = 1
 position = Vector2(648, 782)

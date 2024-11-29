@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://r0c5dnx4tx0m"]
+[gd_scene load_steps=27 format=3 uid="uid://r0c5dnx4tx0m"]
 
 [ext_resource type="Texture2D" uid="uid://crjmtbxltk7su" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_op2d7"]
 [ext_resource type="Script" path="res://Script/slime.gd" id="1_r3m15"]
@@ -26,10 +26,6 @@ region = Rect2(400, 500, 100, 100)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6w5l"]
 atlas = ExtResource("1_op2d7")
 region = Rect2(500, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1kcch"]
-atlas = ExtResource("1_op2d7")
-region = Rect2(900, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d25cd"]
 atlas = ExtResource("1_op2d7")
@@ -122,9 +118,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1kcch")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_d25cd")
 }, {
 "duration": 1.0,
@@ -196,8 +189,9 @@ script = ExtResource("1_r3m15")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_mdcms")
-animation = &"hurt"
-frame_progress = 0.122807
+animation = &"idle"
+frame = 5
+frame_progress = 0.307497
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-306, -327)

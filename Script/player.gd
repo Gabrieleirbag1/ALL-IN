@@ -29,16 +29,8 @@ func _input(event):
 		else:
 			animation.play("idle_shadow")
 			
-func handleCollision():
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		health -= 1
-		animation.play("hurt")
-
 func _physics_process(delta):
 	if alive:
-		handleCollision()
 		get_input()
 		move_and_slide()
 		

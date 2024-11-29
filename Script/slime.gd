@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
-@export var speed = 20
+@export var speed = 30
 
 var player_chase = false
 var player = null
@@ -11,10 +11,6 @@ var health_min = 0
 var alive : bool = true
 var death_animation_played : bool = false
 var immortal = false
-
-func _ready():
-	$Area2D.connect("body_entered", Callable(self, "_on_area_2d_body_entered"))
-	$Area2D.connect("body_exited", Callable(self, "_on_area_2d_body_exited"))
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -29,19 +25,18 @@ func check_health():
 		play_animation("death")
 		death_animation_played = true
 
-func handleCollision():
-	for i in get_slide_collision_count():
-		var collision = get_slide_collision(i)
-		var collider = collision.get_collider()
-		health -= 1
-		animation.play("hurt")
-
 func _physics_process(delta: float) -> void:
 	if alive:
-		handleCollision()
 		check_health()
 		if player_chase and player:
-			position += (player.position - position).normalized() * speed * delta
+			var direction = (player.position - position).normalized()
+			var collision = move_and_collide(direction * speed * delta)
+			if collision:
+				
+				var collider = collision.get_collider()
+				if collider.name == "Player":
+					collider.health -= 1
+					collider.animation.play("hurt")
 			#rotation = position.angle_to(player.position)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
