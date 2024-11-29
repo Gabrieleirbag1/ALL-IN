@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=39 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Script" path="res://Script/map.gd" id="1_8t0ed"]
 [ext_resource type="Texture2D" uid="uid://c1260b5c33d4i" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://0bbvhe30aivw" path="res://Assets/nature free/global.png" id="8_au240"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/animated_sprite_2d.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://b6m5sun67sju4" path="res://Scene/enemies.tscn" id="11_8ofeb"]
+[ext_resource type="PackedScene" uid="uid://cmxsq41g6ob8n" path="res://Scene/scene_transition_animation.tscn" id="13_07jg2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8jr4"]
 texture = ExtResource("1_kv4up")
@@ -26245,3 +26246,6 @@ position = Vector2(2100, 354)
 
 [node name="Spawn6" type="Marker2D" parent="."]
 position = Vector2(2098, 954)
+
+[node name="SceneTransitionAnimation" parent="." instance=ExtResource("13_07jg2")]
+position = Vector2(170, 86)
