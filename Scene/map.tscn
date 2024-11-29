@@ -1,6 +1,5 @@
-[gd_scene load_steps=38 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=37 format=4 uid="uid://dbcc4tcankm2c"]
 
-[ext_resource type="Script" path="res://Scene/map.gd" id="1_8t0ed"]
 [ext_resource type="Texture2D" uid="uid://c1260b5c33d4i" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Texture2D" uid="uid://b14lnfm6ut617" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
 [ext_resource type="Texture2D" uid="uid://ck201m4gcer5x" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
@@ -10,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://bju72xm5u572b" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
 [ext_resource type="Texture2D" uid="uid://d3gd1mrr6nd4p" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
 [ext_resource type="Texture2D" uid="uid://0bbvhe30aivw" path="res://Assets/nature free/global.png" id="8_au240"]
-[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/animated_sprite_2d.tscn" id="10_7yrxj"]
-[ext_resource type="PackedScene" uid="uid://b6m5sun67sju4" path="res://Scene/enemies.tscn" id="11_8ofeb"]
+[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player.tscn" id="10_7yrxj"]
+[ext_resource type="PackedScene" uid="uid://r0c5dnx4tx0m" path="res://Scene/Slime.tscn" id="11_u3t4i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8jr4"]
 texture = ExtResource("1_kv4up")
@@ -26135,7 +26134,6 @@ sources/0 = SubResource("TileSetAtlasSource_63kfu")
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(-162, -85)
-script = ExtResource("1_8t0ed")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -1
@@ -26218,24 +26216,9 @@ position = Vector2(2, -6)
 tile_map_data = PackedByteArray("AAAWACoAAAACAFIAAAAWACsAAAACAFMAAAAXACoAAAADAFIAAAAXACsAAAADAFMAAAAYACoAAAAEAFIAAAAYACsAAAAEAFMAAAAOACIAAAACAFIAAAAOACMAAAACAFMAAAAPACIAAAADAFIAAAAPACMAAAADAFMAAAAQACIAAAAEAFIAAAAQACMAAAAEAFMAAAAaADEAAAAFAFUAAAAaADIAAAAFAFYAAAAaADMAAAAFAFcAAAAbADEAAAAGAFUAAAAbADIAAAAGAFYAAAAbADMAAAAGAFcAAAAcADEAAAAHAFUAAAAcADIAAAAHAFYAAAAUACQAAAAAAFgAAAAUACUAAAAAAFkAAAAUACYAAAAAAFoAAAAVACQAAAABAFgAAAAVACUAAAABAFkAAAAVACYAAAABAFoAAAAWACQAAAACAFgAAAAWACUAAAACAFkAAAAWACYAAAACAFoAAAAXACQAAAADAFgAAAAXACUAAAADAFkAAAAXACYAAAADAFoAAAAYACQAAAAEAFgAAAAYACUAAAAEAFkAAAAYACYAAAAEAFoAAAAZACQAAAAFAFgAAAAZACUAAAAFAFkAAAAZACYAAAAFAFoAAAAaACQAAAAGAFgAAAAaACUAAAAGAFkAAAAaACYAAAAGAFoAAAAQAC4AAAACAFYAAAARAC0AAAADAFUAAAARAC4AAAADAFYAAAARAC8AAAADAFcAAAASAC4AAAAEAFYAAAASAC8AAAAEAFcAAAAOADsAAAACAFYAAAAPADoAAAADAFUAAAAPADsAAAADAFYAAAAPADwAAAADAFcAAAAQADsAAAAEAFYAAAAQADwAAAAEAFcAAAAaADwAAAACAFIAAAAaAD0AAAACAFMAAAAbADwAAAADAFIAAAAbAD0AAAADAFMAAAAcADwAAAAEAFIAAAAcAD0AAAAEAFMAAAAPACcAAAAFAFUAAAAPACgAAAAFAFYAAAAQACcAAAAGAFUAAAAQACgAAAAGAFYAAAARACcAAAAHAFUAAAARACgAAAAHAFYAAAALABwAAAAFAFUAAAALAB0AAAAFAFYAAAAMABwAAAAGAFUAAAAMAB0AAAAGAFYAAAANABwAAAAHAFUAAAANAB0AAAAHAFYAAAA=")
 tile_set = SubResource("TileSet_sfi0s")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("11_8ofeb")]
-
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
+position = Vector2(891, 780)
 
-[node name="Spawn1" type="Marker2D" parent="."]
-position = Vector2(157, 402)
-
-[node name="Spawn2" type="Marker2D" parent="."]
-position = Vector2(1854, 1161)
-
-[node name="Spawn3" type="Marker2D" parent="."]
-position = Vector2(1395, 1159)
-
-[node name="Spawn4" type="Marker2D" parent="."]
-position = Vector2(789, 1161)
-
-[node name="Spawn5" type="Marker2D" parent="."]
-position = Vector2(2100, 354)
-
-[node name="Spawn6" type="Marker2D" parent="."]
-position = Vector2(2098, 954)
+[node name="Slime" parent="." instance=ExtResource("11_u3t4i")]
+y_sort_enabled = true
+position = Vector2(648, 782)
