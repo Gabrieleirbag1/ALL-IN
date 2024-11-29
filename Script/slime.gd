@@ -32,11 +32,12 @@ func _physics_process(delta: float) -> void:
 			var direction = (player.position - position).normalized()
 			var collision = move_and_collide(direction * speed * delta)
 			if collision:
-				
 				var collider = collision.get_collider()
 				if collider.name == "Player":
-					collider.health -= 1
-					collider.animation.play("hurt")
+					if collider.alive:
+						collider.health -= 1
+						collider.animation.play("hurt")
+						collider.check_health()
 			#rotation = position.angle_to(player.position)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:

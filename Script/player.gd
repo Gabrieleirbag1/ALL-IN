@@ -7,16 +7,18 @@ var health_max = 50
 var health_min = 0
 var alive : bool = true
 var death_animation_played : bool = false
-var immortal = true
+var immortal = false
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * speed
 
 func check_health():
+	print(health)
 	if immortal:
 		return
 	if health <= 0 and not death_animation_played:
+		print("décès")
 		alive = false
 		animation.play("death")
 		death_animation_played = true
@@ -25,7 +27,6 @@ func _input(event):
 	if alive:
 		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_D) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN) or Input.is_key_pressed(KEY_LEFT) or Input.is_key_pressed(KEY_RIGHT):
 			animation.play("walk_shadow")
-			check_health()
 		else:
 			animation.play("idle_shadow")
 			
