@@ -17,6 +17,22 @@ func play_animation(animation_name: String) -> void:
 		return
 	animation.play(animation_name)
 	
+func manage_collision(collision):
+	if collision:
+		var collider = collision.get_collider()
+		if collider.name == "Player":
+			if collider.alive:
+				collider.health -= 1
+				collider.animation.play("hurt")
+				collider.check_health()
+
+func chase_player(collision):
+	if player.position.x < position.x:
+		animation.flip_h = true
+	else:
+		animation.flip_h = false
+	manage_collision(collision)
+
 func check_health():
 	if immortal:
 		return
@@ -31,17 +47,7 @@ func _physics_process(delta: float) -> void:
 		if player_chase and player:
 			var direction = (player.position - position).normalized()
 			var collision = move_and_collide(direction * speed * delta)
-			if player.position.x < position.x:
-				animation.flip_h = true
-			else:
-				animation.flip_h = false
-			if collision:
-				var collider = collision.get_collider()
-				if collider.name == "Player":
-					if collider.alive:
-						collider.health -= 1
-						collider.animation.play("hurt")
-						collider.check_health()
+			chase_player(collision)
 			#rotation = position.angle_to(player.position)
 	
 func _on_area_2d_body_entered(body: Node2D) -> void:
