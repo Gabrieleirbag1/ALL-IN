@@ -14,11 +14,9 @@ func get_input():
 	velocity = input_direction * speed
 
 func check_health():
-	print(health)
 	if immortal:
 		return
 	if health <= 0 and not death_animation_played:
-		print("décès")
 		alive = false
 		animation.play("death")
 		death_animation_played = true

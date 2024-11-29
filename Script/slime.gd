@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@onready var animation : AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @export var speed = 30
 
 var player_chase = false
@@ -8,8 +8,8 @@ var player = null
 var health = 50
 var health_max = 50
 var health_min = 0
-var alive : bool = true
-var death_animation_played : bool = false
+var alive: bool = true
+var death_animation_played: bool = false
 var immortal = false
 
 func play_animation(animation_name: String) -> void:
@@ -31,6 +31,10 @@ func _physics_process(delta: float) -> void:
 		if player_chase and player:
 			var direction = (player.position - position).normalized()
 			var collision = move_and_collide(direction * speed * delta)
+			if player.position.x < position.x:
+				animation.flip_h = true
+			else:
+				animation.flip_h = false
 			if collision:
 				var collider = collision.get_collider()
 				if collider.name == "Player":
