@@ -8,6 +8,7 @@ var player = null
 var health = 50
 var health_max = 50
 var health_min = 0
+var damage = 3
 var alive: bool = true
 var death_animation_played: bool = false
 var immortal = false
@@ -22,7 +23,7 @@ func manage_collision(collision):
 		var collider = collision.get_collider()
 		if collider.name == "Player":
 			if collider.alive:
-				collider.health -= 1
+				collider.health -= damage
 				collider.animation.play("hurt")
 				collider.check_health()
 
