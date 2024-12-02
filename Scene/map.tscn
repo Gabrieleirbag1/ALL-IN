@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=40 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Texture2D" uid="uid://c4733lvkf5roy" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
@@ -10,13 +10,21 @@
 [ext_resource type="Texture2D" uid="uid://bcaf2ondy1g8i" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
 [ext_resource type="Texture2D" uid="uid://djn0h0wmg63yr" path="res://Assets/nature free/global.png" id="8_au240"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player.tscn" id="10_7yrxj"]
-[ext_resource type="PackedScene" uid="uid://r0c5dnx4tx0m" path="res://Scene/Slime.tscn" id="11_u3t4i"]
+[ext_resource type="PackedScene" uid="uid://d3wl1hf4t44ti" path="res://Scene/enemy.tscn" id="12_81b1i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_8hnbf"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8jr4"]
 texture = ExtResource("1_kv4up")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_8hnbf")
 
 [sub_resource type="TileSet" id="TileSet_gxcyf"]
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_q8jr4")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oydtc"]
@@ -64,15 +72,22 @@ texture = ExtResource("2_jeb6o")
 1:5/0 = 0
 2:5/0 = 0
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_a0qkp"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7l3ne"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h1ftv"]
 texture = ExtResource("3_4nunr")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_a0qkp")
 1:0/0 = 0
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_7l3ne")
 
 [sub_resource type="TileSet" id="TileSet_gyj01"]
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_oydtc")
 sources/1 = SubResource("TileSetAtlasSource_h1ftv")
 
@@ -26219,7 +26234,5 @@ tile_set = SubResource("TileSet_sfi0s")
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
 position = Vector2(891, 780)
 
-[node name="Slime" parent="." instance=ExtResource("11_u3t4i")]
-y_sort_enabled = true
-texture_filter = 1
-position = Vector2(648, 782)
+[node name="Enemy" parent="." instance=ExtResource("12_81b1i")]
+position = Vector2(518, 702)

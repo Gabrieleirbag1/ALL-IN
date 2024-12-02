@@ -1,5 +1,5 @@
 # slime.gd
-extends "enemy.gd"
+extends "old_enemy.gd"
 
 func _init() -> void:
 	speed = 25

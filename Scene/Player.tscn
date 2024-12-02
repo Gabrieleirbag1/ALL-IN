@@ -388,6 +388,7 @@ disabled = true
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(2.5, 2.5)
 limit_left = 0
 limit_top = 0
