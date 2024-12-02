@@ -25,12 +25,13 @@ func play_animation(animation_name: String) -> void:
 func _ready() -> void:
 	play_animation("idle")
 
-func chase_player():
+func turn_body():
 	if player.position.x < position.x:
 		animation.flip_h = true
 	else:
 		animation.flip_h = false
-		
+
+func chase_player():
 	var current_agent_pos = global_position
 	var next_path_pos = nav_agent.get_next_path_position()
 	var new_velocity = current_agent_pos.direction_to(next_path_pos) * speed
@@ -42,11 +43,24 @@ func chase_player():
 	
 	move_and_slide()
 
+func handle_collision():
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision:
+			var collider = collision.get_collider()
+			if collider.name == "Player":
+				collider.enemy_attack(velocity, knockback_force, damage)
+
+func handle_navigation():
+	turn_body()
+	chase_player()
+	handle_collision()
+
 func _physics_process(delta: float) -> void:
 	if nav_agent.is_navigation_finished():
 		return
 	if player:
-		chase_player()
+		handle_navigation()
 
 func makepath() -> void:
 	if player:
