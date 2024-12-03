@@ -51,5 +51,4 @@ func _physics_process(delta):
 		move_and_slide()
 
 func _on_invincibility_timeout() -> void:
-	print(1)
 	invincible = false
