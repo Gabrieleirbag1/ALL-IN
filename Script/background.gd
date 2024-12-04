@@ -1,12 +1,10 @@
 extends TileMapLayer
 
-@onready var decor_1: TileMapLayer = $"../Forest/Decor1"
-
 func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
-	return intersect_point(map_to_local(coords))
+	return intersect_point(to_global(map_to_local(coords)))
 	
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
-	if intersect_point(map_to_local(coords)):
+	if intersect_point(to_global(map_to_local(coords))):
 		tile_data.set_navigation_polygon(0, null)
 
 func intersect_point(point: Vector2) -> bool:
