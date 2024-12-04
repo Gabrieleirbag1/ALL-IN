@@ -26238,8 +26238,11 @@ tile_set = SubResource("TileSet_sfi0s")
 navigation_enabled = false
 
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
+position = Vector2(988, 660)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Enemy" parent="." instance=ExtResource("12_81b1i")]
-position = Vector2(0, 0)
+position = Vector2(799, 700)
 motion_mode = 1
 wall_min_slide_angle = 0.0
