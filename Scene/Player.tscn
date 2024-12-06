@@ -379,7 +379,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_shadow",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqjvc"]
@@ -391,15 +391,13 @@ bg_color = Color(1, 0.254902, 0.196078, 1)
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("2_wc0kd")
-speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
-animation = &"attack_1"
-frame = 8
-frame_progress = 0.490486
+animation = &"walk_shadow"
+frame_progress = 0.322743
 offset = Vector2(0, -5)
 script = ExtResource("3_tuurq")
 
@@ -416,16 +414,21 @@ show_percentage = false
 script = ExtResource("7_t4lsi")
 metadata/_edit_use_anchors_ = true
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-770, -172)
+scale = Vector2(1.39583, 0.490119)
+
+[node name="DamageHitbox" type="CollisionPolygon2D" parent="Area2D"]
+z_index = 1
+position = Vector2(151.165, -403.983)
+scale = Vector2(0.71642, 2.04032)
+polygon = PackedVector2Array(568, 374, 568, 370, 570, 370, 570, 360, 570, 352, 570, 339, 564, 339, 563, 337, 561, 337, 561, 335, 548, 335, 548, 337, 546, 337, 546, 339, 544, 339, 544, 341.432, 546, 342, 546, 348, 544, 348, 544, 355, 548, 355, 548, 357, 552, 357, 552, 359, 548, 359, 548, 361, 546, 361, 546, 366, 548, 366, 548, 368, 550, 368, 550, 372, 552, 372, 552, 374)
+script = ExtResource("8_w4vrf")
+
 [node name="CollisionHitbox" type="CollisionPolygon2D" parent="."]
 position = Vector2(-770, -172)
 scale = Vector2(1.39583, 0.490119)
 polygon = PackedVector2Array(560, 335.803, 560, 355.951, 545, 355.951, 545, 335.803)
-script = ExtResource("8_w4vrf")
-
-[node name="DamageHitbox" type="CollisionPolygon2D" parent="."]
-z_index = 1
-position = Vector2(-559, -370)
-polygon = PackedVector2Array(568, 374, 568, 370, 570, 370, 570, 360, 570, 352, 570, 339, 564, 339, 563, 337, 561, 337, 561, 335, 548, 335, 548, 337, 546, 337, 546, 339, 544, 339, 544, 341.432, 546, 342, 546, 348, 544, 348, 544, 355, 548, 355, 548, 357, 552, 357, 552, 359, 548, 359, 548, 361, 546, 361, 546, 366, 548, 366, 548, 368, 550, 368, 550, 372, 552, 372, 552, 374)
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -434,7 +437,6 @@ limit_left = 0
 limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
-position_smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Invincibility" type="Timer" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://d3wl1hf4t44ti"]
 
-[ext_resource type="Script" path="res://Script/enemy.gd" id="1_qqrid"]
+[ext_resource type="Script" path="res://Script/Ennemies/enemy.gd" id="1_qqrid"]
 [ext_resource type="Texture2D" uid="uid://cmxydqfuu86qt" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_yboy2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fqu8"]
@@ -181,7 +181,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
-radius = 3.46875
+radius = 8.08778
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(329, 261)
@@ -211,7 +211,6 @@ path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="."]
