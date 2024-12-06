@@ -391,7 +391,6 @@ bg_color = Color(1, 0.254902, 0.196078, 1)
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("2_wc0kd")
-speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
