@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var slime_scene: CharacterBody2D = $Enemy
-@onready var SceneTransitionAnimation = $SceneTransitionAnimation/AnimationPlayer
+@export var slime_scene: PackedScene
+
 var current_wave: int = 0
 var starting_nodes: int = 5 
 var current_nodes: int = 0  
@@ -18,7 +18,6 @@ func position_to_next_wave():
 	if current_nodes == starting_nodes:
 		if current_wave != 0:
 			Global.moving_to_next_wave = true
-		SceneTransitionAnimation.play("between_wave")
 		current_wave +=1
 		Global.current_wave = current_wave
 		await get_tree().create_timer(0.5).timeout
