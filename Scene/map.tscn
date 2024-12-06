@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=43 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/map.gd" id="1_yn8yg"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://djn0h0wmg63yr" path="res://Assets/nature free/global.png" id="8_au240"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://d3wl1hf4t44ti" path="res://Scene/enemy.tscn" id="12_81b1i"]
+[ext_resource type="Script" path="res://Script/Ennemies/slime.gd" id="14_2gufk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26253,11 +26254,6 @@ position = Vector2(812, 756)
 collision_layer = 3
 collision_mask = 3
 
-[node name="Enemy" parent="." instance=ExtResource("12_81b1i")]
-position = Vector2(623, 796)
-motion_mode = 1
-wall_min_slide_angle = 0.0
-
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(1004, 1150)
 
@@ -26269,3 +26265,9 @@ position = Vector2(1556, 1147)
 
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
+
+[node name="Slime" parent="." instance=ExtResource("12_81b1i")]
+position = Vector2(623, 796)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("14_2gufk")

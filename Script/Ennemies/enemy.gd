@@ -2,10 +2,8 @@ extends CharacterBody2D
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
-
-@export var speed: int = 30
-@export var knockback_force: int = 1500
-
+var knockback_force: int = 1500
+var speed: int = 30
 var health: int = 50
 var health_max: int = 50
 var health_min: int = 0
@@ -13,7 +11,6 @@ var damage: int = 3
 var alive: bool = true
 var death_animation_played: bool = false
 var immortal: bool = false
-
 var player_chase: bool = false
 var player = null
 

@@ -11,7 +11,6 @@ func intersect_point(point: Vector2) -> bool:
 	var space_state := get_world_2d().direct_space_state
 	var pointQuery := PhysicsPointQueryParameters2D.new()
 	pointQuery.collide_with_areas = false
-	pointQuery.collide_with_bodies = true
 	pointQuery.collision_mask = 2#<-HERE
 	pointQuery.position = point
 	var result = space_state.intersect_point(pointQuery, 1)
