@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
+@onready var dispawn_timer: Timer = $Dispawn
 
 var experience: int = 0
 var level: int = 1
@@ -26,6 +27,15 @@ func _ready() -> void:
 	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
 
+func die():
+	play_animation("death")
+	alive = false
+	death_animation_played = true
+	dispawn_timer.start()
+	
+func drop_xp():
+	pass
+	
 func turn_body():
 	if player.position.x < position.x:
 		animation.flip_h = true
@@ -53,9 +63,10 @@ func handle_collision():
 				collider.enemy_attack(velocity, knockback_force, damage)
 
 func handle_navigation():
-	turn_body()
-	chase_player()
-	handle_collision()
+	if alive:
+		turn_body()
+		chase_player()
+		handle_collision()
 
 func _physics_process(delta: float) -> void:
 	if nav_agent.is_navigation_finished():
@@ -66,9 +77,6 @@ func _physics_process(delta: float) -> void:
 func makepath() -> void:
 	if player:
 		nav_agent.target_position = player.global_position
-		
-func _on_timer_timeout() -> void:
-	makepath()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
@@ -84,3 +92,10 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
+	
+func _on_timer_timeout() -> void:
+	makepath()
+
+func _on_dispawn_timeout() -> void:
+	queue_free()
+	drop_xp()

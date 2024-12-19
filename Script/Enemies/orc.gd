@@ -1,4 +1,4 @@
-# slime.gd
+# orc.gd
 extends "enemy.gd"
 
 func _init() -> void:
@@ -13,3 +13,6 @@ func _init() -> void:
 	immortal = false
 	player_chase = false
 	player = null
+
+func _ready() -> void:
+	die()
