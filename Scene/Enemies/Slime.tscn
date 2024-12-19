@@ -1,97 +1,97 @@
-[gd_scene load_steps=27 format=3 uid="uid://r0c5dnx4tx0m"]
+[gd_scene load_steps=27 format=3 uid="uid://f0m4bpogt4c3"]
 
-[ext_resource type="Texture2D" uid="uid://cmxydqfuu86qt" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_op2d7"]
-[ext_resource type="Script" path="res://Script/Ennemies/slime.gd" id="1_r3m15"]
+[ext_resource type="Script" path="res://Script/Enemies/slime.gd" id="1_svxxn"]
+[ext_resource type="Texture2D" uid="uid://cmxydqfuu86qt" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_yboy2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fqu8"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(0, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7mso"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(100, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fjcp"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(200, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4t4cy"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(300, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkgjr"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(400, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6w5l"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(500, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d25cd"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(0, 400, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d0esc"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(100, 400, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvh1l"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(200, 400, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gehxi"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(300, 400, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_scjkm"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfx11"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_67em7"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_me711"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(300, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xubrx"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(400, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ydd0a"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5867"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(0, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3cx7"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(100, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qwhx5"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(200, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mkf1l"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(300, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0cnt"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(400, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qu2rf"]
-atlas = ExtResource("1_op2d7")
+atlas = ExtResource("1_yboy2")
 region = Rect2(500, 100, 100, 100)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_mdcms"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_t508g"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -180,18 +180,19 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2mdbw"]
-radius = 3.46875
+[sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
+radius = 8.08778
 
 [node name="Slime" type="CharacterBody2D"]
-script = ExtResource("1_r3m15")
+position = Vector2(131, 77)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_svxxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_mdcms")
+sprite_frames = SubResource("SpriteFrames_t508g")
 animation = &"idle"
-frame = 5
-frame_progress = 0.307497
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-306, -327)
@@ -200,14 +201,25 @@ scale = Vector2(4.91539, 5.27889)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
-shape = SubResource("CircleShape2D_2mdbw")
+shape = SubResource("CircleShape2D_fk40c")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
 polygon = PackedVector2Array(110.458, 132.672, 106.594, 130.983, 107.985, 129.334, 113.584, 125.288, 116.205, 123.661, 122.321, 123.661, 126.541, 127.11, 126.689, 130.983, 124.942, 132.61)
 
-[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]
-[connection signal="area_shape_exited" from="Area2D" to="." method="_on_area_2d_area_shape_exited"]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

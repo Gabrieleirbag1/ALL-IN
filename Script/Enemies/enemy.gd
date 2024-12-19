@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
+
+var experience: int = 0
+var level: int = 1
 var knockback_force: int = 1500
 var speed: int = 30
 var health: int = 50
@@ -20,6 +23,7 @@ func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
 func _ready() -> void:
+	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
 
 func turn_body():
@@ -67,13 +71,13 @@ func _on_timer_timeout() -> void:
 	makepath()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
+	if body is Player:
 		player = body
 		player_chase = true
 		play_animation("walk")
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body == player:
+	if body is Player:
 		player = null
 		player_chase = false
 		play_animation("idle")

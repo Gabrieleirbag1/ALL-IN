@@ -17,7 +17,10 @@ config/icon="res://Assets/icon.svg"
 
 [autoload]
 
-Global="*res://Script/global.gd"
+Global="*res://Script/Global/global.gd"
+MathXp="*res://Script/Global/math_xp.gd"
+EventController="*res://Script/Global/event_controller.gd"
+GameController="*res://Script/Global/game_controller.gd"
 
 [display]
 

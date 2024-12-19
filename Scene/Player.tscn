@@ -1,9 +1,10 @@
-[gd_scene load_steps=58 format=3 uid="uid://d1yme2tfg8o5v"]
+[gd_scene load_steps=60 format=3 uid="uid://d1yme2tfg8o5v"]
 
 [ext_resource type="Texture2D" uid="uid://oahcwxdn7g4x" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
-[ext_resource type="Script" path="res://Script/player.gd" id="2_wc0kd"]
+[ext_resource type="Script" path="res://Script/Player/player.gd" id="2_wc0kd"]
 [ext_resource type="Script" path="res://Script/animated_sprite_2d.gd" id="3_tuurq"]
-[ext_resource type="Script" path="res://Script/progress_bar.gd" id="7_t4lsi"]
+[ext_resource type="Texture2D" uid="uid://cinaeeu7vwoji" path="res://Assets/level-bg.png" id="4_g1kss"]
+[ext_resource type="Script" path="res://Script/Player/progress_bar.gd" id="7_t4lsi"]
 [ext_resource type="Script" path="res://Script/collision_polygon_2d.gd" id="8_w4vrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kwv7"]
@@ -382,6 +383,9 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_l6k2v"]
+font_size = 10
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqjvc"]
 bg_color = Color(0, 0.027451, 0, 1)
 
@@ -390,16 +394,52 @@ bg_color = Color(1, 0.254902, 0.196078, 1)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+position = Vector2(245, 188)
 script = ExtResource("2_wc0kd")
+experience = 10000
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"walk_shadow"
-frame_progress = 0.322743
+frame_progress = 0.550586
 offset = Vector2(0, -5)
 script = ExtResource("3_tuurq")
+
+[node name="Level" type="Node2D" parent="."]
+position = Vector2(-26, 8)
+
+[node name="Control" type="Control" parent="Level"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Level/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.025
+offset_left = -3.0
+offset_top = 1.0
+offset_right = 11.0
+offset_bottom = 13.0
+texture = ExtResource("4_g1kss")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Level_label" type="Label" parent="Level/Control"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -4.0
+offset_right = 24.0
+offset_bottom = 19.0
+text = "0"
+label_settings = SubResource("LabelSettings_l6k2v")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 offset_left = -16.0
@@ -433,13 +473,23 @@ script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
+process_callback = 0
 limit_left = 0
 limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
+position_smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Invincibility" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
+[node name="Hurted" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Zoom" type="Timer" parent="."]
+
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
+[connection signal="timeout" from="Hurted" to="." method="_on_hurted_timeout"]
