@@ -109,9 +109,13 @@ animations = [{
 radius = 7.0
 
 [node name="XP" type="Node2D"]
+light_mask = 17
+visibility_layer = 17
 script = ExtResource("1_vbg4g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 17
+visibility_layer = 17
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qbevo")
 animation = &"idle_small"

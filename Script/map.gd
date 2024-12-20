@@ -20,10 +20,18 @@ func on_event_enemy_death(xp: int, enemy_position: Vector2) -> void:
 	drop_xp(xp, enemy_position)
 
 func drop_xp(xp, enemy_position):
-	var xp_instance = xp_scene.instantiate()
-	xp_instance.global_position = enemy_position
-	xp_instance.xp_type = xp_instance.get_xp(xp)
-	add_child(xp_instance)
+	var remaining_xp = xp
+	var xp_types = ["large", "medium", "small"]
+	var xp_value: Dictionary = {"small": 100, "medium": 200, "large": 500}
+	
+	for xp_type in xp_types:
+		while remaining_xp >= xp_value[xp_type]:
+			var xp_instance = xp_scene.instantiate()
+			var random_offset = Vector2(randi_range(-10, 10), randi_range(-10, 10))
+			xp_instance.global_position = enemy_position + random_offset
+			xp_instance.xp_type = xp_type
+			add_child(xp_instance)
+			remaining_xp -= xp_value[xp_type]
 
 func position_to_next_wave():
 	if current_nodes == starting_nodes:
