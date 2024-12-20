@@ -472,7 +472,6 @@ polygon = PackedVector2Array(560, 335.803, 560, 355.951, 545, 355.951, 545, 335.
 script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
 zoom = Vector2(2.5, 2.5)
 process_callback = 0
 limit_left = 0

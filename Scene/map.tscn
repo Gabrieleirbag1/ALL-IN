@@ -25931,6 +25931,7 @@ y_sort_enabled = true
 position = Vector2(3, 0)
 script = ExtResource("1_yn8yg")
 slime_scene = ExtResource("14_okl5h")
+xp_scene = ExtResource("15_4wxva")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -1
@@ -26039,7 +26040,6 @@ experience = 0
 
 [node name="Orc" parent="." instance=ExtResource("14_kwv2w")]
 position = Vector2(720, 904)
-xp_scene = ExtResource("14_okl5h")
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(1004, 1150)

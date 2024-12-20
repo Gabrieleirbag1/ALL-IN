@@ -3,9 +3,9 @@ extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
-@export var xp_scene: PackedScene
 
 var experience: int = 0
+var drop_xp: int = 100
 var level: int = 1
 var knockback_force: int = 1500
 var speed: int = 30
@@ -33,11 +33,6 @@ func die():
 	alive = false
 	death_animation_played = true
 	dispawn_timer.start()
-	
-func drop_xp():
-	var xp_instance = xp_scene.instantiate()
-	xp_instance.global_position = global_position
-	add_child(xp_instance)
 	
 func turn_body():
 	if player.position.x < position.x:
@@ -100,5 +95,5 @@ func _on_timer_timeout() -> void:
 	makepath()
 
 func _on_dispawn_timeout() -> void:
-	drop_xp()
+	GameController.enemy_death(drop_xp, position)
 	queue_free()

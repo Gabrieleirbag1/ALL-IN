@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var slime_scene: PackedScene
+@export var xp_scene: PackedScene
 
 var current_wave: int = 0
 var starting_nodes: int = 5 
@@ -8,12 +9,22 @@ var current_nodes: int = 0
 var wave_spawn_ended: bool = false
 
 func _ready() -> void:
+	EventController.connect("enemy_death", on_event_enemy_death)
 	current_wave = 0
 	Global.current_wave = current_wave
 	starting_nodes = get_child_count()
 	current_nodes = get_child_count()
 	position_to_next_wave()
-	
+
+func on_event_enemy_death(xp: int, enemy_position: Vector2) -> void:
+	drop_xp(xp, enemy_position)
+
+func drop_xp(xp, enemy_position):
+	var xp_instance = xp_scene.instantiate()
+	xp_instance.global_position = enemy_position
+	xp_instance.xp_type = xp_instance.get_xp(xp)
+	add_child(xp_instance)
+
 func position_to_next_wave():
 	if current_nodes == starting_nodes:
 		if current_wave != 0:
@@ -22,7 +33,6 @@ func position_to_next_wave():
 		Global.current_wave = current_wave
 		await get_tree().create_timer(0.5).timeout
 		prepapre_spawn("slime", 4.0, 4.0) #type, multiplier, spawns
-		print(current_wave)
 
 func prepapre_spawn(type, multiplier, mob_spawns):
 	var mob_amount = 50 # Fixé à 50 slimes pour cette vague
