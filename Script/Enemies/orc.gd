@@ -1,7 +1,8 @@
-# slime.gd
+# orc.gd
 extends "enemy.gd"
 
 func _init() -> void:
+	drop_xp = 200
 	speed = 20
 	knockback_force = 2500
 	health = 300
@@ -13,3 +14,6 @@ func _init() -> void:
 	immortal = false
 	player_chase = false
 	player = null
+
+func _ready() -> void:
+	die()

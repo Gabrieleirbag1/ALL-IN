@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://7xxtrsy5v1ck" path="res://Scene/Enemies/Orc.tscn" id="14_kwv2w"]
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
-[ext_resource type="PackedScene" uid="uid://dt3isixwdy7xa" path="res://Scene/XP.tscn" id="15_4wxva"]
+[ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP.tscn" id="15_4wxva"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -25931,6 +25931,7 @@ y_sort_enabled = true
 position = Vector2(3, 0)
 script = ExtResource("1_yn8yg")
 slime_scene = ExtResource("14_okl5h")
+xp_scene = ExtResource("15_4wxva")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -1
@@ -26030,7 +26031,6 @@ navigation_enabled = false
 [node name="XP" parent="." instance=ExtResource("15_4wxva")]
 position = Vector2(865, 746)
 scale = Vector2(3, 3)
-xp_type = "large"
 
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
 position = Vector2(812, 756)
