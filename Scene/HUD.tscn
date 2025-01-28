@@ -25,7 +25,7 @@ offset_bottom = 1061.0
 mouse_filter = 2
 
 [node name="ItemFrame" parent="Inventaire 1/Inv1" instance=ExtResource("2_hrmfr")]
-position = Vector2(72, 72)
+position = Vector2(72, 71)
 
 [node name="Inv2" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
@@ -36,7 +36,7 @@ offset_bottom = 1061.0
 mouse_filter = 2
 
 [node name="ItemFrame" parent="Inventaire 1/Inv2" instance=ExtResource("2_hrmfr")]
-position = Vector2(72, 72)
+position = Vector2(72, 71)
 
 [node name="Inv3" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
@@ -47,7 +47,7 @@ offset_bottom = 1061.0
 mouse_filter = 2
 
 [node name="ItemFrame" parent="Inventaire 1/Inv3" instance=ExtResource("2_hrmfr")]
-position = Vector2(72, 72)
+position = Vector2(72, 71)
 
 [node name="Inv4" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
@@ -58,7 +58,7 @@ offset_bottom = 1061.0
 mouse_filter = 2
 
 [node name="ItemFrame" parent="Inventaire 1/Inv4" instance=ExtResource("2_hrmfr")]
-position = Vector2(72, 72)
+position = Vector2(72, 71)
 
 [node name="Inv5" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
@@ -69,7 +69,7 @@ offset_bottom = 1061.0
 mouse_filter = 2
 
 [node name="ItemFrame" parent="Inventaire 1/Inv5" instance=ExtResource("2_hrmfr")]
-position = Vector2(72, 72)
+position = Vector2(72, 71)
 
 [node name="Arme1" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0

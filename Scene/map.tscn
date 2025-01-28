@@ -26055,7 +26055,10 @@ position = Vector2(1556, 1147)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
 
-[node name="Item" parent="." instance=ExtResource("17_c0fxq")]
-position = Vector2(576, 697)
+[node name="Item" type="CanvasLayer" parent="."]
+
+[node name="Item" parent="Item" instance=ExtResource("17_c0fxq")]
+position = Vector2(782, 703)
 
 [node name="HUD" parent="." instance=ExtResource("16_5chm7")]
+layer = 0
