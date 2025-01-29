@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Script/Player/player.gd" id="2_wc0kd"]
 [ext_resource type="Script" path="res://Script/animated_sprite_2d.gd" id="3_tuurq"]
 [ext_resource type="Texture2D" uid="uid://cinaeeu7vwoji" path="res://Assets/level-bg.png" id="4_g1kss"]
-[ext_resource type="Script" path="res://Scene/fire_ball.gd" id="4_px2h1"]
+[ext_resource type="Script" path="res://Script/fire_ball.gd" id="4_px2h1"]
 [ext_resource type="Script" path="res://Script/Player/progress_bar.gd" id="7_t4lsi"]
 [ext_resource type="Script" path="res://Script/collision_polygon_2d.gd" id="8_w4vrf"]
 
