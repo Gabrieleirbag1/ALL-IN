@@ -8,7 +8,8 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
-@onready var fireball_hitbox = $AnimatedSprite2D/Area2D/fire_ball
+@onready var fireball_hitbox_8 = $"AnimatedSprite2D/Area2D/fire_ball_8+"
+@onready var fireball_hitbox_5 = $"AnimatedSprite2D/Area2D/fire_ball_5-7"
 
 @export var speed: int = 250
 @export var experience: int = 0
@@ -94,15 +95,18 @@ func _input(event):
 
 func _physics_process(delta):
 	if alive:
-		print("Disabled :",fireball_hitbox.is_disabled())
 		get_input()
 		move_and_slide()
 		attack()
-		fireball_hitbox.set_disabled(true)
+		fireball_hitbox_8.set_disabled(true)
+		fireball_hitbox_5.set_disabled(true)
 		if animation.is_playing() and animation.animation == "attack_1":
 			var current_frame = animation.frame
-			if current_frame >=8:
-				fireball_hitbox.set_disabled(false)
+			if current_frame >= 5 and current_frame <=7:
+				fireball_hitbox_5.set_disabled(false)
+			elif current_frame >=8:
+				fireball_hitbox_8.set_disabled(false)
+
 
 func _on_invincibility_timeout() -> void:
 	invincible = false

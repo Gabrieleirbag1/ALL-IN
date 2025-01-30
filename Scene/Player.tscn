@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://d1yme2tfg8o5v"]
+[gd_scene load_steps=63 format=3 uid="uid://d1yme2tfg8o5v"]
 
 [ext_resource type="Texture2D" uid="uid://oahcwxdn7g4x" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
 [ext_resource type="Script" path="res://Script/Player/player.gd" id="2_wc0kd"]
@@ -386,6 +386,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbkot"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xpfo4"]
+radius = 7.74062
+
 [sub_resource type="LabelSettings" id="LabelSettings_l6k2v"]
 font_size = 10
 
@@ -406,16 +409,22 @@ texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"attack_1"
+frame = 11
+frame_progress = 1.0
 offset = Vector2(0, -5)
 script = ExtResource("3_tuurq")
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 
-[node name="fire_ball" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+[node name="fire_ball_8+" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
 position = Vector2(34.5455, -3.63638)
 shape = SubResource("CircleShape2D_qbkot")
 debug_color = Color(0, 0.63683, 0.970198, 0.42)
 script = ExtResource("4_px2h1")
+
+[node name="fire_ball_5-7" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(23.1818, -4.09091)
+shape = SubResource("CircleShape2D_xpfo4")
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(-26, 8)
