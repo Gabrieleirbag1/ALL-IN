@@ -8,12 +8,10 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
-@onready var fireball_hitbox_8 = $"AnimatedSprite2D/fire_ball_hitbox/fire_ball_8+"
-@onready var fireball_hitbox_5 = $"AnimatedSprite2D/fire_ball_hitbox/fire_ball_5-7"
-@onready var fireball_hitbox: Area2D = $AnimatedSprite2D/fire_ball_hitbox
 @onready var fireball_scene = preload("res://Scene/fire_ball.tscn")
 @onready var fireball_spawn_right = $spawn_fire_right
 @onready var fireball_spawn_left = $spawn_fire_left
+
 
 
 @export var speed: int = 250
@@ -22,13 +20,15 @@ class_name Player extends CharacterBody2D
 @export var health_max: int = 50
 @export var health_min: int = 0
  
-
+var has_spawned_fireball: bool = false
 var level: int = 1
 var alive : bool = true
 var death_animation_played : bool = false
 var immortal: bool = false
 var invincible: bool = false
 var is_attacking: bool = false
+var can_attack: bool = true
+
 
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
@@ -110,9 +110,17 @@ func _physics_process(delta):
 		move_and_slide()
 		attack()
 		
+		# Mise à jour de la direction même pendant l'attaque
+		var input_direction = Input.get_vector("left", "right", "up", "down")
+		if input_direction.x != 0:
+			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x)
+		
 		if animation.animation == "attack_1" and animation.is_playing():
-			if animation.frame == 5:
+			if animation.frame == 5 and !has_spawned_fireball:
+				has_spawned_fireball = true
 				spawn_fireball()
+		else:
+			has_spawned_fireball = false
 
 
 func _on_invincibility_timeout() -> void:
@@ -125,16 +133,15 @@ func _on_hurted_timeout() -> void:
 
 
 func attack():
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+	if Input.is_action_pressed("attack") and can_attack:
+		can_attack = false
 		is_attacking = true
 		play_animation("attack_1")
+		await get_tree().create_timer(0.5).timeout 
+		can_attack = true
 
 
 func spawn_fireball():
-	if not is_attacking:
-		return
-
-	is_attacking = false
 	var fireball = fireball_scene.instantiate()
 	get_parent().add_child(fireball)
 
@@ -145,6 +152,7 @@ func spawn_fireball():
 		fireball.direction = Vector2.LEFT
 		fireball.global_position = fireball_spawn_left.global_position
 		fireball.rotation_degrees = 180
+	is_attacking = false
 
 
 func get_frame_count_for_animation(animation_name: String) -> int:

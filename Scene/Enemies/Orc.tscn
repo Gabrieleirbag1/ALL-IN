@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://7xxtrsy5v1ck"]
+[gd_scene load_steps=52 format=3 uid="uid://7xxtrsy5v1ck"]
 
 [ext_resource type="Script" path="res://Script/Enemies/orc.gd" id="1_ac1mx"]
 [ext_resource type="Texture2D" uid="uid://0qsw2pafg28h" path="res://Assets/Characters/Orc/Orc.png" id="2_6hu7m"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bahitm6jdhx4e" path="res://Assets/Characters/Orc/Orc-Idle.png" id="5_0tsua"]
 [ext_resource type="Texture2D" uid="uid://my0urpmcul2t" path="res://Assets/Characters/Orc/Orc-shadow.png" id="6_ke3l4"]
 [ext_resource type="Texture2D" uid="uid://bm7rlajh6yb0u" path="res://Assets/Characters/Orc/Orc-Walk.png" id="7_501lp"]
-[ext_resource type="Script" path="res://Script/animated_sprite_2d.gd" id="8_81kor"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhceq"]
 atlas = ExtResource("2_6hu7m")
@@ -356,7 +355,6 @@ scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_ijymu")
 animation = &"death"
 offset = Vector2(0, -5)
-script = ExtResource("8_81kor")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-306, -327)
