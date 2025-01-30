@@ -1,12 +1,10 @@
-[gd_scene load_steps=56 format=3 uid="uid://d1yme2tfg8o5v"]
+[gd_scene load_steps=54 format=3 uid="uid://d1yme2tfg8o5v"]
 
 [ext_resource type="Texture2D" uid="uid://bix8oisrv27cw" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard-Attack02 2.png" id="2_6c06u"]
 [ext_resource type="Texture2D" uid="uid://oahcwxdn7g4x" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
 [ext_resource type="Script" path="res://Script/Player/player.gd" id="2_wc0kd"]
-[ext_resource type="Script" path="res://Script/animated_sprite_2d.gd" id="3_tuurq"]
 [ext_resource type="Texture2D" uid="uid://cinaeeu7vwoji" path="res://Assets/level-bg.png" id="4_g1kss"]
 [ext_resource type="Script" path="res://Script/Player/progress_bar.gd" id="7_t4lsi"]
-[ext_resource type="Script" path="res://Script/collision_polygon_2d.gd" id="8_w4vrf"]
 [ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/fire_ball.tscn" id="9_mlot8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7lp"]
@@ -364,7 +362,6 @@ scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
 animation = &"attack_1"
 offset = Vector2(0, -5)
-script = ExtResource("3_tuurq")
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(-26, 8)
@@ -422,13 +419,11 @@ z_index = 1
 position = Vector2(151.165, -401.943)
 scale = Vector2(0.71642, 2.04032)
 polygon = PackedVector2Array(568, 374, 568, 370, 570, 370, 570, 360, 570, 352, 570, 339, 564, 339, 563, 337, 561, 337, 561, 335, 548, 335, 548, 337, 546, 337, 546, 339, 544, 339, 544, 341.432, 546, 342, 546, 348, 544, 348, 544, 355, 548, 355, 548, 357, 552, 357, 552, 359, 548, 359, 548, 361, 546, 361, 546, 366, 548, 366, 548, 368, 550, 368, 550, 372, 552, 372, 552, 374)
-script = ExtResource("8_w4vrf")
 
 [node name="CollisionHitbox" type="CollisionPolygon2D" parent="."]
 position = Vector2(-770, -172)
 scale = Vector2(1.39583, 0.490119)
 polygon = PackedVector2Array(560, 335.803, 560, 355.951, 545, 355.951, 545, 335.803)
-script = ExtResource("8_w4vrf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)

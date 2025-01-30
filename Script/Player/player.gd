@@ -8,9 +8,6 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
-@onready var fireball_hitbox_8 = $"AnimatedSprite2D/fire_ball_hitbox/fire_ball_8+"
-@onready var fireball_hitbox_5 = $"AnimatedSprite2D/fire_ball_hitbox/fire_ball_5-7"
-@onready var fireball_hitbox: Area2D = $AnimatedSprite2D/fire_ball_hitbox
 @onready var fireball_scene = preload("res://Scene/fire_ball.tscn")
 @onready var fireball_spawn_right = $spawn_fire_right
 @onready var fireball_spawn_left = $spawn_fire_left
