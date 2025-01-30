@@ -1,59 +1,37 @@
-[gd_scene load_steps=60 format=3 uid="uid://d1yme2tfg8o5v"]
+[gd_scene load_steps=56 format=3 uid="uid://d1yme2tfg8o5v"]
 
+[ext_resource type="Texture2D" uid="uid://bix8oisrv27cw" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard-Attack02 2.png" id="2_6c06u"]
 [ext_resource type="Texture2D" uid="uid://oahcwxdn7g4x" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
 [ext_resource type="Script" path="res://Script/Player/player.gd" id="2_wc0kd"]
 [ext_resource type="Script" path="res://Script/animated_sprite_2d.gd" id="3_tuurq"]
 [ext_resource type="Texture2D" uid="uid://cinaeeu7vwoji" path="res://Assets/level-bg.png" id="4_g1kss"]
 [ext_resource type="Script" path="res://Script/Player/progress_bar.gd" id="7_t4lsi"]
 [ext_resource type="Script" path="res://Script/collision_polygon_2d.gd" id="8_w4vrf"]
+[ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/fire_ball.tscn" id="9_mlot8"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0kwv7"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(0, 500, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f7lp"]
+atlas = ExtResource("2_6c06u")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k4iow"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(100, 500, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_di0rt"]
+atlas = ExtResource("2_6c06u")
+region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0yo6p"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(200, 500, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ndxl"]
+atlas = ExtResource("2_6c06u")
+region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pb5me"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(300, 500, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_a7nl6"]
+atlas = ExtResource("2_6c06u")
+region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_867gh"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(400, 500, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ebv2"]
+atlas = ExtResource("2_6c06u")
+region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_thduo"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(500, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1wct"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(600, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2w5af"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(700, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t761b"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(800, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0wub"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(900, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jws7k"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(1100, 500, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxjah"]
-atlas = ExtResource("2_c8ssj")
-region = Rect2(1000, 500, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxtmv"]
+atlas = ExtResource("2_6c06u")
+region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gbstc"]
 atlas = ExtResource("2_c8ssj")
@@ -207,42 +185,24 @@ region = Rect2(700, 100, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0kwv7")
+"texture": SubResource("AtlasTexture_6f7lp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k4iow")
+"texture": SubResource("AtlasTexture_di0rt")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0yo6p")
+"texture": SubResource("AtlasTexture_6ndxl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pb5me")
+"texture": SubResource("AtlasTexture_a7nl6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_867gh")
+"texture": SubResource("AtlasTexture_2ebv2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_thduo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k1wct")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2w5af")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t761b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u0wub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jws7k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rxjah")
+"texture": SubResource("AtlasTexture_oxtmv")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
 "speed": 10.0
 }, {
@@ -402,8 +362,7 @@ experience = 10000
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
-animation = &"walk_shadow"
-frame_progress = 0.550586
+animation = &"attack_1"
 offset = Vector2(0, -5)
 script = ExtResource("3_tuurq")
 
@@ -460,7 +419,7 @@ scale = Vector2(1.39583, 0.490119)
 
 [node name="DamageHitbox" type="CollisionPolygon2D" parent="Area2D"]
 z_index = 1
-position = Vector2(151.165, -403.983)
+position = Vector2(151.165, -401.943)
 scale = Vector2(0.71642, 2.04032)
 polygon = PackedVector2Array(568, 374, 568, 370, 570, 370, 570, 360, 570, 352, 570, 339, 564, 339, 563, 337, 561, 337, 561, 335, 548, 335, 548, 337, 546, 337, 546, 339, 544, 339, 544, 341.432, 546, 342, 546, 348, 544, 348, 544, 355, 548, 355, 548, 357, 552, 357, 552, 359, 548, 359, 548, 361, 546, 361, 546, 366, 548, 366, 548, 368, 550, 368, 550, 372, 552, 372, 552, 374)
 script = ExtResource("8_w4vrf")
@@ -491,5 +450,16 @@ one_shot = true
 
 [node name="Zoom" type="Timer" parent="."]
 
+[node name="fire_ball" parent="." instance=ExtResource("9_mlot8")]
+visible = false
+position = Vector2(195, -65)
+
+[node name="spawn_fire_right" type="Marker2D" parent="."]
+position = Vector2(46, -15)
+
+[node name="spawn_fire_left" type="Marker2D" parent="."]
+position = Vector2(-46, -9)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
 [connection signal="timeout" from="Hurted" to="." method="_on_hurted_timeout"]
