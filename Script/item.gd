@@ -7,19 +7,7 @@ var initialPos
 var offset: Vector2
 var hovered_dropables = []
 
-var body_ref_dic = {
-	"1": {
-		"body_ref": null,
-		"is_item_inside": false
-	},
-	"2": {
-		"body_ref": null,
-		"is_item_inside": false
-	}
-}
-
 func _ready() -> void:
-	# Add "click" action if it doesn't exist
 	if not InputMap.has_action("click"):
 		InputMap.add_action("click")
 		var mouse_button_event = InputEventMouseButton.new()
