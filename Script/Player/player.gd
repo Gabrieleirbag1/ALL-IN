@@ -110,7 +110,6 @@ func _physics_process(delta):
 		move_and_slide()
 		attack()
 		
-		# Mise à jour de la direction même pendant l'attaque
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		if input_direction.x != 0:
 			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x)
