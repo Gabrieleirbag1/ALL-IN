@@ -1,15 +1,25 @@
 extends StaticBody2D
 
+var is_item_inside = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	modulate = Color(Color.MEDIUM_AQUAMARINE, 0.7)
-	print(global_position)
+	var shader = Shader.new()
+	shader.code = """
+	shader_type canvas_item;
 
+	uniform float brightness: hint_range(0.0,2.0) = 1.0;
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	void fragment() {
+		COLOR = texture(TEXTURE, UV) * vec4(vec3(brightness), 1.0);
+	}
+	"""
+	var mat = ShaderMaterial.new()
+	mat.shader = shader
+	$TextureRect.material = mat
+
 func _process(delta: float) -> void:
-	if Global.is_dragging:
-		visible = true
-	else:
-		visible = false
+	if not is_item_inside:
+		if Global.is_dragging:
+			$TextureRect.material.set_shader_parameter("brightness", 12)
+		else:
+			$TextureRect.material.set_shader_parameter("brightness", 1.0)

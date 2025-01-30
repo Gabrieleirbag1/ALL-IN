@@ -5,6 +5,18 @@ var is_inside_dropable: bool = false
 var body_ref
 var initialPos
 var offset: Vector2
+var hovered_dropables = []
+
+var body_ref_dic = {
+	"1": {
+		"body_ref": null,
+		"is_item_inside": false
+	},
+	"2": {
+		"body_ref": null,
+		"is_item_inside": false
+	}
+}
 
 func _ready() -> void:
 	# Add "click" action if it doesn't exist
@@ -40,14 +52,26 @@ func _on_area_2d_mouse_exited() -> void:
 		draggable = false
 		scale = Vector2(1, 1)
 
-func _on_area_2d_body_entered(body: StaticBody2D) -> void:
+func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group('dropable'):
+		hovered_dropables.append(body)
+		body.set("is_item_inside", true)
+		for b in hovered_dropables:
+			b.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
+		var last_body = hovered_dropables[-1]
+		last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 		is_inside_dropable = true
-		body.modulate = Color(Color.REBECCA_PURPLE, 1)
-		body_ref = body
+		body_ref = last_body
 
-func _on_area_2d_body_exited(body: StaticBody2D) -> void:
+func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
-		if body_ref == body:
+		hovered_dropables.erase(body)
+		body.set("is_item_inside", false)
+		body.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
+		if hovered_dropables.size() > 0:
+			var last_body = hovered_dropables[-1]
+			last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
+			body_ref = last_body
+		else:
 			is_inside_dropable = false
-			body.modulate = Color(Color.REBECCA_PURPLE, 0.7)
+			body_ref = null
