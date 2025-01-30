@@ -138,8 +138,6 @@ func spawn_fireball():
 	var fireball = fireball_scene.instantiate()
 	get_parent().add_child(fireball)
 
-	
-
 	if animation.scale.x > 0:
 		fireball.direction = Vector2.RIGHT
 		fireball.global_position = fireball_spawn_right.global_position

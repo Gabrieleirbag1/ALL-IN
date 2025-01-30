@@ -1,24 +1,29 @@
 extends Area2D
 
-@export var speed: float = 400
-@export var damage: int = 10
-
+@export var range: float = 300
+@export var damage: int = 100
 var direction: Vector2
-
 @onready var animation = $fire_ball_sprite
 
 func _ready():
 	animation.play("fire_ball")
-
+	connect("body_entered", _on_body_entered)
+	connect("area_entered", _on_area_entered)
 
 func _physics_process(delta):
-	global_position += direction * speed * delta
+	global_position += direction * range * delta
 
-func _on_area_entered(body):
+
+func _on_body_entered(body):
 	if body is Enemy:
 		body.take_damage(damage)
 		queue_free()
-
+	if body.get_class() == "TileMapLayer":
+		queue_free()
 
 func _on_fire_ball_sprite_animation_finished() -> void:
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	pass
