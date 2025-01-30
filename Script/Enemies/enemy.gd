@@ -3,9 +3,6 @@ class_name Enemy extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
-@onready var fireball_hitbox_5: Area2D = $"AnimatedSprite2D/Area2D/fire_ball_5-7"
-@onready var fireball_hitbox_8: Area2D = $"AnimatedSprite2D/Area2D/fire_ball_8+"
-
 
 var experience: int = 0
 var drop_xp: int = 100
@@ -36,7 +33,6 @@ func _on_fireball_hit(body: Node2D):
 		body.take_damage(10)
 
 func take_damage(damage_amount: int):
-	print(get_animation())
 	if not alive or immortal:
 		return
 
@@ -48,12 +44,12 @@ func take_damage(damage_amount: int):
 	if health <= 0:
 		die()
 	else:
+		print("Health :", health, "/", health_max )
 		play_animation("hurt")
 
 func die():
 	if death_animation_played:
 		return
-	
 	play_animation("death")
 	alive = false
 	death_animation_played = true
@@ -108,7 +104,6 @@ func _physics_process(delta: float) -> void:
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
 	
-	# Vérifier si l’animation "hurt" s’est arrêtée.
 	if animation.animation == "hurt" and not animation.is_playing():
 		if player_chase:
 			play_animation("walk")
