@@ -4,6 +4,7 @@ extends Area2D
 @export var damage: int = 100
 var direction: Vector2
 @onready var animation = $fire_ball_sprite
+@export var piercing: bool = false
 
 func _ready():
 	animation.play("fire_ball")
@@ -17,9 +18,11 @@ func _physics_process(delta):
 func _on_body_entered(body):
 	if body is Enemy:
 		body.take_damage(damage)
-		queue_free()
+		if not piercing:
+			queue_free()
+
 	if body.get_class() == "TileMapLayer":
-		queue_free()
+		queue_free() 
 
 func _on_fire_ball_sprite_animation_finished() -> void:
 	queue_free()

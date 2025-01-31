@@ -353,7 +353,7 @@ bg_color = Color(1, 0.254902, 0.196078, 1)
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(245, 188)
-collision_mask = 5
+collision_mask = 519
 script = ExtResource("2_wc0kd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -432,6 +432,7 @@ limit_left = 0
 limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
+limit_smoothed = true
 position_smoothing_enabled = true
 editor_draw_limits = true
 
@@ -454,6 +455,12 @@ position = Vector2(46, -15)
 
 [node name="spawn_fire_left" type="Marker2D" parent="."]
 position = Vector2(-46, -9)
+
+[node name="spawn_fire_up" type="Marker2D" parent="."]
+position = Vector2(-1, -54)
+
+[node name="spawn_fire_down" type="Marker2D" parent="."]
+position = Vector2(-1, 31)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
