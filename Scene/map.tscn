@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=47 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/map.gd" id="1_yn8yg"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://7xxtrsy5v1ck" path="res://Scene/Enemies/Orc.tscn" id="14_kwv2w"]
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP.tscn" id="15_4wxva"]
+[ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD.tscn" id="16_5chm7"]
+[ext_resource type="PackedScene" uid="uid://chx80igvfjowd" path="res://Scene/ItemLayer.tscn" id="16_453tb"]
+[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="17_c0fxq"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26052,3 +26055,10 @@ position = Vector2(1556, 1147)
 
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
+
+[node name="HUD" parent="." instance=ExtResource("16_5chm7")]
+
+[node name="ItemLayer" parent="." instance=ExtResource("16_453tb")]
+
+[node name="Item" parent="ItemLayer" instance=ExtResource("17_c0fxq")]
+position = Vector2(741, 752)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5s5mjecos86l"]
 
-[ext_resource type="Texture2D" uid="uid://55bs5eaimlb2" path="res://Assets/black.png" id="1_x6n3f"]
-[ext_resource type="Texture2D" uid="uid://dvs63uy5uq768" path="res://Assets/icon.svg" id="2_at6i3"]
+[ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
+[ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/ItemFrame.tscn" id="2_hrmfr"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -12,77 +12,84 @@ anchor_bottom = 1.0
 offset_top = -175.0
 offset_right = 828.0
 grow_vertical = 0
-texture = ExtResource("1_x6n3f")
-expand_mode = 1
+mouse_filter = 2
+texture = ExtResource("1_45228")
 
-[node name="Stat 1" type="TextureButton" parent="Inventaire 1"]
+[node name="Inv1" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 20.0
-offset_bottom = 150.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 27.0
+offset_top = 919.0
+offset_right = 169.0
+offset_bottom = 1061.0
+mouse_filter = 2
 
-[node name="Stat 2" type="TextureButton" parent="Inventaire 1"]
+[node name="ItemFrame" parent="Inventaire 1/Inv1" instance=ExtResource("2_hrmfr")]
+position = Vector2(72, 71)
+
+[node name="Inv2" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 200.0
-offset_top = 20.0
-offset_bottom = 150.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 196.0
+offset_top = 919.0
+offset_right = 338.0
+offset_bottom = 1061.0
+mouse_filter = 2
 
-[node name="Stat 3" type="TextureButton" parent="Inventaire 1"]
+[node name="ItemFrame" parent="Inventaire 1/Inv2" instance=ExtResource("2_hrmfr")]
+position = Vector2(72, 71)
+
+[node name="Inv3" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 350.0
-offset_top = 20.0
-offset_bottom = 150.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 364.0
+offset_top = 919.0
+offset_right = 506.0
+offset_bottom = 1061.0
+mouse_filter = 2
 
-[node name="Stat 4" type="TextureButton" parent="Inventaire 1"]
+[node name="ItemFrame" parent="Inventaire 1/Inv3" instance=ExtResource("2_hrmfr")]
+position = Vector2(72, 71)
+
+[node name="Inv4" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 500.0
-offset_top = 20.0
-offset_bottom = 150.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 531.0
+offset_top = 919.0
+offset_right = 673.0
+offset_bottom = 1061.0
+mouse_filter = 2
 
-[node name="Stat 5" type="TextureButton" parent="Inventaire 1"]
+[node name="ItemFrame" parent="Inventaire 1/Inv4" instance=ExtResource("2_hrmfr")]
+position = Vector2(72, 71)
+
+[node name="Inv5" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 650.0
-offset_top = 20.0
-offset_bottom = 150.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 701.0
+offset_top = 919.0
+offset_right = 843.0
+offset_bottom = 1061.0
+mouse_filter = 2
 
-[node name="Inventaire 2" type="TextureRect" parent="."]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1092.0
-offset_top = -250.0
-grow_horizontal = 0
-grow_vertical = 0
-texture = ExtResource("1_x6n3f")
-expand_mode = 1
+[node name="ItemFrame" parent="Inventaire 1/Inv5" instance=ExtResource("2_hrmfr")]
+position = Vector2(72, 71)
 
-[node name="Arme 1" type="TextureButton" parent="Inventaire 2"]
+[node name="Arme1" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 546.0
-offset_top = 40.0
-offset_right = 674.0
-offset_bottom = 170.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 1239.0
+offset_top = 868.0
+offset_right = 1424.0
+offset_bottom = 1055.0
+mouse_filter = 2
 
-[node name="Arme 2" type="TextureButton" parent="Inventaire 2"]
+[node name="Arme2" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 902.0
-offset_top = 39.0
-offset_right = 1030.0
-offset_bottom = 169.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 1469.0
+offset_top = 870.0
+offset_right = 1654.0
+offset_bottom = 1057.0
+mouse_filter = 2
 
-[node name="Arme 3" type="TextureButton" parent="Inventaire 2"]
+[node name="Arme3" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
-offset_left = 726.0
-offset_top = 38.0
-offset_right = 854.0
-offset_bottom = 168.0
-texture_normal = ExtResource("2_at6i3")
+offset_left = 1697.0
+offset_top = 868.0
+offset_right = 1882.0
+offset_bottom = 1055.0
+mouse_filter = 2

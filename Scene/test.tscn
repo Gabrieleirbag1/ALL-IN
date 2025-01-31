@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://docpd2ntnhry4"]
+
+[ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/ItemFrame.tscn" id="1_e0wlb"]
+[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="2_t1753"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("1_e0wlb")]
+position = Vector2(750, 475)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("1_e0wlb")]
+position = Vector2(914, 477)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("1_e0wlb")]
+position = Vector2(1078, 473)
+
+[node name="Item" parent="." instance=ExtResource("2_t1753")]
+position = Vector2(451, 385)

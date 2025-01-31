@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://chx80igvfjowd"]
+
+[node name="ItemLayer" type="CanvasLayer"]
+layer = 0
+follow_viewport_enabled = true
