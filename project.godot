@@ -13,7 +13,7 @@ config_version=5
 config/name="Survivor"
 run/main_scene="res://Scene/map.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="res://Assets/logo.webp"
 
 [autoload]
 
@@ -21,6 +21,7 @@ Global="*res://Script/Global/global.gd"
 MathXp="*res://Script/Global/math_xp.gd"
 EventController="*res://Script/Global/event_controller.gd"
 GameController="*res://Script/Global/game_controller.gd"
+Loader="*res://Script/Menu/Loader.gd"
 
 [display]
 
