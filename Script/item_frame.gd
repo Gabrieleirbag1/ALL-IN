@@ -23,3 +23,5 @@ func _process(delta: float) -> void:
 			$TextureRect.material.set_shader_parameter("brightness", 12)
 		else:
 			$TextureRect.material.set_shader_parameter("brightness", 1.0)
+	else:
+		$TextureRect.material.set_shader_parameter("brightness", 25)

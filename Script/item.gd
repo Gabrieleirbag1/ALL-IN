@@ -1,4 +1,4 @@
-extends Node2D
+class_name Item extends Node2D
 
 var draggable: bool = false
 var is_inside_dropable: bool = false
@@ -24,18 +24,28 @@ func handle_item_layer(layer: int, viewport: bool):
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
-		
+
+func get_empty_item_frame():
+	for i in range(item_frames.size()):
+		var item_frame = item_frames[i]
+		if not item_frame.get("is_item_inside"):
+			var index_empty_frame = i
+			return index_empty_frame
+	return -1
+
 func handle_place_in_frame_action():
 	if not Global.is_dragging:
 		if Input.is_action_just_pressed("place_in_frame") and player_entered:
-			place_in_itemlayer()
 			if item_frames.size() > 0:
-				handle_item_layer(1, false)
-				var last_body = item_frames[0]
-				is_inside_dropable = true
-				body_ref = last_body
-				var tween = get_tree().create_tween()
-				tween.tween_property(self, "global_position", last_body.global_position, 0.2).set_ease(Tween.EASE_OUT)
+				var index_empty_frame = get_empty_item_frame()
+				if index_empty_frame != -1:
+					place_in_itemlayer()
+					handle_item_layer(1, false)
+					var last_body = item_frames[index_empty_frame]
+					is_inside_dropable = true
+					body_ref = last_body
+					var tween = get_tree().create_tween()
+					tween.tween_property(self, "global_position", last_body.global_position, 0.2).set_ease(Tween.EASE_OUT)
 
 func handle_click_action():
 	if draggable:
@@ -97,8 +107,6 @@ func _on_area_2d_body_entered(body) -> void:
 		body_ref = last_body
 	if body.name == "Player":
 		player_entered = true
-		print(player_entered)
-		
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
@@ -114,5 +122,4 @@ func _on_area_2d_body_exited(body) -> void:
 			body_ref = null
 	if body.name == "Player":
 		player_entered = false
-		print(player_entered)
 		
