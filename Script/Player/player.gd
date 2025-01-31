@@ -79,6 +79,7 @@ func enemy_attack(velocity, knockback_force, damage):
 	if alive and not invincible:
 		take_damage(velocity, knockback_force, damage)
 		play_animation("hurt")
+		check_health()
 		invincible = true
 		invincibility_timer.start()
 		hurted_timer.start()
