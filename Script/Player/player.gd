@@ -153,12 +153,20 @@ func spawn_fireball():
 		main_fireball.global_position = fireball_spawn_left.global_position
 		main_fireball.rotation_degrees = 180
 
-	
+	main_fireball.rotation_degrees = 0 if main_fireball.direction == Vector2.RIGHT else 180
+
 	var left_fireball = null
 	var right_fireball = null
 	var up_fireball = null
 	var down_fireball = null
 
+	if level >= 1:
+		var second_fireball = fireball_scene.instantiate()
+		get_parent().add_child(second_fireball)
+
+		second_fireball.direction = main_fireball.direction
+		second_fireball.global_position = main_fireball.global_position + Vector2(0, 20)
+		second_fireball.rotation_degrees = main_fireball.rotation_degrees
 	
 	if level >= 5:
 		left_fireball = fireball_scene.instantiate()
@@ -175,7 +183,6 @@ func spawn_fireball():
 		right_fireball.global_position = fireball_spawn_right.global_position
 		right_fireball.rotation_degrees = 0
 
-	
 	if level >= 10:
 		up_fireball = fireball_scene.instantiate()
 		down_fireball = fireball_scene.instantiate()
@@ -204,6 +211,7 @@ func spawn_fireball():
 			down_fireball.piercing = true
 
 	is_attacking = false
+
 
 
 
