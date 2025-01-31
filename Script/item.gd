@@ -7,6 +7,12 @@ var initialPos
 var offset: Vector2
 var hovered_dropables = []
 
+func handle_item_layer(layer: int, viewport: bool):
+	var canvas_layer = self.get_parent()
+	if canvas_layer is CanvasLayer:
+		canvas_layer.layer = layer
+		canvas_layer.follow_viewport_enabled = viewport
+
 func _ready() -> void:
 	if not InputMap.has_action("click"):
 		InputMap.add_action("click")
@@ -28,17 +34,22 @@ func _process(delta: float) -> void:
 			if is_inside_dropable:
 				tween.tween_property(self, "global_position", body_ref.global_position, 0.2).set_ease(Tween.EASE_OUT)
 			else:
-				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
+				if initialPos and Tween.EASE_OUT:
+					tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
+				else:
+					return
 
 func _on_area_2d_mouse_entered() -> void:
 	if not Global.is_dragging:
 		draggable = true
 		scale = Vector2(1.05, 1.05)
+		handle_item_layer(1, false)
 
 func _on_area_2d_mouse_exited() -> void:
 	if not Global.is_dragging:
 		draggable = false
 		scale = Vector2(1, 1)
+		handle_item_layer(0, true)
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group('dropable'):

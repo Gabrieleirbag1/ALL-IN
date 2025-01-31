@@ -5,7 +5,9 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="HUD" parent="." instance=ExtResource("1_11syi")]
-
 [node name="Item" parent="." instance=ExtResource("2_030ic")]
+z_index = 10
 position = Vector2(408, 684)
+
+[node name="HUD" parent="." instance=ExtResource("1_11syi")]
+layer = -1
