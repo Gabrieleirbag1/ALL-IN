@@ -7,6 +7,7 @@ var initialPos
 var offset: Vector2
 var hovered_dropables = []
 var item_frames = []
+var player_entered: bool
 
 func handle_item_layer(layer: int, viewport: bool):
 	var canvas_layer = self.get_parent()
@@ -15,6 +16,7 @@ func handle_item_layer(layer: int, viewport: bool):
 		canvas_layer.follow_viewport_enabled = viewport
 
 func _ready() -> void:
+	item_frames = get_tree().get_nodes_in_group("dropable")
 	if not InputMap.has_action("place_in_frame"):
 		InputMap.add_action("place_in_frame")
 		var key_event = InputEventKey.new()
@@ -27,12 +29,11 @@ func _ready() -> void:
 		InputMap.action_add_event("click", mouse_button_event)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("place_in_frame") and not Global.is_dragging:
-			print(12)
-			print(hovered_dropables)
-			if hovered_dropables.size() > 0:
-				print(13)
-				var last_body = hovered_dropables[-1]
+	if not Global.is_dragging:
+		if Input.is_action_just_pressed("place_in_frame") and player_entered:
+			if item_frames.size() > 0:
+				handle_item_layer(1, false)
+				var last_body = item_frames[0]
 				is_inside_dropable = true
 				body_ref = last_body
 				var tween = get_tree().create_tween()
@@ -77,6 +78,10 @@ func _on_area_2d_body_entered(body) -> void:
 		last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 		is_inside_dropable = true
 		body_ref = last_body
+	if body.name == "Player":
+		player_entered = true
+		print(player_entered)
+		
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
@@ -90,3 +95,7 @@ func _on_area_2d_body_exited(body) -> void:
 		else:
 			is_inside_dropable = false
 			body_ref = null
+	if body.name == "Player":
+		player_entered = false
+		print(player_entered)
+		

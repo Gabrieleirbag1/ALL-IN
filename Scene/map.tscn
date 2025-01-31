@@ -26062,3 +26062,8 @@ position = Vector2(168, 449)
 
 [node name="Item" parent="ItemLayer" instance=ExtResource("17_c0fxq")]
 position = Vector2(741, 752)
+
+[node name="ItemLayer2" parent="." instance=ExtResource("16_453tb")]
+
+[node name="Item" parent="ItemLayer2" instance=ExtResource("17_c0fxq")]
+position = Vector2(743, 543)
