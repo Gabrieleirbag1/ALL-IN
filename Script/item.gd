@@ -49,7 +49,7 @@ func _on_area_2d_mouse_exited() -> void:
 	if not Global.is_dragging:
 		draggable = false
 		scale = Vector2(1, 1)
-		handle_item_layer(0, true)
+		#handle_item_layer(0, true)
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group('dropable'):
