@@ -9,28 +9,26 @@ var hovered_dropables = []
 var item_frames = []
 var player_entered: bool
 
+@export var item_layer_scene: PackedScene
+
+func place_in_itemlayer():
+	if item_layer_scene:
+		var item_layer_instance = item_layer_scene.instantiate()
+		get_tree().get_current_scene().add_child(item_layer_instance)
+		self.get_parent().remove_child(self)
+		item_layer_instance.add_child(self)
+		global_position = self.global_position
+
 func handle_item_layer(layer: int, viewport: bool):
 	var canvas_layer = self.get_parent()
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
-
-func _ready() -> void:
-	item_frames = get_tree().get_nodes_in_group("dropable")
-	if not InputMap.has_action("place_in_frame"):
-		InputMap.add_action("place_in_frame")
-		var key_event = InputEventKey.new()
-		key_event.physical_keycode = KEY_E
-		InputMap.action_add_event("place_in_frame", key_event)
-	if not InputMap.has_action("click"):
-		InputMap.add_action("click")
-		var mouse_button_event = InputEventMouseButton.new()
-		mouse_button_event.button_index = MOUSE_BUTTON_LEFT
-		InputMap.action_add_event("click", mouse_button_event)
-
-func _process(delta: float) -> void:
+		
+func handle_place_in_frame_action():
 	if not Global.is_dragging:
 		if Input.is_action_just_pressed("place_in_frame") and player_entered:
+			place_in_itemlayer()
 			if item_frames.size() > 0:
 				handle_item_layer(1, false)
 				var last_body = item_frames[0]
@@ -38,6 +36,8 @@ func _process(delta: float) -> void:
 				body_ref = last_body
 				var tween = get_tree().create_tween()
 				tween.tween_property(self, "global_position", last_body.global_position, 0.2).set_ease(Tween.EASE_OUT)
+
+func handle_click_action():
 	if draggable:
 		if Input.is_action_just_pressed("click"):
 			initialPos = global_position
@@ -55,6 +55,23 @@ func _process(delta: float) -> void:
 					tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 				else:
 					return
+
+func _ready() -> void:
+	item_frames = get_tree().get_nodes_in_group("dropable")
+	if not InputMap.has_action("place_in_frame"):
+		InputMap.add_action("place_in_frame")
+		var key_event = InputEventKey.new()
+		key_event.physical_keycode = KEY_E
+		InputMap.action_add_event("place_in_frame", key_event)
+	if not InputMap.has_action("click"):
+		InputMap.add_action("click")
+		var mouse_button_event = InputEventMouseButton.new()
+		mouse_button_event.button_index = MOUSE_BUTTON_LEFT
+		InputMap.action_add_event("click", mouse_button_event)
+
+func _process(delta: float) -> void:
+	handle_place_in_frame_action()
+	handle_click_action()
 
 func _on_area_2d_mouse_entered() -> void:
 	if not Global.is_dragging:

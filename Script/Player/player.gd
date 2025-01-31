@@ -34,6 +34,7 @@ func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
+	print(self.global_position)
 	
 
 func on_event_xp_collected(value: int) -> void:
