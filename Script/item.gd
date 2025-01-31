@@ -6,6 +6,7 @@ var body_ref
 var initialPos
 var offset: Vector2
 var hovered_dropables = []
+var item_frames = []
 
 func handle_item_layer(layer: int, viewport: bool):
 	var canvas_layer = self.get_parent()
@@ -14,6 +15,11 @@ func handle_item_layer(layer: int, viewport: bool):
 		canvas_layer.follow_viewport_enabled = viewport
 
 func _ready() -> void:
+	if not InputMap.has_action("place_in_frame"):
+		InputMap.add_action("place_in_frame")
+		var key_event = InputEventKey.new()
+		key_event.physical_keycode = KEY_E
+		InputMap.action_add_event("place_in_frame", key_event)
 	if not InputMap.has_action("click"):
 		InputMap.add_action("click")
 		var mouse_button_event = InputEventMouseButton.new()
@@ -21,6 +27,16 @@ func _ready() -> void:
 		InputMap.action_add_event("click", mouse_button_event)
 
 func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("place_in_frame") and not Global.is_dragging:
+			print(12)
+			print(hovered_dropables)
+			if hovered_dropables.size() > 0:
+				print(13)
+				var last_body = hovered_dropables[-1]
+				is_inside_dropable = true
+				body_ref = last_body
+				var tween = get_tree().create_tween()
+				tween.tween_property(self, "global_position", last_body.global_position, 0.2).set_ease(Tween.EASE_OUT)
 	if draggable:
 		if Input.is_action_just_pressed("click"):
 			initialPos = global_position
