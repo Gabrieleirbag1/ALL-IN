@@ -1,6 +1,5 @@
 class_name Player extends CharacterBody2D
 
-
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var invincibility_timer: Timer = $Invincibility
 @onready var hurted_timer: Timer = $Hurted
@@ -29,12 +28,10 @@ var invincible: bool = false
 var is_attacking: bool = false
 var can_attack: bool = true
 
-
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	level = MathXp.calculate_level_from_exp(experience)
-	level_label.text = str(level)
-	
+	level_label.text = str(level)	
 
 func on_event_xp_collected(value: int) -> void:
 	experience += value

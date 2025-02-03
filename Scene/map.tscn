@@ -26057,14 +26057,38 @@ position = Vector2(1556, 1147)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
 
+[node name="Item3" parent="." instance=ExtResource("17_c0fxq")]
+y_sort_enabled = true
+position = Vector2(841, 718)
+item_layer_scene = ExtResource("16_453tb")
+
+[node name="Item2" parent="." instance=ExtResource("17_c0fxq")]
+y_sort_enabled = true
+position = Vector2(823, 803)
+item_layer_scene = ExtResource("16_453tb")
+
+[node name="Item" parent="." instance=ExtResource("17_c0fxq")]
+y_sort_enabled = true
+position = Vector2(738, 752)
+item_layer_scene = ExtResource("16_453tb")
+
 [node name="HUD" parent="." instance=ExtResource("16_5chm7")]
 
-[node name="ItemLayer" parent="." instance=ExtResource("16_453tb")]
+[node name="Item4" parent="." instance=ExtResource("17_c0fxq")]
+y_sort_enabled = true
+position = Vector2(784, 670)
+item_layer_scene = ExtResource("16_453tb")
 
-[node name="Item" parent="ItemLayer" instance=ExtResource("17_c0fxq")]
-position = Vector2(741, 752)
+[node name="Item6" parent="." instance=ExtResource("17_c0fxq")]
+y_sort_enabled = true
+position = Vector2(708, 690)
+item_layer_scene = ExtResource("16_453tb")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Item5" parent="." instance=ExtResource("17_c0fxq")]
+y_sort_enabled = true
+position = Vector2(751, 821)
+item_layer_scene = ExtResource("16_453tb")
+
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("19_i1ehj")]
 anchors_preset = 8
