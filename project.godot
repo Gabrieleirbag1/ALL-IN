@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Survivor"
+config/name="All IN!"
 run/main_scene="res://Scene/map.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Assets/logo.webp"
