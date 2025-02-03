@@ -186,7 +186,9 @@ radius = 8.08778
 [node name="Slime" type="CharacterBody2D"]
 position = Vector2(131, 77)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
+motion_mode = 1
+platform_floor_layers = 1
 script = ExtResource("1_svxxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
