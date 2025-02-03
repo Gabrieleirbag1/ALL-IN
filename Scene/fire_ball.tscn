@@ -70,7 +70,7 @@ animations = [{
 [node name="fire_ball" type="Area2D"]
 y_sort_enabled = true
 position = Vector2(-4, -2)
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_fo3sb")
 
 [node name="fire_ball_sprite" type="AnimatedSprite2D" parent="."]

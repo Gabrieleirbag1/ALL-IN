@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw7qfb6tjwnqq"]
+
+[ext_resource type="Script" path="res://Script/Menu/loading.gd" id="1_op3e0"]
+[ext_resource type="Texture2D" uid="uid://3nmm8x7b4m6p" path="res://Assets/image.png" id="2_6o5sf"]
+[ext_resource type="FontFile" uid="uid://cfjbs2fjapvhi" path="res://Assets/Fonts/MinecraftTen-VGORe.ttf" id="3_5oypo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s3lo3"]
+texture = ExtResource("2_6o5sf")
+modulate_color = Color(0.299547, 0.299547, 0.299547, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1cgrp"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2v84a"]
+bg_color = Color(1, 0.286275, 0.0705882, 1)
+
+[node name="Loading" type="Control" node_paths=PackedStringArray("loading_bar", "percentage_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_op3e0")
+loading_bar = NodePath("ProgressBar")
+percentage_label = NodePath("percentage_label")
+
+[node name="percentage_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 834.0
+offset_top = 310.0
+offset_right = 1038.0
+offset_bottom = 467.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -961.0
+offset_top = -536.0
+offset_right = 960.0
+offset_bottom = 541.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_s3lo3")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -48.5
+offset_right = 312.0
+offset_bottom = 48.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1cgrp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2v84a")
+max_value = 1.0
+step = 0.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -504.0
+offset_right = 260.0
+offset_bottom = -259.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 12
+theme_override_fonts/font = ExtResource("3_5oypo")
+theme_override_font_sizes/font_size = 100
+text = "Loading ..."
+horizontal_alignment = 1
+vertical_alignment = 1

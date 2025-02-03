@@ -10,6 +10,8 @@ class_name Player extends CharacterBody2D
 @onready var fireball_scene = preload("res://Scene/fire_ball.tscn")
 @onready var fireball_spawn_right = $spawn_fire_right
 @onready var fireball_spawn_left = $spawn_fire_left
+@onready var fireball_spawn_up = $spawn_fire_up
+@onready var fireball_spawn_down = $spawn_fire_down
 
 @export var speed: int = 250
 @export var experience: int = 0
@@ -137,17 +139,79 @@ func attack():
 
 
 func spawn_fireball():
-	var fireball = fireball_scene.instantiate()
-	get_parent().add_child(fireball)
+	var main_fireball = fireball_scene.instantiate()
+	get_parent().add_child(main_fireball)
 
 	if animation.scale.x > 0:
-		fireball.direction = Vector2.RIGHT
-		fireball.global_position = fireball_spawn_right.global_position
+		main_fireball.direction = Vector2.RIGHT
+		main_fireball.global_position = fireball_spawn_right.global_position
 	else:
-		fireball.direction = Vector2.LEFT
-		fireball.global_position = fireball_spawn_left.global_position
-		fireball.rotation_degrees = 180
+		main_fireball.direction = Vector2.LEFT
+		main_fireball.global_position = fireball_spawn_left.global_position
+		main_fireball.rotation_degrees = 180
+
+	main_fireball.rotation_degrees = 0 if main_fireball.direction == Vector2.RIGHT else 180
+
+	var left_fireball = null
+	var right_fireball = null
+	var up_fireball = null
+	var down_fireball = null
+
+	if level >= 1:
+		var second_fireball = fireball_scene.instantiate()
+		get_parent().add_child(second_fireball)
+
+		second_fireball.direction = main_fireball.direction
+		second_fireball.global_position = main_fireball.global_position + Vector2(0, 20)
+		second_fireball.rotation_degrees = main_fireball.rotation_degrees
+	
+	if level >= 5:
+		left_fireball = fireball_scene.instantiate()
+		right_fireball = fireball_scene.instantiate()
+		
+		get_parent().add_child(left_fireball)
+		get_parent().add_child(right_fireball)
+
+		left_fireball.direction = Vector2.LEFT
+		left_fireball.global_position = fireball_spawn_left.global_position
+		left_fireball.rotation_degrees = 180
+
+		right_fireball.direction = Vector2.RIGHT
+		right_fireball.global_position = fireball_spawn_right.global_position
+		right_fireball.rotation_degrees = 0
+
+	if level >= 10:
+		up_fireball = fireball_scene.instantiate()
+		down_fireball = fireball_scene.instantiate()
+		
+		get_parent().add_child(up_fireball)
+		get_parent().add_child(down_fireball)
+
+		up_fireball.direction = Vector2.UP
+		up_fireball.global_position = fireball_spawn_up.global_position
+		up_fireball.rotation_degrees = -90
+
+		down_fireball.direction = Vector2.DOWN
+		down_fireball.global_position = fireball_spawn_down.global_position
+		down_fireball.rotation_degrees = 90
+
+	if level >= 15:
+		main_fireball.piercing = true
+
+		if left_fireball:
+			left_fireball.piercing = true
+		if right_fireball:
+			right_fireball.piercing = true
+		if up_fireball:
+			up_fireball.piercing = true
+		if down_fireball:
+			down_fireball.piercing = true
+
 	is_attacking = false
+
+
+
+
 
 
 func get_frame_count_for_animation(animation_name: String) -> int:
