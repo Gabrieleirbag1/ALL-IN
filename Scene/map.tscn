@@ -25936,6 +25936,7 @@ y_sort_enabled = true
 position = Vector2(3, 0)
 script = ExtResource("1_yn8yg")
 slime_scene = ExtResource("14_okl5h")
+orc_scene = ExtResource("14_kwv2w")
 xp_scene = ExtResource("15_4wxva")
 
 [node name="Background" type="TileMapLayer" parent="."]
@@ -26046,13 +26047,13 @@ collision_mask = 3
 position = Vector2(720, 904)
 
 [node name="Spawn" type="Marker2D" parent="."]
-position = Vector2(1004, 1150)
+position = Vector2(1798, 267)
 
 [node name="Spawn2" type="Marker2D" parent="."]
-position = Vector2(1948, 1151)
+position = Vector2(1847, 575)
 
 [node name="Spawn3" type="Marker2D" parent="."]
-position = Vector2(1556, 1147)
+position = Vector2(1258, 361)
 
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
@@ -26089,6 +26090,7 @@ y_sort_enabled = true
 position = Vector2(751, 821)
 item_layer_scene = ExtResource("16_453tb")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("19_i1ehj")]
 anchors_preset = 8
