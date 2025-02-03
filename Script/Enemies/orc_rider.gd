@@ -1,4 +1,4 @@
-# orc.gd
+# orc_rider.gd
 extends "enemy.gd"
 
 func _init() -> void:

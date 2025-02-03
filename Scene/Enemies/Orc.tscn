@@ -254,7 +254,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wgjh8")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 45.0
 }, {
@@ -353,7 +353,7 @@ script = ExtResource("1_ac1mx")
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_ijymu")
-animation = &"death"
+animation = &"hurt"
 offset = Vector2(0, -5)
 
 [node name="Area2D" type="Area2D" parent="."]

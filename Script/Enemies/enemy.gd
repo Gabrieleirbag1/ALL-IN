@@ -19,6 +19,8 @@ var immortal: bool = false
 var player_chase: bool = false
 var player = null
 
+
+
 func play_animation(animation_name: String) -> void:
 	if not alive:
 		return
@@ -27,6 +29,8 @@ func play_animation(animation_name: String) -> void:
 func _ready() -> void:
 	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
+	nav_agent.max_speed = 300
+
 
 func _on_fireball_hit(body: Node2D):
 	if body is Enemy:
@@ -75,7 +79,6 @@ func chase_player():
 	var current_agent_pos = global_position
 	var next_path_pos = nav_agent.get_next_path_position()
 	var new_velocity = current_agent_pos.direction_to(next_path_pos) * speed
-	
 	if nav_agent.avoidance_enabled:
 		nav_agent.set_velocity(new_velocity)
 	else:
@@ -99,6 +102,7 @@ func handle_navigation():
 		handle_collision()
 
 func _physics_process(delta: float) -> void:
+	print("Speed: ", speed)
 	if not alive:
 		return
 	

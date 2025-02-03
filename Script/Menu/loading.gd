@@ -4,7 +4,7 @@ extends Control
 @export var percentage_label: Label
 
 var scene_path: String
-var progress: Array = [0.0]  # Initialise pour éviter les erreurs
+var progress: Array = [0.0]
 var update: float = 0.0
 
 func _ready():
