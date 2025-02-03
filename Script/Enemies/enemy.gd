@@ -91,6 +91,7 @@ func handle_collision():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
+			print(collider.name)
 			if collider.name == "Player":
 				collider.enemy_attack(velocity, knockback_force, damage)
 
