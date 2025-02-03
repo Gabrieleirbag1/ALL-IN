@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP.tscn" id="15_4wxva"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD.tscn" id="16_5chm7"]
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/ItemLayer.tscn" id="16_453tb"]
-[ext_resource type="PackedScene" path="res://Scene/Item.tscn" id="17_c0fxq"]
+[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
@@ -26089,8 +26089,7 @@ y_sort_enabled = true
 position = Vector2(751, 821)
 item_layer_scene = ExtResource("16_453tb")
 
-
-[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("19_i1ehj")]
+[node name="CanvasLayer#Pause_Menu" parent="." instance=ExtResource("19_i1ehj")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

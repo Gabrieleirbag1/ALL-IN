@@ -8,7 +8,9 @@ var offset: Vector2
 var hovered_dropables = []
 var item_frames = []
 var player_entered: bool
+
 @onready var item_frames_inside = Global.item_frames_inside
+@onready var dragged_item = Global.dragged_item
 
 @export var item_layer_scene: PackedScene
 
@@ -29,7 +31,7 @@ func handle_item_layer(layer: int, viewport: bool):
 func get_empty_item_frame():
 	for i in range(item_frames.size()):
 		var item_frame = item_frames[i]
-		if not item_frame.get("is_item_inside"):
+		if not item_frames_inside[str(item_frame)]:
 			var index_empty_frame = i
 			return index_empty_frame
 	return -1
@@ -60,13 +62,16 @@ func handle_place_in_frame_action():
 func handle_click_action():
 	if draggable:
 		if Input.is_action_just_pressed("click"):
+			Global.dragged_item = self
 			initialPos = global_position
 			offset = get_global_mouse_position() - global_position
 			Global.is_dragging = true
 		if Input.is_action_pressed("click"):
+			Global.dragged_item = self
 			global_position = get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
 			Global.is_dragging = false
+			Global.dragged_item = null
 			var tween = get_tree().create_tween()
 			if is_inside_dropable and not item_frames_inside[str(body_ref)]:
 				add_to_item_frame()
@@ -124,10 +129,10 @@ func _on_area_2d_body_entered(body) -> void:
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
+		body.set("is_item_inside", false)
 		body.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
 		if not item_frames_inside[str(body)]:
 			hovered_dropables.erase(body)
-			body.set("is_item_inside", false)
 			if hovered_dropables.size() > 0:
 				var last_body = hovered_dropables[-1]
 				last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
