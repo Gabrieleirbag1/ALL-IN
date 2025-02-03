@@ -1,12 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctcuvh5rqwyyo"]
+[gd_scene load_steps=2 format=3 uid="uid://du2j6bo47r23g"]
 
-[ext_resource type="Script" path="res://spawn.gd" id="1_yllm7"]
-[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player.tscn" id="2_jqby1"]
-[ext_resource type="PackedScene" uid="uid://b6m5sun67sju4" path="res://Scene/enemies.tscn" id="3_6stlr"]
+[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="2_jqby1"]
 
 [node name="Spawn" type="Node2D"]
-script = ExtResource("1_yllm7")
 
 [node name="Player" parent="." instance=ExtResource("2_jqby1")]
 
-[node name="Enemy" parent="." instance=ExtResource("3_6stlr")]
+[node name="Enemy" parent="."]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+process_physics_priority = 0
+process_thread_group = 0
+physics_interpolation_mode = 0
+auto_translate_mode = 0
+editor_description = ""
+script = null

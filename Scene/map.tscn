@@ -1,9 +1,9 @@
 [gd_scene load_steps=48 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
-[ext_resource type="Script" path="res://Script/map.gd" id="1_yn8yg"]
+[ext_resource type="Script" path="res://Script/Map/map.gd" id="1_yn8yg"]
 [ext_resource type="Texture2D" uid="uid://c4733lvkf5roy" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
-[ext_resource type="Script" path="res://Script/background.gd" id="2_t3r3v"]
+[ext_resource type="Script" path="res://Script/Map/background.gd" id="2_t3r3v"]
 [ext_resource type="Texture2D" uid="uid://c51odspjbanwq" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
 [ext_resource type="Texture2D" uid="uid://cdoql0evuv5yb" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
 [ext_resource type="Texture2D" uid="uid://b5rog4whb5jsn" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
@@ -11,12 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://cur6toooltffb" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
 [ext_resource type="Texture2D" uid="uid://bcaf2ondy1g8i" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
 [ext_resource type="Texture2D" uid="uid://djn0h0wmg63yr" path="res://Assets/nature free/global.png" id="8_au240"]
-[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player.tscn" id="10_7yrxj"]
+[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://7xxtrsy5v1ck" path="res://Scene/Enemies/Orc.tscn" id="14_kwv2w"]
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP.tscn" id="15_4wxva"]
-[ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD.tscn" id="16_5chm7"]
-[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/ItemLayer.tscn" id="16_453tb"]
+[ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/Menu/HUD/HUD.tscn" id="16_5chm7"]
+[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/Menu/HUD/ItemLayer.tscn" id="16_453tb"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 
@@ -26040,7 +26040,6 @@ scale = Vector2(3, 3)
 
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
 position = Vector2(812, 756)
-collision_mask = 7
 
 [node name="Orc" parent="." instance=ExtResource("14_kwv2w")]
 position = Vector2(720, 904)
