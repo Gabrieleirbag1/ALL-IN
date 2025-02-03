@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
-[ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/ItemFrame.tscn" id="2_hrmfr"]
+[ext_resource type="PackedScene" path="res://Scene/ItemFrame.tscn" id="2_hrmfr"]
 
 [node name="HUD" type="CanvasLayer"]
 

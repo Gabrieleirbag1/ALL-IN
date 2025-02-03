@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=48 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/map.gd" id="1_yn8yg"]
@@ -16,8 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP.tscn" id="15_4wxva"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD.tscn" id="16_5chm7"]
-[ext_resource type="PackedScene" uid="uid://chx80igvfjowd" path="res://Scene/ItemLayer.tscn" id="16_453tb"]
-[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="17_c0fxq"]
+[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/ItemLayer.tscn" id="16_453tb"]
+[ext_resource type="PackedScene" path="res://Scene/Item.tscn" id="17_c0fxq"]
+[ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26087,3 +26088,15 @@ item_layer_scene = ExtResource("16_453tb")
 y_sort_enabled = true
 position = Vector2(751, 821)
 item_layer_scene = ExtResource("16_453tb")
+
+
+[node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("19_i1ehj")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
