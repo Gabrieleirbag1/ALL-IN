@@ -24,4 +24,5 @@ func _process(delta: float) -> void:
 		else:
 			$TextureRect.material.set_shader_parameter("brightness", 1.0)
 	else:
-		$TextureRect.material.set_shader_parameter("brightness", 25)
+		if Global.item_frames_inside[str(self)]:
+			$TextureRect.material.set_shader_parameter("brightness", 25)
