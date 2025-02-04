@@ -91,7 +91,6 @@ func handle_collision():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
-			print(collider.name)
 			if collider.name == "Player":
 				collider.enemy_attack(velocity, knockback_force, damage)
 
@@ -102,7 +101,6 @@ func handle_navigation():
 		handle_collision()
 
 func _physics_process(delta: float) -> void:
-	print("Speed: ", speed)
 	if not alive:
 		return
 	
@@ -140,3 +138,4 @@ func _on_timer_timeout() -> void:
 func _on_dispawn_timeout() -> void:
 	GameController.enemy_death(drop_xp, position)
 	queue_free()
+	EventController.emit_signal("enemy_death", "slime")

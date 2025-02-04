@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=49 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/Map/map.gd" id="1_yn8yg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cdoql0evuv5yb" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
 [ext_resource type="Texture2D" uid="uid://b5rog4whb5jsn" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
 [ext_resource type="Texture2D" uid="uid://b2wk7kqfbe2oi" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/Atlas/Buildings.png" id="5_1mxd6"]
+[ext_resource type="PackedScene" uid="uid://evpdxdo8k70f" path="res://Scene/Enemies/Orc_rider.tscn" id="5_ci0s0"]
 [ext_resource type="Texture2D" uid="uid://cur6toooltffb" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
 [ext_resource type="Texture2D" uid="uid://bcaf2ondy1g8i" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
 [ext_resource type="Texture2D" uid="uid://djn0h0wmg63yr" path="res://Assets/nature free/global.png" id="8_au240"]
@@ -25938,6 +25939,7 @@ script = ExtResource("1_yn8yg")
 slime_scene = ExtResource("14_okl5h")
 orc_scene = ExtResource("14_kwv2w")
 xp_scene = ExtResource("15_4wxva")
+orc_rider = ExtResource("5_ci0s0")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -1
@@ -26100,3 +26102,20 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="Score" type="CanvasLayer" parent="."]
+
+[node name="Slime" type="Label" parent="Score"]
+offset_left = 9.0
+offset_right = 200.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "Slime tués : 0"
+
+[node name="Orc" type="Label" parent="Score"]
+offset_left = 10.0
+offset_top = 40.0
+offset_right = 173.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 30
+text = "Orc tués : 0"
