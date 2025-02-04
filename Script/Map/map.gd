@@ -58,13 +58,14 @@ func spawn_type(type: String, mob_amount: int, mob_wait_time: float):
 	check_wave_end()
 
 func _process(delta: float) -> void:
-	print("Ennemis vivants: ", enemies_alive)
-	print("Vague en cours: ", current_wave)
+	# print("Ennemis vivants: ", enemies_alive)
+	# print("Vague en cours: ", current_wave)
+	pass
 	
 func drop_xp(xp, enemy_position):
 	var remaining_xp = xp
 	var xp_types: Array = ["large", "medium", "small"]
-	var xp_value: Dictionary = {"small": 100, "medium": 200, "large": 500}
+	var xp_value: Dictionary = {"small": 1, "medium": 3, "large": 10}
 	
 	for xp_type in xp_types:
 		while remaining_xp >= xp_value[xp_type]:

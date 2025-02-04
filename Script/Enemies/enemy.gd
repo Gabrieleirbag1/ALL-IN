@@ -48,7 +48,7 @@ func take_damage(damage_amount: int):
 	if health <= 0:
 		die()
 	else:
-		print("Health :", health, "/", health_max )
+		# print("Health :", health, "/", health_max )
 		play_animation("hurt")
 
 func die():
@@ -91,7 +91,6 @@ func handle_collision():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
-			print(collider.name)
 			if collider.name == "Player":
 				collider.enemy_attack(velocity, knockback_force, damage)
 
@@ -102,7 +101,6 @@ func handle_navigation():
 		handle_collision()
 
 func _physics_process(delta: float) -> void:
-	print("Speed: ", speed)
 	if not alive:
 		return
 	

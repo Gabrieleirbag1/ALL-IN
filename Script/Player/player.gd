@@ -209,11 +209,6 @@ func spawn_fireball():
 
 	is_attacking = false
 
-
-
-
-
-
 func get_frame_count_for_animation(animation_name: String) -> int:
 	var sprite_frames = animation.sprite_frames
 	if sprite_frames and sprite_frames.has_animation(animation_name):
