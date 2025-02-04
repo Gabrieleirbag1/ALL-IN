@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=50 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/Map/map.gd" id="1_yn8yg"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/Menu/HUD/ItemLayer.tscn" id="16_453tb"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
+[ext_resource type="Script" path="res://Script/Menu/score.gd" id="21_s1bhx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26104,18 +26105,11 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="Score" type="CanvasLayer" parent="."]
+script = ExtResource("21_s1bhx")
 
-[node name="Slime" type="Label" parent="Score"]
+[node name="Score" type="Label" parent="Score"]
 offset_left = 9.0
 offset_right = 200.0
 offset_bottom = 42.0
 theme_override_font_sizes/font_size = 30
-text = "Slime tués : 0"
-
-[node name="Orc" type="Label" parent="Score"]
-offset_left = 10.0
-offset_top = 40.0
-offset_right = 173.0
-offset_bottom = 82.0
-theme_override_font_sizes/font_size = 30
-text = "Orc tués : 0"
+text = "Score : 0"

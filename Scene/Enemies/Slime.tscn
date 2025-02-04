@@ -194,7 +194,7 @@ script = ExtResource("1_svxxn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t508g")
-animation = &"death"
+animation = &"walk"
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-306, -327)

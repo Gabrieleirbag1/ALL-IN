@@ -59,7 +59,7 @@ func start_wave() -> void:
 	var settings = waves_settings.get(current_wave, {"mob_wait_time": 2.0, "enemies": {}})
 	spawn_wave(settings)
 
-func on_event_enemy_death(xp: int, enemy_position: Vector2) -> void:
+func on_event_enemy_death(xp: int, enemy_position: Vector2, enemy_type) -> void:
 	enemies_alive -= 1
 	drop_xp(xp, enemy_position)
 	check_wave_end()
