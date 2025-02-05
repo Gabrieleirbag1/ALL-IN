@@ -9,14 +9,8 @@ extends Node2D
 var current_wave: int = 0
 var enemies_alive: int = 0
 var wave_active: bool = false  
-
-# Dictionnaire contenant la configuration des vagues (chargé depuis waves.cfg)
 var waves_settings: Dictionary = {}
-
-# Association entre le nom d'un ennemi et sa scène correspondante
 var enemy_scenes: Dictionary = {}
-
-# Dictionnaire pour suivre, pour chaque type d'ennemi de la vague, si le spawn est terminé
 var wave_spawn_complete: Dictionary = {}
 
 func _ready() -> void:
@@ -26,7 +20,6 @@ func _ready() -> void:
 		"orc_rider": orc_rider
 	}
 	load_waves_config()
-	# Connexion du signal enemy_death avec la syntaxe Callable
 	EventController.connect("enemy_death", Callable(self, "on_event_enemy_death"))
 	start_wave()
 
@@ -36,7 +29,6 @@ func load_waves_config() -> void:
 	if err != OK:
 		push_error("Impossible de charger le fichier de configuration: %s" % waves_file)
 		return
-	# Pour chaque section du fichier, si la section commence par "wave", on la traite comme une vague
 	for section in config.get_sections():
 		if section.begins_with("wave"):
 			var wave_num = int(section.replace("wave", ""))
@@ -82,7 +74,6 @@ func check_wave_end() -> void:
 			print("Toutes les vagues sont terminées !")
 
 func spawn_wave(settings: Dictionary) -> void:
-	# Réinitialise le suivi de spawn pour cette vague
 	wave_spawn_complete.clear()
 	var enemies_config: Dictionary = settings.get("enemies", {})
 	var mob_wait_time: float = settings.get("mob_wait_time", 2.0)

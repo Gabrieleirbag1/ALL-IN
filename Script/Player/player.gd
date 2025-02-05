@@ -12,6 +12,8 @@ class_name Player extends CharacterBody2D
 @onready var fireball_spawn_left = $spawn_fire_left
 @onready var fireball_spawn_up = $spawn_fire_up
 @onready var fireball_spawn_down = $spawn_fire_down
+@onready var game_over = $GameOver
+@onready var death = $AudioStreamPlayer
 
 @export var speed: int = 250
 @export var experience: int = 0
@@ -31,7 +33,8 @@ var can_attack: bool = true
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	level = MathXp.calculate_level_from_exp(experience)
-	level_label.text = str(level)	
+	level_label.text = str(level)
+	game_over.visible = false
 
 func on_event_xp_collected(value: int) -> void:
 	experience += value
@@ -52,13 +55,18 @@ func death_zoom() -> void:
 		await zoom_timer.timeout
 
 func die():
+	death.playing = true
 	play_animation("death")
+	death.play
 	level_label.queue_free()
 	texture_rect.queue_free()
 	alive = false
 	death_animation_played = true
 	await death_zoom()
-
+	print("Gamer_over:" ,game_over.visible)
+	await get_tree().create_timer(2).timeout 
+	game_over.visible = true
+	
 func check_health():
 	if immortal:
 		return
@@ -208,10 +216,6 @@ func spawn_fireball():
 			down_fireball.piercing = true
 
 	is_attacking = false
-
-
-
-
 
 
 func get_frame_count_for_animation(animation_name: String) -> int:
