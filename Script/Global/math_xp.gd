@@ -17,6 +17,8 @@ func calculate_level_from_exp(total_experience: float) -> int:
 		xp_requise *= GROWTH_RATE
 
 	update_level_counters(level)
+	print(total_experience)
+	print(get_total_experience_to_reach_level(level+1))
 	return level
 
 func update_level_counters(new_level: int):
@@ -29,3 +31,11 @@ func update_level_counters(new_level: int):
 	level_iterations[current_level - 1] += 1
 	print("Niveau actuel: ", current_level)
 	print("Progression par niveau: ", level_iterations)
+
+func get_experience_required_for_next_level(current_level: int) -> float:
+	return BASE_LEVEL_XP * pow(GROWTH_RATE, current_level - 1)
+
+func get_total_experience_to_reach_level(level: int) -> float:
+	if level <= 1:
+		return 0.0
+	return (BASE_LEVEL_XP * (pow(GROWTH_RATE, level - 1) - 1)) / (GROWTH_RATE - 1)

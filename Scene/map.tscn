@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://7xxtrsy5v1ck" path="res://Scene/Enemies/Orc.tscn" id="14_kwv2w"]
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
-[ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP.tscn" id="15_4wxva"]
+[ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="15_4wxva"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/Menu/HUD/HUD.tscn" id="16_5chm7"]
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/Menu/HUD/ItemLayer.tscn" id="16_453tb"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item/Item.tscn" id="17_c0fxq"]

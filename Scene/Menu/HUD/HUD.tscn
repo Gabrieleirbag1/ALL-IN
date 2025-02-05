@@ -1,7 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=6 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
-[ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/ItemFrame.tscn" id="2_hrmfr"]
+[ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/Menu/HUD/ItemFrame.tscn" id="2_hrmfr"]
+[ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltxks"]
+bg_color = Color(0.349689, 0.349689, 0.349689, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_53koo"]
+bg_color = Color(0.54902, 0, 0.811765, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -14,6 +33,18 @@ offset_right = 828.0
 grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("1_45228")
+
+[node name="ProgressBar" parent="Inventaire 1" instance=ExtResource("3_ajlgc")]
+layout_mode = 0
+offset_left = 917.0
+offset_top = 1031.0
+offset_right = 1083.0
+offset_bottom = 1066.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ltxks")
+theme_override_styles/fill = SubResource("StyleBoxFlat_53koo")
+min_value = 0.0
+max_value = 100.0
+value = 40.0
 
 [node name="Inv1" type="TextureButton" parent="Inventaire 1"]
 layout_mode = 0
