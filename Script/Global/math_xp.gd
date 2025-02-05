@@ -5,19 +5,16 @@ const GROWTH_RATE = 1.5
 
 var level_iterations = []
 var current_level = 1
-var accumulated_xp = 0.0
 
 func calculate_level_from_exp(total_experience: float) -> int:
 	var level = 1
 	var xp_requise = BASE_LEVEL_XP
 	var xp_restante = total_experience
-
+	
 	while xp_restante >= xp_requise:
 		xp_restante -= xp_requise
 		level += 1
 		xp_requise *= GROWTH_RATE
-
-	# { remove "level += 1" here }
 
 	update_level_counters(level)
 	return level

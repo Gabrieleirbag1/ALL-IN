@@ -34,7 +34,10 @@ func _ready() -> void:
 	level_label.text = str(level)	
 
 func on_event_xp_collected(value: int) -> void:
-	experience += value
+	if level < 2:
+		experience += value * 4
+	else:
+		experience += value
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
 

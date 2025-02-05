@@ -20,7 +20,6 @@ var player_chase: bool = false
 var player = null
 
 
-
 func play_animation(animation_name: String) -> void:
 	if not alive:
 		return
