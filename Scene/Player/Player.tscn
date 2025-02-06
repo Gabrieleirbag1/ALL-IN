@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://oahcwxdn7g4x" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
 [ext_resource type="Script" path="res://Script/Player/player.gd" id="2_wc0kd"]
 [ext_resource type="Texture2D" uid="uid://cinaeeu7vwoji" path="res://Assets/level-bg.png" id="4_g1kss"]
-[ext_resource type="Script" path="res://Script/Player/progress_bar.gd" id="7_t4lsi"]
+[ext_resource type="Script" path="res://Script/Player/health_bar.gd" id="7_t4lsi"]
 [ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/Projectiles/fire_ball.tscn" id="9_mlot8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7lp"]

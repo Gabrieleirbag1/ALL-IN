@@ -5,6 +5,7 @@ const GROWTH_RATE = 1.5
 
 var level_iterations = []
 var current_level = 1
+@onready var XP_BAR: ProgressBar = $"HUD/Inventaire 1/XpBar"
 
 func calculate_level_from_exp(total_experience: float) -> int:
 	var level = 1
@@ -15,9 +16,10 @@ func calculate_level_from_exp(total_experience: float) -> int:
 		xp_restante -= xp_requise
 		level += 1
 		xp_requise *= GROWTH_RATE
-
+	
+	update_xp_bar(total_experience)
 	update_level_counters(level)
-	print(total_experience)
+	print("total xp", total_experience)
 	print(get_total_experience_to_reach_level(level+1))
 	return level
 
@@ -31,6 +33,12 @@ func update_level_counters(new_level: int):
 	level_iterations[current_level - 1] += 1
 	print("Niveau actuel: ", current_level)
 	print("Progression par niveau: ", level_iterations)
+
+func update_xp_bar(total_experience: int):
+	print(XP_BAR)
+	return
+	if total_experience:
+		XP_BAR.value = 10
 
 func get_experience_required_for_next_level(current_level: int) -> float:
 	return BASE_LEVEL_XP * pow(GROWTH_RATE, current_level - 1)
