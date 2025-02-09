@@ -13,12 +13,17 @@ class_name Player extends CharacterBody2D
 @onready var fireball_spawn_up = $spawn_fire_up
 @onready var fireball_spawn_down = $spawn_fire_down
 
-@export var speed: int = 250
-@export var experience: int = 0
+@export var damage: int = 10
+@export var attack_spped: int = 10
+@export var life_steel: int = 10
+@export var critical: int = 10
 @export var health: int = 50
 @export var health_max: int = 50
 @export var health_min: int = 0
- 
+@export var speed: int = 250
+@export var experience: int = 0
+@export var luck: int = 10 
+
 var has_spawned_fireball: bool = false
 var level: int = 1
 var alive : bool = true

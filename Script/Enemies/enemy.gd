@@ -30,11 +30,6 @@ func _ready() -> void:
 	play_animation("idle")
 	nav_agent.max_speed = 300
 
-
-func _on_fireball_hit(body: Node2D):
-	if body is Enemy:
-		body.take_damage(10)
-
 func take_damage(damage_amount: int):
 	if not alive or immortal:
 		return
