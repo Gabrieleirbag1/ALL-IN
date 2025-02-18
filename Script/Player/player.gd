@@ -13,7 +13,9 @@ class_name Player extends CharacterBody2D
 @onready var fireball_spawn_up = $spawn_fire_up
 @onready var fireball_spawn_down = $spawn_fire_down
 @onready var game_over = $GameOver
-@onready var death = $AudioStreamPlayer
+@onready var death_sound = $Death_Sound
+@onready var hurt_sound = $Hurt_Sound
+@onready var fireball_sound = $Fireball_sound
 
 @export var speed: int = 250
 @export var experience: int = 0
@@ -55,9 +57,8 @@ func death_zoom() -> void:
 		await zoom_timer.timeout
 
 func die():
-	death.playing = true
+	death_sound.playing = true
 	play_animation("death")
-	death.play
 	level_label.queue_free()
 	texture_rect.queue_free()
 	alive = false
@@ -75,6 +76,7 @@ func check_health():
 
 func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
+		hurt_sound.playing = true
 		health -= damage
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
@@ -148,6 +150,7 @@ func attack():
 
 func spawn_fireball():
 	var main_fireball = fireball_scene.instantiate()
+	fireball_sound.playing = true
 	get_parent().add_child(main_fireball)
 
 	if animation.scale.x > 0:
