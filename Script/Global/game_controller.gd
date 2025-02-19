@@ -28,5 +28,5 @@ func stats_progress(
 		"luck": luck
 	})
 
-func enemy_death(xp: int, enemy_position: Vector2):
-	EventController.emit_signal("enemy_death", xp, enemy_position)
+func enemy_death(xp: int, enemy_position: Vector2, enemy_type: String):
+	EventController.emit_signal("enemy_death", xp, enemy_position, enemy_type)

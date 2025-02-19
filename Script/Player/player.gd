@@ -12,6 +12,10 @@ class_name Player extends CharacterBody2D
 @onready var fireball_spawn_left = $spawn_fire_left
 @onready var fireball_spawn_up = $spawn_fire_up
 @onready var fireball_spawn_down = $spawn_fire_down
+@onready var game_over = $GameOver
+@onready var death_sound = $Death_Sound
+@onready var hurt_sound = $Hurt_Sound
+@onready var fireball_sound = $Fireball_sound
 
 @export var damage: int = 10
 @export var attack_spped: int = 10
@@ -37,7 +41,8 @@ func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	EventController.connect("stats_progress", on_event_stats_progress)
 	level = MathXp.calculate_level_from_exp(experience)
-	level_label.text = str(level)	
+	level_label.text = str(level)
+	game_over.visible = false
 
 func on_event_xp_collected(value: int) -> void:
 	if level < 2:
@@ -71,13 +76,17 @@ func death_zoom() -> void:
 		await zoom_timer.timeout
 
 func die():
+	death_sound.playing = true
 	play_animation("death")
 	level_label.queue_free()
 	texture_rect.queue_free()
 	alive = false
 	death_animation_played = true
 	await death_zoom()
-
+	print("Gamer_over:" ,game_over.visible)
+	await get_tree().create_timer(2).timeout 
+	game_over.visible = true
+	
 func check_health():
 	if immortal:
 		return
@@ -86,6 +95,7 @@ func check_health():
 
 func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
+		hurt_sound.playing = true
 		health -= damage
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
@@ -159,6 +169,7 @@ func attack():
 
 func spawn_fireball():
 	var main_fireball = fireball_scene.instantiate()
+	fireball_sound.playing = true
 	get_parent().add_child(main_fireball)
 
 	if animation.scale.x > 0:

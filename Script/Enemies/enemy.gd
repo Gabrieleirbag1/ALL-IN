@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
 
+var enemy_type: String = ""
 var experience: int = 0
 var drop_xp: int = 100
 var level: int = 1
@@ -130,5 +131,5 @@ func _on_timer_timeout() -> void:
 	makepath()
 
 func _on_dispawn_timeout() -> void:
-	GameController.enemy_death(drop_xp, position)
+	GameController.enemy_death(drop_xp, position, enemy_type)
 	queue_free()
