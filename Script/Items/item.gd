@@ -42,7 +42,6 @@ func add_to_item_frame():
 			item_frames_inside[str(item)] = null
 			break
 	item_frames_inside[str(body_ref)] = self
-	print(item_frames_inside)
 
 func handle_place_in_frame_action():
 	if not Global.is_dragging:

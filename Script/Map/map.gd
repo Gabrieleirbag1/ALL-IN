@@ -102,7 +102,6 @@ func spawn_next(enemy_type: String, mob_amount: int, mob_wait_time: float, spawn
 			enemies_alive += 1
 			total_spawned += 1
 
-	# S'il reste des ennemis à spawn, on attend un moment (mob_wait_time) et on relance spawn_next
 	if total_spawned < mob_amount:
 		var timer = Timer.new()
 		timer.wait_time = mob_wait_time
@@ -118,7 +117,7 @@ func spawn_next(enemy_type: String, mob_amount: int, mob_wait_time: float, spawn
 func drop_xp(xp: int, enemy_position: Vector2) -> void:
 	var remaining_xp = xp
 	var xp_types: Array = ["large", "medium", "small"]
-	var xp_value: Dictionary = {"small": 100, "medium": 200, "large": 500}
+	var xp_value: Dictionary = {"small": 1, "medium": 3, "large": 10}
 	
 	for xp_type in xp_types:
 		while remaining_xp >= xp_value[xp_type]:

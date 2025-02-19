@@ -89,4 +89,6 @@ shape = SubResource("CircleShape2D_odtnk")
 
 [node name="Timer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="fire_ball_sprite" to="." method="_on_fire_ball_sprite_animation_finished"]

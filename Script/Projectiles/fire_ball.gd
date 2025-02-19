@@ -9,8 +9,6 @@ var direction: Vector2
 
 func _ready():
 	animation.play("fire_ball")
-	connect("body_entered", _on_body_entered)
-	connect("area_entered", _on_area_entered)
 
 func _physics_process(delta):
 	print(fireball_sound.volume_db)
@@ -37,5 +35,3 @@ func fade_out_sound(duration: float = 1.0):
 	tween.tween_callback(Callable(fireball_sound, "stop"))
 	
 
-func _on_area_entered(area: Area2D) -> void:
-	pass

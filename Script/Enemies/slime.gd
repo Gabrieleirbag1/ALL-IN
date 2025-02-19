@@ -2,6 +2,7 @@
 extends "enemy.gd"
 
 func _init() -> void:
+	drop_xp = 1
 	enemy_type = "slime"
 	speed = 50
 	knockback_force = 1500

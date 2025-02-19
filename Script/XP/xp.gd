@@ -1,7 +1,7 @@
 extends Node2D
 
 @export_enum("small", "medium", "large") var xp_type: String = "small"
-@export var xp_value: Dictionary = {"small": 100, "medium": 200, "large": 500}
+@export var xp_value: Dictionary = {"small": 1, "medium": 3, "large": 10}
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 var xp_scene: PackedScene
 

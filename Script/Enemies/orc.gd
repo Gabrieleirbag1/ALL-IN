@@ -2,8 +2,8 @@
 extends "enemy.gd"
 
 func _init() -> void:
+	drop_xp = 10
 	enemy_type = "orc"
-	drop_xp = 200
 	speed = 20
 	knockback_force = 2500
 	health = 300

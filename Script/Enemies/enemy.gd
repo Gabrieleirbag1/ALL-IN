@@ -21,7 +21,6 @@ var player_chase: bool = false
 var player = null
 
 
-
 func play_animation(animation_name: String) -> void:
 	if not alive:
 		return
@@ -31,11 +30,6 @@ func _ready() -> void:
 	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
 	nav_agent.max_speed = 300
-
-
-func _on_fireball_hit(body: Node2D):
-	if body is Enemy:
-		body.take_damage(10)
 
 func take_damage(damage_amount: int):
 	if not alive or immortal:
@@ -49,7 +43,7 @@ func take_damage(damage_amount: int):
 	if health <= 0:
 		die()
 	else:
-		print("Health :", health, "/", health_max )
+		# print("Health :", health, "/", health_max )
 		play_animation("hurt")
 
 func die():

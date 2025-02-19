@@ -17,12 +17,17 @@ class_name Player extends CharacterBody2D
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
 
-@export var speed: int = 250
-@export var experience: int = 0
+@export var damage: int = 10
+@export var attack_spped: int = 10
+@export var life_steel: int = 10
+@export var critical: int = 10
 @export var health: int = 50
 @export var health_max: int = 50
 @export var health_min: int = 0
- 
+@export var speed: int = 250
+@export var experience: int = 0
+@export var luck: int = 10 
+
 var has_spawned_fireball: bool = false
 var level: int = 1
 var alive : bool = true
@@ -34,14 +39,28 @@ var can_attack: bool = true
 
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
+	EventController.connect("stats_progress", on_event_stats_progress)
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
 	game_over.visible = false
 
 func on_event_xp_collected(value: int) -> void:
-	experience += value
+	if level < 2:
+		experience += value * 4
+	else:
+		experience += value
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
+
+func on_event_stats_progress(stats: Dictionary) -> void:
+	print(stats)
+	damage += stats["damage"]
+	attack_spped += stats["attack_speed"]
+	life_steel += stats["life_steel"]
+	critical += stats["critical"]
+	health_max += stats["health"]
+	speed += stats["speed"]
+	luck += stats["luck"]
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -219,7 +238,6 @@ func spawn_fireball():
 			down_fireball.piercing = true
 
 	is_attacking = false
-
 
 func get_frame_count_for_animation(animation_name: String) -> int:
 	var sprite_frames = animation.sprite_frames

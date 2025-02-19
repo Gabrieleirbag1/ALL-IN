@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 			$TextureRect.material.set_shader_parameter("brightness", 25)
 	else:
 		if Global.is_dragging:
-			print(is_item_inside)
 			if not is_item_inside:
 				$TextureRect.material.set_shader_parameter("brightness", 12)
 			elif is_item_inside:

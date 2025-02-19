@@ -1,13 +1,453 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba85tn4c67pj3"]
+[gd_scene load_steps=5 format=3 uid="uid://ba85tn4c67pj3"]
 
-[ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD.tscn" id="1_11syi"]
-[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="2_030ic"]
+[ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="1_5ay5y"]
+[ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="1_11syi"]
+[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Items/Item.tscn" id="2_030ic"]
+[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="3_bswte"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="XP" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(559, 746)
 
 [node name="Item" parent="." instance=ExtResource("2_030ic")]
 z_index = 10
 position = Vector2(408, 684)
 
+[node name="Player" parent="." instance=ExtResource("3_bswte")]
+position = Vector2(470, 863)
+
 [node name="HUD" parent="." instance=ExtResource("1_11syi")]
 layer = -1
+
+[node name="XP2" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(593, 771)
+
+[node name="XP3" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(589, 715)
+
+[node name="XP4" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(643, 781)
+
+[node name="XP5" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(586, 798)
+
+[node name="XP6" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(649, 694)
+
+[node name="XP7" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(620, 715)
+
+[node name="XP8" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(6210, 755)
+
+[node name="XP9" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(594, 692)
+
+[node name="XP10" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(660, 741)
+
+[node name="XP11" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(680, 773)
+
+[node name="XP12" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(677, 717)
+
+[node name="XP13" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(730, 783)
+
+[node name="XP14" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(674, 800)
+
+[node name="XP15" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(737, 696)
+
+[node name="XP16" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(708, 717)
+
+[node name="XP17" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(713, 757)
+
+[node name="XP18" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(683, 694)
+
+[node name="XP19" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(748, 743)
+
+[node name="XP20" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(553, 881)
+
+[node name="XP21" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(549, 825)
+
+[node name="XP22" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(603, 891)
+
+[node name="XP23" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(546, 908)
+
+[node name="XP24" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(609, 804)
+
+[node name="XP25" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(580, 825)
+
+[node name="XP26" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(5810, 865)
+
+[node name="XP27" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(554, 802)
+
+[node name="XP28" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(620, 851)
+
+[node name="XP29" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(640, 883)
+
+[node name="XP30" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(637, 827)
+
+[node name="XP31" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(690, 893)
+
+[node name="XP32" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(634, 910)
+
+[node name="XP33" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(697, 806)
+
+[node name="XP34" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(668, 827)
+
+[node name="XP35" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(673, 867)
+
+[node name="XP36" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(643, 804)
+
+[node name="XP37" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(708, 853)
+
+[node name="XP38" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(303, 719)
+
+[node name="XP39" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(300, 663)
+
+[node name="XP40" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(353, 729)
+
+[node name="XP41" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(297, 746)
+
+[node name="XP42" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(360, 642)
+
+[node name="XP43" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(331, 663)
+
+[node name="XP44" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(336, 703)
+
+[node name="XP45" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(3010, 640)
+
+[node name="XP46" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(371, 689)
+
+[node name="XP47" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(391, 721)
+
+[node name="XP48" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(388, 665)
+
+[node name="XP49" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(441, 731)
+
+[node name="XP50" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(3810, 748)
+
+[node name="XP51" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(448, 644)
+
+[node name="XP52" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(419, 665)
+
+[node name="XP53" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(424, 705)
+
+[node name="XP54" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(393, 642)
+
+[node name="XP55" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(459, 691)
+
+[node name="XP56" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(263, 829)
+
+[node name="XP57" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(260, 773)
+
+[node name="XP58" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(313, 839)
+
+[node name="XP59" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(257, 856)
+
+[node name="XP60" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(320, 752)
+
+[node name="XP61" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(291, 773)
+
+[node name="XP62" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(296, 813)
+
+[node name="XP63" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(2610, 750)
+
+[node name="XP64" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(331, 799)
+
+[node name="XP65" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(351, 831)
+
+[node name="XP66" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(348, 775)
+
+[node name="XP67" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(401, 841)
+
+[node name="XP68" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(3410, 858)
+
+[node name="XP69" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(408, 754)
+
+[node name="XP70" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(379, 775)
+
+[node name="XP71" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(384, 815)
+
+[node name="XP72" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(353, 752)
+
+[node name="XP73" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(419, 801)
+
+[node name="XP74" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(491, 682)
+
+[node name="XP75" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(488, 626)
+
+[node name="XP76" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(541, 692)
+
+[node name="XP77" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(4810, 709)
+
+[node name="XP78" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(548, 605)
+
+[node name="XP79" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(519, 626)
+
+[node name="XP80" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(524, 666)
+
+[node name="XP81" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(493, 603)
+
+[node name="XP82" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(559, 652)
+
+[node name="XP83" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(579, 684)
+
+[node name="XP84" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(576, 628)
+
+[node name="XP85" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(629, 694)
+
+[node name="XP86" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(573, 711)
+
+[node name="XP87" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(636, 607)
+
+[node name="XP88" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(607, 628)
+
+[node name="XP89" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(613, 668)
+
+[node name="XP90" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(581, 605)
+
+[node name="XP91" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(647, 654)
+
+[node name="XP92" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(451, 792)
+
+[node name="XP93" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(448, 736)
+
+[node name="XP94" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(501, 802)
+
+[node name="XP95" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(4410, 819)
+
+[node name="XP96" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(508, 715)
+
+[node name="XP97" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(479, 736)
+
+[node name="XP98" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(484, 776)
+
+[node name="XP99" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(453, 713)
+
+[node name="XP100" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(519, 762)
+
+[node name="XP101" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(539, 794)
+
+[node name="XP102" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(536, 738)
+
+[node name="XP103" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(589, 804)
+
+[node name="XP104" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(533, 821)
+
+[node name="XP105" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(596, 717)
+
+[node name="XP106" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(567, 738)
+
+[node name="XP107" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(573, 778)
+
+[node name="XP108" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(541, 715)
+
+[node name="XP109" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(607, 764)
+
+[node name="XP110" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(203, 630)
+
+[node name="XP111" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(199, 574)
+
+[node name="XP112" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(253, 640)
+
+[node name="XP113" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(196, 657)
+
+[node name="XP114" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(259, 553)
+
+[node name="XP115" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(230, 574)
+
+[node name="XP116" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(2310, 614)
+
+[node name="XP117" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(204, 551)
+
+[node name="XP118" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(270, 600)
+
+[node name="XP119" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(290, 632)
+
+[node name="XP120" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(287, 576)
+
+[node name="XP121" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(340, 642)
+
+[node name="XP122" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(284, 659)
+
+[node name="XP123" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(347, 555)
+
+[node name="XP124" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(318, 576)
+
+[node name="XP125" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(323, 616)
+
+[node name="XP126" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(293, 553)
+
+[node name="XP127" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(358, 602)
+
+[node name="XP128" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(163, 740)
+
+[node name="XP129" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(159, 684)
+
+[node name="XP130" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(213, 750)
+
+[node name="XP131" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(156, 767)
+
+[node name="XP132" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(219, 663)
+
+[node name="XP133" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(190, 684)
+
+[node name="XP134" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(1910, 724)
+
+[node name="XP135" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(164, 661)
+
+[node name="XP136" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(230, 710)
+
+[node name="XP137" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(250, 742)
+
+[node name="XP138" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(247, 686)
+
+[node name="XP139" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(300, 752)
+
+[node name="XP140" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(244, 769)
+
+[node name="XP141" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(307, 665)
+
+[node name="XP142" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(278, 686)
+
+[node name="XP143" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(283, 726)
+
+[node name="XP144" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(253, 663)
+
+[node name="XP145" parent="." instance=ExtResource("1_5ay5y")]
+position = Vector2(318, 712)
