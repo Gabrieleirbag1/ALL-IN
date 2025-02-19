@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=50 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/Map/map.gd" id="1_yn8yg"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cdoql0evuv5yb" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
 [ext_resource type="Texture2D" uid="uid://b5rog4whb5jsn" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
 [ext_resource type="Texture2D" uid="uid://b2wk7kqfbe2oi" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/Atlas/Buildings.png" id="5_1mxd6"]
+[ext_resource type="PackedScene" uid="uid://evpdxdo8k70f" path="res://Scene/Enemies/Orc_rider.tscn" id="5_ci0s0"]
 [ext_resource type="Texture2D" uid="uid://cur6toooltffb" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
 [ext_resource type="Texture2D" uid="uid://bcaf2ondy1g8i" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
 [ext_resource type="Texture2D" uid="uid://djn0h0wmg63yr" path="res://Assets/nature free/global.png" id="8_au240"]
@@ -19,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/Menu/HUD/ItemLayer.tscn" id="16_453tb"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Item.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
+[ext_resource type="Script" path="res://Script/Menu/score.gd" id="21_s1bhx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -19081,6 +19083,8 @@ texture = ExtResource("4_hk8yh")
 4:68/0/y_sort_origin = -4
 4:68/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8.96875, 1.9375, -12.1562, 2.0625, -12.1562, -1.375, 12.0938, -1.5, 11.9062, 5, 9.21875, 5.25, 9.09375, 8.25, -2.65625, 8, -2.65625, 5.0625, -9.09375, 5.1875)
 1:56/size_in_atlas = Vector2i(5, 9)
+1:56/animation_columns = 7
+1:56/animation_separation = Vector2i(1, 0)
 1:56/0 = 0
 1:56/0/y_sort_origin = 26
 1:56/0/physics_layer_0/polygon_0/points = PackedVector2Array(-17.7964, 32.443, -7.71702, 26.1434, 8.03199, 26.1434, 19.0563, 34.9628, 22.8361, 44.7272, 15.2765, 53.8616, -10.2369, 54.4916, -20.9462, 45.6721)
@@ -25938,6 +25942,7 @@ script = ExtResource("1_yn8yg")
 slime_scene = ExtResource("14_okl5h")
 orc_scene = ExtResource("14_kwv2w")
 xp_scene = ExtResource("15_4wxva")
+orc_rider = ExtResource("5_ci0s0")
 
 [node name="Background" type="TileMapLayer" parent="."]
 z_index = -1
@@ -26100,3 +26105,13 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="Score" type="CanvasLayer" parent="."]
+script = ExtResource("21_s1bhx")
+
+[node name="Score" type="Label" parent="Score"]
+offset_left = 9.0
+offset_right = 200.0
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 30
+text = "Score : 0"

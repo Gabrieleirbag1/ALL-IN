@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://evpdxdo8k70f"]
+[gd_scene load_steps=28 format=3 uid="uid://evpdxdo8k70f"]
 
 [ext_resource type="Script" path="res://Script/Enemies/orc_rider.gd" id="1_07qmf"]
 [ext_resource type="Texture2D" uid="uid://506da8o71ugm" path="res://Assets/Characters/Orc rider/Orc rider with shadows/Orc rider 2.png" id="2_obs7j"]
@@ -175,7 +175,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_60gdq")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
@@ -183,8 +183,12 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_d7jwf"]
+radius = 9.42809
+
 [node name="Orc_rider" type="CharacterBody2D"]
 position = Vector2(131, 77)
+scale = Vector2(1.5, 1.5)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_07qmf")
@@ -193,8 +197,7 @@ script = ExtResource("1_07qmf")
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_ijymu")
-animation = &"attack_1"
-frame_progress = 0.998428
+animation = &"walk"
 offset = Vector2(0, -5)
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -202,15 +205,9 @@ position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_fk40c")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-146, -202)
-scale = Vector2(1.21299, 1.19844)
-polygon = PackedVector2Array(103.876, 171.89, 97.2803, 155.202, 103.876, 142.685, 113.768, 125.163, 124.486, 125.163, 136.027, 149.361, 144.272, 151.03, 150.042, 166.884, 134.379, 166.884, 134.379, 171.89)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 5.0
@@ -226,6 +223,10 @@ autostart = true
 [node name="Dispawn" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(6, -16)
+shape = SubResource("CircleShape2D_d7jwf")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

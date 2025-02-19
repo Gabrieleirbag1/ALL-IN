@@ -4,6 +4,7 @@ class_name Enemy extends CharacterBody2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
 
+var enemy_type: String = ""
 var experience: int = 0
 var drop_xp: int = 100
 var level: int = 1
@@ -91,7 +92,6 @@ func handle_collision():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
-			print(collider.name)
 			if collider.name == "Player":
 				collider.enemy_attack(velocity, knockback_force, damage)
 
@@ -102,7 +102,6 @@ func handle_navigation():
 		handle_collision()
 
 func _physics_process(delta: float) -> void:
-	print("Speed: ", speed)
 	if not alive:
 		return
 	
@@ -138,5 +137,5 @@ func _on_timer_timeout() -> void:
 	makepath()
 
 func _on_dispawn_timeout() -> void:
-	GameController.enemy_death(drop_xp, position)
+	GameController.enemy_death(drop_xp, position, enemy_type)
 	queue_free()
