@@ -18,7 +18,7 @@ func calculate_level_from_exp(total_experience: float) -> int:
 	
 	GameController.xp_progress(total_experience, get_total_experience_to_reach_level(level), get_total_experience_to_reach_level(level+1))
 	level_up(level)
-	show_level_counters()
+	# show_level_counters()
 	return level
 
 func level_up(new_level: int):

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://da3w5n5l5q2dd"]
+
+[ext_resource type="Script" path="res://Script/Stats/stats_ui.gd" id="1_2xjfo"]
+[ext_resource type="Texture2D" uid="uid://c2iu3vlgkwg7g" path="res://Assets/Stats/xp ui.png" id="1_a6gkn"]
+
+[node name="StatsUI" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_2xjfo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_a6gkn")

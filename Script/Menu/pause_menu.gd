@@ -6,7 +6,7 @@ func _ready() -> void:
 	self.visible = false
 
 func pause():
-	if !get_tree().paused:
+	if not get_tree().paused:
 		get_tree().paused = true
 		self.visible = true 
 		$AnimationPlayer.play("blur")
@@ -20,7 +20,7 @@ func resume():
 
 func Esc():
 	if Input.is_action_just_pressed("pause"):
-		if get_tree().paused:
+		if get_tree().paused and self.visible:
 			resume()
 		else:
 			pause()

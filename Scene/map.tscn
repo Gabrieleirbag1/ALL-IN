@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=51 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" path="res://Script/Map/map.gd" id="1_yn8yg"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/ItemLayer.tscn" id="16_453tb"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Items/Item.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
+[ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="21_r4rcy"]
 [ext_resource type="Script" path="res://Script/Menu/score.gd" id="21_s1bhx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
@@ -26101,6 +26102,8 @@ offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="StatsUI" parent="." instance=ExtResource("21_r4rcy")]
 
 [node name="Score" type="CanvasLayer" parent="."]
 script = ExtResource("21_s1bhx")
