@@ -11,7 +11,6 @@ func _ready():
 	animation.play("fire_ball")
 
 func _physics_process(delta):
-	print(fireball_sound.volume_db)
 	global_position += direction * range * delta
 
 func _on_body_entered(body):

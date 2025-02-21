@@ -6,6 +6,8 @@ extends Node2D
 @export var waves_file: String = "res://Script/Global/waves.cfg"
 @export var orc_rider: PackedScene
 
+@onready var background_music : Node = $Background_Music
+
 var current_wave: int = 0
 var enemies_alive: int = 0
 var wave_active: bool = false  
@@ -13,7 +15,10 @@ var waves_settings: Dictionary = {}
 var enemy_scenes: Dictionary = {}
 var wave_spawn_complete: Dictionary = {}
 
+
+
 func _ready() -> void:
+	background_music.playing = true
 	enemy_scenes = {
 		"slime": slime_scene,
 		"orc": orc_scene,

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8rag5g4i65di"]
+[gd_scene load_steps=7 format=3 uid="uid://c8rag5g4i65di"]
 
 [ext_resource type="Texture2D" uid="uid://3nmm8x7b4m6p" path="res://Assets/image.png" id="1_a2fc7"]
 [ext_resource type="Script" path="res://Script/Menu/main_menu.gd" id="1_yhpd6"]
 [ext_resource type="FontFile" uid="uid://cfjbs2fjapvhi" path="res://Assets/Fonts/MinecraftTen-VGORe.ttf" id="2_1qr17"]
+[ext_resource type="AudioStream" uid="uid://blcpo2jo5koao" path="res://Sounds/title-screen.wav" id="4_c0kfq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2vvv"]
 texture = ExtResource("1_a2fc7")
@@ -100,6 +101,9 @@ theme_override_font_sizes/font_size = 100
 text = "ALL IN!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c0kfq")
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
