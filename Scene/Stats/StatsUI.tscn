@@ -1,13 +1,43 @@
-[gd_scene load_steps=3 format=3 uid="uid://da3w5n5l5q2dd"]
+[gd_scene load_steps=4 format=3 uid="uid://da3w5n5l5q2dd"]
 
 [ext_resource type="Script" path="res://Script/Stats/stats_ui.gd" id="1_2xjfo"]
-[ext_resource type="Texture2D" uid="uid://c2iu3vlgkwg7g" path="res://Assets/Stats/xp ui.png" id="1_a6gkn"]
+[ext_resource type="Texture2D" uid="uid://c2iu3vlgkwg7g" path="res://Assets/Stats/Stats UI.png" id="1_a6gkn"]
+[ext_resource type="PackedScene" uid="uid://bdm600jdudn4k" path="res://Scene/Stats/StatFrame.tscn" id="3_c3axa"]
 
 [node name="StatsUI" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_2xjfo")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_a6gkn")
+
+[node name="Stat1" type="TextureButton" parent="."]
+offset_left = 27.0
+offset_top = 919.0
+offset_right = 169.0
+offset_bottom = 1061.0
+mouse_filter = 2
+
+[node name="StatFrame" parent="Stat1" instance=ExtResource("3_c3axa")]
+position = Vector2(397, -601)
+
+[node name="Stat2" type="TextureButton" parent="."]
+offset_left = 27.0
+offset_top = 919.0
+offset_right = 169.0
+offset_bottom = 1061.0
+mouse_filter = 2
+
+[node name="StatFrame" parent="Stat2" instance=ExtResource("3_c3axa")]
+position = Vector2(835, -601)
+
+[node name="Stat3" type="TextureButton" parent="."]
+offset_left = 27.0
+offset_top = 919.0
+offset_right = 169.0
+offset_bottom = 1061.0
+mouse_filter = 2
+
+[node name="StatFrame" parent="Stat3" instance=ExtResource("3_c3axa")]
+position = Vector2(1270, -601)

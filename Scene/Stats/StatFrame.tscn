@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdm600jdudn4k"]
+
+[ext_resource type="Script" path="res://Script/Stats/stat_frame.gd" id="1_y0huc"]
+[ext_resource type="Texture2D" uid="uid://bf7dg3jeul5lb" path="res://Assets/Stats/Stat Background.png" id="2_qtt75"]
+
+[node name="StatFrame" type="Node2D"]
+script = ExtResource("1_y0huc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -73.0
+offset_top = -72.0
+offset_right = 73.0
+offset_bottom = 72.0
+texture = ExtResource("2_qtt75")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-75, -5, -29, -69, 229, -70, 276, -6, 277, 448, 226, 504, -22, 507, -78, 456)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
