@@ -20,9 +20,7 @@ func _ready() -> void:
 	texture_rect.material = mat
 
 func _on_area_2d_mouse_entered() -> void:
-	print_debug(1)
 	texture_rect.material.set_shader_parameter("brightness", 25)
 
 func _on_area_2d_mouse_exited() -> void:
-	print_debug(2)
 	texture_rect.material.set_shader_parameter("brightness", 1.0)
