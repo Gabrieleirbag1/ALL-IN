@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rpai1xwg8r5w"
-path="res://.godot/imported/attack speed 180x.png-b55f27fb02d347b7502d6f16f375aa48.ctex"
+uid="uid://dyjh73vm15lmg"
+path="res://.godot/imported/luck.png-efddc3a3790739f13e6fc34595bca133.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/attack speed 180x.png"
-dest_files=["res://.godot/imported/attack speed 180x.png-b55f27fb02d347b7502d6f16f375aa48.ctex"]
+source_file="res://Assets/Stats/icons/png180x/luck.png"
+dest_files=["res://.godot/imported/luck.png-efddc3a3790739f13e6fc34595bca133.ctex"]
 
 [params]
 

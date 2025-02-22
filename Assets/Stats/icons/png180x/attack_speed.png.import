@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbr2eejbpg5q1"
-path="res://.godot/imported/PV max 180x.png-53be099b4f75a5f5812b4bd20ea7e4fa.ctex"
+uid="uid://rpai1xwg8r5w"
+path="res://.godot/imported/attack_speed.png-b27c326c79a07a702c2311ad2cde51eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/PV max 180x.png"
-dest_files=["res://.godot/imported/PV max 180x.png-53be099b4f75a5f5812b4bd20ea7e4fa.ctex"]
+source_file="res://Assets/Stats/icons/png180x/attack_speed.png"
+dest_files=["res://.godot/imported/attack_speed.png-b27c326c79a07a702c2311ad2cde51eb.ctex"]
 
 [params]
 

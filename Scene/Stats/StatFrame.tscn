@@ -1,19 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdm600jdudn4k"]
 
 [ext_resource type="Script" path="res://Script/Stats/stat_frame.gd" id="1_y0huc"]
-[ext_resource type="Texture2D" uid="uid://bk2rtv5mtc6v2" path="res://Assets/Stats/icons/png180x/attack damage 180x.png" id="2_7xois"]
+[ext_resource type="Texture2D" uid="uid://bk2rtv5mtc6v2" path="res://Assets/Stats/icons/png180x/damage.png" id="2_7xois"]
 [ext_resource type="Texture2D" uid="uid://bf7dg3jeul5lb" path="res://Assets/Stats/Stat Background.png" id="2_qtt75"]
 
 [node name="StatFrame" type="Node2D"]
 script = ExtResource("1_y0huc")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ItemIcon" type="TextureRect" parent="CanvasLayer"]
-offset_left = 11.0
-offset_right = 191.0
-offset_bottom = 180.0
-texture = ExtResource("2_7xois")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -73.0
@@ -21,6 +13,16 @@ offset_top = -72.0
 offset_right = 279.0
 offset_bottom = 500.0
 texture = ExtResource("2_qtt75")
+metadata/_edit_use_anchors_ = true
+
+[node name="ItemIcon" type="TextureRect" parent="TextureRect"]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 70.0
+offset_right = 270.0
+offset_bottom = 250.0
+texture = ExtResource("2_7xois")
+metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bof2aefcu3c3y"
-path="res://.godot/imported/lifesteal 180x.png-11515ff559311b4ddd967bda51e5c9a7.ctex"
+uid="uid://veydne7l1tya"
+path="res://.godot/imported/critical.png-9b26ab7b46a13abbd81be8a8d93b0109.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/lifesteal 180x.png"
-dest_files=["res://.godot/imported/lifesteal 180x.png-11515ff559311b4ddd967bda51e5c9a7.ctex"]
+source_file="res://Assets/Stats/icons/png180x/critical.png"
+dest_files=["res://.godot/imported/critical.png-9b26ab7b46a13abbd81be8a8d93b0109.ctex"]
 
 [params]
 

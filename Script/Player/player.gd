@@ -19,7 +19,7 @@ class_name Player extends CharacterBody2D
 
 @export var damage: int = 10
 @export var attack_spped: int = 10
-@export var life_steel: int = 10
+@export var life_steal: int = 10
 @export var critical: int = 10
 @export var health: int = 50
 @export var health_max: int = 50
@@ -55,7 +55,7 @@ func handle_new_stats(stats):
 	print(stats)
 	damage += stats["damage"]
 	attack_spped += stats["attack_speed"]
-	life_steel += stats["life_steel"]
+	life_steal += stats["life_steal"]
 	critical += stats["critical"]
 	health_max += stats["health"]
 	speed += stats["speed"]

@@ -12,7 +12,7 @@ func xp_progress(total_experience: int, min_experience: int, max_experience: int
 func stats_progress(
 	damage: int,
 	attack_speed: int,
-	life_steel: int,
+	life_steal: int,
 	critical: int,
 	health: int,
 	speed: int,
@@ -21,7 +21,7 @@ func stats_progress(
 	EventController.emit_signal("stats_progress", {
 		"damage": damage,
 		"attack_speed": attack_speed,
-		"life_steel": life_steel,
+		"life_steal": life_steal,
 		"critical": critical,
 		"health": health,
 		"speed": speed,

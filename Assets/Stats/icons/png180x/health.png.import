@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://en1jwbujuvrp"
-path="res://.godot/imported/movement speed 180x.png-0a549820e959458b12a8f2a2e2afd0e5.ctex"
+uid="uid://bbr2eejbpg5q1"
+path="res://.godot/imported/health.png-3a3ee8f11fdff99dd1d11bb0a681e134.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/movement speed 180x.png"
-dest_files=["res://.godot/imported/movement speed 180x.png-0a549820e959458b12a8f2a2e2afd0e5.ctex"]
+source_file="res://Assets/Stats/icons/png180x/health.png"
+dest_files=["res://.godot/imported/health.png-3a3ee8f11fdff99dd1d11bb0a681e134.ctex"]
 
 [params]
 

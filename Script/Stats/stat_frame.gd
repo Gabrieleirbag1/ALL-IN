@@ -1,9 +1,21 @@
 extends Node2D
 
 @onready var texture_rect: TextureRect = $TextureRect
+@onready var item_icon: TextureRect = $TextureRect/ItemIcon
 
 var is_mouse_inside = false
 var shader = false
+
+var stat_path = "res://Assets/Stats/icons/png180x/"
+var stats_dict = {
+	"damage": 0, 
+	"attack_speed": 0, 
+	"life_steal": 0, 
+	"critical": 0, 
+	"health": 0, 
+	"speed": 0, 
+	"luck": 0
+}
 
 func _ready() -> void:
 	set_shader()

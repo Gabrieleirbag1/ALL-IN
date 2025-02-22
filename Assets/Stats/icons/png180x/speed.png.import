@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5a0mpvd1jtua"
-path="res://.godot/imported/xp 180x.png-1390b52b7caed9a1df480b3ad02bfffe.ctex"
+uid="uid://en1jwbujuvrp"
+path="res://.godot/imported/speed.png-48b92d9b3ce23b15ceedc844ab4e15c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/xp 180x.png"
-dest_files=["res://.godot/imported/xp 180x.png-1390b52b7caed9a1df480b3ad02bfffe.ctex"]
+source_file="res://Assets/Stats/icons/png180x/speed.png"
+dest_files=["res://.godot/imported/speed.png-48b92d9b3ce23b15ceedc844ab4e15c8.ctex"]
 
 [params]
 

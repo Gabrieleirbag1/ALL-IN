@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk2rtv5mtc6v2"
-path="res://.godot/imported/attack damage 180x.png-f4406555868beaa77693ec2bb8999fd3.ctex"
+uid="uid://b5a0mpvd1jtua"
+path="res://.godot/imported/experience.png-c2e08c64e045b5e568da00680aba1cfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/attack damage 180x.png"
-dest_files=["res://.godot/imported/attack damage 180x.png-f4406555868beaa77693ec2bb8999fd3.ctex"]
+source_file="res://Assets/Stats/icons/png180x/experience.png"
+dest_files=["res://.godot/imported/experience.png-c2e08c64e045b5e568da00680aba1cfb.ctex"]
 
 [params]
 

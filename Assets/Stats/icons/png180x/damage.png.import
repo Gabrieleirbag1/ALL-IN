@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyjh73vm15lmg"
-path="res://.godot/imported/chance 180x.png-754a5c846c0ca420e0a5bbd1ece897d3.ctex"
+uid="uid://bk2rtv5mtc6v2"
+path="res://.godot/imported/damage.png-f8d41fc8527a80378c13c1bab9c43449.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/chance 180x.png"
-dest_files=["res://.godot/imported/chance 180x.png-754a5c846c0ca420e0a5bbd1ece897d3.ctex"]
+source_file="res://Assets/Stats/icons/png180x/damage.png"
+dest_files=["res://.godot/imported/damage.png-f8d41fc8527a80378c13c1bab9c43449.ctex"]
 
 [params]
 

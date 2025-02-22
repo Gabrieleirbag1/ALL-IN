@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://veydne7l1tya"
-path="res://.godot/imported/critique 180x.png-73efe4efd7fe364501bc560084c253ea.ctex"
+uid="uid://bof2aefcu3c3y"
+path="res://.godot/imported/life_steal.png-81c72cca5d1a8fab57ca5adcd19b1eb1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/icons/png180x/critique 180x.png"
-dest_files=["res://.godot/imported/critique 180x.png-73efe4efd7fe364501bc560084c253ea.ctex"]
+source_file="res://Assets/Stats/icons/png180x/life_steal.png"
+dest_files=["res://.godot/imported/life_steal.png-81c72cca5d1a8fab57ca5adcd19b1eb1.ctex"]
 
 [params]
 
