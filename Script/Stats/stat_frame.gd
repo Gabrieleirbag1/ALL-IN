@@ -7,7 +7,7 @@ var is_mouse_inside = false
 var shader = false
 
 var stats_icon_path = "res://Assets/Stats/icons/png180x/"
-var stats_dict = {
+var stats: Dictionary = {
 	"damage": 0, 
 	"attack_speed": 0, 
 	"life_steal": 0, 
@@ -27,8 +27,10 @@ func _process(delta: float) -> void:
 func handle_click_action():
 	if Input.is_action_just_pressed("click"):
 		if is_mouse_inside:
-			print("unpause")
-
+			get_tree().paused = false
+			self.visible = false
+			GameController.stats_progress(0, 0, 0, 0, 0, 0, 0)
+			
 func set_click_event():
 	if not InputMap.has_action("click"):
 		InputMap.add_action("click")
