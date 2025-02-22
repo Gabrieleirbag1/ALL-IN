@@ -6,7 +6,7 @@ extends Node2D
 var is_mouse_inside = false
 var shader = false
 
-var stat_path = "res://Assets/Stats/icons/png180x/"
+var stats_icon_path = "res://Assets/Stats/icons/png180x/"
 var stats_dict = {
 	"damage": 0, 
 	"attack_speed": 0, 
