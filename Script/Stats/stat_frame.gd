@@ -1,8 +1,9 @@
 extends Node2D
 
+@onready var texture_rect: TextureRect = $TextureRect
+
 var is_mouse_inside = false
 var shader = false
-@onready var texture_rect: TextureRect = $TextureRect
 
 func _ready() -> void:
 	set_shader()
