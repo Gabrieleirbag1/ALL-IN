@@ -25,7 +25,7 @@ func level_up(new_level: int):
 	while level_iterations.size() < new_level:
 		level_iterations.append(0)
 		if new_level != 1:
-			GameController.stats_progress()
+			GameController.level_up()
 	if current_level != new_level:
 		current_level = new_level
 

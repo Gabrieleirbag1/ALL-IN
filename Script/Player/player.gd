@@ -39,6 +39,7 @@ var can_attack: bool = true
 
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
+	EventController.connect("stats_progress", on_event_stats_progress)
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
 	game_over.visible = false
@@ -51,6 +52,9 @@ func on_event_xp_collected(value: int) -> void:
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
 
+func on_event_stats_progress(stats: Dictionary) -> void:
+	handle_new_stats(stats)
+	
 func handle_new_stats(stats):
 	print(stats)
 	damage += stats["damage"]
