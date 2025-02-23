@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://ba85tn4c67pj3"]
+[gd_scene load_steps=6 format=3 uid="uid://ba85tn4c67pj3"]
 
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="1_5ay5y"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="1_11syi"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/HUD/ItemUI.tscn" id="2_030ic"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="3_bswte"]
+[ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="5_i6230"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -451,3 +452,5 @@ position = Vector2(253, 663)
 
 [node name="XP145" parent="." instance=ExtResource("1_5ay5y")]
 position = Vector2(318, 712)
+
+[node name="StatsUI" parent="." instance=ExtResource("5_i6230")]
