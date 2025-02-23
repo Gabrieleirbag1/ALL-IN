@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/Items/Item.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 [ext_resource type="Script" path="res://Script/Menu/score.gd" id="21_s1bhx"]
-[ext_resource type="AudioStream" uid="uid://b82wjvqrjggp4" path="res://Sounds/Hopes and Dreams OST.wav" id="22_yke7o"]
+[ext_resource type="AudioStream" uid="uid://blcpo2jo5koao" path="res://Sounds/title-screen.wav" id="22_oueiy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26114,5 +26114,5 @@ theme_override_font_sizes/font_size = 30
 text = "Score : 0"
 
 [node name="Background_Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_yke7o")
+stream = ExtResource("22_oueiy")
 bus = &"Music"

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Script/Menu/main_menu.gd" id="1_yhpd6"]
 [ext_resource type="FontFile" uid="uid://cfjbs2fjapvhi" path="res://Assets/Fonts/MinecraftTen-VGORe.ttf" id="2_1qr17"]
-[ext_resource type="Texture2D" uid="uid://b0a2qs4ioftle" path="res://Titre écran GIF à sprite.png" id="2_oi2g8"]
-[ext_resource type="AudioStream" uid="uid://blcpo2jo5koao" path="res://Sounds/title-screen.wav" id="4_c0kfq"]
+[ext_resource type="Texture2D" uid="uid://b22qg5ymf3cpp" path="res://Assets/Titre écran GIF à sprite.png" id="2_g5ndr"]
+[ext_resource type="AudioStream" uid="uid://bh7j7asu1um26" path="res://Sounds/Wind by ERH.wav" id="4_7iq82"]
 [ext_resource type="Texture2D" uid="uid://dxg8jmd1c62as" path="res://Assets/play.png" id="5_bvb32"]
 [ext_resource type="Texture2D" uid="uid://brjf65nqgtp5" path="res://Assets/play-hover.png" id="6_g8dbc"]
 [ext_resource type="Script" path="res://texture_button.gd" id="6_sycdm"]
@@ -12,36 +12,36 @@
 [ext_resource type="Texture2D" uid="uid://j7xjq6jjw1h7" path="res://Assets/option-hover.png" id="8_rlmoo"]
 [ext_resource type="Texture2D" uid="uid://c0pm555ain3rf" path="res://Assets/quit-hover.png" id="9_brncg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7pw4"]
-atlas = ExtResource("2_oi2g8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2uhb"]
+atlas = ExtResource("2_g5ndr")
 region = Rect2(0, 0, 568, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7fp8w"]
-atlas = ExtResource("2_oi2g8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dfai"]
+atlas = ExtResource("2_g5ndr")
 region = Rect2(568, 0, 568, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cravl"]
-atlas = ExtResource("2_oi2g8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3xfq"]
+atlas = ExtResource("2_g5ndr")
 region = Rect2(1136, 0, 568, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lhoay"]
-atlas = ExtResource("2_oi2g8")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hbig"]
+atlas = ExtResource("2_g5ndr")
 region = Rect2(1704, 0, 568, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_eewrj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t7pw4")
+"texture": SubResource("AtlasTexture_m2uhb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7fp8w")
+"texture": SubResource("AtlasTexture_3dfai")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cravl")
+"texture": SubResource("AtlasTexture_u3xfq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lhoay")
+"texture": SubResource("AtlasTexture_3hbig")
 }],
 "loop": true,
 "name": &"default",
@@ -113,11 +113,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel"]
-modulate = Color(0.779291, 0.779291, 0.779291, 1)
+modulate = Color(0.68101, 0.68101, 0.68101, 1)
 texture_filter = 1
 position = Vector2(958, 537)
 scale = Vector2(3.37324, 2.82292)
 sprite_frames = SubResource("SpriteFrames_eewrj")
+frame_progress = 0.488456
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -137,7 +138,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_c0kfq")
+stream = ExtResource("4_7iq82")
+volume_db = -17.333
 bus = &"Music"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
