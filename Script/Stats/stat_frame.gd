@@ -1,9 +1,20 @@
 extends Node2D
 
 @onready var texture_rect: TextureRect = $TextureRect
+@onready var item_icon: TextureRect = $TextureRect/ItemIcon
 
 var is_mouse_inside = false
 var shader = false
+
+var stats: Dictionary = {
+	"damage": 0, 
+	"attack_speed": 0, 
+	"life_steal": 0, 
+	"critical": 0, 
+	"health": 0, 
+	"speed": 0, 
+	"luck": 0
+}
 
 func _ready() -> void:
 	set_shader()
@@ -16,7 +27,9 @@ func handle_click_action():
 	if Input.is_action_just_pressed("click"):
 		if is_mouse_inside:
 			get_tree().paused = false
-			GameController.stats_progress(0, 0, 0, 0, 0, 0, 0)
+			var icon_name = item_icon.texture.get_path().get_file().get_basename()
+			stats[icon_name] = 10
+			GameController.stats_progress(stats)
 
 func set_click_event():
 	if not InputMap.has_action("click"):
