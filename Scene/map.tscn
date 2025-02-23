@@ -26115,3 +26115,4 @@ text = "Score : 0"
 
 [node name="Background_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_yke7o")
+bus = &"Music"
