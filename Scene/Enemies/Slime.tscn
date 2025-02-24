@@ -198,6 +198,7 @@ sprite_frames = SubResource("SpriteFrames_t508g")
 animation = &"walk"
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 collision_layer = 16
