@@ -1,6 +1,7 @@
 # slime.gd
 extends "enemy.gd"
 
+
 func _init() -> void:
 	drop_xp = 1
 	enemy_type = "slime"

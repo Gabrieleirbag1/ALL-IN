@@ -11,7 +11,6 @@ func _ready():
 	animation.play("fire_ball")
 
 func _physics_process(delta):
-	print(fireball_sound.volume_db)
 	global_position += direction * range * delta
 
 func _on_body_entered(body):
@@ -34,4 +33,3 @@ func fade_out_sound(duration: float = 1.0):
 	tween.tween_property(fireball_sound, "volume_db", -80, duration)
 	tween.tween_callback(Callable(fireball_sound, "stop"))
 	
-
