@@ -118,7 +118,7 @@ texture_filter = 1
 position = Vector2(958, 537)
 scale = Vector2(3.37324, 2.82292)
 sprite_frames = SubResource("SpriteFrames_eewrj")
-frame_progress = 0.488456
+frame_progress = 0.702506
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
