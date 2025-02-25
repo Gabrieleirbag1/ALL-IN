@@ -58,7 +58,6 @@ func on_event_stats_progress(stats: Dictionary) -> void:
 func handle_new_stats(stats):
 	print(stats)
 	damage += stats["damage"]
-	print(damage)
 	attack_spped += stats["attack_speed"]
 	life_steal += stats["life_steal"]
 	critical += stats["critical"]
