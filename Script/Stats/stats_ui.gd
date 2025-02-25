@@ -69,7 +69,8 @@ func set_3_random_stats():
 		var random_stat: String
 		while true:
 			random_stat = stats.keys()[randi() % stats.size()]
-			if random_stat not in stat_icons:
+			print(random_stat)
+			if random_stat not in icons:
 				break
 		icons.append(random_stat)
 		set_stat_icon(stat_icons[i], random_stat)
