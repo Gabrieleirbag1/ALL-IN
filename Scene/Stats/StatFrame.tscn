@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdm600jdudn4k"]
 
 [ext_resource type="Script" path="res://Script/Stats/stat_frame.gd" id="1_y0huc"]
-[ext_resource type="Texture2D" uid="uid://bf7dg3jeul5lb" path="res://Assets/Stats/Stat Background.png" id="2_qtt75"]
+[ext_resource type="Texture2D" uid="uid://mi47nucrm8ky" path="res://Assets/Stats/Backgrounds/STAT_BG_FOREST_GREEN.png" id="2_qoiar"]
 [ext_resource type="Texture2D" uid="uid://bk2rtv5mtc6v2" path="res://Assets/Stats/icons/png180x/damage.png" id="3_ibvwc"]
 [ext_resource type="FontFile" uid="uid://c6br6sgd5vu2j" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="4_7dejo"]
 [ext_resource type="Script" path="res://Script/centered_rich_text_label.gd" id="5_vqu7c"]
@@ -9,16 +9,16 @@
 [node name="StatFrame" type="Node2D"]
 script = ExtResource("1_y0huc")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -73.0
-offset_top = -72.0
-offset_right = 279.0
-offset_bottom = 500.0
+[node name="StatBackground" type="TextureRect" parent="."]
+offset_left = -76.0
+offset_top = -67.0
+offset_right = 277.0
+offset_bottom = 506.0
 mouse_filter = 2
-texture = ExtResource("2_qtt75")
+texture = ExtResource("2_qoiar")
 metadata/_edit_use_anchors_ = true
 
-[node name="StatIcon" type="TextureRect" parent="TextureRect"]
+[node name="StatIcon" type="TextureRect" parent="StatBackground"]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 70.0
@@ -28,7 +28,7 @@ mouse_filter = 2
 texture = ExtResource("3_ibvwc")
 metadata/_edit_use_anchors_ = true
 
-[node name="StatRarity" type="RichTextLabel" parent="TextureRect"]
+[node name="StatRarity" type="RichTextLabel" parent="StatBackground"]
 layout_mode = 0
 offset_left = 15.0
 offset_top = 270.0
@@ -42,7 +42,7 @@ text = "[center]Légendaire[/center]"
 script = ExtResource("5_vqu7c")
 metadata/_edit_use_anchors_ = true
 
-[node name="StatValue" type="RichTextLabel" parent="TextureRect"]
+[node name="StatValue" type="RichTextLabel" parent="StatBackground"]
 layout_mode = 0
 offset_left = 18.0
 offset_top = 363.0

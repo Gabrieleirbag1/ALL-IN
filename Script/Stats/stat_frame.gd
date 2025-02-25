@@ -1,8 +1,8 @@
 extends Node2D
 
-@onready var texture_rect: TextureRect = $TextureRect
-@onready var stat_icon: TextureRect = $TextureRect/StatIcon
-@onready var stat_value: CenteredRichTextLabel= $TextureRect/StatValue
+@onready var texture_rect: TextureRect = $StatBackground
+@onready var stat_icon: TextureRect = $StatBackground/StatIcon
+@onready var stat_value: CenteredRichTextLabel= $StatBackground/StatValue
 
 var is_mouse_inside = false
 var shader = false
@@ -62,13 +62,14 @@ func set_shader():
 	var mat = ShaderMaterial.new()
 	mat.shader = shader
 	texture_rect.material = mat
+	texture_rect.material.set_shader_parameter("brightness", 5)
 
 func _on_area_2d_mouse_entered() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 	is_mouse_inside = true
-	texture_rect.material.set_shader_parameter("brightness", 25)
+	texture_rect.material.set_shader_parameter("brightness", 15)
 
 func _on_area_2d_mouse_exited() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	is_mouse_inside = false
-	texture_rect.material.set_shader_parameter("brightness", 1.0)
+	texture_rect.material.set_shader_parameter("brightness", 5)

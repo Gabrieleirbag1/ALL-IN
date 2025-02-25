@@ -3,8 +3,10 @@ extends CanvasLayer
 @onready var stat_icons: Array[TextureRect] = []
 @onready var stat_rarities: Array[CenteredRichTextLabel] = []
 @onready var stat_values: Array[CenteredRichTextLabel] = []
+@onready var stat_backgrounds: Array[TextureRect] = []
 
-@export var stats_icon_path: String = "res://Assets/Stats/icons/png180x/"
+@export var stat_icon_path: String = "res://Assets/Stats/icons/png180x/"
+@export var stat_background_path: String = "res://Assets/Stats/Backgrounds/"
 
 var stats: Dictionary = {
 	"damage": 0, 
@@ -30,16 +32,15 @@ var stat_modifier_impact_ranges: Dictionary = {
 		"Legendary": [10, INF]
 	}
 }
-
 var stat_rarity_colors: Dictionary = {
-	"Annihilation": "red",
-	"Malediction": "orange",
-	"Terrible": "yellow",
-	"Annoying": "green",
-	"Common": "blue",
-	"Rare": "purple",
-	"Epic": "pink",
-	"Legendary": "gold"
+	"Annihilation": "RED",
+	"Malediction": "INDIGO",
+	"Terrible": "CADET_BLUE",
+	"Annoying": "YELLOW_GREEN",
+	"Common": "FOREST_GREEN",
+	"Rare": "BLUE",
+	"Epic": "PURPLE",
+	"Legendary": "GOLD"
 }
 
 func handle_events():
@@ -48,9 +49,10 @@ func handle_events():
 
 func set_stat_nodes_lists():
 	for i in range(1, 4):
-		stat_icons.append(get_node("Stat%d/StatFrame/TextureRect/StatIcon" % i))
-		stat_rarities.append(get_node("Stat%d/StatFrame/TextureRect/StatRarity" % i))
-		stat_values.append(get_node("Stat%d/StatFrame/TextureRect/StatValue" % i))
+		stat_backgrounds.append(get_node("Stat%d/StatFrame/StatBackground" % i))
+		stat_icons.append(get_node("Stat%d/StatFrame/StatBackground/StatIcon" % i))
+		stat_rarities.append(get_node("Stat%d/StatFrame/StatBackground/StatRarity" % i))
+		stat_values.append(get_node("Stat%d/StatFrame/StatBackground/StatValue" % i))
 
 func _ready() -> void:
 	self.visible = false
@@ -58,15 +60,15 @@ func _ready() -> void:
 	handle_events()
 	
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
-	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
+	stat_icon.texture = load(stat_icon_path + random_stat + ".png")
 
 func get_stat_rarity(stat_value_number: int) -> String:
-		var modifier = "Bonus" if stat_value_number > 0 else "Malus"
-		for rarity in stat_modifier_impact_ranges[modifier]:
-			var range = stat_modifier_impact_ranges[modifier][rarity]
-			if stat_value_number >= range[0] and stat_value_number <= range[1]:
-				return rarity
-		return "Unknown"
+	var modifier = "Bonus" if stat_value_number > 0 else "Malus"
+	for rarity in stat_modifier_impact_ranges[modifier]:
+		var range = stat_modifier_impact_ranges[modifier][rarity]
+		if stat_value_number >= range[0] and stat_value_number <= range[1]:
+			return rarity
+	return "Unknown"
 
 func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
 	stat_rarity.set_centered_text(rarity)
@@ -103,7 +105,11 @@ func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_number: int):
 	var impact: String = "+" if stat_value_number > 0 else ""
 	var stat_value_text = impact + str(stat_value_number)
 	stat_value.set_centered_text(stat_value_text)
-
+	
+func set_stat_background(stat_background: TextureRect, rarity):
+	var bg_color = stat_rarity_colors[rarity]
+	stat_background.texture = load(stat_background_path + "STAT_BG_" + bg_color + ".png")
+	
 func set_3_random_stats(player_level: int):
 	var icons = []
 	for i in range(3):
@@ -119,6 +125,7 @@ func set_3_random_stats(player_level: int):
 		set_stat_value(stat_values[i], stat_value_number)
 		var rarity = get_stat_rarity(stat_value_number)
 		set_stat_rarity(stat_rarities[i], rarity)
+		set_stat_background(stat_backgrounds[i], rarity)
 		
 func on_event_level_up(player_level) -> void:
 	get_tree().paused = true

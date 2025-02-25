@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvpgefxrt2fbm"
-path="res://.godot/imported/Stats Background.png-e6240a8c93f29104578a3d2cfecea4c6.ctex"
+uid="uid://d0ntaa6ixjifd"
+path="res://.godot/imported/STAT_BG_CADET_BLUE.png-d3de865f62ab4f5e70d1997a1ff72499.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/Stats Background.png"
-dest_files=["res://.godot/imported/Stats Background.png-e6240a8c93f29104578a3d2cfecea4c6.ctex"]
+source_file="res://Assets/Stats/Backgrounds/STAT_BG_CADET_BLUE.png"
+dest_files=["res://.godot/imported/STAT_BG_CADET_BLUE.png-d3de865f62ab4f5e70d1997a1ff72499.ctex"]
 
 [params]
 

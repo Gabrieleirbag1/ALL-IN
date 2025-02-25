@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du25hq1y57exk"
-path="res://.godot/imported/Stat UI Background.png-cc38aba5c4f46072d5bbe7ac573ae6a0.ctex"
+uid="uid://soa0q4m6ty5k"
+path="res://.godot/imported/STAT_BG_RED.png-802cecb1428254fb70a24374118c4f04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Stats/Stat UI Background.png"
-dest_files=["res://.godot/imported/Stat UI Background.png-cc38aba5c4f46072d5bbe7ac573ae6a0.ctex"]
+source_file="res://Assets/Stats/Backgrounds/STAT_BG_RED.png"
+dest_files=["res://.godot/imported/STAT_BG_RED.png-802cecb1428254fb70a24374118c4f04.ctex"]
 
 [params]
 
