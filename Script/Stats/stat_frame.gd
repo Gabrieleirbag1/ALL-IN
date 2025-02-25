@@ -39,7 +39,6 @@ func get_all_int_values(text: String) -> Array[int]:
 	for result in search_result:
 		var value = result.get_string()
 		results.append(int(value))
-	print(results)
 	return results
 
 func set_click_event():
