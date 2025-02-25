@@ -16,6 +16,21 @@ var stats: Dictionary = {
 	"luck": 0
 }
 
+var impact: Dictionary = {
+	"Malus": {
+		"Annihilation": [-INF, -10],
+		"Malediction": [-9, -7],
+		"Terrible": [-6, -4],
+		"Annoying": [-3, -1]
+	},
+	"Bonus": {
+		"Common": [1, 3],
+		"Rare": [4-6],
+		"Epic": [7-9],
+		"Legendary": [10, INF]
+	}
+}
+
 func handle_events():
 	EventController.connect("level_up", on_event_level_up)
 	EventController.connect("stats_progress", on_stats_progress)
