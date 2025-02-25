@@ -6,3 +6,6 @@ func get_centered_text(text: String) -> String:
 	
 func set_centered_text(text: String):
 	self.text = get_centered_text(text)
+	
+func set_font_color(color: String):
+	self.add_theme_color_override("default_color", color)

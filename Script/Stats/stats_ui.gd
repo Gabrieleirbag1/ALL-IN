@@ -31,6 +31,17 @@ var stat_modifier_impact_ranges: Dictionary = {
 	}
 }
 
+var stat_rarity_colors: Dictionary = {
+	"Annihilation": "red",
+	"Malediction": "orange",
+	"Terrible": "yellow",
+	"Annoying": "green",
+	"Common": "blue",
+	"Rare": "purple",
+	"Epic": "pink",
+	"Legendary": "gold"
+}
+
 func handle_events():
 	EventController.connect("level_up", on_event_level_up)
 	EventController.connect("stats_progress", on_stats_progress)
@@ -59,6 +70,7 @@ func get_stat_rarity(stat_value_number: int) -> String:
 
 func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
 	stat_rarity.set_centered_text(rarity)
+	stat_rarity.set_font_color(stat_rarity_colors[rarity])
 
 func get_stat_value_number(player_level) -> int:
 	var pos_min: int

@@ -49,7 +49,7 @@ func set_click_event():
 		InputMap.action_add_event("click", mouse_button_event)
 		
 func set_shader():
-	var shader = Shader.new()
+	shader = Shader.new()
 	shader.code = """
 	shader_type canvas_item;
 
