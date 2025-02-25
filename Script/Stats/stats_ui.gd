@@ -16,7 +16,7 @@ var stats: Dictionary = {
 	"luck": 0
 }
 
-var stat_impact_ranges: Dictionary = {
+var stat_modifier_impact_ranges: Dictionary = {
 	"Malus": {
 		"Annihilation": [-INF, -10],
 		"Malediction": [-9, -7],
@@ -49,18 +49,24 @@ func _ready() -> void:
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
 
-func get_stat_rarity():
-	pass
+func get_stat_rarity(stat_value_number: int) -> String:
+		var modifier = "Bonus" if stat_value_number > 0 else "Malus"
+		for rarity in stat_modifier_impact_ranges[modifier]:
+			var range = stat_modifier_impact_ranges[modifier][rarity]
+			if stat_value_number >= range[0] and stat_value_number <= range[1]:
+				return rarity
+		return "Unknown"
 
 func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
 	stat_rarity.set_centered_text(rarity)
 
-func get_stat_value_text() -> String:
+func get_stat_value_number() -> int:
 	var random_value: int = randi() % 10 + 1
-	var impact: String = "+ "
-	return impact + str(random_value)
+	return random_value
 
-func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_text: String):
+func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_number: int):
+	var impact: String = "+ " if stat_value_number > 0 else "- "
+	var stat_value_text = impact + str(stat_value_number)
 	stat_value.set_centered_text(stat_value_text)
 
 func set_3_random_stats():
@@ -69,15 +75,14 @@ func set_3_random_stats():
 		var random_stat: String
 		while true:
 			random_stat = stats.keys()[randi() % stats.size()]
-			print(random_stat)
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
 		set_stat_icon(stat_icons[i], random_stat)
-		var stat_value_text: String = get_stat_value_text()
-		set_stat_value(stat_values[i], stat_value_text)
-		get_stat_rarity()
-		set_stat_rarity(stat_rarities[i], "Common")
+		var stat_value_number: int = get_stat_value_number()
+		set_stat_value(stat_values[i], stat_value_number)
+		var rarity = get_stat_rarity(stat_value_number)
+		set_stat_rarity(stat_rarities[i], rarity)
 		
 func on_event_level_up() -> void:
 	get_tree().paused = true
