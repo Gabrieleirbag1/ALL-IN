@@ -11,6 +11,7 @@ script = ExtResource("1_2xjfo")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 texture = ExtResource("1_a6gkn")
 
 [node name="Stat1" type="TextureButton" parent="."]
