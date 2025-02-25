@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdm600jdudn4k"]
+[gd_scene load_steps=6 format=3 uid="uid://bdm600jdudn4k"]
 
 [ext_resource type="Script" path="res://Script/Stats/stat_frame.gd" id="1_y0huc"]
 [ext_resource type="Texture2D" uid="uid://bf7dg3jeul5lb" path="res://Assets/Stats/Stat Background.png" id="2_qtt75"]
 [ext_resource type="Texture2D" uid="uid://bk2rtv5mtc6v2" path="res://Assets/Stats/icons/png180x/damage.png" id="3_ibvwc"]
 [ext_resource type="FontFile" uid="uid://c6br6sgd5vu2j" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="4_7dejo"]
+[ext_resource type="Script" path="res://centered_rich_text_label.gd" id="5_vqu7c"]
 
 [node name="StatFrame" type="Node2D"]
 script = ExtResource("1_y0huc")
@@ -38,6 +39,7 @@ theme_override_fonts/normal_font = ExtResource("4_7dejo")
 theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "[center]Légendaire[/center]"
+script = ExtResource("5_vqu7c")
 metadata/_edit_use_anchors_ = true
 
 [node name="StatValue" type="RichTextLabel" parent="TextureRect"]
@@ -52,6 +54,7 @@ theme_override_font_sizes/normal_font_size = 85
 bbcode_enabled = true
 text = "[center]+22%[/center]"
 fit_content = true
+script = ExtResource("5_vqu7c")
 metadata/_edit_use_anchors_ = true
 
 [node name="Area2D" type="Area2D" parent="."]
