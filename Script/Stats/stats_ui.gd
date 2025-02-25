@@ -16,7 +16,7 @@ var stats: Dictionary = {
 	"luck": 0
 }
 
-var impact: Dictionary = {
+var stat_impact_ranges: Dictionary = {
 	"Malus": {
 		"Annihilation": [-INF, -10],
 		"Malediction": [-9, -7],
@@ -25,8 +25,8 @@ var impact: Dictionary = {
 	},
 	"Bonus": {
 		"Common": [1, 3],
-		"Rare": [4-6],
-		"Epic": [7-9],
+		"Rare": [4, 6],
+		"Epic": [7, 9],
 		"Legendary": [10, INF]
 	}
 }
