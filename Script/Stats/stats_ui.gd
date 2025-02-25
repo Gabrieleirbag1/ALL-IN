@@ -60,16 +60,39 @@ func get_stat_rarity(stat_value_number: int) -> String:
 func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
 	stat_rarity.set_centered_text(rarity)
 
-func get_stat_value_number() -> int:
-	var random_value: int = randi() % 10 + 1
-	return random_value
+func get_stat_value_number(player_level) -> int:
+	var pos_min: int
+	var pos_max: int
+
+	# For level 1, use fixed bounds.
+	if player_level == 1:
+		pos_min = 1
+		pos_max = 10
+	else:
+		# For other levels, bounds increase.
+		# Positive range: [10*(level-1), ...]
+		pos_min = 10 * (player_level - 1)
+		if player_level == 2:
+			pos_max = 10 * player_level
+		else:
+			# Level 3: [20, 35], level 4: [30, 50], etc.
+			pos_max = pos_min + 10 + (player_level - 2) * 5
+
+	# Randomly decide to return a positive or negative value.
+	# If positive, value between pos_min and pos_max.
+	# If negative, value between -pos_max and -pos_min.
+	var rand_val = randi_range(pos_min, pos_max)
+	if randf() < 0.5:
+		return rand_val
+	else:
+		return -rand_val
 
 func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_number: int):
-	var impact: String = "+ " if stat_value_number > 0 else "- "
+	var impact: String = "+" if stat_value_number > 0 else ""
 	var stat_value_text = impact + str(stat_value_number)
 	stat_value.set_centered_text(stat_value_text)
 
-func set_3_random_stats():
+func set_3_random_stats(player_level: int):
 	var icons = []
 	for i in range(3):
 		var random_stat: String
@@ -78,15 +101,16 @@ func set_3_random_stats():
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
+		
 		set_stat_icon(stat_icons[i], random_stat)
-		var stat_value_number: int = get_stat_value_number()
+		var stat_value_number: int = get_stat_value_number(player_level)
 		set_stat_value(stat_values[i], stat_value_number)
 		var rarity = get_stat_rarity(stat_value_number)
 		set_stat_rarity(stat_rarities[i], rarity)
 		
-func on_event_level_up() -> void:
+func on_event_level_up(player_level) -> void:
 	get_tree().paused = true
-	set_3_random_stats()
+	set_3_random_stats(player_level)
 	self.visible = true
 
 func on_stats_progress(stats) -> void:
