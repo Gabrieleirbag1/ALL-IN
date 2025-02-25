@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var item_icons: Array[TextureRect] = []
+@onready var stat_icons: Array[TextureRect] = []
 @onready var stat_rarities: Array[CenteredRichTextLabel] = []
 @onready var stat_values: Array[CenteredRichTextLabel] = []
 
@@ -22,7 +22,7 @@ func handle_events():
 
 func set_stat_nodes_lists():
 	for i in range(1, 4):
-		item_icons.append(get_node("Stat%d/StatFrame/TextureRect/ItemIcon" % i))
+		stat_icons.append(get_node("Stat%d/StatFrame/TextureRect/StatIcon" % i))
 		stat_rarities.append(get_node("Stat%d/StatFrame/TextureRect/StatRarity" % i))
 		stat_values.append(get_node("Stat%d/StatFrame/TextureRect/StatValue" % i))
 
@@ -31,21 +31,30 @@ func _ready() -> void:
 	set_stat_nodes_lists()
 	handle_events()
 	
+func set_stat_icon(stat_icon: TextureRect, random_stat: String):
+	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
+
+func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
+	stat_rarity.set_centered_text(rarity)
+
+func set_stat_value(stat_value: CenteredRichTextLabel):
+	var impact = "+ "
+	stat_value.set_centered_text(impact + str(randi() % 10 + 1))
+
 func set_3_random_stats():
 	var icons = []
 	for i in range(3):
-		var random_stat
+		var random_stat: String
 		while true:
 			random_stat = stats.keys()[randi() % stats.size()]
-			if random_stat not in icons:
+			if random_stat not in stat_icons:
 				break
 		icons.append(random_stat)
 		var rarity = "Common"
-		var impact = "+ "
-		item_icons[i].texture = load(stats_icon_path + random_stat + ".png")
-		stat_rarities[i].set_centered_text(rarity)
-		stat_values[i].set_centered_text(impact + str(randi() % 10 + 1))
-	
+		set_stat_icon(stat_icons[i], random_stat)
+		set_stat_rarity(stat_rarities[i], rarity)
+		set_stat_value(stat_values[i])
+		
 func on_event_level_up() -> void:
 	get_tree().paused = true
 	set_3_random_stats()

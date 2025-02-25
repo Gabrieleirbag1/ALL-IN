@@ -18,7 +18,7 @@ mouse_filter = 2
 texture = ExtResource("2_qtt75")
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemIcon" type="TextureRect" parent="TextureRect"]
+[node name="StatIcon" type="TextureRect" parent="TextureRect"]
 layout_mode = 0
 offset_left = 90.0
 offset_top = 70.0
