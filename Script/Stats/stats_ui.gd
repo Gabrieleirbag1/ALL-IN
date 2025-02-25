@@ -49,12 +49,19 @@ func _ready() -> void:
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
 
+func get_stat_rarity():
+	pass
+
 func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
 	stat_rarity.set_centered_text(rarity)
 
-func set_stat_value(stat_value: CenteredRichTextLabel):
-	var impact = "+ "
-	stat_value.set_centered_text(impact + str(randi() % 10 + 1))
+func get_stat_value_text() -> String:
+	var random_value: int = randi() % 10 + 1
+	var impact: String = "+ "
+	return impact + str(random_value)
+
+func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_text: String):
+	stat_value.set_centered_text(stat_value_text)
 
 func set_3_random_stats():
 	var icons = []
@@ -65,10 +72,11 @@ func set_3_random_stats():
 			if random_stat not in stat_icons:
 				break
 		icons.append(random_stat)
-		var rarity = "Common"
 		set_stat_icon(stat_icons[i], random_stat)
-		set_stat_rarity(stat_rarities[i], rarity)
-		set_stat_value(stat_values[i])
+		var stat_value_text: String = get_stat_value_text()
+		set_stat_value(stat_values[i], stat_value_text)
+		get_stat_rarity()
+		set_stat_rarity(stat_rarities[i], "Common")
 		
 func on_event_level_up() -> void:
 	get_tree().paused = true
