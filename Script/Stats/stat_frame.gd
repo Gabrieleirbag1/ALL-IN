@@ -62,7 +62,7 @@ func set_shader():
 	var mat = ShaderMaterial.new()
 	mat.shader = shader
 	texture_rect.material = mat
-	texture_rect.material.set_shader_parameter("brightness", 5)
+	texture_rect.material.set_shader_parameter("brightness", 8)
 
 func _on_area_2d_mouse_entered() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
@@ -72,4 +72,4 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	is_mouse_inside = false
-	texture_rect.material.set_shader_parameter("brightness", 5)
+	texture_rect.material.set_shader_parameter("brightness", 8)
