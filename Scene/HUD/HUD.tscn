@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=7 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
 [ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/HUD/ItemFrame.tscn" id="2_hrmfr"]
+[ext_resource type="FontFile" uid="uid://c6br6sgd5vu2j" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
 [ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltxks"]
@@ -38,6 +39,70 @@ offset_right = 828.0
 grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("1_45228")
+
+[node name="StatValue1" type="Label" parent="Inventaire 1"]
+layout_mode = 0
+offset_left = 927.0
+offset_top = 918.0
+offset_right = 1024.0
+offset_bottom = 972.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="StatValue2" type="Label" parent="Inventaire 1"]
+offset_left = 1033.0
+offset_top = 918.0
+offset_right = 1130.0
+offset_bottom = 972.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="StatValue3" type="Label" parent="Inventaire 1"]
+offset_left = 1153.0
+offset_top = 918.0
+offset_right = 1250.0
+offset_bottom = 972.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="StatValue4" type="Label" parent="Inventaire 1"]
+offset_left = 928.0
+offset_top = 975.0
+offset_right = 1025.0
+offset_bottom = 1029.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="StatValue5" type="Label" parent="Inventaire 1"]
+offset_left = 1033.0
+offset_top = 975.0
+offset_right = 1130.0
+offset_bottom = 1029.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="StatValue6" type="Label" parent="Inventaire 1"]
+offset_left = 1154.0
+offset_top = 975.0
+offset_right = 1251.0
+offset_bottom = 1029.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="StatValue7" type="Label" parent="Inventaire 1"]
+offset_left = 1154.0
+offset_top = 1034.0
+offset_right = 1251.0
+offset_bottom = 1088.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 40
+text = "0"
 
 [node name="XpBar" parent="Inventaire 1" instance=ExtResource("3_ajlgc")]
 layout_mode = 0
