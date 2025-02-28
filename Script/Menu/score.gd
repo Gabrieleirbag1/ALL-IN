@@ -16,4 +16,4 @@ func on_enemy_death(xp: int, enemy_position: Vector2, enemy_type: String) -> voi
 			score += 200
 			$Score.text = "Score : " + str(score)
 	else:
-			print("Type d'ennemi inconnu : ", enemy_type)
+		print("Type d'ennemi inconnu : ", enemy_type)
