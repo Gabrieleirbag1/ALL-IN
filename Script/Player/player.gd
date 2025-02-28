@@ -42,7 +42,6 @@ func _ready() -> void:
 	EventController.connect("stats_progress", on_event_stats_progress)
 	level = MathXp.calculate_level_from_exp(experience)
 	level_label.text = str(level)
-	game_over.visible = false
 
 func on_event_xp_collected(value: int) -> void:
 	if level < 2:

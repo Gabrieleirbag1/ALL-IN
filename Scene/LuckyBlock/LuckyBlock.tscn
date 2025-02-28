@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://tmqtdtks3u1y"]
+
+[ext_resource type="Script" path="res://Script/LuckyBlock/lucky_block.gd" id="1_elkvx"]
+[ext_resource type="Texture2D" uid="uid://bttyaycg0gpbm" path="res://Assets/Lucky Block/Lucky_Block.png" id="1_owssm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62v58"]
+atlas = ExtResource("1_owssm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juwbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62v58")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3knx"]
+size = Vector2(30, 30)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tdgnp"]
+radius = 27.83
+
+[node name="LuckyBlock" type="CharacterBody2D"]
+y_sort_enabled = true
+script = ExtResource("1_elkvx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_juwbt")
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l3knx")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="OpenRangeHitbox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_tdgnp")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
