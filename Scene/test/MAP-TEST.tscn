@@ -459,5 +459,4 @@ visible = false
 
 [node name="LuckyBlock" parent="." instance=ExtResource("6_wkrmc")]
 z_index = -1
-position = Vector2(763, 835)
-collision_mask = 23
+position = Vector2(559, 849)
