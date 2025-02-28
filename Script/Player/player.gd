@@ -7,15 +7,9 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
-@onready var fireball_scene = preload("res://Scene/Projectiles/fire_ball.tscn")
-@onready var fireball_spawn_right = $spawn_fire_right
-@onready var fireball_spawn_left = $spawn_fire_left
-@onready var fireball_spawn_up = $spawn_fire_up
-@onready var fireball_spawn_down = $spawn_fire_down
 @onready var game_over = $GameOver
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
-@onready var fireball_sound = $Fireball_sound
 
 @export var damage: int = 10
 @export var attack_spped: int = 10
@@ -28,7 +22,6 @@ class_name Player extends CharacterBody2D
 @export var experience: int = 0
 @export var luck: int = 10 
 
-var has_spawned_fireball: bool = false
 var level: int = 1
 var alive : bool = true
 var death_animation_played : bool = false
@@ -136,17 +129,11 @@ func _physics_process(delta):
 		get_input()
 		move_and_slide()
 		attack()
+		print(get_frame_count_for_animation("attack_1"))
 		
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		if input_direction.x != 0:
 			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x)
-		
-		if animation.animation == "attack_1" and animation.is_playing():
-			if animation.frame == 5 and !has_spawned_fireball:
-				has_spawned_fireball = true
-				spawn_fireball()
-		else:
-			has_spawned_fireball = false
 
 
 func _on_invincibility_timeout() -> void:
@@ -167,83 +154,13 @@ func attack():
 		can_attack = true
 
 
-func spawn_fireball():
-	var main_fireball = fireball_scene.instantiate()
-	fireball_sound.playing = true
-	get_parent().add_child(main_fireball)
-
-	if animation.scale.x > 0:
-		main_fireball.direction = Vector2.RIGHT
-		main_fireball.global_position = fireball_spawn_right.global_position
-	else:
-		main_fireball.direction = Vector2.LEFT
-		main_fireball.global_position = fireball_spawn_left.global_position
-		main_fireball.rotation_degrees = 180
-
-	main_fireball.rotation_degrees = 0 if main_fireball.direction == Vector2.RIGHT else 180
-
-	var left_fireball = null
-	var right_fireball = null
-	var up_fireball = null
-	var down_fireball = null
-
-	if level >= 1:
-		var second_fireball = fireball_scene.instantiate()
-		get_parent().add_child(second_fireball)
-
-		second_fireball.direction = main_fireball.direction
-		second_fireball.global_position = main_fireball.global_position + Vector2(0, 20)
-		second_fireball.rotation_degrees = main_fireball.rotation_degrees
-	
-	if level >= 5:
-		left_fireball = fireball_scene.instantiate()
-		right_fireball = fireball_scene.instantiate()
-		
-		get_parent().add_child(left_fireball)
-		get_parent().add_child(right_fireball)
-
-		left_fireball.direction = Vector2.LEFT
-		left_fireball.global_position = fireball_spawn_left.global_position
-		left_fireball.rotation_degrees = 180
-
-		right_fireball.direction = Vector2.RIGHT
-		right_fireball.global_position = fireball_spawn_right.global_position
-		right_fireball.rotation_degrees = 0
-
-	if level >= 10:
-		up_fireball = fireball_scene.instantiate()
-		down_fireball = fireball_scene.instantiate()
-		
-		get_parent().add_child(up_fireball)
-		get_parent().add_child(down_fireball)
-
-		up_fireball.direction = Vector2.UP
-		up_fireball.global_position = fireball_spawn_up.global_position
-		up_fireball.rotation_degrees = -90
-
-		down_fireball.direction = Vector2.DOWN
-		down_fireball.global_position = fireball_spawn_down.global_position
-		down_fireball.rotation_degrees = 90
-
-	if level >= 15:
-		main_fireball.piercing = true
-
-		if left_fireball:
-			left_fireball.piercing = true
-		if right_fireball:
-			right_fireball.piercing = true
-		if up_fireball:
-			up_fireball.piercing = true
-		if down_fireball:
-			down_fireball.piercing = true
-
-	is_attacking = false
-
 func get_frame_count_for_animation(animation_name: String) -> int:
 	var sprite_frames = animation.sprite_frames
 	if sprite_frames and sprite_frames.has_animation(animation_name):
 		return sprite_frames.get_frame_count(animation_name)
 	return 0 
+
+
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animation.animation == "attack_1":
