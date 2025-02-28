@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://tmqtdtks3u1y"]
+
+[ext_resource type="Texture2D" uid="uid://bttyaycg0gpbm" path="res://Assets/Lucky Block/Lucky_Block.png" id="1_owssm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62v58"]
+atlas = ExtResource("1_owssm")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_juwbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62v58")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3knx"]
+size = Vector2(26, 26)
+
+[node name="LuckyBlock" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 7
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_juwbt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l3knx")

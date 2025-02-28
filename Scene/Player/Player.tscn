@@ -357,7 +357,7 @@ bg_color = Color(1, 0.254902, 0.196078, 1)
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 position = Vector2(245, 188)
-collision_mask = 7
+collision_mask = 23
 motion_mode = 1
 floor_snap_length = 0.0
 platform_floor_layers = 1
@@ -474,6 +474,7 @@ position = Vector2(-1, 31)
 [node name="GameOver" type="CanvasLayer" parent="."]
 
 [node name="Game Over" parent="GameOver" instance=ExtResource("7_x13ln")]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
