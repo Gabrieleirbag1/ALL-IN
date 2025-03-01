@@ -16,17 +16,20 @@ class_name Player extends CharacterBody2D
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
-
-@export var damage: int = 10
-@export var attack_spped: int = 10
-@export var life_steal: int = 10
-@export var critical: int = 10
-@export var health: int = 50
-@export var health_max: int = 50
-@export var health_min: int = 0
-@export var speed: int = 250
-@export var experience: int = 0
-@export var luck: int = 10 
+@onready var hud: TextureRect = $"../HUD/HUDTextureRect"
+		
+@export var stats: Dictionary = {
+	"damage": 10,
+	"attack_speed": 10,
+	"life_steal": 10,
+	"critical": 10,
+	"health": 50,
+	"health_max": 50,
+	"health_min": 0,
+	"speed": 250,
+	"experience": 0,
+	"luck": 10
+}
 
 var has_spawned_fireball: bool = false
 var level: int = 1
@@ -40,29 +43,24 @@ var can_attack: bool = true
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	EventController.connect("stats_progress", on_event_stats_progress)
-	level = MathXp.calculate_level_from_exp(experience)
+	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
 
 func on_event_xp_collected(value: int) -> void:
 	if level < 2:
-		experience += value * 4
+		stats["experience"] += value * 4
 	else:
-		experience += value
-	level = MathXp.calculate_level_from_exp(experience)
+		stats["experience"] += value
+	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
 
 func on_event_stats_progress(stats: Dictionary) -> void:
 	handle_new_stats(stats)
 	
-func handle_new_stats(stats):
-	print(stats)
-	damage += stats["damage"]
-	attack_spped += stats["attack_speed"]
-	life_steal += stats["life_steal"]
-	critical += stats["critical"]
-	health_max += stats["health"]
-	speed += stats["speed"]
-	luck += stats["luck"]
+func handle_new_stats(new_stats_to_add: Dictionary):
+	for key in new_stats_to_add.keys():
+		if key in stats:
+			stats[key] += new_stats_to_add[key]
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -70,7 +68,7 @@ func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
 func death_zoom() -> void:
-	var death_zoom = Vector2(0.1, 0.1)
+	var death_zoom: Vector2 = Vector2(0.1, 0.1)
 	zoom_timer.wait_time = 0.01
 	for i in range(40):
 		camera.zoom += death_zoom
@@ -92,13 +90,13 @@ func die():
 func check_health():
 	if immortal:
 		return
-	if health <= 0 and not death_animation_played:
+	if stats["health"] <= 0 and not death_animation_played:
 		die()
 
 func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
 		hurt_sound.playing = true
-		health -= damage
+		stats["health"] -= damage
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
 		move_and_slide()
@@ -115,7 +113,7 @@ func enemy_attack(velocity, knockback_force, damage):
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = input_direction * speed
+	velocity = input_direction * stats["speed"]
 
 func _input(event):
 	if alive:
