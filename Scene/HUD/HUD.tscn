@@ -40,7 +40,7 @@ grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("1_45228")
 
-[node name="StatValue1" type="Label" parent="Inventaire 1"]
+[node name="damageLabel" type="Label" parent="Inventaire 1"]
 layout_mode = 0
 offset_left = 927.0
 offset_top = 918.0
@@ -50,7 +50,8 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="StatValue2" type="Label" parent="Inventaire 1"]
+[node name="attack_speedLabel" type="Label" parent="Inventaire 1"]
+layout_mode = 0
 offset_left = 1033.0
 offset_top = 918.0
 offset_right = 1130.0
@@ -59,7 +60,8 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="StatValue3" type="Label" parent="Inventaire 1"]
+[node name="lifestealLabel" type="Label" parent="Inventaire 1"]
+layout_mode = 0
 offset_left = 1153.0
 offset_top = 918.0
 offset_right = 1250.0
@@ -68,7 +70,8 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="StatValue4" type="Label" parent="Inventaire 1"]
+[node name="criticalLabel" type="Label" parent="Inventaire 1"]
+layout_mode = 0
 offset_left = 928.0
 offset_top = 975.0
 offset_right = 1025.0
@@ -77,7 +80,8 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="StatValue5" type="Label" parent="Inventaire 1"]
+[node name="lifeLabel" type="Label" parent="Inventaire 1"]
+layout_mode = 0
 offset_left = 1033.0
 offset_top = 975.0
 offset_right = 1130.0
@@ -86,7 +90,8 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="StatValue6" type="Label" parent="Inventaire 1"]
+[node name="speedLabel" type="Label" parent="Inventaire 1"]
+layout_mode = 0
 offset_left = 1154.0
 offset_top = 975.0
 offset_right = 1251.0
@@ -95,7 +100,8 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="StatValue7" type="Label" parent="Inventaire 1"]
+[node name="luckLabel" type="Label" parent="Inventaire 1"]
+layout_mode = 0
 offset_left = 1154.0
 offset_top = 1034.0
 offset_right = 1251.0
