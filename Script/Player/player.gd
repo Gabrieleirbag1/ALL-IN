@@ -16,7 +16,7 @@ class_name Player extends CharacterBody2D
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
-@onready var hud: TextureRect = $"../HUD/HUDTextureRect"
+@onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
 		
 @export var stats: Dictionary = {
 	"damage": 10,
@@ -43,6 +43,7 @@ var can_attack: bool = true
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	EventController.connect("stats_progress", on_event_stats_progress)
+	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
 
@@ -54,13 +55,17 @@ func on_event_xp_collected(value: int) -> void:
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
 
-func on_event_stats_progress(stats: Dictionary) -> void:
-	handle_new_stats(stats)
+func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
+	handle_new_stats(new_stats_to_add)
 	
-func handle_new_stats(new_stats_to_add: Dictionary):
+func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
 		if key in stats:
-			stats[key] += new_stats_to_add[key]
+			var stat_label: Label = hud_texture_rect.get_node_or_null(key + "Label") as Label
+			if add_new_stats:
+				stats[key] += new_stats_to_add[key]
+			if stat_label:
+				stat_label.text = str(stats[key])
 
 func play_animation(animation_name: String) -> void:
 	if not alive:

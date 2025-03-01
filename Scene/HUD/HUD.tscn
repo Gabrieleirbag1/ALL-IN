@@ -60,7 +60,7 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="lifestealLabel" type="Label" parent="HUDTextureRect"]
+[node name="life_stealLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1153.0
 offset_top = 918.0
@@ -80,7 +80,7 @@ theme_override_fonts/font = ExtResource("2_ul7xa")
 theme_override_font_sizes/font_size = 40
 text = "0"
 
-[node name="lifeLabel" type="Label" parent="HUDTextureRect"]
+[node name="healthLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1033.0
 offset_top = 975.0

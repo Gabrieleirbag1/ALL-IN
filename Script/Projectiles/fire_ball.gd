@@ -5,7 +5,7 @@ extends Area2D
 var direction: Vector2
 @onready var animation = $fire_ball_sprite
 @export var piercing: bool = false
-@onready var fireball_sound = get_node("/root/World/Player/Fireball_sound")
+@onready var fireball_sound = get_node_or_null("/root/World/Player/Fireball_sound")
 
 func _ready():
 	animation.play("fire_ball")
