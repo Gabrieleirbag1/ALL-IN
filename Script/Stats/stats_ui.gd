@@ -97,7 +97,7 @@ func get_stat_value_number(player_level) -> int:
 	# If negative, value between -pos_max and -pos_min.
 	var rand_val = randi_range(pos_min, pos_max)
 	if randf() < 0.5:
-		return rand_val + 1000
+		return rand_val
 	else:
 		return -rand_val
 
