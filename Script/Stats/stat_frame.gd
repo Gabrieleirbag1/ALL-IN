@@ -11,7 +11,7 @@ func _ready() -> void:
 	set_shader()
 	set_click_event()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_click_action()
 
 func handle_click_action():

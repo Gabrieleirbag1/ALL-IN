@@ -131,6 +131,3 @@ func drop_xp(xp: int, enemy_position: Vector2) -> void:
 			xp_instance.xp_type = xp_type
 			add_child(xp_instance)
 			remaining_xp -= xp_value[xp_type]
-
-func _process(delta: float) -> void:
-	pass

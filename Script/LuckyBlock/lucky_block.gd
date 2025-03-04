@@ -13,7 +13,7 @@ func _ready() -> void:
 		key_event.physical_keycode = KEY_E
 		InputMap.action_add_event("open", key_event)
 		
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_open_action()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

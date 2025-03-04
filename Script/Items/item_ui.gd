@@ -97,7 +97,7 @@ func _ready() -> void:
 		mouse_button_event.button_index = MOUSE_BUTTON_LEFT
 		InputMap.action_add_event("click", mouse_button_event)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_place_in_frame_action()
 	handle_click_action()
 

@@ -120,7 +120,7 @@ func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * stats["speed"]
 
-func _input(event):
+func _input(_event):
 	if alive:
 		if animation.animation == "attack_1" and animation.is_playing():
 			return
@@ -136,7 +136,7 @@ func _input(event):
 		else:
 			play_animation("idle_shadow")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if alive:
 		get_input()
 		move_and_slide()

@@ -17,7 +17,7 @@ func _ready() -> void:
 	mat.shader = shader
 	$TextureRect.material = mat
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Global.item_frames_inside[str(self)]:
 		if not Global.item_frames_inside[str(self)] == Global.dragged_item:
 			$TextureRect.material.set_shader_parameter("brightness", 25)

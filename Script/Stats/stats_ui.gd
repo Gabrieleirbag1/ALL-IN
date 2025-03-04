@@ -65,8 +65,8 @@ func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 func get_stat_rarity(stat_value_number: int) -> String:
 	var modifier = "Bonus" if stat_value_number > 0 else "Malus"
 	for rarity in stat_modifier_impact_ranges[modifier]:
-		var range = stat_modifier_impact_ranges[modifier][rarity]
-		if stat_value_number >= range[0] and stat_value_number <= range[1]:
+		var rarity_range = stat_modifier_impact_ranges[modifier][rarity]
+		if stat_value_number >= rarity_range[0] and stat_value_number <= rarity_range[1]:
 			return rarity
 	return "Unknown"
 
@@ -132,5 +132,5 @@ func on_event_level_up(player_level) -> void:
 	set_3_random_stats(player_level)
 	self.visible = true
 
-func on_stats_progress(stats) -> void:
+func on_stats_progress(_stats) -> void:
 	self.visible = false

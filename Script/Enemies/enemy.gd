@@ -97,7 +97,7 @@ func handle_navigation():
 		chase_player()
 		handle_collision()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
 	
