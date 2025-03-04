@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://51fpbe1devhd"]
 
-[ext_resource type="Script" path="res://Script/Menu/pause_menu.gd" id="1_xj2dy"]
-[ext_resource type="Shader" path="res://Scene/Menu/Pause_menu.gdshader" id="2_ka1x1"]
+[ext_resource type="Script" uid="uid://bheostjsudr4j" path="res://Script/Menu/pause_menu.gd" id="1_xj2dy"]
+[ext_resource type="Shader" uid="uid://bumgy8mcj0752" path="res://Scene/Menu/Pause_menu.gdshader" id="2_ka1x1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avcag"]
 shader = ExtResource("2_ka1x1")
@@ -73,8 +73,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvlde"]
 _data = {
-"RESET": SubResource("Animation_spxsd"),
-"blur": SubResource("Animation_f7p32")
+&"RESET": SubResource("Animation_spxsd"),
+&"blur": SubResource("Animation_f7p32")
 }
 
 [node name="Pause_Menu" type="Control"]
@@ -156,7 +156,7 @@ text = "Exit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_cvlde")
+&"": SubResource("AnimationLibrary_cvlde")
 }
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer2/Resume" to="." method="_on_resume_pressed"]

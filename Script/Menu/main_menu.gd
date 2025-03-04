@@ -1,17 +1,26 @@
 extends Control
 @onready var music : Node = $Music
 @onready var animation = $Panel/AnimatedSprite2D
-# Called when the node enters the scene tree for the first time.
+@onready var options = $Options_Menu
+@onready var menu = $VBoxContainer
+@onready var text = $Label
+
+
 func _ready() -> void:
 	music.playing = true
 	animation.play("default")
+	options.visible = false
 	
 
 
-
-func _on_start_pressed() -> void:
+func _on_play_pressed() -> void:
 	Loader.change_level("res://Scene/map.tscn")
 
-
-func _on_exit_pressed() -> void:
+func _on_quit_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_option_pressed() -> void:
+	options.visible = true
+	menu.visible = false
+	text.text = "OPTIONS"

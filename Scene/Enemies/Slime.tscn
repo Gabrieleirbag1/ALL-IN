@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://f0m4bpogt4c3"]
 
-[ext_resource type="Script" path="res://Script/Enemies/slime.gd" id="1_svxxn"]
+[ext_resource type="Script" uid="uid://7xxf3l48k4kb" path="res://Script/Enemies/slime.gd" id="1_svxxn"]
 [ext_resource type="Texture2D" uid="uid://cmxydqfuu86qt" path="res://Assets/Characters/Slime/Slime/Slime.png" id="1_yboy2"]
 [ext_resource type="AudioStream" uid="uid://fejklb2is30t" path="res://Sounds/Death_Slime.wav" id="3_ovqcx"]
 

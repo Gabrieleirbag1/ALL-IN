@@ -1,20 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://bsx72rkqga1ll"]
+[gd_scene load_steps=9 format=3 uid="uid://d2ayntpqt1gse"]
 
 [ext_resource type="FontFile" uid="uid://cfjbs2fjapvhi" path="res://Assets/Fonts/MinecraftTen-VGORe.ttf" id="1_3ll0r"]
-[ext_resource type="Texture2D" uid="uid://dxg8jmd1c62as" path="res://Assets/play.png" id="1_66sav"]
-[ext_resource type="Texture2D" uid="uid://brjf65nqgtp5" path="res://Assets/play-hover.png" id="2_lqaus"]
-[ext_resource type="Script" path="res://texture_button.gd" id="3_isbk1"]
+[ext_resource type="Script" uid="uid://cf01ryg3p1ux0" path="res://Script/Menu/options_menu.gd" id="1_mfpyg"]
+[ext_resource type="Texture2D" uid="uid://bpyqs4amdv41b" path="res://Assets/quit.png" id="1_ws5fj"]
+[ext_resource type="PackedScene" uid="uid://baohom0qmvfky" path="res://Scene/HUD/settings_tab_container.tscn" id="2_8isgg"]
+[ext_resource type="Texture2D" uid="uid://c0pm555ain3rf" path="res://Assets/quit-hover.png" id="2_myk4a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b2dn1"]
-atlas = ExtResource("1_66sav")
+atlas = ExtResource("1_ws5fj")
 region = Rect2(3.86198, 3.78565, 48.3912, 25.4176)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7ccj"]
-atlas = ExtResource("1_66sav")
+atlas = ExtResource("2_myk4a")
 region = Rect2(62.8337, 4.76602, 48.3126, 23.4304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5nig"]
-atlas = ExtResource("2_lqaus")
+atlas = ExtResource("2_myk4a")
 region = Rect2(3.85409, 3.79192, 48.3722, 25.4742)
 
 [node name="Options_Menu" type="Control"]
@@ -24,9 +25,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_mfpyg")
 
-[node name="Play" type="TextureButton" parent="."]
-z_index = 3
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Settings_Tab_Container" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_8isgg")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_3ll0r")
+theme_override_font_sizes/font_size = 80
+text = "Options"
+
+[node name="Quit" type="TextureButton" parent="."]
+z_index = 10
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
@@ -45,29 +76,5 @@ button_mask = 7
 texture_normal = SubResource("AtlasTexture_b2dn1")
 texture_pressed = SubResource("AtlasTexture_b7ccj")
 texture_hover = SubResource("AtlasTexture_g5nig")
-script = ExtResource("3_isbk1")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_3ll0r")
-theme_override_font_sizes/font_size = 80
-text = "Options"
-
-[connection signal="pressed" from="Play" to="Play" method="_on_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

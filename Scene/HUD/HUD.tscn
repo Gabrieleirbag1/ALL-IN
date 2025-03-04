@@ -30,6 +30,7 @@ corner_radius_bottom_left = 4
 [node name="HUD" type="CanvasLayer"]
 
 [node name="Inventaire 1" type="TextureRect" parent="."]
+texture_filter = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -38,8 +39,10 @@ offset_right = 828.0
 grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("1_45228")
+metadata/_edit_use_anchors_ = true
 
 [node name="XpBar" parent="Inventaire 1" instance=ExtResource("3_ajlgc")]
+texture_filter = 1
 layout_mode = 0
 offset_left = 917.0
 offset_top = 1031.0
@@ -50,6 +53,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_53koo")
 value = 0.0
 
 [node name="Inv1" type="TextureButton" parent="Inventaire 1"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 27.0
 offset_top = 919.0
@@ -61,6 +65,7 @@ mouse_filter = 2
 position = Vector2(72, 71)
 
 [node name="Inv2" type="TextureButton" parent="Inventaire 1"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 196.0
 offset_top = 919.0
@@ -72,6 +77,7 @@ mouse_filter = 2
 position = Vector2(72, 71)
 
 [node name="Inv3" type="TextureButton" parent="Inventaire 1"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 364.0
 offset_top = 919.0

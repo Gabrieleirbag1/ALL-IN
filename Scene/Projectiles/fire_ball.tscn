@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://d3bfendedojt6"]
 
-[ext_resource type="Script" path="res://Script/Projectiles/fire_ball.gd" id="1_4ypn7"]
+[ext_resource type="Script" uid="uid://cv3fxxlmbt5s" path="res://Script/Projectiles/fire_ball.gd" id="1_4ypn7"]
 [ext_resource type="Texture2D" uid="uid://4v1pcxeqy8b7" path="res://Assets/Characters/Wizard/Magic(projectile)/Wizard-Attack02_Effect.png" id="2_5kdxl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0imxd"]
