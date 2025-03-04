@@ -1,17 +1,19 @@
 extends ProgressBar
 
-var player
-var max_value_amount
-var min_value_amount
+var player: Player
+var player_stats: Dictionary
+var max_value_amount: int
+var min_value_amount: int
 
 func _ready():
 	player = get_parent()
-	max_value_amount = player.health_max
-	min_value_amount = player.health_min
+	player_stats = player.stats
+	max_value_amount = player_stats["health_max"]
+	min_value_amount = player_stats["health_min"]
 	
 func _process(delta):
-	self.value = player.health
-	if player.health != max_value_amount:
+	self.value = player_stats["health"]
+	if player_stats["health"] != max_value_amount:
 		self.visible = true
 		if not player.alive:
 			self.queue_free() 

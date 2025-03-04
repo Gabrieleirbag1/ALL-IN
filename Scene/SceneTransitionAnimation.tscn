@@ -32,8 +32,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x0v2x"]
 _data = {
-"RESET": SubResource("Animation_omjpj"),
-"between_wave": SubResource("Animation_kxshq")
+&"RESET": SubResource("Animation_omjpj"),
+&"between_wave": SubResource("Animation_kxshq")
 }
 
 [node name="SceneTransitionAnimation" type="Node2D"]

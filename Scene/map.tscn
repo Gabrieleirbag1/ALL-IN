@@ -1,9 +1,9 @@
-[gd_scene load_steps=51 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=53 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
-[ext_resource type="Script" path="res://Script/Map/map.gd" id="1_yn8yg"]
+[ext_resource type="Script" uid="uid://llw1lyo5an36" path="res://Script/Map/map.gd" id="1_yn8yg"]
 [ext_resource type="Texture2D" uid="uid://c4733lvkf5roy" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
-[ext_resource type="Script" path="res://Script/Map/background.gd" id="2_t3r3v"]
+[ext_resource type="Script" uid="uid://dsw7qpkpirl2s" path="res://Script/Map/background.gd" id="2_t3r3v"]
 [ext_resource type="Texture2D" uid="uid://c51odspjbanwq" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
 [ext_resource type="Texture2D" uid="uid://cdoql0evuv5yb" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
 [ext_resource type="Texture2D" uid="uid://b5rog4whb5jsn" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
@@ -18,10 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="15_4wxva"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="16_5chm7"]
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/ItemLayer.tscn" id="16_453tb"]
+[ext_resource type="PackedScene" uid="uid://tmqtdtks3u1y" path="res://Scene/LuckyBlock/LuckyBlock.tscn" id="16_geojk"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/HUD/ItemUI.tscn" id="17_c0fxq"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="21_r4rcy"]
-[ext_resource type="Script" path="res://Script/Menu/score.gd" id="21_s1bhx"]
+[ext_resource type="Script" uid="uid://bduou26vu2556" path="res://Script/Menu/score.gd" id="21_s1bhx"]
 [ext_resource type="AudioStream" uid="uid://blcpo2jo5koao" path="res://Sounds/title-screen.wav" id="22_oueiy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
@@ -25939,7 +25940,6 @@ sources/0 = SubResource("TileSetAtlasSource_63kfu")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(3, 0)
 script = ExtResource("1_yn8yg")
 slime_scene = ExtResource("14_okl5h")
 orc_scene = ExtResource("14_kwv2w")
@@ -26041,11 +26041,12 @@ tile_map_data = PackedByteArray("AAAWACoAAAACAFIAAAAWACsAAAACAFMAAAAXACoAAAADAFI
 tile_set = SubResource("TileSet_sfi0s")
 navigation_enabled = false
 
+[node name="LuckyBlock" parent="." instance=ExtResource("16_geojk")]
+position = Vector2(895, 685)
+collision_mask = 23
+
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
 position = Vector2(812, 756)
-
-[node name="Orc" parent="." instance=ExtResource("14_kwv2w")]
-position = Vector2(720, 904)
 
 [node name="Spawn" type="Marker2D" parent="."]
 position = Vector2(1798, 267)
@@ -26074,8 +26075,6 @@ y_sort_enabled = true
 position = Vector2(738, 752)
 item_layer_scene = ExtResource("16_453tb")
 
-[node name="HUD" parent="." instance=ExtResource("16_5chm7")]
-
 [node name="Item4" parent="." instance=ExtResource("17_c0fxq")]
 y_sort_enabled = true
 position = Vector2(784, 670)
@@ -26091,6 +26090,8 @@ y_sort_enabled = true
 position = Vector2(751, 821)
 item_layer_scene = ExtResource("16_453tb")
 
+[node name="HUD" parent="." instance=ExtResource("16_5chm7")]
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause_Menu" parent="CanvasLayer" instance=ExtResource("19_i1ehj")]
@@ -26105,6 +26106,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 
 [node name="StatsUI" parent="." instance=ExtResource("21_r4rcy")]
+visible = false
 
 [node name="Score" type="CanvasLayer" parent="."]
 script = ExtResource("21_s1bhx")

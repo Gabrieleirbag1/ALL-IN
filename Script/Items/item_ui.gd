@@ -7,7 +7,7 @@ var initialPos
 var offset: Vector2
 var hovered_dropables = []
 var item_frames = []
-var player_entered: bool
+var has_player_entered: bool
 
 @onready var item_frames_inside = Global.item_frames_inside
 @onready var dragged_item = Global.dragged_item
@@ -45,7 +45,7 @@ func add_to_item_frame():
 
 func handle_place_in_frame_action():
 	if not Global.is_dragging:
-		if Input.is_action_just_pressed("place_in_frame") and player_entered:
+		if Input.is_action_just_pressed("place_in_frame") and has_player_entered:
 			if item_frames.size() > 0:
 				var index_empty_frame = get_empty_item_frame()
 				if index_empty_frame != -1:
@@ -124,7 +124,7 @@ func _on_area_2d_body_entered(body) -> void:
 		is_inside_dropable = true
 		body_ref = last_body
 	if body.name == "Player":
-		player_entered = true
+		has_player_entered = true
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
@@ -140,5 +140,5 @@ func _on_area_2d_body_exited(body) -> void:
 				is_inside_dropable = false
 				body_ref = null
 	if body.name == "Player":
-		player_entered = false
+		has_player_entered = false
 		

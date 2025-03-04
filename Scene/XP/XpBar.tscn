@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8y4cbnptfsp8"]
 
-[ext_resource type="Script" path="res://Script/XP/xp_bar.gd" id="1_7pxjw"]
+[ext_resource type="Script" uid="uid://cwuu0eo5tohsn" path="res://Script/XP/xp_bar.gd" id="1_7pxjw"]
 
 [node name="XpBar" type="ProgressBar"]
 offset_right = 258.0

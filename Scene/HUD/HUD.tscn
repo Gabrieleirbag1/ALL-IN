@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=8 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
 [ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/HUD/ItemFrame.tscn" id="2_hrmfr"]
+[ext_resource type="FontFile" uid="uid://c6br6sgd5vu2j" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
 [ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
+[ext_resource type="Script" uid="uid://orvv7v0uwleq" path="res://Script/fitted_label.gd" id="3_gtnfq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltxks"]
 bg_color = Color(0.349689, 0.349689, 0.349689, 1)
@@ -29,17 +31,120 @@ corner_radius_bottom_left = 4
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="Inventaire 1" type="TextureRect" parent="."]
+[node name="HUDTextureRect" type="TextureRect" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -175.0
-offset_right = 828.0
+offset_top = -1080.0
+offset_right = 1920.0
 grow_vertical = 0
 mouse_filter = 2
 texture = ExtResource("1_45228")
+metadata/_edit_use_anchors_ = true
 
-[node name="XpBar" parent="Inventaire 1" instance=ExtResource("3_ajlgc")]
+[node name="damageLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00364583
+anchor_right = -0.00364583
+offset_left = 927.0
+offset_top = 918.0
+offset_right = 1024.0
+offset_bottom = 972.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="attack_speedLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.000520833
+anchor_right = -0.000520833
+offset_left = 1033.0
+offset_top = 918.0
+offset_right = 1130.0
+offset_bottom = 972.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="life_stealLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.000520833
+anchor_right = -0.000520833
+offset_left = 1153.0
+offset_top = 918.0
+offset_right = 1250.0
+offset_bottom = 972.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="criticalLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00416667
+anchor_right = -0.00416667
+offset_left = 928.0
+offset_top = 975.0
+offset_right = 1025.0
+offset_bottom = 1029.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="healthLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.000520833
+anchor_right = -0.000520833
+offset_left = 1033.0
+offset_top = 975.0
+offset_right = 1130.0
+offset_bottom = 1029.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="speedLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.000520833
+anchor_right = -0.000520833
+offset_left = 1154.0
+offset_top = 975.0
+offset_right = 1251.0
+offset_bottom = 1029.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="luckLabel" type="Label" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 1154.0
+offset_top = 1034.0
+offset_right = 1251.0
+offset_bottom = 1088.0
+theme_override_fonts/font = ExtResource("2_ul7xa")
+theme_override_font_sizes/font_size = 30
+text = "0"
+script = ExtResource("3_gtnfq")
+metadata/_edit_use_anchors_ = true
+
+[node name="XpBar" parent="HUDTextureRect" instance=ExtResource("3_ajlgc")]
 layout_mode = 0
 offset_left = 917.0
 offset_top = 1031.0
@@ -48,82 +153,91 @@ offset_bottom = 1066.0
 theme_override_styles/background = SubResource("StyleBoxFlat_ltxks")
 theme_override_styles/fill = SubResource("StyleBoxFlat_53koo")
 value = 0.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Inv1" type="TextureButton" parent="Inventaire 1"]
+[node name="Inv1" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 27.0
 offset_top = 919.0
 offset_right = 169.0
 offset_bottom = 1061.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="Inventaire 1/Inv1" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv1" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv2" type="TextureButton" parent="Inventaire 1"]
+[node name="Inv2" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 196.0
 offset_top = 919.0
 offset_right = 338.0
 offset_bottom = 1061.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="Inventaire 1/Inv2" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv2" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv3" type="TextureButton" parent="Inventaire 1"]
+[node name="Inv3" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 364.0
 offset_top = 919.0
 offset_right = 506.0
 offset_bottom = 1061.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="Inventaire 1/Inv3" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv3" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv4" type="TextureButton" parent="Inventaire 1"]
+[node name="Inv4" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 531.0
 offset_top = 919.0
 offset_right = 673.0
 offset_bottom = 1061.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="Inventaire 1/Inv4" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv4" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv5" type="TextureButton" parent="Inventaire 1"]
+[node name="Inv5" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 701.0
 offset_top = 919.0
 offset_right = 843.0
 offset_bottom = 1061.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="Inventaire 1/Inv5" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv5" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Arme1" type="TextureButton" parent="Inventaire 1"]
+[node name="Arme1" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1239.0
 offset_top = 868.0
 offset_right = 1424.0
 offset_bottom = 1055.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Arme2" type="TextureButton" parent="Inventaire 1"]
+[node name="Arme2" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1469.0
 offset_top = 870.0
 offset_right = 1654.0
 offset_bottom = 1057.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Arme3" type="TextureButton" parent="Inventaire 1"]
+[node name="Arme3" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1697.0
 offset_top = 868.0
 offset_right = 1882.0
 offset_bottom = 1055.0
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
