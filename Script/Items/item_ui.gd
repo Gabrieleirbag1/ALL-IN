@@ -1,6 +1,7 @@
 class_name Item extends Node2D
 
-var draggable: bool = false
+var draggable: bool = true
+var is_click_event_active: bool = false
 var is_inside_dropable: bool = false
 var body_ref
 var initialPos
@@ -44,6 +45,7 @@ func add_to_item_frame():
 	item_frames_inside[str(body_ref)] = self
 	
 func add_input_click_action():
+	is_click_event_active = true
 	if not InputMap.has_action("click"):
 		InputMap.add_action("click")
 		var mouse_button_event = InputEventMouseButton.new()
@@ -75,7 +77,7 @@ func handle_place_in_frame_action():
 					tween.finished.connect(_on_tween_completed)
 
 func handle_click_action():
-	if draggable:
+	if draggable and is_click_event_active:
 		if Input.is_action_just_pressed("click"):
 			Global.dragged_item = self
 			initialPos = global_position
@@ -113,13 +115,13 @@ func _process(_delta: float) -> void:
 	handle_click_action()
 
 func _on_area_2d_mouse_entered() -> void:
-	if not Global.is_dragging and InputMap.has_action("click"):
+	if not Global.is_dragging and is_click_event_active:
 		draggable = true
 		scale = Vector2(1.05, 1.05)
 		handle_item_layer(1, false)
 
 func _on_area_2d_mouse_exited() -> void:
-	if not Global.is_dragging:
+	if not Global.is_dragging and is_click_event_active:
 		draggable = false
 		scale = Vector2(1, 1)
 		#handle_item_layer(0, true)
