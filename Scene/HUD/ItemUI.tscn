@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lj1vhb8ywbbe"]
 
-[ext_resource type="Texture2D" uid="uid://dvs63uy5uq768" path="res://Assets/icon.svg" id="1_3bxrq"]
 [ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/Items/item_ui.gd" id="1_k8ivp"]
+[ext_resource type="Texture2D" uid="uid://cnc631nuf01mt" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h700q"]
 size = Vector2(38, 40)
@@ -10,8 +10,7 @@ size = Vector2(38, 40)
 script = ExtResource("1_k8ivp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.308594, 0.308594)
-texture = ExtResource("1_3bxrq")
+texture = ExtResource("2_pe54i")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 9

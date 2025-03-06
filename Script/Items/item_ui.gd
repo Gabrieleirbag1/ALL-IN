@@ -27,7 +27,7 @@ func handle_item_layer(layer: int, viewport: bool):
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
-
+	
 func get_empty_item_frame():
 	for i in range(item_frames.size()):
 		var item_frame = item_frames[i]
@@ -42,7 +42,22 @@ func add_to_item_frame():
 			item_frames_inside[str(item)] = null
 			break
 	item_frames_inside[str(body_ref)] = self
+	
+func add_input_click_action():
+	if not InputMap.has_action("click"):
+		InputMap.add_action("click")
+		var mouse_button_event = InputEventMouseButton.new()
+		mouse_button_event.button_index = MOUSE_BUTTON_LEFT
+		InputMap.action_add_event("click", mouse_button_event)
+	
+func scale_item_size():
+	var item_sprite: Sprite2D = self.get_node("Sprite2D")
+	item_sprite.scale = Vector2(3, 3)
 
+func _on_tween_completed():
+	scale_item_size()
+	add_input_click_action()
+	
 func handle_place_in_frame_action():
 	if not Global.is_dragging:
 		if Input.is_action_just_pressed("place_in_frame") and has_player_entered:
@@ -54,9 +69,10 @@ func handle_place_in_frame_action():
 					var last_body = item_frames[index_empty_frame]
 					is_inside_dropable = true
 					body_ref = last_body
-					var tween = get_tree().create_tween()
+					var tween: Tween = get_tree().create_tween()
 					add_to_item_frame()
 					tween.tween_property(self, "global_position", last_body.global_position, 0.2).set_ease(Tween.EASE_OUT)
+					tween.finished.connect(_on_tween_completed)
 
 func handle_click_action():
 	if draggable:
@@ -91,18 +107,13 @@ func _ready() -> void:
 		var key_event = InputEventKey.new()
 		key_event.physical_keycode = KEY_E
 		InputMap.action_add_event("place_in_frame", key_event)
-	if not InputMap.has_action("click"):
-		InputMap.add_action("click")
-		var mouse_button_event = InputEventMouseButton.new()
-		mouse_button_event.button_index = MOUSE_BUTTON_LEFT
-		InputMap.action_add_event("click", mouse_button_event)
 
 func _process(_delta: float) -> void:
 	handle_place_in_frame_action()
 	handle_click_action()
 
 func _on_area_2d_mouse_entered() -> void:
-	if not Global.is_dragging:
+	if not Global.is_dragging and InputMap.has_action("click"):
 		draggable = true
 		scale = Vector2(1.05, 1.05)
 		handle_item_layer(1, false)
