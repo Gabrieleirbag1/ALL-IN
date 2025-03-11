@@ -22,7 +22,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Global.item_frames_inside:
 		if Global.item_frames_inside[self]:
-			if not Global.item_frames_inside[self] == Global.dragged_item:
+			if self.is_in_group("weapons"):
+				return
+			elif not Global.item_frames_inside[self] == Global.dragged_item:
 				$TextureRect.material.set_shader_parameter("brightness", 25)
 		else:
 			if Global.is_dragging:
