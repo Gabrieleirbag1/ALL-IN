@@ -1,9 +1,9 @@
 class_name Item extends Node2D
 
-var draggable: bool = true
+var draggable: bool = false
 var is_click_event_active: bool = false
 var is_inside_dropable: bool = false
-var body_ref
+var body_ref: BasicFrame
 var initialPos
 var offset: Vector2
 var hovered_dropables = []
@@ -32,17 +32,17 @@ func handle_item_layer(layer: int, viewport: bool):
 func get_empty_item_frame():
 	for i in range(item_frames.size()):
 		var item_frame = item_frames[i]
-		if not item_frames_inside[str(item_frame)]:
+		if not item_frames_inside[item_frame]:
 			var index_empty_frame = i
 			return index_empty_frame
 	return -1
 
 func add_to_item_frame():
 	for item in item_frames:
-		if item_frames_inside[str(item)] == self:
-			item_frames_inside[str(item)] = null
+		if item_frames_inside[item] == self:
+			item_frames_inside[item] = null
 			break
-	item_frames_inside[str(body_ref)] = self
+	item_frames_inside[body_ref] = self
 	
 func add_input_click_action():
 	is_click_event_active = true
@@ -53,8 +53,7 @@ func add_input_click_action():
 		InputMap.action_add_event("click", mouse_button_event)
 	
 func scale_item_size():
-	var item_sprite: Sprite2D = self.get_node("Sprite2D")
-	item_sprite.scale = Vector2(3, 3)
+	self.scale = Vector2(body_ref.item_scaling_x, body_ref.item_scaling_y)
 
 func _on_tween_completed():
 	scale_item_size()
@@ -90,7 +89,7 @@ func handle_click_action():
 			Global.is_dragging = false
 			Global.dragged_item = null
 			var tween = get_tree().create_tween()
-			if is_inside_dropable and not item_frames_inside[str(body_ref)]:
+			if is_inside_dropable and not item_frames_inside[body_ref]:
 				add_to_item_frame()
 				tween.tween_property(self, "global_position", body_ref.global_position, 0.2).set_ease(Tween.EASE_OUT)
 			else:
@@ -102,7 +101,7 @@ func handle_click_action():
 func _ready() -> void:
 	item_frames = get_tree().get_nodes_in_group("dropable")
 	for item in item_frames:
-		item_frames_inside[str(item)] = null
+		item_frames_inside[item] = null
 		
 	if not InputMap.has_action("place_in_frame"):
 		InputMap.add_action("place_in_frame")
@@ -117,13 +116,13 @@ func _process(_delta: float) -> void:
 func _on_area_2d_mouse_entered() -> void:
 	if not Global.is_dragging and is_click_event_active:
 		draggable = true
-		scale = Vector2(1.05, 1.05)
+		scale = Vector2(body_ref.item_scaling_x + 0.05, body_ref.item_scaling_y + 0.05)
 		handle_item_layer(1, false)
 
 func _on_area_2d_mouse_exited() -> void:
 	if not Global.is_dragging and is_click_event_active:
 		draggable = false
-		scale = Vector2(1, 1)
+		scale = Vector2(body_ref.item_scaling_x, body_ref.item_scaling_y)
 		#handle_item_layer(0, true)
 
 func _on_area_2d_body_entered(body) -> void:
@@ -143,7 +142,7 @@ func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", false)
 		body.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
-		if not item_frames_inside[str(body)]:
+		if not item_frames_inside[body]:
 			hovered_dropables.erase(body)
 			if hovered_dropables.size() > 0:
 				var last_body = hovered_dropables[-1]

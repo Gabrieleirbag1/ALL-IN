@@ -13,13 +13,12 @@ script = ExtResource("1_6sp7i")
 metadata/_custom_type_script = "uid://ogid0muhts6o"
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -73.0
-offset_top = -72.0
-offset_right = 73.0
-offset_bottom = 72.0
+offset_left = -94.0
+offset_top = -94.0
+offset_right = 95.0
+offset_bottom = 95.0
 texture = ExtResource("2_6sp7i")
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(22, 23)
 shape = SubResource("RectangleShape2D_rmamv")

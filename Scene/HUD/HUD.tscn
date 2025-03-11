@@ -226,7 +226,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="WeaponFrame" parent="HUDTextureRect/Arme1" instance=ExtResource("6_2vpg4")]
-position = Vector2(72, 70)
+position = Vector2(94, 93)
 
 [node name="Arme2" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
@@ -238,7 +238,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="WeaponFrame" parent="HUDTextureRect/Arme2" instance=ExtResource("6_2vpg4")]
-position = Vector2(72, 70)
+position = Vector2(94, 93)
 
 [node name="Arme3" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
@@ -250,4 +250,4 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="WeaponFrame" parent="HUDTextureRect/Arme3" instance=ExtResource("6_2vpg4")]
-position = Vector2(72, 71)
+position = Vector2(94, 93)
