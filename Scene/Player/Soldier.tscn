@@ -1,9 +1,9 @@
 [gd_scene load_steps=49 format=3 uid="uid://dpvkix61223vq"]
 
-[ext_resource type="Script" uid="uid://dbhx78ptci3gq" path="res://Script/Player/player.gd" id="1_xmqv2"]
+[ext_resource type="Script" path="res://Script/Player/player.gd" id="1_xmqv2"]
 [ext_resource type="Texture2D" uid="uid://bq7my48kt3rx4" path="res://Assets/Characters/Soldier/Soldier with shadows/Soldier 2.png" id="2_o2plk"]
 [ext_resource type="Texture2D" uid="uid://cinaeeu7vwoji" path="res://Assets/level-bg.png" id="4_rwpsc"]
-[ext_resource type="Script" uid="uid://bj48fhgxdjx08" path="res://Script/Player/health_bar.gd" id="5_3cb07"]
+[ext_resource type="Script" path="res://Script/Player/health_bar.gd" id="5_3cb07"]
 [ext_resource type="PackedScene" uid="uid://nbjb34rx2gns" path="res://Scene/Menu/Game_over.tscn" id="7_ervnd"]
 [ext_resource type="AudioStream" uid="uid://ri6jwigrtl5k" path="res://Sounds/Death.wav" id="8_57yjy"]
 [ext_resource type="AudioStream" uid="uid://bkiv058rifq7l" path="res://Sounds/hurt_2-[AudioTrimmer.com].wav" id="9_3vj7c"]
