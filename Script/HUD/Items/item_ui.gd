@@ -9,6 +9,7 @@ var offset: Vector2
 var hovered_dropables: Array[BasicFrame] = []
 var item_frames: Array = []
 var has_player_entered: bool
+var is_inside_weapon_frame: bool = false
 
 @onready var item_frames_inside: Dictionary[BasicFrame, Node2D] = Global.item_frames_inside
 @onready var dragged_item: Node2D = Global.dragged_item
@@ -32,10 +33,20 @@ func handle_item_layer(layer: int, viewport: bool):
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
 		var item_frame: BasicFrame = item_frames[i]
-		if not item_frames_inside[item_frame]:
-			var index_empty_frame: int = i
-			return index_empty_frame
+		if not item_frame.is_in_group("weapons"):
+			if not item_frames_inside[item_frame]:
+				var index_empty_frame: int = i
+				return index_empty_frame
 	return -1
+
+func is_addable_to_item_frame() -> bool:
+	if not is_inside_dropable:
+		return false
+	if item_frames_inside[body_ref]:
+		return false
+	if is_inside_weapon_frame:
+		return false
+	return true
 
 func add_to_item_frame():
 	for item in item_frames:
@@ -43,6 +54,8 @@ func add_to_item_frame():
 			item_frames_inside[item] = null
 			break
 	item_frames_inside[body_ref] = self
+	if body_ref.is_in_group("weapons"):
+		is_inside_weapon_frame = true
 	
 func add_input_click_action():
 	is_click_event_active = true
@@ -90,7 +103,7 @@ func handle_click_action():
 			Global.is_dragging = false
 			Global.dragged_item = null
 			var tween: Tween = get_tree().create_tween()
-			if is_inside_dropable and not item_frames_inside[body_ref]:
+			if is_addable_to_item_frame():
 				add_to_item_frame()
 				tween.tween_property(self, "global_position", body_ref.global_position, 0.2).set_ease(Tween.EASE_OUT)
 			else:
@@ -118,7 +131,7 @@ func _on_area_2d_mouse_entered() -> void:
 	if not Global.is_dragging and is_click_event_active:
 		draggable = true
 		scale = Vector2(body_ref.item_scaling_x + 0.05, body_ref.item_scaling_y + 0.05)
-		handle_item_layer(1, false)
+		#handle_item_layer(1, false)
 
 func _on_area_2d_mouse_exited() -> void:
 	if not Global.is_dragging and is_click_event_active:

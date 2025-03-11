@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmamv"]
 size = Vector2(146, 142)
 
-[node name="ItemFrame" type="StaticBody2D" groups=["dropable", "inventory"]]
+[node name="ItemFrame" type="StaticBody2D" groups=["dropable"]]
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_744go")
