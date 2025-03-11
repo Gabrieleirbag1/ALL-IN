@@ -25,7 +25,7 @@ func place_in_itemlayer():
 		global_position = self.global_position
 
 func handle_item_layer(layer: int, viewport: bool):
-	var canvas_layer: CanvasLayer = self.get_parent()
+	var canvas_layer = self.get_parent()
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
@@ -98,7 +98,8 @@ func handle_click_action():
 		if Input.is_action_pressed("click"):
 			Global.dragged_item = self
 			global_position = get_global_mouse_position() - offset
-			scale_item_size()
+			if not is_inside_weapon_frame:
+				scale_item_size()
 		elif Input.is_action_just_released("click"):
 			Global.is_dragging = false
 			Global.dragged_item = null

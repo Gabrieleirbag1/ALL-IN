@@ -82,4 +82,6 @@ pause={
 2d_physics/layer_2="Environnement"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="LuckyBlock"
+2d_physics/layer_5="Layer 5"
+2d_physics/layer_6="HUD"
 2d_physics/layer_10="XP"

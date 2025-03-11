@@ -7,7 +7,7 @@
 size = Vector2(189, 189)
 
 [node name="WeaponFrame" type="StaticBody2D" groups=["dropable", "weapons"]]
-collision_layer = 8
+collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_6sp7i")
 metadata/_custom_type_script = "uid://ogid0muhts6o"
