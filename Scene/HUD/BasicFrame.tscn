@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://2c876rok13we"]
+[gd_scene load_steps=4 format=3 uid="uid://c30a84e3ppsgj"]
 
-[ext_resource type="Script" uid="uid://dkx88tapmbukn" path="res://Script/HUD/basic_frame.gd" id="1_s2ubm"]
 [ext_resource type="Texture2D" uid="uid://b30iwii8uhfdo" path="res://Assets/HUD/Item Frame 1 Background.png" id="2_56vmc"]
+
+[sub_resource type="GDScript" id="GDScript_pcdtn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ee63k"]
 size = Vector2(146, 142)
 
-[node name="BasicFrame" type="StaticBody2D"]
-script = ExtResource("1_s2ubm")
+[node name="ItemFrame" type="StaticBody2D"]
+script = SubResource("GDScript_pcdtn")
 metadata/_custom_type_script = "uid://ogid0muhts6o"
 
 [node name="TextureRect" type="TextureRect" parent="."]

@@ -1,4 +1,4 @@
-extends BasicFrame
+extends ItemFrame
 
 func _init() -> void:
 	item_scaling_x = 4

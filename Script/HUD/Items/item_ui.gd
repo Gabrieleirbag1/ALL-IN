@@ -3,15 +3,15 @@ class_name Item extends Node2D
 var draggable: bool = false
 var is_click_event_active: bool = false
 var is_inside_dropable: bool = false
-var body_ref: BasicFrame
+var body_ref: ItemFrame
 var initialPos: Vector2
 var offset: Vector2
-var hovered_dropables: Array[BasicFrame] = []
+var hovered_dropables: Array[ItemFrame] = []
 var item_frames: Array = []
 var has_player_entered: bool
 var is_inside_weapon_frame: bool = false
 
-@onready var item_frames_inside: Dictionary[BasicFrame, Node2D] = Global.item_frames_inside
+@onready var item_frames_inside: Dictionary[ItemFrame, Node2D] = Global.item_frames_inside
 @onready var dragged_item: Node2D = Global.dragged_item
 
 @export var item_layer_scene: PackedScene
@@ -32,7 +32,7 @@ func handle_item_layer(layer: int, viewport: bool):
 	
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
-		var item_frame: BasicFrame = item_frames[i]
+		var item_frame: ItemFrame = item_frames[i]
 		if not item_frame.is_in_group("weapons"):
 			if not item_frames_inside[item_frame]:
 				var index_empty_frame: int = i
@@ -80,7 +80,7 @@ func handle_place_in_frame_action():
 				if index_empty_frame != -1:
 					place_in_itemlayer()
 					handle_item_layer(1, false)
-					var last_body: BasicFrame = item_frames[index_empty_frame]
+					var last_body: ItemFrame = item_frames[index_empty_frame]
 					is_inside_dropable = true
 					body_ref = last_body
 					var tween: Tween = get_tree().create_tween()
@@ -146,7 +146,7 @@ func _on_area_2d_body_entered(body) -> void:
 		body.set("is_item_inside", true)
 		for b in hovered_dropables:
 			b.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
-		var last_body: BasicFrame = hovered_dropables[-1]
+		var last_body: ItemFrame = hovered_dropables[-1]
 		last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 		is_inside_dropable = true
 		body_ref = last_body
@@ -160,7 +160,7 @@ func _on_area_2d_body_exited(body) -> void:
 		if not item_frames_inside[body]:
 			hovered_dropables.erase(body)
 			if hovered_dropables.size() > 0:
-				var last_body: BasicFrame = hovered_dropables[-1]
+				var last_body: ItemFrame = hovered_dropables[-1]
 				last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 				body_ref = last_body
 			else:
