@@ -10,8 +10,8 @@ var hovered_dropables = []
 var item_frames = []
 var has_player_entered: bool
 
-@onready var item_frames_inside = Global.item_frames_inside
-@onready var dragged_item = Global.dragged_item
+@onready var item_frames_inside: Dictionary[BasicFrame, Node2D] = Global.item_frames_inside
+@onready var dragged_item: Node2D = Global.dragged_item
 
 @export var item_layer_scene: PackedScene
 
@@ -85,6 +85,7 @@ func handle_click_action():
 		if Input.is_action_pressed("click"):
 			Global.dragged_item = self
 			global_position = get_global_mouse_position() - offset
+			scale_item_size()
 		elif Input.is_action_just_released("click"):
 			Global.is_dragging = false
 			Global.dragged_item = null
