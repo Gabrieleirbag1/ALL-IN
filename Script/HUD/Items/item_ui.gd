@@ -6,7 +6,7 @@ var is_inside_dropable: bool = false
 var body_ref: BasicFrame
 var initialPos: Vector2
 var offset: Vector2
-var hovered_dropables = []
+var hovered_dropables: Array[BasicFrame] = []
 var item_frames: Array = []
 var has_player_entered: bool
 
