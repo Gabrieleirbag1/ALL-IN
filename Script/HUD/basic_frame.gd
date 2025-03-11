@@ -1,4 +1,4 @@
-extends StaticBody2D
+class_name BasicFrame extends StaticBody2D
 
 var is_item_inside = false
 

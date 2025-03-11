@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=9 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
 [ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/HUD/ItemFrame.tscn" id="2_hrmfr"]
 [ext_resource type="FontFile" uid="uid://c6br6sgd5vu2j" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
 [ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
 [ext_resource type="Script" path="res://Script/fitted_label.gd" id="3_gtnfq"]
+[ext_resource type="PackedScene" uid="uid://b3jyqac724lmn" path="res://Scene/HUD/WeaponFrame.tscn" id="6_2vpg4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltxks"]
 bg_color = Color(0.349689, 0.349689, 0.349689, 1)
@@ -224,6 +225,9 @@ offset_bottom = 1055.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="WeaponFrame" parent="HUDTextureRect/Arme1" instance=ExtResource("6_2vpg4")]
+position = Vector2(72, 70)
+
 [node name="Arme2" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1469.0
@@ -233,6 +237,9 @@ offset_bottom = 1057.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="WeaponFrame" parent="HUDTextureRect/Arme2" instance=ExtResource("6_2vpg4")]
+position = Vector2(72, 70)
+
 [node name="Arme3" type="TextureButton" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1697.0
@@ -241,3 +248,6 @@ offset_right = 1882.0
 offset_bottom = 1055.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="WeaponFrame" parent="HUDTextureRect/Arme3" instance=ExtResource("6_2vpg4")]
+position = Vector2(72, 71)

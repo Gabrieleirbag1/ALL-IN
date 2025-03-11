@@ -1,6 +1,5 @@
 # slime.gd
-extends "enemy.gd"
-
+extends Enemy
 
 func _init() -> void:
 	drop_xp = 10

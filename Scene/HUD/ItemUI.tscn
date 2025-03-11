@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://lj1vhb8ywbbe"]
 
-[ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/Items/item_ui.gd" id="1_k8ivp"]
+[ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/HUD/Items/item_ui.gd" id="1_k8ivp"]
 [ext_resource type="Texture2D" uid="uid://cnc631nuf01mt" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h700q"]
