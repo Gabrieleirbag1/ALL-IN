@@ -4,10 +4,10 @@ var draggable: bool = false
 var is_click_event_active: bool = false
 var is_inside_dropable: bool = false
 var body_ref: BasicFrame
-var initialPos
+var initialPos: Vector2
 var offset: Vector2
 var hovered_dropables = []
-var item_frames = []
+var item_frames: Array = []
 var has_player_entered: bool
 
 @onready var item_frames_inside: Dictionary[BasicFrame, Node2D] = Global.item_frames_inside
@@ -24,16 +24,16 @@ func place_in_itemlayer():
 		global_position = self.global_position
 
 func handle_item_layer(layer: int, viewport: bool):
-	var canvas_layer = self.get_parent()
+	var canvas_layer: CanvasLayer = self.get_parent()
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
 	
-func get_empty_item_frame():
+func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
-		var item_frame = item_frames[i]
+		var item_frame: BasicFrame = item_frames[i]
 		if not item_frames_inside[item_frame]:
-			var index_empty_frame = i
+			var index_empty_frame: int = i
 			return index_empty_frame
 	return -1
 
@@ -63,11 +63,11 @@ func handle_place_in_frame_action():
 	if not Global.is_dragging:
 		if Input.is_action_just_pressed("place_in_frame") and has_player_entered:
 			if item_frames.size() > 0:
-				var index_empty_frame = get_empty_item_frame()
+				var index_empty_frame: int = get_empty_item_frame()
 				if index_empty_frame != -1:
 					place_in_itemlayer()
 					handle_item_layer(1, false)
-					var last_body = item_frames[index_empty_frame]
+					var last_body: BasicFrame = item_frames[index_empty_frame]
 					is_inside_dropable = true
 					body_ref = last_body
 					var tween: Tween = get_tree().create_tween()
@@ -89,7 +89,7 @@ func handle_click_action():
 		elif Input.is_action_just_released("click"):
 			Global.is_dragging = false
 			Global.dragged_item = null
-			var tween = get_tree().create_tween()
+			var tween: Tween = get_tree().create_tween()
 			if is_inside_dropable and not item_frames_inside[body_ref]:
 				add_to_item_frame()
 				tween.tween_property(self, "global_position", body_ref.global_position, 0.2).set_ease(Tween.EASE_OUT)
@@ -106,7 +106,7 @@ func _ready() -> void:
 		
 	if not InputMap.has_action("place_in_frame"):
 		InputMap.add_action("place_in_frame")
-		var key_event = InputEventKey.new()
+		var key_event: InputEvent = InputEventKey.new()
 		key_event.physical_keycode = KEY_E
 		InputMap.action_add_event("place_in_frame", key_event)
 
@@ -132,7 +132,7 @@ func _on_area_2d_body_entered(body) -> void:
 		body.set("is_item_inside", true)
 		for b in hovered_dropables:
 			b.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
-		var last_body = hovered_dropables[-1]
+		var last_body: BasicFrame = hovered_dropables[-1]
 		last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 		is_inside_dropable = true
 		body_ref = last_body
@@ -146,7 +146,7 @@ func _on_area_2d_body_exited(body) -> void:
 		if not item_frames_inside[body]:
 			hovered_dropables.erase(body)
 			if hovered_dropables.size() > 0:
-				var last_body = hovered_dropables[-1]
+				var last_body: BasicFrame = hovered_dropables[-1]
 				last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 				body_ref = last_body
 			else:
