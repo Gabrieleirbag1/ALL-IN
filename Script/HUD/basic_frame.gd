@@ -28,7 +28,9 @@ func _process(_delta: float) -> void:
 				$TextureRect.material.set_shader_parameter("brightness", 25)
 		else:
 			if Global.is_dragging:
-				if not is_item_inside:
+				if Global.dragged_item.is_inside_weapon_frame:
+					$TextureRect.material.set_shader_parameter("brightness", 1.0)
+				elif not is_item_inside:
 					$TextureRect.material.set_shader_parameter("brightness", 12)
 				elif is_item_inside:
 					$TextureRect.material.set_shader_parameter("brightness", 25)
