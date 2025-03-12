@@ -43,7 +43,7 @@ func update_brightness() -> void:
 # Handle brightness for frames containing items
 func _handle_occupied_frame() -> void:
 	if self.is_in_group("weapons"):
-		return
+		set_brightness(BRIGHTNESS_SELECTED)
 		
 	if Global.item_frames_inside[self] != Global.dragged_item:
 		set_brightness(BRIGHTNESS_SELECTED)
@@ -61,8 +61,6 @@ func _update_brightness_while_dragging() -> void:
 		set_brightness(BRIGHTNESS_NORMAL)
 	elif not is_item_inside:
 		set_brightness(BRIGHTNESS_HIGHLIGHTED)
-	else:
-		set_brightness(BRIGHTNESS_SELECTED)
 
 # Helper method to set brightness parameter
 func set_brightness(value: float) -> void:

@@ -11,6 +11,9 @@ var item_frames: Array = []
 var has_player_entered: bool
 var is_inside_weapon_frame: bool = false
 
+var current_hovered_body: ItemFrame
+var last_hovered_body: ItemFrame
+
 @onready var item_frames_inside: Dictionary[ItemFrame, Node2D] = Global.item_frames_inside
 @onready var dragged_item: Node2D = Global.dragged_item
 
@@ -65,8 +68,10 @@ func add_input_click_action():
 		mouse_button_event.button_index = MOUSE_BUTTON_LEFT
 		InputMap.action_add_event("click", mouse_button_event)
 	
-func scale_item_size():
-	self.scale = Vector2(body_ref.item_scaling_x, body_ref.item_scaling_y)
+func scale_item_size(offset: float = 0.0):
+	if body_ref:
+		if not is_inside_weapon_frame:
+			self.scale = Vector2(body_ref.item_scaling_x + offset, body_ref.item_scaling_y + offset)
 
 func _on_tween_completed():
 	scale_item_size()
@@ -98,9 +103,8 @@ func handle_click_action():
 		if Input.is_action_pressed("click"):
 			Global.dragged_item = self
 			global_position = get_global_mouse_position() - offset
-			if not is_inside_weapon_frame:
-				scale_item_size()
 		elif Input.is_action_just_released("click"):
+			scale_item_size()
 			Global.is_dragging = false
 			Global.dragged_item = null
 			var tween: Tween = get_tree().create_tween()
@@ -129,43 +133,60 @@ func _process(_delta: float) -> void:
 	handle_click_action()
 
 func _on_area_2d_mouse_entered() -> void:
-	if not Global.is_dragging and is_click_event_active:
-		draggable = true
-		scale = Vector2(body_ref.item_scaling_x + 0.05, body_ref.item_scaling_y + 0.05)
-		#handle_item_layer(1, false)
+	_draggable_mouse_event(true, 0.1)
 
 func _on_area_2d_mouse_exited() -> void:
-	if not Global.is_dragging and is_click_event_active:
-		draggable = false
-		scale = Vector2(body_ref.item_scaling_x, body_ref.item_scaling_y)
-		#handle_item_layer(0, true)
+	_draggable_mouse_event(false)
 
+func _draggable_mouse_event(draggable_value, offset: float = 0.0):
+	if not Global.is_dragging and is_click_event_active:
+		draggable = draggable_value
+		scale_item_size(offset)
+		
 func _on_area_2d_body_entered(body) -> void:
 	if body.is_in_group('dropable'):
-		hovered_dropables.append(body)
 		body.set("is_item_inside", true)
-		for b in hovered_dropables:
-			b.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
-		var last_body: ItemFrame = hovered_dropables[-1]
-		last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
+		
+		# Reset previous hovered body to normal highlight
+		if current_hovered_body and current_hovered_body != body:
+			current_hovered_body.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
+		
+		# Set the new hovered body
+		current_hovered_body = body
+		
+		# Set the new body to selected brightness
+		body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
 		is_inside_dropable = true
-		body_ref = last_body
+		body_ref = body
+		scale_item_size()
 	if body.name == "Player":
 		has_player_entered = true
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", false)
-		body.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
-		if not item_frames_inside[body]:
-			hovered_dropables.erase(body)
-			if hovered_dropables.size() > 0:
-				var last_body: ItemFrame = hovered_dropables[-1]
-				last_body.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
-				body_ref = last_body
-			else:
+		
+		# Only reset brightness if this is the current hovered body
+		if body == current_hovered_body:
+			body.get_node("TextureRect").material.set_shader_parameter("brightness", 12)
+			current_hovered_body = null
+			
+			# Find a new current_hovered_body among the still hovered frames
+			for frame in item_frames:
+				if frame.is_in_group('dropable') and frame.is_item_inside and frame != body:
+					current_hovered_body = frame
+					frame.get_node("TextureRect").material.set_shader_parameter("brightness", 25)
+					is_inside_dropable = true
+					body_ref = frame
+					break
+			
+			# If no other frame is hovered, reset states
+			if not current_hovered_body:
 				is_inside_dropable = false
 				body_ref = null
+		
+		scale_item_size()
+		last_hovered_body = body
 	if body.name == "Player":
 		has_player_entered = false
 		
