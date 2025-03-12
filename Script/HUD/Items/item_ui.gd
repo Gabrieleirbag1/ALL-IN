@@ -76,6 +76,9 @@ func scale_item_size(offset: float = 0.0):
 func _on_tween_completed():
 	scale_item_size()
 	add_input_click_action()
+	var collision_object: Area2D = $Area2D 
+	if collision_object:
+		collision_object.set_collision_mask_value(7, true)
 	
 func handle_place_in_frame_action():
 	if not Global.is_dragging:
@@ -144,6 +147,8 @@ func _draggable_mouse_event(draggable_value, offset: float = 0.0):
 		scale_item_size(offset)
 		
 func _on_area_2d_body_entered(body) -> void:
+	if body.name == "ItemGarbageArea":
+		print(1)
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", true)
 		
@@ -189,4 +194,10 @@ func _on_area_2d_body_exited(body) -> void:
 		last_hovered_body = body
 	if body.name == "Player":
 		has_player_entered = false
-		
+
+func _on_item_garbage_area_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_item_garbage_area_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=9 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
 [ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/HUD/ItemFrame.tscn" id="2_hrmfr"]
@@ -29,12 +29,6 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vpg4"]
-size = Vector2(870, 186)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8d2h"]
-size = Vector2(715, 238)
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -162,101 +156,109 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_53koo")
 value = 0.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Inventory" type="Area2D" parent="HUDTextureRect"]
-position = Vector2(917, 1031)
-
-[node name="Inv1" type="TextureButton" parent="HUDTextureRect/Inventory"]
-offset_left = -890.0
-offset_top = -112.0
-offset_right = -748.0
-offset_bottom = 30.0
+[node name="Inv1" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 919.0
+offset_right = 169.0
+offset_bottom = 1061.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="HUDTextureRect/Inventory/Inv1" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv1" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv2" type="TextureButton" parent="HUDTextureRect/Inventory"]
-offset_left = -721.0
-offset_top = -112.0
-offset_right = -579.0
-offset_bottom = 30.0
+[node name="Inv2" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 919.0
+offset_right = 338.0
+offset_bottom = 1061.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="HUDTextureRect/Inventory/Inv2" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv2" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv3" type="TextureButton" parent="HUDTextureRect/Inventory"]
-offset_left = -553.0
-offset_top = -112.0
-offset_right = -411.0
-offset_bottom = 30.0
+[node name="Inv3" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 364.0
+offset_top = 919.0
+offset_right = 506.0
+offset_bottom = 1061.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="HUDTextureRect/Inventory/Inv3" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv3" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv4" type="TextureButton" parent="HUDTextureRect/Inventory"]
-offset_left = -386.0
-offset_top = -112.0
-offset_right = -244.0
-offset_bottom = 30.0
+[node name="Inv4" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 531.0
+offset_top = 919.0
+offset_right = 673.0
+offset_bottom = 1061.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="HUDTextureRect/Inventory/Inv4" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv4" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="Inv5" type="TextureButton" parent="HUDTextureRect/Inventory"]
-offset_left = -216.0
-offset_top = -112.0
-offset_right = -74.0
-offset_bottom = 30.0
+[node name="Inv5" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 919.0
+offset_right = 843.0
+offset_bottom = 1061.0
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="ItemFrame" parent="HUDTextureRect/Inventory/Inv5" instance=ExtResource("2_hrmfr")]
+[node name="ItemFrame" parent="HUDTextureRect/Inv5" instance=ExtResource("2_hrmfr")]
 position = Vector2(72, 71)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUDTextureRect/Inventory"]
-position = Vector2(-481, -45)
-shape = SubResource("RectangleShape2D_2vpg4")
+[node name="Arme1" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 1239.0
+offset_top = 868.0
+offset_right = 1424.0
+offset_bottom = 1055.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Weapons" type="Area2D" parent="HUDTextureRect"]
+[node name="WeaponFrame" parent="HUDTextureRect/Arme1" instance=ExtResource("6_2vpg4")]
+position = Vector2(94, 93)
+
+[node name="Arme2" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 1469.0
+offset_top = 870.0
+offset_right = 1654.0
+offset_bottom = 1057.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="WeaponFrame" parent="HUDTextureRect/Arme2" instance=ExtResource("6_2vpg4")]
+position = Vector2(94, 93)
+
+[node name="Arme3" type="TextureButton" parent="HUDTextureRect"]
+layout_mode = 0
+offset_left = 1697.0
+offset_top = 868.0
+offset_right = 1882.0
+offset_bottom = 1055.0
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="WeaponFrame" parent="HUDTextureRect/Arme3" instance=ExtResource("6_2vpg4")]
+position = Vector2(94, 93)
+
+[node name="ItemGarbageCanvas" type="CanvasLayer" parent="."]
+
+[node name="ItemGarbageArea" type="StaticBody2D" parent="ItemGarbageCanvas"]
 position = Vector2(1239, 868)
+collision_layer = 64
+collision_mask = 0
 
-[node name="Arme1" type="TextureButton" parent="HUDTextureRect/Weapons"]
-offset_right = 185.0
-offset_bottom = 187.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="WeaponFrame" parent="HUDTextureRect/Weapons/Arme1" instance=ExtResource("6_2vpg4")]
-position = Vector2(94, 93)
-
-[node name="Arme2" type="TextureButton" parent="HUDTextureRect/Weapons"]
-offset_left = 230.0
-offset_top = 2.0
-offset_right = 415.0
-offset_bottom = 189.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="WeaponFrame" parent="HUDTextureRect/Weapons/Arme2" instance=ExtResource("6_2vpg4")]
-position = Vector2(94, 93)
-
-[node name="Arme3" type="TextureButton" parent="HUDTextureRect/Weapons"]
-offset_left = 458.0
-offset_right = 643.0
-offset_bottom = 187.0
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="WeaponFrame" parent="HUDTextureRect/Weapons/Arme3" instance=ExtResource("6_2vpg4")]
-position = Vector2(94, 93)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HUDTextureRect/Weapons"]
-position = Vector2(323.5, 93)
-shape = SubResource("RectangleShape2D_a8d2h")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ItemGarbageCanvas/ItemGarbageArea"]
+position = Vector2(670, -49)
+polygon = PackedVector2Array(11, 10, -680, 10, -714, 61, -1908, 60, -1909, -818, 11, -819, 11, 10)
