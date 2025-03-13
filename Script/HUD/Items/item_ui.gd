@@ -10,6 +10,7 @@ var hovered_dropables: Array[ItemFrame] = []
 var item_frames: Array = []
 var has_player_entered: bool
 var is_inside_weapon_frame: bool = false
+var is_throwaway: bool = false
 
 var current_hovered_body: ItemFrame
 var last_hovered_body: ItemFrame
@@ -108,6 +109,8 @@ func handle_click_action():
 			global_position = get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
 			scale_item_size()
+			if is_throwaway:
+				queue_free()
 			Global.is_dragging = false
 			Global.dragged_item = null
 			var tween: Tween = get_tree().create_tween()
@@ -148,7 +151,7 @@ func _draggable_mouse_event(draggable_value, offset: float = 0.0):
 		
 func _on_area_2d_body_entered(body) -> void:
 	if body.name == "ItemGarbageArea":
-		print(1)
+		is_throwaway = true
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", true)
 		
@@ -168,6 +171,8 @@ func _on_area_2d_body_entered(body) -> void:
 		has_player_entered = true
 
 func _on_area_2d_body_exited(body) -> void:
+	if body.name == "ItemGarbageArea":
+		is_throwaway = false
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", false)
 		
@@ -194,10 +199,3 @@ func _on_area_2d_body_exited(body) -> void:
 		last_hovered_body = body
 	if body.name == "Player":
 		has_player_entered = false
-
-func _on_item_garbage_area_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-
-
-func _on_item_garbage_area_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
