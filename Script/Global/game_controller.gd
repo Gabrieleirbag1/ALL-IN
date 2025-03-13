@@ -25,3 +25,6 @@ func stats_progress(stats: Dictionary) -> void:
 	
 func enemy_death(xp: int, enemy_position: Vector2, enemy_type: String):
 	EventController.emit_signal("enemy_death", xp, enemy_position, enemy_type)
+	
+func item_trash_display(is_disposable: bool):
+	EventController.emit_signal("item_trash_display", is_disposable)

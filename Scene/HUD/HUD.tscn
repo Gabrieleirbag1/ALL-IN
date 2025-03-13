@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=10 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://dqxglgqcvjjei" path="res://Assets/HUD/HUD.png" id="1_45228"]
+[ext_resource type="PackedScene" uid="uid://blufktq06eh0i" path="res://Scene/HUD/ItemTrashCanvas.tscn" id="1_a8d2h"]
 [ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/HUD/ItemFrame.tscn" id="2_hrmfr"]
 [ext_resource type="FontFile" uid="uid://c6br6sgd5vu2j" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
 [ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
-[ext_resource type="Script" path="res://Script/fitted_label.gd" id="3_gtnfq"]
+[ext_resource type="Script" uid="uid://orvv7v0uwleq" path="res://Script/fitted_label.gd" id="3_gtnfq"]
 [ext_resource type="PackedScene" uid="uid://b3jyqac724lmn" path="res://Scene/HUD/WeaponFrame.tscn" id="6_2vpg4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltxks"]
@@ -31,6 +32,9 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [node name="HUD" type="CanvasLayer"]
+
+[node name="ItemTrashCanvas" parent="." instance=ExtResource("1_a8d2h")]
+visible = false
 
 [node name="HUDTextureRect" type="TextureRect" parent="."]
 anchors_preset = 2
@@ -251,14 +255,3 @@ metadata/_edit_use_anchors_ = true
 
 [node name="WeaponFrame" parent="HUDTextureRect/Arme3" instance=ExtResource("6_2vpg4")]
 position = Vector2(94, 93)
-
-[node name="ItemGarbageCanvas" type="CanvasLayer" parent="."]
-
-[node name="ItemGarbageArea" type="StaticBody2D" parent="ItemGarbageCanvas"]
-position = Vector2(1239, 868)
-collision_layer = 64
-collision_mask = 0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ItemGarbageCanvas/ItemGarbageArea"]
-position = Vector2(670, -49)
-polygon = PackedVector2Array(11, 10, -680, 10, -714, 61, -1908, 60, -1909, -818, 11, -819, 11, 10)

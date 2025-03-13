@@ -10,13 +10,13 @@ var hovered_dropables: Array[ItemFrame] = []
 var item_frames: Array = []
 var has_player_entered: bool
 var is_inside_weapon_frame: bool = false
-var is_throwaway: bool = false
-var is_in_garbage_area: bool = false
+var is_disposable: bool = false
+var is_in_trash_area: bool = false
 
 var current_hovered_body: ItemFrame
 var last_hovered_body: ItemFrame
 
-@onready var item_frames_inside: Dictionary[ItemFrame, Node2D] = Global.item_frames_inside
+@onready var item_frames_inside: Dictionary = Global.item_frames_inside
 @onready var dragged_item: Node2D = Global.dragged_item
 
 @export var item_layer_scene: PackedScene
@@ -110,7 +110,7 @@ func handle_click_action():
 			global_position = get_global_mouse_position() - offset
 		elif Input.is_action_just_released("click"):
 			scale_item_size()
-			if is_throwaway:
+			if is_disposable:
 				queue_free()
 			Global.is_dragging = false
 			Global.dragged_item = null
@@ -123,6 +123,10 @@ func handle_click_action():
 					tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 				else:
 					return
+
+func set_is_disposable(disposable_state: bool):
+	is_disposable = disposable_state
+	GameController.item_trash_display(disposable_state)
 
 func _ready() -> void:
 	item_frames = get_tree().get_nodes_in_group("dropable")
@@ -151,11 +155,11 @@ func _draggable_mouse_event(draggable_value, offset: float = 0.0):
 		scale_item_size(offset)
 		
 func _on_area_2d_body_entered(body) -> void:
-	if body.name == "ItemGarbageArea":
-		is_in_garbage_area = true
-		if current_hovered_body == null:
-			is_throwaway = true
+	if body.name == "ItemTrash":
+		is_in_trash_area = true
+		set_is_disposable(true)
 	if body.is_in_group('dropable'):
+			
 		body.set("is_item_inside", true)
 		
 		# Reset previous hovered body to normal highlight
@@ -171,16 +175,16 @@ func _on_area_2d_body_entered(body) -> void:
 		body_ref = body
 		scale_item_size()
 		
-		# If we enter an item frame, disable throwaway regardless of garbage area
-		is_throwaway = false
+		# If we enter an item frame, disable disposable regardless of trash area
 	if body.name == "Player":
 		has_player_entered = true
 
 func _on_area_2d_body_exited(body) -> void:
-	if body.name == "ItemGarbageArea":
-		is_in_garbage_area = false
-		is_throwaway = false
+	if body.name == "ItemTrash":
+		is_in_trash_area = false
+		set_is_disposable(false)
 	if body.is_in_group('dropable'):
+			
 		body.set("is_item_inside", false)
 		
 		# Only reset brightness if this is the current hovered body
@@ -201,11 +205,6 @@ func _on_area_2d_body_exited(body) -> void:
 			if not current_hovered_body:
 				is_inside_dropable = false
 				body_ref = null
-				
-				# If we're in the garbage area and not hovering any frames
-				# then we can set is_throwaway to true
-				if is_in_garbage_area:
-					is_throwaway = true
 		
 		scale_item_size()
 		last_hovered_body = body

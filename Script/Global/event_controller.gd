@@ -5,3 +5,4 @@ signal xp_progress(total_experience: int, min_experience: int, max_experience: i
 signal level_up(player_level: int)
 signal stats_progress(stats: Dictionary)
 signal enemy_death(xp: int, enemy_position: Vector2, enemy_type: String)
+signal item_trash_display(is_disposable: bool)
