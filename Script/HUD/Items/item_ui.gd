@@ -11,6 +11,7 @@ var item_frames: Array = []
 var has_player_entered: bool
 var is_inside_weapon_frame: bool = false
 var is_throwaway: bool = false
+var is_in_garbage_area: bool = false
 
 var current_hovered_body: ItemFrame
 var last_hovered_body: ItemFrame
@@ -151,7 +152,9 @@ func _draggable_mouse_event(draggable_value, offset: float = 0.0):
 		
 func _on_area_2d_body_entered(body) -> void:
 	if body.name == "ItemGarbageArea":
-		is_throwaway = true
+		is_in_garbage_area = true
+		if current_hovered_body == null:
+			is_throwaway = true
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", true)
 		
@@ -167,11 +170,15 @@ func _on_area_2d_body_entered(body) -> void:
 		is_inside_dropable = true
 		body_ref = body
 		scale_item_size()
+		
+		# If we enter an item frame, disable throwaway regardless of garbage area
+		is_throwaway = false
 	if body.name == "Player":
 		has_player_entered = true
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.name == "ItemGarbageArea":
+		is_in_garbage_area = false
 		is_throwaway = false
 	if body.is_in_group('dropable'):
 		body.set("is_item_inside", false)
@@ -194,6 +201,11 @@ func _on_area_2d_body_exited(body) -> void:
 			if not current_hovered_body:
 				is_inside_dropable = false
 				body_ref = null
+				
+				# If we're in the garbage area and not hovering any frames
+				# then we can set is_throwaway to true
+				if is_in_garbage_area:
+					is_throwaway = true
 		
 		scale_item_size()
 		last_hovered_body = body
