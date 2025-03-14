@@ -1,10 +1,10 @@
 [gd_scene load_steps=50 format=3 uid="uid://blufktq06eh0i"]
 
 [ext_resource type="Script" uid="uid://b4a4logner8qw" path="res://Script/HUD/item_trash_canvas.gd" id="1_w2231"]
-[ext_resource type="Texture2D" uid="uid://dqo0w5g8ewb6j" path="res://Assets/HUD/trash-sprite-sheet.png" id="2_2335i"]
-[ext_resource type="FontFile" uid="uid://d1hek356sj53t" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="3_111gs"]
+[ext_resource type="Texture2D" uid="uid://cjcoiy7jscbwj" path="res://Assets/HUD/trash-sprite-sheet.png" id="2_2335i"]
+[ext_resource type="FontFile" uid="uid://03pw1jxdlm34" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="3_111gs"]
 [ext_resource type="Script" uid="uid://komguvwd0gc3" path="res://Script/bbcode_rich_text_label.gd" id="4_1noxj"]
-[ext_resource type="Texture2D" uid="uid://c026ntcndbekp" path="res://Assets/HUD/TrashArea.png" id="5_k1mdb"]
+[ext_resource type="Texture2D" uid="uid://bs42drb278lr8" path="res://Assets/HUD/TrashArea.png" id="5_k1mdb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mrcoe"]
 atlas = ExtResource("2_2335i")
@@ -350,5 +350,5 @@ collision_layer = 64
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ItemTrash"]
-position = Vector2(671, -122)
-polygon = PackedVector2Array(11, 10, -680, 10, -714, 61, -1908, 60, -1910, -743, 11, -743, 11, 10)
+position = Vector2(671, -182)
+polygon = PackedVector2Array(11, 10, -680, 10, -714, 61, -1908, 60, -1910, -686, 10, -686, 11, 10)
