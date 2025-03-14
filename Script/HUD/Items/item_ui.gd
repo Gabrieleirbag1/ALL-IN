@@ -159,10 +159,10 @@ func end_drag():
 #endregion
 
 #region Visual Effects
-func scale_item_size(offset: float = 0.0):
+func scale_item_size(scaling_offset: float = 0.0):
 	if body_ref:
 		if not is_inside_weapon_frame:
-			self.scale = Vector2(body_ref.item_scaling_x + offset, body_ref.item_scaling_y + offset)
+			self.scale = Vector2(body_ref.item_scaling_x + scaling_offset, body_ref.item_scaling_y + scaling_offset)
 
 func set_is_disposable(disposable_state: bool):
 	is_disposable = disposable_state
@@ -183,10 +183,10 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	_draggable_mouse_event(false)
 
-func _draggable_mouse_event(draggable_value, offset: float = 0.0):
+func _draggable_mouse_event(draggable_value, scaling_offset: float = 0.0):
 	if not Global.is_dragging and is_click_event_active:
 		draggable = draggable_value
-		scale_item_size(offset)
+		scale_item_size(scaling_offset)
 
 func _on_area_2d_body_entered(body) -> void:
 	if body.name == "ItemTrash":
