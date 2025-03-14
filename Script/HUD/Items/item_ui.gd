@@ -91,7 +91,6 @@ func place_in_itemlayer():
 
 func handle_item_layer(layer: int, viewport: bool):
 	var canvas_layer = self.get_parent()
-	print(canvas_layer, "parent")
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
@@ -182,14 +181,15 @@ func set_is_disposable(disposable_state: bool):
 
 #region Merge
 func manage_merge(body: Item, is_mergeable_value: bool):
-	if body.item_level == item_level:
-		item_body_to_merge = body
-		body.is_mergeable = is_mergeable_value
+	if Global.dragged_item == self:
+		if body.item_level == item_level:
+			item_body_to_merge = body
+			is_mergeable = is_mergeable_value
 
 func merge_items():
-	item_level = item_level + 1
-	item_level_rich_text_label.set_item_level(item_level)
-	item_body_to_merge.queue_free()
+	item_body_to_merge.item_level = item_level + 1
+	item_body_to_merge.item_level_rich_text_label.set_item_level(item_body_to_merge.item_level)
+	queue_free()
 #endregion
 
 #region Signal Callbacks
@@ -212,7 +212,6 @@ func _draggable_mouse_event(draggable_value, scaling_offset: float = 0.0):
 		scale_item_size(scaling_offset)
 
 func _on_area_2d_body_entered(body) -> void:
-	print(body)
 	if body.name == "ItemTrash":
 		handle_trash_area_entered()
 	elif body.name == "Player":
