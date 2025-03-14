@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lj1vhb8ywbbe"]
+[gd_scene load_steps=8 format=3 uid="uid://lj1vhb8ywbbe"]
 
 [ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/HUD/Items/item_ui.gd" id="1_k8ivp"]
 [ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/ItemLayer.tscn" id="2_ew5jg"]
 [ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
+[ext_resource type="Script" uid="uid://komguvwd0gc3" path="res://Script/bbcode_rich_text_label.gd" id="4_tq3lr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe54i"]
 atlas = ExtResource("2_pe54i")
@@ -30,6 +31,17 @@ item_layer_scene = ExtResource("2_ew5jg")
 position = Vector2(9.53674e-07, 9.53674e-07)
 scale = Vector2(1.1875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_ew5jg")
+
+[node name="BBCodeRichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -37.0
+offset_top = 9.0
+offset_right = 19.0
+offset_bottom = 49.0
+theme_override_font_sizes/normal_font_size = 9
+bbcode_enabled = true
+text = "[right]★[/right]"
+script = ExtResource("4_tq3lr")
+metadata/_custom_type_script = "uid://komguvwd0gc3"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 33

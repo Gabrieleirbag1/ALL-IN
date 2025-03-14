@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://capedbujon7d8"]
-
-[ext_resource type="Script" uid="uid://komguvwd0gc3" path="res://Script/centered_rich_text_label.gd" id="1_1arnb"]
-
-[node name="CenteredRichTextLabel" type="RichTextLabel"]
-bbcode_enabled = true
-script = ExtResource("1_1arnb")

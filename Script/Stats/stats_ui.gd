@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 @onready var stat_icons: Array[TextureRect] = []
-@onready var stat_rarities: Array[CenteredRichTextLabel] = []
-@onready var stat_values: Array[CenteredRichTextLabel] = []
+@onready var stat_rarities: Array[BBCodeRichTextLabel] = []
+@onready var stat_values: Array[BBCodeRichTextLabel] = []
 @onready var stat_backgrounds: Array[TextureRect] = []
 
 @export var stat_icon_path: String = "res://Assets/Stats/icons/png180x/"
@@ -70,8 +70,8 @@ func get_stat_rarity(stat_value_number: int) -> String:
 			return rarity
 	return "Unknown"
 
-func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
-	stat_rarity.set_centered_text(rarity)
+func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
+	stat_rarity.set_bbcode_text(rarity)
 	stat_rarity.set_font_color(stat_rarity_colors[rarity])
 
 func get_stat_value_number(player_level) -> int:
@@ -101,10 +101,10 @@ func get_stat_value_number(player_level) -> int:
 	else:
 		return -rand_val
 
-func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_number: int):
+func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: int):
 	var impact: String = "+" if stat_value_number > 0 else ""
 	var stat_value_text = impact + str(stat_value_number)
-	stat_value.set_centered_text(stat_value_text)
+	stat_value.set_bbcode_text(stat_value_text)
 	
 func set_stat_background(stat_background: TextureRect, rarity):
 	var bg_color = stat_rarity_colors[rarity]
