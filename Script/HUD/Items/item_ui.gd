@@ -1,4 +1,4 @@
-class_name Item extends Node2D
+class_name Item extends CharacterBody2D
 
 # Item state variables
 var draggable: bool = false
@@ -9,6 +9,10 @@ var is_disposable: bool = false
 var is_in_trash_area: bool = false
 var has_player_entered: bool = false
 var item_level: int = 1
+var is_mergeable: bool = false
+
+# Item merge variables
+var item_body_to_merge: Item
 
 # Item position tracking
 var body_ref: ItemFrame
@@ -23,7 +27,7 @@ var last_hovered_body: ItemFrame
 
 # Global references
 @onready var item_frames_inside: Dictionary = Global.item_frames_inside
-@onready var dragged_item: Node2D = Global.dragged_item
+@onready var dragged_item: Item = Global.dragged_item
 
 # Nodes references
 @onready var item_level_rich_text_label: RichTextLabel = $ItemLevelRichTextLabel
@@ -87,6 +91,7 @@ func place_in_itemlayer():
 
 func handle_item_layer(layer: int, viewport: bool):
 	var canvas_layer = self.get_parent()
+	print(canvas_layer, "parent")
 	if canvas_layer is CanvasLayer:
 		canvas_layer.layer = layer
 		canvas_layer.follow_viewport_enabled = viewport
@@ -150,6 +155,8 @@ func end_drag():
 	scale_item_size()
 	if is_disposable:
 		queue_free()
+	elif is_mergeable:
+		merge_items()
 	Global.is_dragging = false
 	Global.dragged_item = null
 	
@@ -173,6 +180,18 @@ func set_is_disposable(disposable_state: bool):
 	GameController.item_trash_display(disposable_state)
 #endregion
 
+#region Merge
+func manage_merge(body: Item, is_mergeable_value: bool):
+	if body.item_level == item_level:
+		item_body_to_merge = body
+		body.is_mergeable = is_mergeable_value
+
+func merge_items():
+	item_level = item_level + 1
+	item_level_rich_text_label.set_item_level(item_level)
+	item_body_to_merge.queue_free()
+#endregion
+
 #region Signal Callbacks
 func _on_tween_completed():
 	scale_item_size()
@@ -193,20 +212,25 @@ func _draggable_mouse_event(draggable_value, scaling_offset: float = 0.0):
 		scale_item_size(scaling_offset)
 
 func _on_area_2d_body_entered(body) -> void:
+	print(body)
 	if body.name == "ItemTrash":
 		handle_trash_area_entered()
-	if body.is_in_group('dropable'):
-		handle_dropable_entered(body)
-	if body.name == "Player":
+	elif body.name == "Player":
 		has_player_entered = true
+	elif body.is_in_group('dropable'):
+		handle_dropable_entered(body)
+	elif body.is_in_group('weapons'):
+		manage_merge(body, true)
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.name == "ItemTrash":
 		handle_trash_area_exited()
-	if body.is_in_group('dropable'):
-		handle_dropable_exited(body)
-	if body.name == "Player":
+	elif body.name == "Player":
 		has_player_entered = false
+	elif body.is_in_group('dropable'):
+		handle_dropable_exited(body)
+	elif body.is_in_group('weapons'):
+		manage_merge(body, false)
 #endregion
 
 #region Collision Handling

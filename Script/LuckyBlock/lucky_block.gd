@@ -17,6 +17,7 @@ func _process(_delta: float) -> void:
 	handle_open_action()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	print(body, "lucky")
 	if body is Player:
 		has_player_entered = true
 
