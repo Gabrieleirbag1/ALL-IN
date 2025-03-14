@@ -8,6 +8,7 @@ var is_inside_weapon_frame: bool = false
 var is_disposable: bool = false
 var is_in_trash_area: bool = false
 var has_player_entered: bool = false
+var item_level: int = 1
 
 # Item position tracking
 var body_ref: ItemFrame
