@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c30a84e3ppsgj"]
 
-[ext_resource type="Texture2D" uid="uid://b30iwii8uhfdo" path="res://Assets/HUD/Item Frame 1 Background.png" id="2_56vmc"]
+[ext_resource type="Texture2D" uid="uid://brku171esho3n" path="res://Assets/HUD/Item Frame 1 Background.png" id="2_56vmc"]
 
 [sub_resource type="GDScript" id="GDScript_pcdtn"]
 

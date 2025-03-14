@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://57kecdcohh20"]
 
-[ext_resource type="Script" uid="uid://orvv7v0uwleq" path="res://Script/fitted_label.gd" id="1_ulww5"]
+[ext_resource type="Script" path="res://Script/fitted_label.gd" id="1_ulww5"]
 
 [node name="FittedLabel" type="Label"]
 offset_right = 40.0

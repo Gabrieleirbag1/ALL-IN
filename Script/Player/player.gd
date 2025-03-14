@@ -106,9 +106,9 @@ func take_damage(enemyVelocity, knockback_force, damage):
 		velocity = kb_direction
 		move_and_slide()
 
-func enemy_attack(velocity, knockback_force, damage):
+func enemy_attack(velocity_value, knockback_force, damage):
 	if alive and not invincible:
-		take_damage(velocity, knockback_force, damage)
+		take_damage(velocity_value, knockback_force, damage)
 		play_animation("hurt")
 		check_health()
 		invincible = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://evpdxdo8k70f"]
 
 [ext_resource type="Script" uid="uid://crxtcs40go4hl" path="res://Script/Enemies/orc_rider.gd" id="1_07qmf"]
-[ext_resource type="Texture2D" uid="uid://506da8o71ugm" path="res://Assets/Characters/Orc rider/Orc rider with shadows/Orc rider 2.png" id="2_obs7j"]
+[ext_resource type="Texture2D" uid="uid://cg38kwdbp1ikw" path="res://Assets/Characters/Orc rider/Orc rider with shadows/Orc rider 2.png" id="2_obs7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4si4e"]
 atlas = ExtResource("2_obs7j")
