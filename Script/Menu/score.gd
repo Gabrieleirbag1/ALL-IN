@@ -7,7 +7,7 @@ func _ready() -> void:
 	EventController.connect("enemy_death", Callable(self, "on_enemy_death"))
 	#print("Signal enemy_death connecté dans Score.gd")
 
-func on_enemy_death(_xp: int, enemy_position: Vector2, enemy_type: String) -> void:
+func on_enemy_death(_xp: int, _enemy_position: Vector2, enemy_type: String) -> void:
 	#print("Enemy death signal reçu: type=%s, xp=%d" % [enemy_type, xp])
 	if enemy_type == "slime":
 		score += 100
