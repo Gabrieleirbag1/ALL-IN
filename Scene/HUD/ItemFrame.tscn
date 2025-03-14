@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c46u6q5x86yxn"]
 
 [ext_resource type="Script" uid="uid://ogid0muhts6o" path="res://Script/HUD/Items/item_frame.gd" id="1_744go"]
-[ext_resource type="Texture2D" uid="uid://b30iwii8uhfdo" path="res://Assets/HUD/Item Frame 1 Background.png" id="2_xnwmx"]
+[ext_resource type="Texture2D" uid="uid://brku171esho3n" path="res://Assets/HUD/Item Frame 1 Background.png" id="2_xnwmx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmamv"]
 size = Vector2(146, 142)
