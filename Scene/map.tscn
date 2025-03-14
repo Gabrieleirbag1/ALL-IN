@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="15_4wxva"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="16_5chm7"]
 [ext_resource type="PackedScene" uid="uid://tmqtdtks3u1y" path="res://Scene/LuckyBlock/LuckyBlock.tscn" id="16_geojk"]
-[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/HUD/ItemUI.tscn" id="17_c0fxq"]
+[ext_resource type="PackedScene" uid="uid://cbu3gbquxl3xn" path="res://Scene/HUD/Items/Weapons/CrossBowItem.tscn" id="18_u5hqo"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="21_r4rcy"]
 [ext_resource type="Script" uid="uid://bduou26vu2556" path="res://Script/Menu/score.gd" id="21_s1bhx"]
@@ -26059,29 +26059,20 @@ position = Vector2(1258, 361)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
 
-[node name="Item3" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(841, 718)
+[node name="CrossBowItem5" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(750, 757)
 
-[node name="Item2" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(823, 803)
+[node name="CrossBowItem4" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(847, 739)
 
-[node name="Item" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(738, 752)
+[node name="CrossBowItem2" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(692, 706)
 
-[node name="Item4" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(784, 670)
+[node name="CrossBowItem3" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(738, 656)
 
-[node name="Item6" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(708, 690)
-
-[node name="Item5" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(751, 821)
+[node name="CrossBowItem" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(814, 663)
 
 [node name="HUD" parent="." instance=ExtResource("16_5chm7")]
 

@@ -73,10 +73,10 @@ func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
 func death_zoom() -> void:
-	var death_zoom: Vector2 = Vector2(0.1, 0.1)
+	var death_zoom_value: Vector2 = Vector2(0.1, 0.1)
 	zoom_timer.wait_time = 0.01
 	for i in range(40):
-		camera.zoom += death_zoom
+		camera.zoom += death_zoom_value
 		zoom_timer.start()
 		await zoom_timer.timeout
 

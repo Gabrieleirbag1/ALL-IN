@@ -34,8 +34,8 @@ func show_level_counters():
 	print("Niveau actuel: ", current_level)
 	print("Progression par niveau: ", level_iterations)
 
-func get_experience_required_for_next_level(current_level: int) -> float:
-	return BASE_LEVEL_XP * pow(GROWTH_RATE, current_level - 1)
+func get_experience_required_for_next_level(current_level_value: int) -> float:
+	return BASE_LEVEL_XP * pow(GROWTH_RATE, current_level_value - 1)
 
 func get_total_experience_to_reach_level(level: int) -> float:
 	if level <= 1:

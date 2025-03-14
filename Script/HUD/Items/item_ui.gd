@@ -25,6 +25,9 @@ var last_hovered_body: ItemFrame
 @onready var item_frames_inside: Dictionary = Global.item_frames_inside
 @onready var dragged_item: Node2D = Global.dragged_item
 
+# Nodes references
+@onready var item_level_rich_text_label: RichTextLabel = $ItemLevelRichTextLabel
+
 @export var item_layer_scene: PackedScene
 
 #region Lifecycle Methods

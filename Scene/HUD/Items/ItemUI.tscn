@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://lj1vhb8ywbbe"]
 
 [ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/HUD/Items/item_ui.gd" id="1_k8ivp"]
-[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/ItemLayer.tscn" id="2_ew5jg"]
+[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/Items/ItemLayer.tscn" id="2_ew5jg"]
 [ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
-[ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/ItemLevelRichTextLabel.tscn" id="4_tq3lr"]
+[ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/Items/ItemLevelRichTextLabel.tscn" id="4_tq3lr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe54i"]
 atlas = ExtResource("2_pe54i")
@@ -23,9 +23,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h700q"]
 size = Vector2(38, 38)
 
-[node name="Item" type="Node2D"]
+[node name="CrossBowItem" type="Node2D"]
 script = ExtResource("1_k8ivp")
 item_layer_scene = ExtResource("2_ew5jg")
+metadata/_custom_type_script = "uid://lws8vlset8wm"
 
 [node name="WeaponAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(9.53674e-07, 9.53674e-07)
