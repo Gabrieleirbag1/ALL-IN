@@ -49,7 +49,7 @@ func initialize_item_frames() -> void:
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
 		var item_frame: ItemFrame = item_frames[i]
-		if not item_frame.is_in_group("weapons"):
+		if not item_frame.is_in_group("equipped"):
 			if not item_frames_inside[item_frame]:
 				return i
 	return -1
@@ -72,7 +72,7 @@ func add_to_item_frame():
 	
 	# Add to new frame
 	item_frames_inside[body_ref] = self
-	if body_ref.is_in_group("weapons"):
+	if body_ref.is_in_group("equipped"):
 		is_inside_weapon_frame = true
 #endregion
 

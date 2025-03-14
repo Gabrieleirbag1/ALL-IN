@@ -42,7 +42,7 @@ func update_brightness() -> void:
 
 # Handle brightness for frames containing items
 func _handle_occupied_frame() -> void:
-	if self.is_in_group("weapons"):
+	if self.is_in_group("equipped"):
 		set_brightness(BRIGHTNESS_SELECTED)
 		
 	if Global.item_frames_inside[self] != Global.dragged_item:

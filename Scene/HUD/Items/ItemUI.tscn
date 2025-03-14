@@ -23,7 +23,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h700q"]
 size = Vector2(38, 38)
 
-[node name="CrossBowItem" type="Node2D"]
+[node name="Item" type="Node2D" groups=["weapons"]]
 script = ExtResource("1_k8ivp")
 item_layer_scene = ExtResource("2_ew5jg")
 metadata/_custom_type_script = "uid://lws8vlset8wm"
