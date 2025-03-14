@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cbu3gbquxl3xn"]
 
 [ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/HUD/Items/item_ui.gd" id="1_sikv5"]
-[ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="3_vis81"]
+[ext_resource type="Texture2D" uid="uid://cosmtcd2isp5c" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="3_vis81"]
 [ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/Items/ItemLevelRichTextLabel.tscn" id="4_8fjbf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe54i"]
@@ -32,6 +32,7 @@ script = ExtResource("1_sikv5")
 metadata/_custom_type_script = "uid://lws8vlset8wm"
 
 [node name="WeaponAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(9.53674e-07, 9.53674e-07)
 scale = Vector2(1.1875, 1.1875)
 sprite_frames = SubResource("SpriteFrames_ew5jg")
