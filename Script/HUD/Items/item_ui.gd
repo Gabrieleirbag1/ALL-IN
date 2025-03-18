@@ -218,8 +218,10 @@ func _on_area_2d_body_entered(body) -> void:
 		has_player_entered = true
 	elif body.is_in_group('dropable'):
 		handle_dropable_entered(body)
-	elif body.is_in_group('weapons'):
+	if body.is_in_group('weapons'):
 		manage_merge(body, true)
+	else:
+		is_mergeable = false
 
 func _on_area_2d_body_exited(body) -> void:
 	if body.name == "ItemTrash":
@@ -229,6 +231,7 @@ func _on_area_2d_body_exited(body) -> void:
 	elif body.is_in_group('dropable'):
 		handle_dropable_exited(body)
 	elif body.is_in_group('weapons'):
+		print(body.name)
 		manage_merge(body, false)
 #endregion
 

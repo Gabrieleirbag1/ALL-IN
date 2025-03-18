@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://lj1vhb8ywbbe"]
 
 [ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/HUD/Items/item_ui.gd" id="1_k8ivp"]
-[ext_resource type="Texture2D" uid="uid://cosmtcd2isp5c" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
+[ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
 [ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/Items/ItemLevelRichTextLabel.tscn" id="4_tq3lr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe54i"]
