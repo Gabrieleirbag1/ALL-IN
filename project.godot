@@ -37,7 +37,8 @@ window/stretch/aspect="ignore"
 [global_group]
 
 dropable=""
-equipped=""
+weapons=""
+equipable=""
 
 [input]
 
