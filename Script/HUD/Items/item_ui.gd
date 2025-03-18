@@ -173,13 +173,13 @@ func end_drag():
 	Global.is_dragging = false
 	Global.dragged_item = null
 	
-	var tween: Tween = get_tree().create_tween()
 	if is_addable_to_item_frame():
+		var tween: Tween = get_tree().create_tween()
 		add_to_item_frame()
 		tween.tween_property(self, "global_position", body_ref.global_position, 0.2).set_ease(Tween.EASE_OUT)
-	else:
-		if initialPos and Tween.EASE_OUT:
-			tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
+	elif initialPos and Tween.EASE_OUT:
+		var tween: Tween = get_tree().create_tween()
+		tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 #endregion
 
 #region Visual Effects
