@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c30a84e3ppsgj"]
+
+[ext_resource type="Texture2D" uid="uid://brku171esho3n" path="res://Assets/HUD/Item Frame 1 Background.png" id="2_56vmc"]
+
+[sub_resource type="GDScript" id="GDScript_pcdtn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ee63k"]
+size = Vector2(146, 142)
+
+[node name="ItemFrame" type="StaticBody2D"]
+script = SubResource("GDScript_pcdtn")
+metadata/_custom_type_script = "uid://ogid0muhts6o"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -73.0
+offset_top = -72.0
+offset_right = 73.0
+offset_bottom = 72.0
+texture = ExtResource("2_56vmc")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ee63k")

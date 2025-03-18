@@ -1,29 +1,29 @@
 [gd_scene load_steps=53 format=4 uid="uid://dbcc4tcankm2c"]
 
-[ext_resource type="Texture2D" uid="uid://cu4pjf71k83b1" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
+[ext_resource type="Texture2D" uid="uid://jb57aln1u0nu" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" uid="uid://llw1lyo5an36" path="res://Script/Map/map.gd" id="1_yn8yg"]
-[ext_resource type="Texture2D" uid="uid://c4733lvkf5roy" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
+[ext_resource type="Texture2D" uid="uid://docjcu7pwko6l" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
 [ext_resource type="Script" uid="uid://dsw7qpkpirl2s" path="res://Script/Map/background.gd" id="2_t3r3v"]
-[ext_resource type="Texture2D" uid="uid://c51odspjbanwq" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
-[ext_resource type="Texture2D" uid="uid://cdoql0evuv5yb" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
-[ext_resource type="Texture2D" uid="uid://b5rog4whb5jsn" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
-[ext_resource type="Texture2D" uid="uid://b2wk7kqfbe2oi" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/Atlas/Buildings.png" id="5_1mxd6"]
+[ext_resource type="Texture2D" uid="uid://bdkn2vnvpsiso" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
+[ext_resource type="Texture2D" uid="uid://cc8m8ku88isxt" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
+[ext_resource type="Texture2D" uid="uid://t7lebhtv3fnm" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
+[ext_resource type="Texture2D" uid="uid://bnpdbflp8xlxi" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/Atlas/Buildings.png" id="5_1mxd6"]
 [ext_resource type="PackedScene" uid="uid://evpdxdo8k70f" path="res://Scene/Enemies/Orc_rider.tscn" id="5_ci0s0"]
-[ext_resource type="Texture2D" uid="uid://cur6toooltffb" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
-[ext_resource type="Texture2D" uid="uid://bcaf2ondy1g8i" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
-[ext_resource type="Texture2D" uid="uid://djn0h0wmg63yr" path="res://Assets/nature free/global.png" id="8_au240"]
+[ext_resource type="Texture2D" uid="uid://cr5c7k21dvjhs" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
+[ext_resource type="Texture2D" uid="uid://bxd6wa6l1ml1b" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
+[ext_resource type="Texture2D" uid="uid://b8xb4rvsftnam" path="res://Assets/nature free/global.png" id="8_au240"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://7xxtrsy5v1ck" path="res://Scene/Enemies/Orc.tscn" id="14_kwv2w"]
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="15_4wxva"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="16_5chm7"]
-[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/ItemLayer.tscn" id="16_453tb"]
 [ext_resource type="PackedScene" uid="uid://tmqtdtks3u1y" path="res://Scene/LuckyBlock/LuckyBlock.tscn" id="16_geojk"]
-[ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/HUD/ItemUI.tscn" id="17_c0fxq"]
+[ext_resource type="PackedScene" uid="uid://cbu3gbquxl3xn" path="res://Scene/HUD/Items/Weapons/CrossBowItem.tscn" id="18_u5hqo"]
+[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/Items/ItemLayer.tscn" id="19_68lke"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="21_r4rcy"]
 [ext_resource type="Script" uid="uid://bduou26vu2556" path="res://Script/Menu/score.gd" id="21_s1bhx"]
-[ext_resource type="AudioStream" uid="uid://blcpo2jo5koao" path="res://Sounds/title-screen.wav" id="22_oueiy"]
+[ext_resource type="AudioStream" uid="uid://oigbtfi1im5d" path="res://Sounds/title-screen.wav" id="22_oueiy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26060,35 +26060,25 @@ position = Vector2(1258, 361)
 [node name="Spawn4" type="Marker2D" parent="."]
 position = Vector2(168, 449)
 
-[node name="Item3" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(841, 718)
-item_layer_scene = ExtResource("16_453tb")
+[node name="CrossBowItem5" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(750, 757)
+item_layer_scene = ExtResource("19_68lke")
 
-[node name="Item2" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(823, 803)
-item_layer_scene = ExtResource("16_453tb")
+[node name="CrossBowItem4" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(847, 739)
+item_layer_scene = ExtResource("19_68lke")
 
-[node name="Item" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(738, 752)
-item_layer_scene = ExtResource("16_453tb")
+[node name="CrossBowItem2" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(692, 706)
+item_layer_scene = ExtResource("19_68lke")
 
-[node name="Item4" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(784, 670)
-item_layer_scene = ExtResource("16_453tb")
+[node name="CrossBowItem3" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(738, 656)
+item_layer_scene = ExtResource("19_68lke")
 
-[node name="Item6" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(708, 690)
-item_layer_scene = ExtResource("16_453tb")
-
-[node name="Item5" parent="." instance=ExtResource("17_c0fxq")]
-y_sort_enabled = true
-position = Vector2(751, 821)
-item_layer_scene = ExtResource("16_453tb")
+[node name="CrossBowItem" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(768, 663)
+item_layer_scene = ExtResource("19_68lke")
 
 [node name="HUD" parent="." instance=ExtResource("16_5chm7")]
 

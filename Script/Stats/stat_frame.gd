@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var texture_rect: TextureRect = $StatBackground
 @onready var stat_icon: TextureRect = $StatBackground/StatIcon
-@onready var stat_value: CenteredRichTextLabel= $StatBackground/StatValue
+@onready var stat_value: BBCodeRichTextLabel= $StatBackground/StatValue
 
 var is_mouse_inside = false
 var shader = false
@@ -11,7 +11,7 @@ func _ready() -> void:
 	set_shader()
 	set_click_event()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_click_action()
 
 func handle_click_action():

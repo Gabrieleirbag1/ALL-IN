@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3jyqac724lmn"]
+
+[ext_resource type="Script" uid="uid://d0uxm0vnwj68x" path="res://Script/HUD/weapon_frame.gd" id="1_xpxx1"]
+[ext_resource type="Texture2D" uid="uid://dvogf845qwr6r" path="res://Assets/HUD/Item Frame 2 Background.png" id="2_sv6j5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmamv"]
+size = Vector2(189, 189)
+
+[node name="WeaponFrame" type="StaticBody2D" groups=["dropable", "equipable"]]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("1_xpxx1")
+metadata/_custom_type_script = "uid://ogid0muhts6o"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -94.0
+offset_top = -94.0
+offset_right = 95.0
+offset_bottom = 95.0
+texture = ExtResource("2_sv6j5")
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_rmamv")

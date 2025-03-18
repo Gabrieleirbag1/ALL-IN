@@ -1,6 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 
+*.import
+
 .DS_Store
 
 # Godot-specific ignores
@@ -17,4 +19,4 @@ export_presets.cfg
 data_*/
 mono_crash.*.json
 
-.vscode
+.vscode/

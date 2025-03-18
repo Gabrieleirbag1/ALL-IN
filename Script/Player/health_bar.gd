@@ -11,7 +11,7 @@ func _ready():
 	max_value_amount = player_stats["health_max"]
 	min_value_amount = player_stats["health_min"]
 	
-func _process(delta):
+func _process(_delta):
 	self.value = player_stats["health"]
 	if player_stats["health"] != max_value_amount:
 		self.visible = true

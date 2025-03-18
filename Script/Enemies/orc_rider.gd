@@ -1,5 +1,5 @@
 # orc_rider.gd
-extends "enemy.gd"
+extends Enemy
 
 func _init() -> void:
 	enemy_type = "orc_rider"

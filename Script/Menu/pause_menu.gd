@@ -25,7 +25,7 @@ func Esc():
 		else:
 			pause()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	Esc()
 
 func _on_resume_pressed() -> void:

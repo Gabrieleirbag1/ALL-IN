@@ -73,10 +73,10 @@ func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
 func death_zoom() -> void:
-	var death_zoom: Vector2 = Vector2(0.1, 0.1)
+	var death_zoom_value: Vector2 = Vector2(0.1, 0.1)
 	zoom_timer.wait_time = 0.01
 	for i in range(40):
-		camera.zoom += death_zoom
+		camera.zoom += death_zoom_value
 		zoom_timer.start()
 		await zoom_timer.timeout
 
@@ -106,9 +106,9 @@ func take_damage(enemyVelocity, knockback_force, damage):
 		velocity = kb_direction
 		move_and_slide()
 
-func enemy_attack(velocity, knockback_force, damage):
+func enemy_attack(velocity_value, knockback_force, damage):
 	if alive and not invincible:
-		take_damage(velocity, knockback_force, damage)
+		take_damage(velocity_value, knockback_force, damage)
 		play_animation("hurt")
 		check_health()
 		invincible = true
@@ -120,7 +120,7 @@ func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * stats["speed"]
 
-func _input(event):
+func _input(_event):
 	if alive:
 		if animation.animation == "attack_1" and animation.is_playing():
 			return
@@ -136,7 +136,7 @@ func _input(event):
 		else:
 			play_animation("idle_shadow")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if alive:
 		get_input()
 		move_and_slide()

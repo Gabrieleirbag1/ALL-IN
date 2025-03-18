@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 @onready var stat_icons: Array[TextureRect] = []
-@onready var stat_rarities: Array[CenteredRichTextLabel] = []
-@onready var stat_values: Array[CenteredRichTextLabel] = []
+@onready var stat_rarities: Array[BBCodeRichTextLabel] = []
+@onready var stat_values: Array[BBCodeRichTextLabel] = []
 @onready var stat_backgrounds: Array[TextureRect] = []
 
 @export var stat_icon_path: String = "res://Assets/Stats/icons/png180x/"
@@ -65,13 +65,13 @@ func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 func get_stat_rarity(stat_value_number: int) -> String:
 	var modifier = "Bonus" if stat_value_number > 0 else "Malus"
 	for rarity in stat_modifier_impact_ranges[modifier]:
-		var range = stat_modifier_impact_ranges[modifier][rarity]
-		if stat_value_number >= range[0] and stat_value_number <= range[1]:
+		var rarity_range = stat_modifier_impact_ranges[modifier][rarity]
+		if stat_value_number >= rarity_range[0] and stat_value_number <= rarity_range[1]:
 			return rarity
 	return "Unknown"
 
-func set_stat_rarity(stat_rarity: CenteredRichTextLabel, rarity: String):
-	stat_rarity.set_centered_text(rarity)
+func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
+	stat_rarity.set_bbcode_text(rarity)
 	stat_rarity.set_font_color(stat_rarity_colors[rarity])
 
 func get_stat_value_number(player_level) -> int:
@@ -101,10 +101,10 @@ func get_stat_value_number(player_level) -> int:
 	else:
 		return -rand_val
 
-func set_stat_value(stat_value: CenteredRichTextLabel, stat_value_number: int):
+func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: int):
 	var impact: String = "+" if stat_value_number > 0 else ""
 	var stat_value_text = impact + str(stat_value_number)
-	stat_value.set_centered_text(stat_value_text)
+	stat_value.set_bbcode_text(stat_value_text)
 	
 func set_stat_background(stat_background: TextureRect, rarity):
 	var bg_color = stat_rarity_colors[rarity]
@@ -132,5 +132,5 @@ func on_event_level_up(player_level) -> void:
 	set_3_random_stats(player_level)
 	self.visible = true
 
-func on_stats_progress(stats) -> void:
+func on_stats_progress(_stats) -> void:
 	self.visible = false

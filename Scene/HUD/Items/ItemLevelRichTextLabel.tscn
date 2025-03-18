@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgx0r8fv7wyt8"]
+
+[ext_resource type="Script" uid="uid://dslsa5gids37d" path="res://Script/HUD/item_level_rich_text_label.gd" id="1_urunc"]
+
+[node name="ItemLevelRichTextLabel" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+text = "★"
+horizontal_alignment = 2
+script = ExtResource("1_urunc")
