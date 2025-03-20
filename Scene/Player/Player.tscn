@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://nbjb34rx2gns" path="res://Scene/Menu/Game_over.tscn" id="7_x13ln"]
 [ext_resource type="AudioStream" uid="uid://ssdfjm5xdxhd" path="res://Sounds/Death.wav" id="8_lc3e7"]
 [ext_resource type="AudioStream" uid="uid://c70hi2xfbup2t" path="res://Sounds/hurt_2-[AudioTrimmer.com].wav" id="9_2d8q0"]
-[ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/Projectiles/fire_ball.tscn" id="9_mlot8"]
+[ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/Projectiles/FireBall.tscn" id="9_mlot8"]
 [ext_resource type="AudioStream" uid="uid://joqfqa0hfmil" path="res://Sounds/fireball.mp3" id="10_mbyjr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7lp"]

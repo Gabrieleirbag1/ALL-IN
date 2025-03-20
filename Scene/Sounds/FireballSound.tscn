@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvk4ad4tpc27"]
+
+[ext_resource type="AudioStream" uid="uid://joqfqa0hfmil" path="res://Sounds/fireball.mp3" id="1_tntmc"]
+
+[node name="Fireball_sound" type="AudioStreamPlayer"]
+stream = ExtResource("1_tntmc")
+volume_db = -38.602
+bus = &"Sfx"
