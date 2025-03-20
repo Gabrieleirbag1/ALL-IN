@@ -11,8 +11,6 @@ var has_player_entered: bool = false
 var item_level: int = 1
 var is_mergeable: bool = false
 
-var item_wait_time: float = 1.0
-
 # Item merge variables
 var item_body_to_merge: Item
 
@@ -36,7 +34,8 @@ var item_name: String = "Default"
 
 # Nodes references
 @onready var item_level_rich_text_label: RichTextLabel = $ItemLevelRichTextLabel
-@onready var cooldown_timer: Timer = $Cooldown
+@onready var item_effect: ItemEffect = $ItemEffect
+@onready var item_signals: Node = $ItemSignals
 
 @export var item_layer_scene: PackedScene
 
@@ -95,6 +94,7 @@ func add_to_item_frame():
 	item_frames_inside[body_ref] = self
 	if body_ref.is_in_group("equipable"):
 		is_inside_weapon_frame = true
+		
 #endregion
 
 #region Item Layer Management
@@ -249,16 +249,6 @@ func _on_area_2d_body_exited(body) -> void:
 		handle_dropable_exited(body)
 	elif body.is_in_group('weapons'):
 		manage_merge(body, false)
-#endregion
-
-#region Item Effect
-func set_item_wait_time():
-	cooldown_timer.wait_time = item_wait_time
-
-func run():
-	if weapon_is_equipped():
-		cooldown_timer.start()
-		#faire un signal qui envoie au node de l'arme
 #endregion
 
 #region Collision Handling
