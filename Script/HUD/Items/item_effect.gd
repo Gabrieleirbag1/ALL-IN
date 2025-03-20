@@ -21,5 +21,4 @@ func run():
 	pass
 	
 func stop():
-	# This method is overwritten
-	pass
+	cooldown_timer.stop()
