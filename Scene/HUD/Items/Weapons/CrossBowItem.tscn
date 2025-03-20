@@ -1,8 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cbu3gbquxl3xn"]
+[gd_scene load_steps=10 format=3 uid="uid://cbu3gbquxl3xn"]
 
 [ext_resource type="Script" uid="uid://ddxn8qldd2dp6" path="res://Script/HUD/Items/Weapons/cross_bow_item.gd" id="1_cu3le"]
+[ext_resource type="Script" uid="uid://h4apmdjfsn16" path="res://Scene/HUD/Items/Weapons/item_crossbow_effect.gd" id="3_pk7cg"]
 [ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="3_vis81"]
 [ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/Items/ItemLevelRichTextLabel.tscn" id="4_8fjbf"]
+
+[sub_resource type="GDScript" id="GDScript_x3q1t"]
+script/source = "class_name ItemSignals extends Node
+
+signal item_equipped(is_equipped: bool)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe54i"]
 atlas = ExtResource("3_vis81")
@@ -31,6 +38,13 @@ collision_mask = 32
 script = ExtResource("1_cu3le")
 metadata/_custom_type_script = "uid://lws8vlset8wm"
 
+[node name="ItemSignals" type="Node" parent="."]
+script = SubResource("GDScript_x3q1t")
+
+[node name="ItemEffect" type="Node" parent="."]
+script = ExtResource("3_pk7cg")
+metadata/_custom_type_script = "uid://c88anpsmrcvmj"
+
 [node name="WeaponAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(9.53674e-07, 9.53674e-07)
@@ -44,6 +58,8 @@ offset_right = 20.0
 offset_bottom = 49.0
 theme_override_font_sizes/normal_font_size = 9
 
+[node name="Cooldown" type="Timer" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_cu3le")
@@ -54,6 +70,7 @@ collision_mask = 33
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_h700q")
 
+[connection signal="timeout" from="Cooldown" to="ItemEffect" method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

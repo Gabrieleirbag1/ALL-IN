@@ -94,7 +94,7 @@ func add_to_item_frame():
 	item_frames_inside[body_ref] = self
 	if body_ref.is_in_group("equipable"):
 		is_inside_weapon_frame = true
-		
+		item_signals.emit_signal("item_equipped", true)
 #endregion
 
 #region Item Layer Management

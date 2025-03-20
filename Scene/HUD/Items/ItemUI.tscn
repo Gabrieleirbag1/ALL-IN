@@ -1,10 +1,15 @@
 [gd_scene load_steps=10 format=3 uid="uid://lj1vhb8ywbbe"]
 
 [ext_resource type="Script" uid="uid://lws8vlset8wm" path="res://Script/HUD/Items/item_ui.gd" id="1_k8ivp"]
-[ext_resource type="Script" uid="uid://dccmdm58esclh" path="res://Script/HUD/Items/item_signals.gd" id="2_o7fic"]
 [ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="2_pe54i"]
 [ext_resource type="Script" uid="uid://c88anpsmrcvmj" path="res://Script/HUD/Items/item_effect.gd" id="2_yrf62"]
 [ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/Items/ItemLevelRichTextLabel.tscn" id="4_tq3lr"]
+
+[sub_resource type="GDScript" id="GDScript_x3q1t"]
+script/source = "class_name ItemSignals extends Node
+
+signal item_equipped(is_equipped: bool)
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pe54i"]
 atlas = ExtResource("2_pe54i")
@@ -33,7 +38,7 @@ collision_mask = 32
 script = ExtResource("1_k8ivp")
 
 [node name="ItemSignals" type="Node" parent="."]
-script = ExtResource("2_o7fic")
+script = SubResource("GDScript_x3q1t")
 
 [node name="ItemEffect" type="Node" parent="."]
 script = ExtResource("2_yrf62")
@@ -51,10 +56,10 @@ offset_right = 20.0
 offset_bottom = 49.0
 theme_override_font_sizes/normal_font_size = 9
 
+[node name="Cooldown" type="Timer" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_r06lk")
-
-[node name="Cooldown" type="Timer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 33
