@@ -7,11 +7,13 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
+
 @onready var fireball_scene = preload("res://Scene/Projectiles/FireBall.tscn")
-@onready var fireball_spawn_right = $spawn_fire_right
-@onready var fireball_spawn_left = $spawn_fire_left
-@onready var fireball_spawn_up = $spawn_fire_up
-@onready var fireball_spawn_down = $spawn_fire_down
+@onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
+@onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
+@onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
+@onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
+
 @onready var game_over = $GameOver
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
@@ -43,6 +45,7 @@ var can_attack: bool = true
 func _ready() -> void:
 	EventController.connect("xp_collected", on_event_xp_collected)
 	EventController.connect("stats_progress", on_event_stats_progress)
+	EventController.connect("projectile_throw", on_projectile_throw)
 	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
@@ -57,6 +60,10 @@ func on_event_xp_collected(value: int) -> void:
 
 func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	handle_new_stats(new_stats_to_add)
+	
+func on_projectile_throw(direction: float, position: String, rotation_degrees: int):
+	main_arrow.direction = direction
+	main_arrow.global_position = spawn_projectile_right.global_position
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
@@ -179,10 +186,10 @@ func spawn_fireball():
 
 	if animation.scale.x > 0:
 		main_fireball.direction = Vector2.RIGHT
-		main_fireball.global_position = fireball_spawn_right.global_position
+		main_fireball.global_position = spawn_projectile_right.global_position
 	else:
 		main_fireball.direction = Vector2.LEFT
-		main_fireball.global_position = fireball_spawn_left.global_position
+		main_fireball.global_position = spawn_projectile_left.global_position
 		main_fireball.rotation_degrees = 180
 
 	main_fireball.rotation_degrees = 0 if main_fireball.direction == Vector2.RIGHT else 180
@@ -208,11 +215,11 @@ func spawn_fireball():
 		get_parent().add_child(right_fireball)
 
 		left_fireball.direction = Vector2.LEFT
-		left_fireball.global_position = fireball_spawn_left.global_position
+		left_fireball.global_position = spawn_projectile_left.global_position
 		left_fireball.rotation_degrees = 180
 
 		right_fireball.direction = Vector2.RIGHT
-		right_fireball.global_position = fireball_spawn_right.global_position
+		right_fireball.global_position = spawn_projectile_right.global_position
 		right_fireball.rotation_degrees = 0
 
 	if level >= 10:
@@ -223,11 +230,11 @@ func spawn_fireball():
 		get_parent().add_child(down_fireball)
 
 		up_fireball.direction = Vector2.UP
-		up_fireball.global_position = fireball_spawn_up.global_position
+		up_fireball.global_position = spawn_projectile_up.global_position
 		up_fireball.rotation_degrees = -90
 
 		down_fireball.direction = Vector2.DOWN
-		down_fireball.global_position = fireball_spawn_down.global_position
+		down_fireball.global_position = spawn_projectile_down.global_position
 		down_fireball.rotation_degrees = 90
 
 	if level >= 15:

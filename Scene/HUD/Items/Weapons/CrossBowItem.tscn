@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbu3gbquxl3xn"]
+[gd_scene load_steps=11 format=3 uid="uid://cbu3gbquxl3xn"]
 
 [ext_resource type="Script" uid="uid://ddxn8qldd2dp6" path="res://Script/HUD/Items/Weapons/cross_bow_item.gd" id="1_cu3le"]
+[ext_resource type="PackedScene" uid="uid://d7vqnwbmjym3" path="res://Scene/Projectiles/Arrow.tscn" id="3_35l2l"]
 [ext_resource type="Script" uid="uid://h4apmdjfsn16" path="res://Scene/HUD/Items/Weapons/item_crossbow_effect.gd" id="3_pk7cg"]
 [ext_resource type="Texture2D" uid="uid://b1p5r7078bbt3" path="res://Assets/Free Bow and Crossbow Icons/PNG/Transperent/Icon27_no_effect.png" id="3_vis81"]
 [ext_resource type="PackedScene" uid="uid://bgx0r8fv7wyt8" path="res://Scene/HUD/Items/ItemLevelRichTextLabel.tscn" id="4_8fjbf"]
@@ -44,6 +45,8 @@ script = SubResource("GDScript_x3q1t")
 [node name="ItemEffect" type="Node" parent="."]
 script = ExtResource("3_pk7cg")
 metadata/_custom_type_script = "uid://c88anpsmrcvmj"
+
+[node name="Arrow" parent="." instance=ExtResource("3_35l2l")]
 
 [node name="WeaponAnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

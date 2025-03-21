@@ -1,7 +1,7 @@
 class_name Projectile extends Area2D
 
 @onready var animation: AnimatedSprite2D = $ProjectileSprite
-@onready var animation_name: String
+@onready var animation_name: String = "run"
 var projectile_sound_scene
 var sound_instance: AudioStreamPlayer
 

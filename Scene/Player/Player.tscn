@@ -361,6 +361,7 @@ motion_mode = 1
 floor_snap_length = 0.0
 platform_floor_layers = 1
 script = ExtResource("2_wc0kd")
+stats = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -452,20 +453,20 @@ one_shot = true
 
 [node name="Zoom" type="Timer" parent="."]
 
-[node name="fire_ball" parent="." instance=ExtResource("9_mlot8")]
+[node name="FireBall" parent="." instance=ExtResource("9_mlot8")]
 visible = false
 position = Vector2(195, -65)
 
-[node name="spawn_fire_right" type="Marker2D" parent="."]
+[node name="SpawnProjectileRight" type="Marker2D" parent="."]
 position = Vector2(46, -15)
 
-[node name="spawn_fire_left" type="Marker2D" parent="."]
+[node name="SpawnProjectileLeft" type="Marker2D" parent="."]
 position = Vector2(-46, -9)
 
-[node name="spawn_fire_up" type="Marker2D" parent="."]
+[node name="SpawnProjectileUp" type="Marker2D" parent="."]
 position = Vector2(-1, -54)
 
-[node name="spawn_fire_down" type="Marker2D" parent="."]
+[node name="SpawnProjectileDown" type="Marker2D" parent="."]
 position = Vector2(-1, 31)
 
 [node name="AttackCooldown" type="Timer" parent="."]
@@ -497,4 +498,3 @@ bus = &"Sfx"
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
 [connection signal="timeout" from="Hurted" to="." method="_on_hurted_timeout"]
-[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_timer_timeout"]
