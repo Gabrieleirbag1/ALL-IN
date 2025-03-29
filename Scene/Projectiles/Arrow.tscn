@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d7vqnwbmjym3"]
 
 [ext_resource type="Script" uid="uid://dhexcx8dwy7td" path="res://Script/Projectiles/arrow.gd" id="1_fy077"]
-[ext_resource type="Texture2D" uid="uid://2j20q4vkadl5" path="res://Assets/Arrow(Projectile)/Arrow03(32x32).png" id="2_fy077"]
+[ext_resource type="Texture2D" uid="uid://dbyubyy3wwnbs" path="res://Assets/Arrow(Projectile)/Arrow03(32x32).png" id="2_fy077"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3bnp"]
 atlas = ExtResource("2_fy077")
@@ -14,7 +14,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_k3bnp")
 }],
 "loop": true,
-"name": &"run",
+"name": &"start",
 "speed": 5.0
 }]
 
@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://bpo7ddlv37kjx"
 
 [node name="ProjectileSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fy077")
-animation = &"run"
+animation = &"start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(9, 3)

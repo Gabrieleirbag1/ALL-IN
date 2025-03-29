@@ -1,14 +1,12 @@
 extends ItemEffect
 
-@onready var arrow_scene: Area2D = $"../Arrow"
+@onready var arrow_scene: PackedScene = preload("res://Scene/Projectiles/Arrow.tscn")
 
 func run():
 	cooldown_timer.start()
 
 func _on_cooldown_timeout() -> void:
-	var main_arrow = arrow_scene.instantiate()
-	#arrow_sound.playing = true
-	get_parent().add_child(main_arrow)
-
-	main_arrow.direction = Vector2.RIGHT
-	main_arrow.global_position = spawn_projectile_right.global_position
+	var direction = Vector2.RIGHT
+	var position = Vector2(0, 0)
+	var rotation = 0
+	GameController.projectile_throw(arrow_scene, direction, position, rotation)

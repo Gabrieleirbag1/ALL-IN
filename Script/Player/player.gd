@@ -61,9 +61,12 @@ func on_event_xp_collected(value: int) -> void:
 func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	handle_new_stats(new_stats_to_add)
 	
-func on_projectile_throw(direction: float, position: String, rotation_degrees: int):
-	main_arrow.direction = direction
-	main_arrow.global_position = spawn_projectile_right.global_position
+func on_projectile_throw(projectile_scene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
+	var projectile_instance = projectile_scene.instantiate()
+	get_parent().add_child(projectile_instance)
+	projectile_instance.direction = projectile_direction
+	projectile_instance.global_position = spawn_projectile_right.global_position + projectile_position
+	projectile_instance.rotation_degrees = projectile_rotation
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
