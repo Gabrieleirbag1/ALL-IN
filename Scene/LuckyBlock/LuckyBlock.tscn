@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://tmqtdtks3u1y"]
 
 [ext_resource type="Script" uid="uid://dtetjrauj0y3a" path="res://Script/LuckyBlock/lucky_block.gd" id="1_elkvx"]
-[ext_resource type="Texture2D" uid="uid://2sol3xodvu42" path="res://Assets/Lucky Block/Lucky_Block.png" id="1_owssm"]
+[ext_resource type="Texture2D" uid="uid://bujs7a5hsxlla" path="res://Assets/Lucky Block/Lucky_Block.png" id="1_owssm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_62v58"]
 atlas = ExtResource("1_owssm")

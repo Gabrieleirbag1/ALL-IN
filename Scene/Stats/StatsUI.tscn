@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://da3w5n5l5q2dd"]
 
 [ext_resource type="Script" uid="uid://csdki06r4fj4e" path="res://Script/Stats/stats_ui.gd" id="1_2xjfo"]
-[ext_resource type="Texture2D" uid="uid://b22piiljlll08" path="res://Assets/Stats/Stats UI.png" id="1_a6gkn"]
+[ext_resource type="Texture2D" uid="uid://cl3a7ghlxysj8" path="res://Assets/Stats/Stats UI.png" id="1_a6gkn"]
 [ext_resource type="PackedScene" uid="uid://bdm600jdudn4k" path="res://Scene/Stats/StatFrame.tscn" id="3_c3axa"]
 
 [node name="StatsUI" type="CanvasLayer"]
