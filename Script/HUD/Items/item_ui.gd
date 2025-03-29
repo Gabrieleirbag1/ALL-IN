@@ -58,9 +58,16 @@ func initialize_item_frames() -> void:
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
 		var item_frame: ItemFrame = item_frames[i]
-		if not item_frame.is_in_group("equipable"):
-			if not item_frames_inside[item_frame]:
-				return i
+		var item: Item =  item_frames_inside[item_frame]
+		if not item_frame.is_in_group("equipable") and not item:
+			return i
+	for i in range(item_frames.size()):
+		var item_frame: ItemFrame = item_frames[i]
+		var item: Item =  item_frames_inside[item_frame]
+		if item.item_name == self.item_name:
+			item_body_to_merge = item
+			merge_items()
+			return -1
 	return -1
 	
 func weapon_is_equipped():

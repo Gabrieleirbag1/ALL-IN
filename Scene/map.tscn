@@ -26076,6 +26076,10 @@ item_layer_scene = ExtResource("19_68lke")
 position = Vector2(738, 656)
 item_layer_scene = ExtResource("19_68lke")
 
+[node name="CrossBowItem6" parent="." instance=ExtResource("18_u5hqo")]
+position = Vector2(830, 671)
+item_layer_scene = ExtResource("19_68lke")
+
 [node name="CrossBowItem" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(768, 663)
 item_layer_scene = ExtResource("19_68lke")
