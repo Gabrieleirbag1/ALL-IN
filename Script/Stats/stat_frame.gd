@@ -20,7 +20,7 @@ func handle_click_action():
 		"attack_speed": 0, 
 		"life_steal": 0, 
 		"critical": 0, 
-		"health": 0, 
+		"health_max": 0, 
 		"speed": 0, 
 		"luck": 0
 	}

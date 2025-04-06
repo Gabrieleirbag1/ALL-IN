@@ -107,7 +107,7 @@ text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
 
-[node name="healthLabel" type="Label" parent="HUDTextureRect"]
+[node name="health_maxLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.000520833
