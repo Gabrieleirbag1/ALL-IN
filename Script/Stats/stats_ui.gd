@@ -10,7 +10,7 @@ extends CanvasLayer
 
 var stats: Dictionary = {
 	"damage": 0, 
-	"attack_speed": 0, 
+	"attack_speed": 0.0, 
 	"life_steal": 0, 
 	"critical": 0, 
 	"health_max": 0, 
@@ -59,6 +59,11 @@ func _ready() -> void:
 	set_stat_nodes_lists()
 	handle_events()
 	
+func biased_random():
+	var r = randf()  # Nombre uniforme entre 0 et 1
+	var power = 2  # Contrôle le biais (plus élevé = plus biaisé vers les grands nombres)
+	return ceil((1 - pow(r, power)) * 100)
+
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stat_icon_path + random_stat + ".png")
 
@@ -75,31 +80,7 @@ func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
 	stat_rarity.set_font_color(stat_rarity_colors[rarity])
 
 func get_stat_value_number(player_level) -> int:
-	var pos_min: int
-	var pos_max: int
-
-	# For level 1, use fixed bounds.
-	if player_level == 1:
-		pos_min = 1
-		pos_max = 10
-	else:
-		# For other levels, bounds increase.
-		# Positive range: [10*(level-1), ...]
-		pos_min = 10 * (player_level - 1)
-		if player_level == 2:
-			pos_max = 10 * player_level
-		else:
-			# Level 3: [20, 35], level 4: [30, 50], etc.
-			pos_max = pos_min + 10 + (player_level - 2) * 5
-
-	# Randomly decide to return a positive or negative value.
-	# If positive, value between pos_min and pos_max.
-	# If negative, value between -pos_max and -pos_min.
-	var rand_val = randi_range(pos_min, pos_max)
-	if randf() < 0.5:
-		return rand_val
-	else:
-		return -rand_val
+	return biased_random()
 
 func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: int):
 	var impact: String = "+" if stat_value_number > 0 else ""

@@ -22,7 +22,7 @@ class_name Player extends CharacterBody2D
 		
 @export var stats: Dictionary = {
 	"damage": 10,
-	"attack_speed": 10,
+	"attack_speed": 10.0,
 	"life_steal": 10,
 	"critical": 10,
 	"health": 50,
