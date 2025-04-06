@@ -71,11 +71,11 @@ func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Ve
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
 		if key in stats:
-			var stat_label: Label = hud_texture_rect.get_node_or_null(key + "Label") as Label
+			var stat_label: FittedLabel = hud_texture_rect.get_node_or_null(key + "Label") as Label
 			if add_new_stats:
 				stats[key] += new_stats_to_add[key]
 			if stat_label:
-				stat_label.text = str(stats[key])
+				stat_label.set_text_fit(str(stats[key]))
 
 func play_animation(animation_name: String) -> void:
 	if not alive:

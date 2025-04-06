@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5s5mjecos86l"]
 
-[ext_resource type="Texture2D" uid="uid://lp2402fp0c2i" path="res://Assets/HUD/HUD.png" id="1_45228"]
+[ext_resource type="Texture2D" uid="uid://b60s02rf5cg03" path="res://Assets/HUD/HUD.png" id="1_45228"]
 [ext_resource type="PackedScene" uid="uid://blufktq06eh0i" path="res://Scene/HUD/Items/ItemTrashCanvas.tscn" id="1_a8d2h"]
 [ext_resource type="PackedScene" uid="uid://c46u6q5x86yxn" path="res://Scene/HUD/Frames/ItemFrame.tscn" id="2_hrmfr"]
-[ext_resource type="FontFile" uid="uid://bo0gtgj57lkfk" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
+[ext_resource type="FontFile" uid="uid://dwydoufpjfads" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
 [ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
 [ext_resource type="Script" uid="uid://orvv7v0uwleq" path="res://Script/fitted_label.gd" id="3_gtnfq"]
 [ext_resource type="PackedScene" uid="uid://b3jyqac724lmn" path="res://Scene/HUD/Frames/WeaponFrame.tscn" id="6_2vpg4"]
