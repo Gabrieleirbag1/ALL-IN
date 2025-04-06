@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5s5mjecos86l"]
+[gd_scene load_steps=11 format=3 uid="uid://c5s5mjecos86l"]
 
 [ext_resource type="Texture2D" uid="uid://b60s02rf5cg03" path="res://Assets/HUD/HUD.png" id="1_45228"]
 [ext_resource type="PackedScene" uid="uid://blufktq06eh0i" path="res://Scene/HUD/Items/ItemTrashCanvas.tscn" id="1_a8d2h"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dwydoufpjfads" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="2_ul7xa"]
 [ext_resource type="PackedScene" uid="uid://b8y4cbnptfsp8" path="res://Scene/XP/XpBar.tscn" id="3_ajlgc"]
 [ext_resource type="Script" uid="uid://orvv7v0uwleq" path="res://Script/fitted_label.gd" id="3_gtnfq"]
+[ext_resource type="Script" uid="uid://x4qw42qkstw8" path="res://Scene/HUD/custom_tooltip.gd" id="3_okp3d"]
 [ext_resource type="PackedScene" uid="uid://b3jyqac724lmn" path="res://Scene/HUD/Frames/WeaponFrame.tscn" id="6_2vpg4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltxks"]
@@ -47,6 +48,15 @@ mouse_filter = 2
 texture = ExtResource("1_45228")
 metadata/_edit_use_anchors_ = true
 
+[node name="damageTooltip" type="Control" parent="HUDTextureRect"]
+anchors_preset = 0
+offset_left = 867.0
+offset_top = 901.0
+offset_right = 967.0
+offset_bottom = 952.0
+tooltip_text = "Attack damage"
+script = ExtResource("3_okp3d")
+
 [node name="damageLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -61,6 +71,16 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
+
+[node name="attack_speedTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 978.0
+offset_top = 905.0
+offset_right = 1078.0
+offset_bottom = 956.0
+tooltip_text = "Attack Speed (per second)"
+script = ExtResource("3_okp3d")
 
 [node name="attack_speedLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
@@ -77,6 +97,16 @@ text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
 
+[node name="life_stealTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1094.0
+offset_top = 904.0
+offset_right = 1194.0
+offset_bottom = 955.0
+tooltip_text = "Life Steal"
+script = ExtResource("3_okp3d")
+
 [node name="life_stealLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -91,6 +121,16 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
+
+[node name="criticalTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 868.0
+offset_top = 962.0
+offset_right = 968.0
+offset_bottom = 1013.0
+tooltip_text = "Critical Strike Chance"
+script = ExtResource("3_okp3d")
 
 [node name="criticalLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
@@ -107,6 +147,16 @@ text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
 
+[node name="health_maxTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 977.0
+offset_top = 966.0
+offset_right = 1077.0
+offset_bottom = 1017.0
+tooltip_text = "Max Health"
+script = ExtResource("3_okp3d")
+
 [node name="health_maxLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -121,6 +171,16 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
+
+[node name="speedTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1091.0
+offset_top = 965.0
+offset_right = 1191.0
+offset_bottom = 1016.0
+tooltip_text = "Movement Speed"
+script = ExtResource("3_okp3d")
 
 [node name="speedLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 1
@@ -137,6 +197,16 @@ text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
 
+[node name="luckTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1102.0
+offset_top = 1022.0
+offset_right = 1202.0
+offset_bottom = 1073.0
+tooltip_text = "Luck"
+script = ExtResource("3_okp3d")
+
 [node name="luckLabel" type="Label" parent="HUDTextureRect"]
 layout_mode = 0
 offset_left = 1154.0
@@ -148,6 +218,16 @@ theme_override_font_sizes/font_size = 30
 text = "0"
 script = ExtResource("3_gtnfq")
 metadata/_edit_use_anchors_ = true
+
+[node name="xpTooltip" type="Control" parent="HUDTextureRect"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 871.0
+offset_top = 1024.0
+offset_right = 1090.0
+offset_bottom = 1075.0
+tooltip_text = "Experience"
+script = ExtResource("3_okp3d")
 
 [node name="XpBar" parent="HUDTextureRect" instance=ExtResource("3_ajlgc")]
 layout_mode = 0
