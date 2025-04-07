@@ -84,8 +84,8 @@ print(f"Négatifs: {len([x for x in neutral_values if x < 0])}, Positifs: {len([
 evaluate_numbers(neutral_values)
 
 
-print("\nBiais positif (0.1):")
-pos_values = [biased_random_around_zero(0.4) for _ in range(1000)]
+print("\nBiais positif (0.8):")
+pos_values = [biased_random_around_zero(0.8) for _ in range(1000)]
 print(f"Moyenne: {sum(pos_values)/len(pos_values):.2f}")
 print(f"Négatifs: {len([x for x in pos_values if x < 0])}, Positifs: {len([x for x in pos_values if x > 0])}")
 evaluate_numbers(pos_values)
