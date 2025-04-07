@@ -23,16 +23,16 @@ var stats: Dictionary = {
 
 var stats_modifier_impact_ranges: Dictionary = {
 	"Malus": {
-		"Annihilation": [-INF, -10],
-		"Malediction": [-9, -7],
-		"Terrible": [-6, -4],
+		"Annihilation": [-INF, -9],
+		"Malediction": [-9, -6],
+		"Terrible": [-6, -3],
 		"Annoying": [-3, -1]
 	},
 	"Bonus": {
 		"Common": [1, 3],
-		"Rare": [4, 6],
-		"Epic": [7, 9],
-		"Legendary": [10, INF]
+		"Rare": [3, 6],
+		"Epic": [6, 9],
+		"Legendary": [9, INF]
 	}
 }
 var stat_rarity_colors: Dictionary = {
@@ -100,8 +100,10 @@ func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
 
-func get_stat_rarity(stat_value_number: float) -> String:
+func get_stat_rarity(stat_value_number: Variant) -> String:
+	print(stat_value_number)
 	var modifier = "Bonus" if stat_value_number > 0 else "Malus"
+	print(modifier)
 	for rarity in stats_modifier_impact_ranges[modifier]:
 		var rarity_range = stats_modifier_impact_ranges[modifier][rarity]
 		if stat_value_number >= rarity_range[0] and stat_value_number <= rarity_range[1]:
@@ -112,15 +114,14 @@ func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
 	stat_rarity.set_bbcode_text(rarity)
 	stat_rarity.set_font_color(stat_rarity_colors[rarity])
 
-func get_stat_value_number(player_level: int, stat: String) -> float:
+func get_stat_value_number(player_level: int, stat: String) -> Variant:
 	var stat_max_value: int = stats_config.get_value(stat, "max_value", 0)
-	var stat_multiplier: float = stats_config.get_value(stat, "multiplier", 0.0)
-	
+	var stat_coefficent: Variant = stats_config.get_value(stat, "coefficent", 0)
 	var random_stat_value: int = biased_random_around_zero(0.0, stat_max_value)
-	var final_stat_value: float = random_stat_value * stat_multiplier + player_level
+	var final_stat_value = random_stat_value * stat_coefficent + player_level
 	return final_stat_value
 
-func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: float):
+func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: Variant):
 	var impact: String = "+" if stat_value_number > 0 else ""
 	var stat_value_text = impact + str(stat_value_number)
 	stat_value.set_bbcode_text(stat_value_text)
@@ -140,9 +141,9 @@ func set_3_random_stats(player_level: int):
 		icons.append(random_stat)
 		
 		set_stat_icon(stats_icons[i], random_stat)
-		var stat_value_number: float = get_stat_value_number(player_level, random_stat)
+		var stat_value_number: Variant = get_stat_value_number(player_level, random_stat)
 		set_stat_value(stats_values[i], stat_value_number)
-		var rarity = get_stat_rarity(stat_value_number)
+		var rarity: String = get_stat_rarity(stat_value_number)
 		set_stat_rarity(stats_rarities[i], rarity)
 		set_stat_background(stats_backgrounds[i], rarity)
 		
