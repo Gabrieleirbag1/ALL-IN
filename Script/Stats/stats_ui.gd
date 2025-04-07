@@ -18,7 +18,7 @@ var stats: Dictionary = {
 	"critical": 0, 
 	"health_max": 0, 
 	"speed": 0, 
-	"luck": 0
+	"luck": 0.0
 }
 
 var stats_modifier_impact_ranges: Dictionary = {
@@ -89,7 +89,7 @@ func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 	var value: float = pow(2 * r - 1, 3)  # Cube pour garder le signe mais resserrer vers 0
 	
 	# Appliquer le biais (entre -1 et 1)
-	var biased_value: float = value + bias * (1 - abs(value))
+	var biased_value: float = value + bias * (1 - abs(value)) * 0.1
 	
 	# Limiter entre -1 et 1
 	biased_value = clamp(biased_value, -1.0, 1.0)
@@ -101,9 +101,7 @@ func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
 
 func get_stat_rarity(stat_value_number: Variant) -> String:
-	print(stat_value_number)
 	var modifier = "Bonus" if stat_value_number > 0 else "Malus"
-	print(modifier)
 	for rarity in stats_modifier_impact_ranges[modifier]:
 		var rarity_range = stats_modifier_impact_ranges[modifier][rarity]
 		if stat_value_number >= rarity_range[0] and stat_value_number <= rarity_range[1]:

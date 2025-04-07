@@ -22,7 +22,7 @@ func handle_click_action():
 		"critical": 0, 
 		"health_max": 0, 
 		"speed": 0, 
-		"luck": 0
+		"luck": 0.0
 	}
 	if Input.is_action_just_pressed("click"):
 		if is_mouse_inside:

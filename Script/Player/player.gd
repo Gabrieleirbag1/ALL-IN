@@ -30,7 +30,7 @@ class_name Player extends CharacterBody2D
 	"health_min": 0,
 	"speed": 250,
 	"experience": 0,
-	"luck": 10
+	"luck": 0.0
 }
 
 var has_spawned_fireball: bool = false
