@@ -33,12 +33,11 @@ func handle_click_action():
 
 func get_all_values(text: String) -> Array[Variant]:
 	var regex = RegEx.new()
-	regex.compile(r"[-+.]?\d+")
+	regex.compile("[-+]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)")
 	var results: Array[Variant] = []
 	var search_result = regex.search_all(text)
 	for result in search_result:
 		var value = result.get_string()
-		print(value)
 		if "." in value:
 			results.append(float(value))
 		else:

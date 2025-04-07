@@ -169,7 +169,6 @@ func set_3_random_stats(player_level: int):
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
-		random_stat = "luck"
 		
 		set_stat_icon(stats_icons[i], random_stat)
 		var stat_value_number: Variant = get_stat_value_number(player_level, random_stat)
