@@ -9,6 +9,7 @@ extends CanvasLayer
 @export var stats_background_path: String = "res://Assets/Stats/Backgrounds/"
 @export var stats_config_file_path: String = "res://Config/stats.cfg"
 
+var stat_max_value_level: int
 var stats_config: ConfigFile = ConfigFile.new()
 
 var stats: Dictionary = {
@@ -45,8 +46,6 @@ var stat_rarity_colors: Dictionary = {
 	"Epic": "PURPLE",
 	"Legendary": "GOLD"
 }
-
-var stat_max_value_level: int
 
 func handle_events():
 	EventController.connect("level_up", on_event_level_up)
@@ -142,13 +141,12 @@ func get_stat_value_number(player_level: int, stat: String) -> Variant:
 	var stat_coefficent: Variant = stats_config.get_value(stat, "coefficent", 0)
 	var stat_scaling: Variant = stats_config.get_value(stat, "scaling", 1)
 	
-	var random_stat_value: int = biased_random_around_zero(50, stat_max_value)
+	var random_stat_value: int = biased_random_around_zero(Global.luck, stat_max_value)
 	while random_stat_value < 1 and random_stat_value > -1:
-		random_stat_value = biased_random_around_zero(50, stat_max_value)
+		random_stat_value = biased_random_around_zero(Global.luck, stat_max_value)
 
 	var player_level_scaling = player_level * stat_scaling
 	stat_max_value_level = stat_max_value + player_level
-	print_debug(random_stat_value, " ", stat_coefficent, " ", player_level_scaling, " ", stat_scaling) 
 
 	var final_stat_value = random_stat_value * stat_coefficent + player_level_scaling
 	return final_stat_value
@@ -171,6 +169,7 @@ func set_3_random_stats(player_level: int):
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
+		random_stat = "luck"
 		
 		set_stat_icon(stats_icons[i], random_stat)
 		var stat_value_number: Variant = get_stat_value_number(player_level, random_stat)
