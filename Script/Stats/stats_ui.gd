@@ -23,16 +23,16 @@ var stats: Dictionary = {
 
 var stats_modifier_impact_ranges: Dictionary = {
 	"Malus": {
-		"Annihilation": [-INF, -9],
-		"Malediction": [-9, -6],
-		"Terrible": [-6, -3],
-		"Annoying": [-3, 0]
+		"Annoying": 0,
+		"Terrible": 40,
+		"Malediction": 70,
+		"Annihilation": 90
 	},
 	"Bonus": {
-		"Common": [0, 3],
-		"Rare": [3, 6],
-		"Epic": [6, 9],
-		"Legendary": [9, INF]
+		"Common": 0,
+		"Rare": 40,
+		"Epic": 70,
+		"Legendary": 90
 	}
 }
 var stat_rarity_colors: Dictionary = {
@@ -45,6 +45,8 @@ var stat_rarity_colors: Dictionary = {
 	"Epic": "PURPLE",
 	"Legendary": "GOLD"
 }
+
+var stat_max_value_level: int
 
 func handle_events():
 	EventController.connect("level_up", on_event_level_up)
@@ -100,12 +102,35 @@ func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
 
-func get_stat_rarity(stat_value_number: Variant) -> String:
-	var modifier = "Bonus" if stat_value_number > 0 else "Malus"
-	for rarity in stats_modifier_impact_ranges[modifier]:
-		var rarity_range = stats_modifier_impact_ranges[modifier][rarity]
-		if stat_value_number >= rarity_range[0] and stat_value_number <= rarity_range[1]:
-			return rarity
+func get_stat_rarity(actual_value: int, max_value: int) -> String:
+	"""
+	Determines the rarity/impact level of a number based on its percentage of max_value.
+	Handles both positive values (bonuses) and negative values (maluses).
+	
+	Parameters:
+	- actual_value: The number to check
+	- max_value: The maximum possible positive value
+	
+	Returns:
+	- String indicating the rarity/impact level
+	"""
+	var absolute_value: Variant = abs(actual_value)
+	if absolute_value > max_value:
+		return "Legendary"
+	
+	var percentile = (float(absolute_value) / float(max_value)) * 100.0
+	var category = "Bonus" if actual_value >= 0 else "Malus"
+	var ranges = stats_modifier_impact_ranges[category]
+	
+	var sorted_rarities = [] # Sort thresholds in descending order
+	for rarity in ranges:
+		sorted_rarities.append({"name": rarity, "threshold": ranges[rarity]})
+	sorted_rarities.sort_custom(func(a, b): return a["threshold"] > b["threshold"])
+	
+	for rarity_data in sorted_rarities:
+		if percentile >= rarity_data["threshold"]:
+			return rarity_data["name"]
+	
 	return "Unknown"
 
 func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
@@ -117,11 +142,13 @@ func get_stat_value_number(player_level: int, stat: String) -> Variant:
 	var stat_coefficent: Variant = stats_config.get_value(stat, "coefficent", 0)
 	var stat_scaling: Variant = stats_config.get_value(stat, "scaling", 1)
 	
-	var random_stat_value: int = biased_random_around_zero(0.0, stat_max_value)
+	var random_stat_value: int = biased_random_around_zero(50, stat_max_value)
 	while random_stat_value < 1 and random_stat_value > -1:
-		random_stat_value = biased_random_around_zero(0.0, stat_max_value)
+		random_stat_value = biased_random_around_zero(50, stat_max_value)
 
-	var player_level_scaling = player_level * stat_scaling 
+	var player_level_scaling = player_level * stat_scaling
+	stat_max_value_level = stat_max_value + player_level
+	print_debug(random_stat_value, " ", stat_coefficent, " ", player_level_scaling, " ", stat_scaling) 
 
 	var final_stat_value = random_stat_value * stat_coefficent + player_level_scaling
 	return final_stat_value
@@ -148,7 +175,7 @@ func set_3_random_stats(player_level: int):
 		set_stat_icon(stats_icons[i], random_stat)
 		var stat_value_number: Variant = get_stat_value_number(player_level, random_stat)
 		set_stat_value(stats_values[i], stat_value_number)
-		var rarity: String = get_stat_rarity(stat_value_number)
+		var rarity: String = get_stat_rarity(stat_value_number, stat_max_value_level)
 		set_stat_rarity(stats_rarities[i], rarity)
 		set_stat_background(stats_backgrounds[i], rarity)
 		
