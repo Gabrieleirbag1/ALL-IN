@@ -16,7 +16,7 @@ func calculate_level_from_exp(total_experience: float) -> int:
 		level += 1
 		xp_requise *= GROWTH_RATE
 	
-	GameController.xp_progress(total_experience, get_total_experience_to_reach_level(level), get_total_experience_to_reach_level(level+1))
+	GameController.xp_progress(int(total_experience), int(get_total_experience_to_reach_level(level)), int(get_total_experience_to_reach_level(level+1)))
 	level_up(level)
 	# show_level_counters()
 	return level
