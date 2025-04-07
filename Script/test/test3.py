@@ -44,13 +44,13 @@ def biased_random_around_zero(bias=0.0, max_value=100):
     
     # Appliquer une transformation pour favoriser les valeurs proches de 0
     # Utiliser une distribution en forme de cloche
-    value = (2 * r - 1) ** 5  # Cube pour garder le signe mais resserrer vers 0
+    # value = (2 * r - 1) ** 3  # Cube pour garder le signe mais resserrer vers 0
     
-    # value = (2 * r - 1) ** 5  # Puissance 5 resserre davantage vers 0
+    value = (2 * r - 1) ** 3 # Puissance 5 resserre davantage vers 0
     
     # value = (2 * r - 1) ** 3 * (1 - 0.3 * abs((2 * r - 1)))  # Resserre avec un facteur correctif
     
-    # value = math.copysign((2 * r - 1)**2 * (2 * r - 1), (2 * r - 1))  # Plus concentré vers 0
+    value = math.copysign((2 * r - 1)**2 * (2 * r - 1), (2 * r - 1))  # Plus concentré vers 0
     
     # # Transformation qui concentre très fortement vers les extrémités
     # base = 2 * r - 1  # Valeur entre -1 et 1

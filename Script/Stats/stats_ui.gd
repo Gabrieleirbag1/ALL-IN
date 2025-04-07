@@ -26,10 +26,10 @@ var stats_modifier_impact_ranges: Dictionary = {
 		"Annihilation": [-INF, -9],
 		"Malediction": [-9, -6],
 		"Terrible": [-6, -3],
-		"Annoying": [-3, -1]
+		"Annoying": [-3, 0]
 	},
 	"Bonus": {
-		"Common": [1, 3],
+		"Common": [0, 3],
 		"Rare": [3, 6],
 		"Epic": [6, 9],
 		"Legendary": [9, INF]
@@ -115,8 +115,15 @@ func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
 func get_stat_value_number(player_level: int, stat: String) -> Variant:
 	var stat_max_value: int = stats_config.get_value(stat, "max_value", 0)
 	var stat_coefficent: Variant = stats_config.get_value(stat, "coefficent", 0)
+	var stat_scaling: Variant = stats_config.get_value(stat, "scaling", 1)
+	
 	var random_stat_value: int = biased_random_around_zero(0.0, stat_max_value)
-	var final_stat_value = random_stat_value * stat_coefficent + player_level
+	while random_stat_value < 1 and random_stat_value > -1:
+		random_stat_value = biased_random_around_zero(0.0, stat_max_value)
+
+	var player_level_scaling = player_level * stat_scaling 
+
+	var final_stat_value = random_stat_value * stat_coefficent + player_level_scaling
 	return final_stat_value
 
 func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: Variant):
