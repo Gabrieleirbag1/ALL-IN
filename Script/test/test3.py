@@ -44,7 +44,22 @@ def biased_random_around_zero(bias=0.0, max_value=100):
     
     # Appliquer une transformation pour favoriser les valeurs proches de 0
     # Utiliser une distribution en forme de cloche
-    value = (2 * r - 1) ** 3  # Cube pour garder le signe mais resserrer vers 0
+    value = (2 * r - 1) ** 5  # Cube pour garder le signe mais resserrer vers 0
+    
+    # value = (2 * r - 1) ** 5  # Puissance 5 resserre davantage vers 0
+    
+    # value = (2 * r - 1) ** 3 * (1 - 0.3 * abs((2 * r - 1)))  # Resserre avec un facteur correctif
+    
+    # value = math.copysign((2 * r - 1)**2 * (2 * r - 1), (2 * r - 1))  # Plus concentré vers 0
+    
+    # # Transformation qui concentre très fortement vers les extrémités
+    # base = 2 * r - 1  # Valeur entre -1 et 1
+    # sign = 1 if base >= 0 else -1
+    # value = sign * (1 - math.exp(-3 * abs(base)))  # Resserre fortement vers 0
+    
+    # # Distribution en forme de S très aplatie au centre
+    # base = 2 * r - 1
+    # value = 2 * (1 / (1 + math.exp(-10 * base)) - 0.5) * (abs(base) ** 2)
     
     # Appliquer le biais (entre -1 et 1)
     biased_value = value + bias * (1 - abs(value)) * 0.1
@@ -76,8 +91,24 @@ print(f"Négatifs: {len([x for x in pos_values if x < 0])}, Positifs: {len([x fo
 evaluate_numbers(pos_values)
 
 print("\n--- Test de progression graduelle ---")
-for bias_level in [-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0, 2, 50]:
+for bias_level in [-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1.0, 2, 5, 6, 7, 10, 15, 20, 25, 30, 40, 50]:
     test_values = [biased_random_around_zero(bias_level) for _ in range(1000)]
     pos_gt_50 = len([x for x in test_values if x > 50])
     neg_lt_minus_50 = len([x for x in test_values if x < -50])
     print(f"Biais {bias_level:.1f}: Moyenne: {sum(test_values)/len(test_values):.2f}, >50: {pos_gt_50}, <-50: {neg_lt_minus_50}")
+
+# Test pour visualiser la distribution
+print("\nDistribution des valeurs sans biais:")
+test_values = [biased_random_around_zero(0.0) for _ in range(10000)]
+bins = [-100, -90, -80, -70, -60, -50, -40, -30, -20, -10, 
+        0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+counts = [0] * (len(bins) - 1)
+
+for val in test_values:
+    for i in range(len(bins) - 1):
+        if bins[i] <= val < bins[i+1]:
+            counts[i] += 1
+            break
+
+for i in range(len(counts)):
+    print(f"{bins[i]} to {bins[i+1]}: {'#' * (counts[i] // 50)}")
