@@ -71,30 +71,30 @@ func load_cfg_file() -> void:
 
 func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 	"""
-	Génère un nombre aléatoire entre -max_value et max_value.
+	Generates a random number between -max_value and max_value.
 	
-	Paramètres:
-	- bias: contrôle la direction du biais
-		* bias = 0.0: distribution symétrique autour de 0
-		* bias > 0: tendance vers les nombres positifs (plus bias est grand, plus ça tend vers max_value)
-		* bias < 0: tendance vers les nombres négatifs (plus bias est petit, plus ça tend vers -max_value)
+	Parameters:
+	- bias: controls the direction of the bias
+		* bias = 0.0: symmetric distribution around 0
+		* bias > 0: tendency towards positive numbers (the larger the bias, the closer to max_value)
+		* bias < 0: tendency towards negative numbers (the smaller the bias, the closer to -max_value)
 	
-	La distribution favorise les nombres proches de 0 dans tous les cas.
+	The distribution favors numbers close to 0 in all cases.
 	"""
-	# Générer un nombre entre 0 et 1
+	# Generate a number between 0 and 1
 	var r: float = randf()
 	
-	# Appliquer une transformation pour favoriser les valeurs proches de 0
-	# Utiliser une distribution en forme de cloche
-	var value: float = pow(2 * r - 1, 3)  # Cube pour garder le signe mais resserrer vers 0
+	# Apply a transformation to favor values close to 0
+	# Use a bell-shaped distribution
+	var value: float = pow(2 * r - 1, 3)  # Cube to keep the sign but tighten towards 0
 	
-	# Appliquer le biais (entre -1 et 1)
-	var biased_value: float = value + bias * (1 - abs(value)) * 0.1
+	# Apply the bias (between -1 and 1)
+	var biased_value: float = value + bias * (1 - abs(value)) * 0.1 # Reduce amplitude by multiplying by 0.1
 	
-	# Limiter entre -1 et 1
+	# Clamp between -1 and 1
 	biased_value = clamp(biased_value, -1.0, 1.0)
 	
-	# Transformer en valeur entre -max_value et max_value
+	# Transform into a value between -max_value and max_value
 	return int(biased_value * max_value)
 
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
