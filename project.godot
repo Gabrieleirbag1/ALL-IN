@@ -27,6 +27,10 @@ EventController="*res://Script/Global/event_controller.gd"
 GameController="*res://Script/Global/game_controller.gd"
 Loader="*res://Script/Menu/Loader.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=0
+
 [display]
 
 window/size/viewport_width=1920

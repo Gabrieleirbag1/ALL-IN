@@ -1,15 +1,15 @@
 [gd_scene load_steps=58 format=3 uid="uid://d1yme2tfg8o5v"]
 
-[ext_resource type="Texture2D" uid="uid://clfdy3181101i" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard-Attack02 2.png" id="2_6c06u"]
-[ext_resource type="Texture2D" uid="uid://bwaejhgeam7ml" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
+[ext_resource type="Texture2D" uid="uid://bu2h2dug65d8u" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard-Attack02 2.png" id="2_6c06u"]
+[ext_resource type="Texture2D" uid="uid://bb3tdyb88cpfc" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
 [ext_resource type="Script" uid="uid://ddhxyx2vu3x85" path="res://Script/Player/player.gd" id="2_wc0kd"]
-[ext_resource type="Texture2D" uid="uid://bv6dgjkxmk06l" path="res://Assets/XP/level-bg.png" id="4_g1kss"]
+[ext_resource type="Texture2D" uid="uid://dedrsk57yh2gm" path="res://Assets/XP/level-bg.png" id="4_g1kss"]
 [ext_resource type="Script" uid="uid://cvi7ekrnab7d1" path="res://Script/Player/health_bar.gd" id="7_t4lsi"]
 [ext_resource type="PackedScene" uid="uid://nbjb34rx2gns" path="res://Scene/Menu/Game_over.tscn" id="7_x13ln"]
-[ext_resource type="AudioStream" uid="uid://ssdfjm5xdxhd" path="res://Sounds/Death.wav" id="8_lc3e7"]
-[ext_resource type="AudioStream" uid="uid://c70hi2xfbup2t" path="res://Sounds/hurt_2-[AudioTrimmer.com].wav" id="9_2d8q0"]
-[ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/Projectiles/fire_ball.tscn" id="9_mlot8"]
-[ext_resource type="AudioStream" uid="uid://joqfqa0hfmil" path="res://Sounds/fireball.mp3" id="10_mbyjr"]
+[ext_resource type="AudioStream" uid="uid://dlxmknkq2tg0x" path="res://Sounds/Death.wav" id="8_lc3e7"]
+[ext_resource type="AudioStream" uid="uid://bpj4onlmw1560" path="res://Sounds/hurt_2-[AudioTrimmer.com].wav" id="9_2d8q0"]
+[ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/Projectiles/FireBall.tscn" id="9_mlot8"]
+[ext_resource type="AudioStream" uid="uid://dl6it0lh1tal5" path="res://Sounds/fireball.mp3" id="10_mbyjr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7lp"]
 atlas = ExtResource("2_6c06u")
@@ -452,20 +452,20 @@ one_shot = true
 
 [node name="Zoom" type="Timer" parent="."]
 
-[node name="fire_ball" parent="." instance=ExtResource("9_mlot8")]
+[node name="FireBall" parent="." instance=ExtResource("9_mlot8")]
 visible = false
 position = Vector2(195, -65)
 
-[node name="spawn_fire_right" type="Marker2D" parent="."]
+[node name="SpawnProjectileRight" type="Marker2D" parent="."]
 position = Vector2(46, -15)
 
-[node name="spawn_fire_left" type="Marker2D" parent="."]
+[node name="SpawnProjectileLeft" type="Marker2D" parent="."]
 position = Vector2(-46, -9)
 
-[node name="spawn_fire_up" type="Marker2D" parent="."]
+[node name="SpawnProjectileUp" type="Marker2D" parent="."]
 position = Vector2(-1, -54)
 
-[node name="spawn_fire_down" type="Marker2D" parent="."]
+[node name="SpawnProjectileDown" type="Marker2D" parent="."]
 position = Vector2(-1, 31)
 
 [node name="AttackCooldown" type="Timer" parent="."]
@@ -497,4 +497,3 @@ bus = &"Sfx"
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
 [connection signal="timeout" from="Hurted" to="." method="_on_hurted_timeout"]
-[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_timer_timeout"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4a4logner8qw" path="res://Script/HUD/item_trash_canvas.gd" id="1_w2231"]
 [ext_resource type="Texture2D" uid="uid://cjcoiy7jscbwj" path="res://Assets/HUD/trash-sprite-sheet.png" id="2_2335i"]
-[ext_resource type="FontFile" uid="uid://03pw1jxdlm34" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="3_111gs"]
+[ext_resource type="FontFile" uid="uid://dwydoufpjfads" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="3_111gs"]
 [ext_resource type="Script" uid="uid://komguvwd0gc3" path="res://Script/bbcode_rich_text_label.gd" id="4_1noxj"]
 [ext_resource type="Texture2D" uid="uid://bs42drb278lr8" path="res://Assets/HUD/TrashArea.png" id="5_k1mdb"]
 

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://d7vqnwbmjym3"]
+
+[ext_resource type="Script" uid="uid://dhexcx8dwy7td" path="res://Script/Projectiles/arrow.gd" id="1_fy077"]
+[ext_resource type="Texture2D" uid="uid://dbyubyy3wwnbs" path="res://Assets/Arrow(Projectile)/Arrow03(32x32).png" id="2_fy077"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3bnp"]
+atlas = ExtResource("2_fy077")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fy077"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3bnp")
+}],
+"loop": true,
+"name": &"start",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k3bnp"]
+
+[node name="Arrow" type="Area2D"]
+y_sort_enabled = true
+collision_mask = 7
+script = ExtResource("1_fy077")
+metadata/_custom_type_script = "uid://bpo7ddlv37kjx"
+
+[node name="ProjectileSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fy077")
+animation = &"start"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, 3)
+rotation = 0.539307
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_k3bnp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -34,6 +34,8 @@ var item_name: String = "Default"
 
 # Nodes references
 @onready var item_level_rich_text_label: RichTextLabel = $ItemLevelRichTextLabel
+@onready var item_effect: ItemEffect = $ItemEffect
+@onready var item_signals: Node = $ItemSignals
 
 @export var item_layer_scene: PackedScene
 
@@ -56,9 +58,16 @@ func initialize_item_frames() -> void:
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
 		var item_frame: ItemFrame = item_frames[i]
-		if not item_frame.is_in_group("equipable"):
-			if not item_frames_inside[item_frame]:
-				return i
+		var item: Item =  item_frames_inside[item_frame]
+		if not item_frame.is_in_group("equipable") and not item:
+			return i
+	for i in range(item_frames.size()):
+		var item_frame: ItemFrame = item_frames[i]
+		var item: Item =  item_frames_inside[item_frame]
+		if item.item_name == self.item_name:
+			manage_merge(item, true)
+			merge_items()
+			return -1
 	return -1
 	
 func weapon_is_equipped():
@@ -92,6 +101,7 @@ func add_to_item_frame():
 	item_frames_inside[body_ref] = self
 	if body_ref.is_in_group("equipable"):
 		is_inside_weapon_frame = true
+		item_signals.emit_signal("item_equipped", true)
 #endregion
 
 #region Item Layer Management
@@ -195,15 +205,15 @@ func set_is_disposable(disposable_state: bool):
 
 #region Merge
 func manage_merge(body: Item, is_mergeable_value: bool):
-	if Global.dragged_item == self:
-		if body.item_level == item_level:
-			item_body_to_merge = body
-			is_mergeable = is_mergeable_value
+	if body.item_level == item_level and body.item_name == item_name:
+		item_body_to_merge = body
+		is_mergeable = is_mergeable_value
 
 func merge_items():
-	item_body_to_merge.item_level = item_body_to_merge.item_level + 1
-	item_body_to_merge.item_level_rich_text_label.set_item_level(item_body_to_merge.item_level)
-	queue_free()
+	if is_mergeable:
+		item_body_to_merge.item_level = item_body_to_merge.item_level + 1
+		item_body_to_merge.item_level_rich_text_label.set_item_level(item_body_to_merge.item_level)
+		queue_free()
 #endregion
 
 #region Signal Callbacks
@@ -233,7 +243,8 @@ func _on_area_2d_body_entered(body) -> void:
 	elif body.is_in_group('dropable'):
 		handle_dropable_entered(body)
 	if body.is_in_group('weapons'):
-		manage_merge(body, true)
+		if Global.dragged_item == self:
+			manage_merge(body, true)
 	else:
 		is_mergeable = false
 
@@ -245,7 +256,8 @@ func _on_area_2d_body_exited(body) -> void:
 	elif body.is_in_group('dropable'):
 		handle_dropable_exited(body)
 	elif body.is_in_group('weapons'):
-		manage_merge(body, false)
+		if Global.dragged_item == self:
+			manage_merge(body, false)
 #endregion
 
 #region Collision Handling

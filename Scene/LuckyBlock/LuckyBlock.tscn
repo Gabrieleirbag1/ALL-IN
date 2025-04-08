@@ -1,17 +1,17 @@
 [gd_scene load_steps=7 format=3 uid="uid://tmqtdtks3u1y"]
 
 [ext_resource type="Script" uid="uid://dtetjrauj0y3a" path="res://Script/LuckyBlock/lucky_block.gd" id="1_elkvx"]
-[ext_resource type="Texture2D" uid="uid://2sol3xodvu42" path="res://Assets/Lucky Block/Lucky_Block.png" id="1_owssm"]
+[ext_resource type="Texture2D" uid="uid://epwjt3hj6ye7" path="res://Assets/Lucky Block/mysterybox2.png" id="2_rfk7e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_62v58"]
-atlas = ExtResource("1_owssm")
-region = Rect2(0, 0, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypug2"]
+atlas = ExtResource("2_rfk7e")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_juwbt"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_62v58")
+"texture": SubResource("AtlasTexture_ypug2")
 }],
 "loop": true,
 "name": &"default",
@@ -29,7 +29,9 @@ y_sort_enabled = true
 script = ExtResource("1_elkvx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+texture_filter = 1
+position = Vector2(-9.53674e-07, -9.53674e-07)
+scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_juwbt")
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="."]

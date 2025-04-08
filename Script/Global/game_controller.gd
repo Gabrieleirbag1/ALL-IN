@@ -28,3 +28,6 @@ func enemy_death(xp: int, enemy_position: Vector2, enemy_type: String):
 	
 func item_trash_display(is_disposable: bool):
 	EventController.emit_signal("item_trash_display", is_disposable)
+	
+func projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
+	EventController.emit_signal("projectile_throw", projectile_scene, projectile_direction, projectile_position, projectile_rotation)
