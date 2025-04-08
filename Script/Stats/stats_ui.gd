@@ -197,4 +197,7 @@ func on_stats_progress(_stats) -> void:
 func on_lucky_event(lucky_event_category: String) -> void:
 	if not lucky_event_category == "stat":
 		return
-	print("yes")
+	var new_stat = get_random_stat()
+	var stat_values: Dictionary[String, Variant] = get_stat_value_number(Global.player_level, new_stat)
+	var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
+	print(stat_values, rarity)

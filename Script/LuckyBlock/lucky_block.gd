@@ -3,7 +3,7 @@ extends CharacterBody2D
 var has_player_entered = false
 
 func generate_stat():
-	GameController.lucky_event("ss")
+	GameController.lucky_event("stat")
 
 func handle_open_action():
 	if Input.is_action_just_pressed("open") and has_player_entered:
