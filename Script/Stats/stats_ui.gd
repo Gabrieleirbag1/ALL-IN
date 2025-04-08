@@ -100,7 +100,7 @@ func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
 	stat_icon.texture = load(stats_icon_dir_path + random_stat + ".png")
 
-func get_stat_rarity(actual_value: int, max_value: int) -> String:
+func get_stat_rarity(actual_value: Variant, max_value: int) -> String:
 	"""
 	Determines the rarity/impact level of a number based on its percentage of max_value.
 	Handles both positive values (bonuses) and negative values (maluses).
@@ -169,13 +169,15 @@ func set_3_random_stats(player_level: int):
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
+		set_stat(i, random_stat, player_level)
 		
-		set_stat_icon(stats_icons[i], random_stat)
-		var stat_values: Dictionary[String, Variant] = get_stat_value_number(player_level, random_stat)
-		set_stat_value(stats_values[i], stat_values["final_stat_value"])
-		var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
-		set_stat_rarity(stats_rarities[i], rarity)
-		set_stat_background(stats_backgrounds[i], rarity)
+func set_stat(i: int, new_stat: String, player_level: int = Global.player_level):
+	set_stat_icon(stats_icons[i], new_stat)
+	var stat_values: Dictionary[String, Variant] = get_stat_value_number(player_level, new_stat)
+	set_stat_value(stats_values[i], stat_values["final_stat_value"])
+	var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
+	set_stat_rarity(stats_rarities[i], rarity)
+	set_stat_background(stats_backgrounds[i], rarity)
 		
 func on_event_level_up(player_level) -> void:
 	get_tree().paused = true

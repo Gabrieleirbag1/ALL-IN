@@ -7,4 +7,6 @@ var is_dragging: bool = false
 var dragged_item: Item
 var player_current_attack : bool
 var item_frames_inside: Dictionary[ItemFrame, Item] = {}
+
 var luck: float = 0.0
+var player_level:int = 0
