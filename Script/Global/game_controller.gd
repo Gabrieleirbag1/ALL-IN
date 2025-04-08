@@ -23,6 +23,9 @@ func stats_progress(stats: Dictionary) -> void:
 		"luck": stats["luck"]
 	})
 	
+func lucky_event(lucky_event_category: String):
+	EventController.emit_signal("lucky_event", lucky_event_category)
+	
 func enemy_death(xp: int, enemy_position: Vector2, enemy_type: String):
 	EventController.emit_signal("enemy_death", xp, enemy_position, enemy_type)
 	
