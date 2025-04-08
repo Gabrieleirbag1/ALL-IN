@@ -64,7 +64,7 @@ func _ready() -> void:
 	handle_events()
 
 func load_cfg_file() -> void:
-	var err = stats_config.load(stats_config_file_path)
+	var err: Error = stats_config.load(stats_config_file_path)
 	if err != OK:
 		push_error("Impossible de charger le fichier de configuration: %s" % "res://Config/stats.cfg")
 		return		
@@ -116,8 +116,8 @@ func get_stat_rarity(actual_value: int, max_value: int) -> String:
 	if absolute_value > max_value:
 		return "Legendary"
 	
-	var percentile = (float(absolute_value) / float(max_value)) * 100.0
-	var category = "Bonus" if actual_value >= 0 else "Malus"
+	var percentile: float = (float(absolute_value) / float(max_value)) * 100.0
+	var category: String = "Bonus" if actual_value >= 0 else "Malus"
 	var ranges = stats_modifier_impact_ranges[category]
 	
 	var sorted_rarities = [] # Sort thresholds in descending order
@@ -153,11 +153,11 @@ func get_stat_value_number(player_level: int, stat: String) -> Dictionary[String
 
 func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: Variant):
 	var impact: String = "+" if stat_value_number > 0 else ""
-	var stat_value_text = impact + str(stat_value_number)
+	var stat_value_text: String = impact + str(stat_value_number)
 	stat_value.set_bbcode_text(stat_value_text)
 	
 func set_stat_background(stat_background: TextureRect, rarity):
-	var bg_color = stat_rarity_colors[rarity]
+	var bg_color: String = stat_rarity_colors[rarity]
 	stat_background.texture = load(stats_background_path + "STAT_BG_" + bg_color + ".png")
 	
 func set_3_random_stats(player_level: int):
@@ -169,7 +169,6 @@ func set_3_random_stats(player_level: int):
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
-		random_stat = "luck"
 		
 		set_stat_icon(stats_icons[i], random_stat)
 		var stat_values: Dictionary[String, Variant] = get_stat_value_number(player_level, random_stat)
