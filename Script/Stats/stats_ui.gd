@@ -161,7 +161,7 @@ func set_stat_background(stat_background: TextureRect, rarity):
 	stat_background.texture = load(stats_background_path + "STAT_BG_" + bg_color + ".png")
 	
 func set_3_random_stats(player_level: int):
-	var icons = []
+	var icons: Array[String] = []
 	for i in range(3):
 		var random_stat: String
 		while true:
