@@ -7,18 +7,17 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
-
-@onready var fireball_scene = preload("res://Scene/Projectiles/FireBall.tscn")
-@onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
-@onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
-@onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
-@onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
-
 @onready var game_over = $GameOver
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
 @onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
+
+const fireball_scene = preload("res://Scene/Projectiles/FireBall.tscn")
+@onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
+@onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
+@onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
+@onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
 		
 @export var stats: Dictionary = {
 	"damage": 10,
