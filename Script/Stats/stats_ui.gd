@@ -9,7 +9,6 @@ extends CanvasLayer
 @export var stats_background_path: String = "res://Assets/Stats/Backgrounds/"
 @export var stats_config_file_path: String = "res://Config/stats.cfg"
 
-var stat_max_value_level: int
 var stats_config: ConfigFile = ConfigFile.new()
 
 var stats: Dictionary = {
@@ -136,7 +135,7 @@ func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
 	stat_rarity.set_bbcode_text(rarity)
 	stat_rarity.set_font_color(stat_rarity_colors[rarity])
 
-func get_stat_value_number(player_level: int, stat: String) -> Variant:
+func get_stat_value_number(player_level: int, stat: String) -> Dictionary[String, Variant]:
 	var stat_max_value: int = stats_config.get_value(stat, "max_value", 0)
 	var stat_coefficent: Variant = stats_config.get_value(stat, "coefficent", 0)
 	var stat_scaling: Variant = stats_config.get_value(stat, "scaling", 1)
@@ -145,11 +144,12 @@ func get_stat_value_number(player_level: int, stat: String) -> Variant:
 	while random_stat_value < 1 and random_stat_value > -1:
 		random_stat_value = biased_random_around_zero(Global.luck, stat_max_value)
 
-	var player_level_scaling = player_level * stat_scaling
-	stat_max_value_level = stat_max_value + player_level
-
-	var final_stat_value = random_stat_value * stat_coefficent + player_level_scaling
-	return final_stat_value
+	var player_level_scaling: Variant = player_level * stat_scaling
+	var stat_max_value_level = stat_max_value + player_level
+	
+	var final_stat_value: Variant = random_stat_value * stat_coefficent
+	final_stat_value = final_stat_value + player_level_scaling if final_stat_value > 0 else final_stat_value - player_level_scaling
+	return {"final_stat_value": final_stat_value, "stat_max_value_level": stat_max_value_level}
 
 func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: Variant):
 	var impact: String = "+" if stat_value_number > 0 else ""
@@ -169,11 +169,12 @@ func set_3_random_stats(player_level: int):
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
+		random_stat = "luck"
 		
 		set_stat_icon(stats_icons[i], random_stat)
-		var stat_value_number: Variant = get_stat_value_number(player_level, random_stat)
-		set_stat_value(stats_values[i], stat_value_number)
-		var rarity: String = get_stat_rarity(stat_value_number, stat_max_value_level)
+		var stat_values: Dictionary[String, Variant] = get_stat_value_number(player_level, random_stat)
+		set_stat_value(stats_values[i], stat_values["final_stat_value"])
+		var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
 		set_stat_rarity(stats_rarities[i], rarity)
 		set_stat_background(stats_backgrounds[i], rarity)
 		
