@@ -18,7 +18,7 @@ func stats_progress(stats: Dictionary) -> void:
 		"attack_speed": stats["attack_speed"],
 		"life_steal": stats["life_steal"],
 		"critical": stats["critical"],
-		"health": stats["health"],
+		"health_max": stats["health_max"],
 		"speed": stats["speed"],
 		"luck": stats["luck"]
 	})

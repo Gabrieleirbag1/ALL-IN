@@ -1,6 +1,6 @@
 extends ItemEffect
 
-@onready var arrow_scene: PackedScene = preload("res://Scene/Projectiles/Arrow.tscn")
+const arrow_scene: PackedScene = preload("res://Scene/Projectiles/Arrow.tscn")
 
 func run():
 	cooldown_timer.start()

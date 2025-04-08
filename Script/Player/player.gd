@@ -7,22 +7,21 @@ class_name Player extends CharacterBody2D
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
 @onready var camera: Camera2D = $Camera2D
-
-@onready var fireball_scene = preload("res://Scene/Projectiles/FireBall.tscn")
-@onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
-@onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
-@onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
-@onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
-
 @onready var game_over = $GameOver
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
 @onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
+
+const fireball_scene = preload("res://Scene/Projectiles/FireBall.tscn")
+@onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
+@onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
+@onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
+@onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
 		
 @export var stats: Dictionary = {
 	"damage": 10,
-	"attack_speed": 10,
+	"attack_speed": 10.0,
 	"life_steal": 10,
 	"critical": 10,
 	"health": 50,
@@ -30,7 +29,7 @@ class_name Player extends CharacterBody2D
 	"health_min": 0,
 	"speed": 250,
 	"experience": 0,
-	"luck": 10
+	"luck": Global.luck
 }
 
 var has_spawned_fireball: bool = false
@@ -57,9 +56,6 @@ func on_event_xp_collected(value: int) -> void:
 		stats["experience"] += value
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
-
-func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
-	handle_new_stats(new_stats_to_add)
 	
 func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
 	var projectile_instance = projectile_scene.instantiate()
@@ -67,6 +63,9 @@ func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Ve
 	projectile_instance.direction = projectile_direction
 	projectile_instance.global_position = spawn_projectile_right.global_position + projectile_position
 	projectile_instance.rotation_degrees = projectile_rotation
+	
+func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
+	handle_new_stats(new_stats_to_add)
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
@@ -76,6 +75,7 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 				stats[key] += new_stats_to_add[key]
 			if stat_label:
 				stat_label.set_text_fit(str(stats[key]))
+	Global.luck += new_stats_to_add["luck"]	
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
