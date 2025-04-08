@@ -145,7 +145,7 @@ func get_stat_value_number(player_level: int, stat: String) -> Dictionary[String
 		random_stat_value = biased_random_around_zero(Global.luck, stat_max_value)
 
 	var player_level_scaling: Variant = player_level * stat_scaling
-	var stat_max_value_level = stat_max_value + player_level
+	var stat_max_value_level: int = stat_max_value + player_level
 	
 	var final_stat_value: Variant = random_stat_value * stat_coefficent
 	final_stat_value = final_stat_value + player_level_scaling if final_stat_value > 0 else final_stat_value - player_level_scaling
