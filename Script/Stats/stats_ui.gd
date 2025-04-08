@@ -5,8 +5,8 @@ extends CanvasLayer
 @onready var stats_values: Array[BBCodeRichTextLabel] = []
 @onready var stats_backgrounds: Array[TextureRect] = []
 
-@export_dir var stats_icon_path: String = "res://Assets/Stats/icons/png180x/"
-@export_dir var stats_background_path: String = "res://Assets/Stats/Backgrounds/"
+@export_dir var stats_icon_dir_path: String = "res://Assets/Stats/icons/png180x/"
+@export_dir var stats_background_dir_path: String = "res://Assets/Stats/Backgrounds/"
 @export_file("*.cfg") var stats_config_file_path: String = "res://Config/stats.cfg"
 
 var stats_config: ConfigFile = ConfigFile.new()
@@ -98,7 +98,7 @@ func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 	return int(biased_value * max_value)
 
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
-	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
+	stat_icon.texture = load(stats_icon_dir_path + random_stat + ".png")
 
 func get_stat_rarity(actual_value: int, max_value: int) -> String:
 	"""
@@ -158,7 +158,7 @@ func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: Variant)
 	
 func set_stat_background(stat_background: TextureRect, rarity):
 	var bg_color: String = stat_rarity_colors[rarity]
-	stat_background.texture = load(stats_background_path + "STAT_BG_" + bg_color + ".png")
+	stat_background.texture = load(stats_background_dir_path + "STAT_BG_" + bg_color + ".png")
 	
 func set_3_random_stats(player_level: int):
 	var icons: Array[String] = []
