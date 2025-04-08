@@ -5,9 +5,9 @@ extends CanvasLayer
 @onready var stats_values: Array[BBCodeRichTextLabel] = []
 @onready var stats_backgrounds: Array[TextureRect] = []
 
-@export var stats_icon_path: String = "res://Assets/Stats/icons/png180x/"
-@export var stats_background_path: String = "res://Assets/Stats/Backgrounds/"
-@export var stats_config_file_path: String = "res://Config/stats.cfg"
+@export_dir var stats_icon_path: String = "res://Assets/Stats/icons/png180x/"
+@export_dir var stats_background_path: String = "res://Assets/Stats/Backgrounds/"
+@export_file("*.cfg") var stats_config_file_path: String = "res://Config/stats.cfg"
 
 var stats_config: ConfigFile = ConfigFile.new()
 
