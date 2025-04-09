@@ -3,7 +3,7 @@ extends Node2D
 @export var slime_scene: PackedScene
 @export var orc_scene: PackedScene
 @export var xp_scene: PackedScene
-@export var waves_file: String = "res://Config/waves.cfg"
+@export var waves_file: String = Global.config_dir_path + "/waves.cfg"
 @export var orc_rider: PackedScene
 
 @onready var background_music : Node = $Background_Music

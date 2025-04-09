@@ -4,6 +4,10 @@ var has_player_entered = false
 
 func generate_stat():
 	GameController.lucky_event("stat")
+	
+func generate_weapon():
+	#add child node
+	pass
 
 func handle_open_action():
 	if Input.is_action_just_pressed("open") and has_player_entered:

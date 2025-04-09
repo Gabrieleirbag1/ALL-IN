@@ -26,7 +26,9 @@ var current_hovered_body: ItemFrame
 var last_hovered_body: ItemFrame
 
 # Item property
-var item_name: String = "Default"
+var item_config: ConfigFile = ConfigFile.new()
+var item_name: String = "Item"
+var item_desc: String = "I love this item!"
 
 # Global references
 @onready var item_frames_inside: Dictionary = Global.item_frames_inside
@@ -310,3 +312,9 @@ func handle_dropable_exited(body):
 	scale_item_size()
 	last_hovered_body = body
 #endregion
+
+#region Tooltip
+
+func set_tooltip_text():
+	var tooltip_text: String = item_name + "\n" + item_desc
+	

@@ -7,7 +7,7 @@ extends CanvasLayer
 
 @export_dir var stats_icon_dir_path: String = "res://Assets/Stats/icons/png180x/"
 @export_dir var stats_background_dir_path: String = "res://Assets/Stats/Backgrounds/"
-@export_file("*.cfg") var stats_config_file_path: String = "res://Config/stats.cfg"
+@export_file("*.cfg") var stats_config_file_path: String = Global.config_dir_path + "/stats.cfg"
 
 var stats_config: ConfigFile = ConfigFile.new()
 
@@ -60,15 +60,9 @@ func set_stat_nodes_lists():
 
 func _ready() -> void:
 	self.visible = false
-	load_cfg_file()
+	Global.load_cfg_file(stats_config, stats_config_file_path)
 	set_stat_nodes_lists()
-	handle_events()
-
-func load_cfg_file() -> void:
-	var err: Error = stats_config.load(stats_config_file_path)
-	if err != OK:
-		push_error("Impossible de charger le fichier de configuration: %s" % "res://Config/stats.cfg")
-		return		
+	handle_events()	
 
 func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 	"""
