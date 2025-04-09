@@ -30,6 +30,9 @@ var item_config: ConfigFile = ConfigFile.new()
 var item_name: String = "Item"
 var item_desc: String = "I love this item!"
 
+# Tooltip
+@onready var tooltip_control: Control = $TooltipControl
+
 # Global references
 @onready var item_frames_inside: Dictionary = Global.item_frames_inside
 @onready var dragged_item: Item = Global.dragged_item
@@ -45,6 +48,7 @@ var item_desc: String = "I love this item!"
 func _ready() -> void:
 	initialize_item_frames()
 	setup_input_actions()
+	set_tooltip_text()
 
 func _process(_delta: float) -> void:
 	handle_place_in_frame_action()
@@ -317,4 +321,5 @@ func handle_dropable_exited(body):
 
 func set_tooltip_text():
 	var tooltip_text: String = item_name + "\n" + item_desc
+	tooltip_control.set_tooltip_text(tooltip_text)
 	

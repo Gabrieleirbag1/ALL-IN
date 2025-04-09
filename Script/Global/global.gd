@@ -16,5 +16,5 @@ var config_dir_path: String = "res://Config/"
 func load_cfg_file(config: ConfigFile, config_file_path: String) -> void:
 	var err: Error = config.load(config_file_path)
 	if err != OK:
-		push_error("Impossible de charger le fichier de configuration: %s" % "res://Config/stats.cfg")
+		push_error("Impossible de charger le fichier de configuration: %s" % config_file_path)
 		return

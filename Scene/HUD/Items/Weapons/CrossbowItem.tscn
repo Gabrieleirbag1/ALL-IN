@@ -32,7 +32,7 @@ size = Vector2(46, 45)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h700q"]
 size = Vector2(38, 38)
 
-[node name="CrossBowItem" type="CharacterBody2D" groups=["weapons"]]
+[node name="CrossbowItem" type="CharacterBody2D" groups=["weapons"]]
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("1_cu3le")
@@ -69,6 +69,14 @@ collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_h700q")
+
+[node name="TooltipControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -19.0
+offset_top = -19.0
+offset_right = 19.0
+offset_bottom = 19.0
 
 [connection signal="timeout" from="Cooldown" to="ItemEffect" method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
