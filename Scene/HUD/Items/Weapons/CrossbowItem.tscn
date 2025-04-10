@@ -77,6 +77,7 @@ offset_left = -19.0
 offset_top = -19.0
 offset_right = 19.0
 offset_bottom = 19.0
+mouse_filter = 1
 
 [connection signal="timeout" from="Cooldown" to="ItemEffect" method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
