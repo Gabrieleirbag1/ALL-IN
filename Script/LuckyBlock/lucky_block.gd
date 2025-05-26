@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+const ITEM_GENERATOR = preload("res://Scene/HUD/Items/ItemGenerator.tscn")
+
 @onready var lucky_block_animation: AnimatedSprite2D = $LuckyBlockSprite
+
 var has_player_entered = false
 
 func generate_random_event():
 	var random_event = randi() % 2
+	print(random_event)
 	if random_event == 0:
-		generate_stat()
+		generate_weapon()
 	else:
 		generate_weapon()
 
@@ -14,12 +18,22 @@ func generate_stat():
 	GameController.lucky_event("stat")
 	
 func generate_weapon():
+	var iteam_generator_instance: Node = ITEM_GENERATOR.instantiate()
+	get_parent().add_child(iteam_generator_instance)
+	
+	var spawn_position = global_position
+	
+	if iteam_generator_instance.has_method("set_spawn_position"):
+		iteam_generator_instance.set_spawn_position(spawn_position)
+	elif iteam_generator_instance.get_script() and "spawn_position" in iteam_generator_instance:
+		iteam_generator_instance.spawn_position = spawn_position
+		
+	print("Instantiated item generator for weapon generation.")
 	GameController.lucky_event("item")
-	pass
 
 func handle_open_action():
 	if Input.is_action_just_pressed("open") and has_player_entered:
-		generate_stat()
+		generate_random_event()
 		if not lucky_block_animation.animation_finished.is_connected(on_animation_finished):
 			lucky_block_animation.animation_finished.connect(on_animation_finished)
 		lucky_block_animation.play("explosion")

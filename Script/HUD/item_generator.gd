@@ -1,6 +1,10 @@
 extends Node
 
 var weapons_files: Array[String] = []
+var spawn_position: Vector2 = Vector2.ZERO
+
+func set_spawn_position(position: Vector2) -> void:
+	spawn_position = position
 
 func _ready() -> void:
 	set_weapons_files()
@@ -31,7 +35,11 @@ func generate_random_weapon():
 		return
 	
 	var weapon_instance: Node = weapon_scene.instantiate()
-	get_parent().add_child.call_deferred(weapon_instance)
+	get_parent().add_child(weapon_instance)
+	
+	if weapon_instance is Node2D:
+		weapon_instance.global_position = spawn_position
+		
 	print("Instantiated weapon: %s" % weapon_file)
 	if not weapon_instance:
 		push_error("Failed to instantiate weapon from scene: %s" % weapon_file)
@@ -42,5 +50,3 @@ func on_lucky_event(lucky_event_category: String) -> void:
 	if not lucky_event_category == "item":
 		return
 	generate_random_weapon()
-	
-		
