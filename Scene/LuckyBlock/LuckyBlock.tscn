@@ -341,9 +341,7 @@ texture_filter = 1
 position = Vector2(-9.53674e-07, -9.53674e-07)
 scale = Vector2(0.9375, 0.9375)
 sprite_frames = SubResource("SpriteFrames_juwbt")
-animation = &"explosion"
-frame = 19
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="CollisionHitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_l3knx")

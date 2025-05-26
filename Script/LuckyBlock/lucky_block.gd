@@ -14,7 +14,7 @@ func generate_stat():
 	GameController.lucky_event("stat")
 	
 func generate_weapon():
-	#add child node
+	GameController.lucky_event("item")
 	pass
 
 func handle_open_action():

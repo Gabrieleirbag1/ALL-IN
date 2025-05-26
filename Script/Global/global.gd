@@ -11,7 +11,8 @@ var item_frames_inside: Dictionary[ItemFrame, Item] = {}
 var luck: float = 0.0
 var player_level: int = 0
 
-var config_dir_path: String = "res://Config/"
+const config_dir_path: String = "res://Config/"
+const weapon_items_dir_path: String = "res://Scene/HUD/Items/Weapons/"
 
 func load_cfg_file(config: ConfigFile, config_file_path: String) -> void:
 	var err: Error = config.load(config_file_path)
