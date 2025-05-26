@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dawnd26bdlu22"]
+
+[ext_resource type="Script" uid="uid://b6mq57v2at6oh" path="res://Script/HUD/item_generator.gd" id="1_kl6j2"]
+
+[node name="ItemGenerator" type="Node"]
+script = ExtResource("1_kl6j2")
