@@ -1,6 +1,14 @@
 extends CharacterBody2D
 
+@onready var lucky_block_animation: AnimatedSprite2D = $LuckyBlockSprite
 var has_player_entered = false
+
+func generate_random_event():
+	var random_event = randi() % 2
+	if random_event == 0:
+		generate_stat()
+	else:
+		generate_weapon()
 
 func generate_stat():
 	GameController.lucky_event("stat")
@@ -12,9 +20,17 @@ func generate_weapon():
 func handle_open_action():
 	if Input.is_action_just_pressed("open") and has_player_entered:
 		generate_stat()
-		self.queue_free()
+		if not lucky_block_animation.animation_finished.is_connected(on_animation_finished):
+			lucky_block_animation.animation_finished.connect(on_animation_finished)
+		lucky_block_animation.play("explosion")
+
+func on_animation_finished():
+	if lucky_block_animation.animation_finished.is_connected(on_animation_finished):
+		lucky_block_animation.animation_finished.disconnect(on_animation_finished)
+	queue_free()
 
 func _ready() -> void:
+	lucky_block_animation.play("idle")
 	if not InputMap.has_action("open"):
 		InputMap.add_action("open")
 		var key_event = InputEventKey.new()
