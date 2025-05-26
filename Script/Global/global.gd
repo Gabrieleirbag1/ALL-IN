@@ -18,3 +18,10 @@ func load_cfg_file(config: ConfigFile, config_file_path: String) -> void:
 	if err != OK:
 		push_error("Impossible de charger le fichier de configuration: %s" % config_file_path)
 		return
+		
+func are_in_group(nodes: Dictionary[Variant, String]) -> bool:
+	for node in nodes.keys():
+		var group = nodes[node]
+		if not node.is_in_group(group):
+			return false
+	return true

@@ -64,7 +64,7 @@ func initialize_item_frames() -> void:
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
 		var item_frame: ItemFrame = item_frames[i]
-		var item: Item =  item_frames_inside[item_frame]
+		var item = item_frames_inside[item_frame]
 		if not item_frame.is_in_group("equipable") and not item:
 			return i
 	for i in range(item_frames.size()):
@@ -81,7 +81,7 @@ func weapon_is_equipped():
 		var item_body = item_frames_inside[item]
 		if item_body and is_instance_valid(item_body):
 			if item_body.item_name == self.item_name:
-				if item.is_in_group("equipable"):
+				if Global.are_in_group({item: "equipable", body_ref: "equipable"}):
 					return true
 	return false
 
