@@ -40,7 +40,6 @@ func generate_random_weapon():
 	if weapon_instance is Node2D:
 		weapon_instance.global_position = spawn_position
 		
-	print("Instantiated weapon: %s" % weapon_file)
 	if not weapon_instance:
 		push_error("Failed to instantiate weapon from scene: %s" % weapon_file)
 		return

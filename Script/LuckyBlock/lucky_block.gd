@@ -8,7 +8,6 @@ var has_player_entered = false
 
 func generate_random_event():
 	var random_event = randi() % 2
-	print(random_event)
 	if random_event == 0:
 		generate_weapon()
 	else:
@@ -28,12 +27,10 @@ func generate_weapon():
 	elif iteam_generator_instance.get_script() and "spawn_position" in iteam_generator_instance:
 		iteam_generator_instance.spawn_position = spawn_position
 		
-	print("Instantiated item generator for weapon generation.")
 	GameController.lucky_event("item")
 
 func handle_open_action():
 	if Input.is_action_just_pressed("open") and has_player_entered:
-		generate_random_event()
 		if not lucky_block_animation.animation_finished.is_connected(on_animation_finished):
 			lucky_block_animation.animation_finished.connect(on_animation_finished)
 		lucky_block_animation.play("explosion")
@@ -41,6 +38,7 @@ func handle_open_action():
 func on_animation_finished():
 	if lucky_block_animation.animation_finished.is_connected(on_animation_finished):
 		lucky_block_animation.animation_finished.disconnect(on_animation_finished)
+	generate_random_event()	
 	queue_free()
 
 func _ready() -> void:

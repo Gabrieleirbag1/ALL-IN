@@ -42,7 +42,7 @@ var item_desc: String = "I love this item!"
 @onready var item_effect: ItemEffect = $ItemEffect
 @onready var item_signals: Node = $ItemSignals
 
-@export var item_layer_scene: PackedScene
+@export var item_layer_scene: PackedScene = preload("res://Scene/HUD/Items/ItemLayer.tscn")
 
 #region Lifecycle Methods
 func _ready() -> void:
@@ -58,8 +58,16 @@ func _process(_delta: float) -> void:
 #region Item Frame Management
 func initialize_item_frames() -> void:
 	item_frames = get_tree().get_nodes_in_group("dropable")
-	for item in item_frames:
-		item_frames_inside[item] = null
+	
+	# Only initialize the dictionary if it's empty
+	if Global.item_frames_inside.is_empty():
+		for item in item_frames:
+			Global.item_frames_inside[item] = null
+	else:
+		# Just update the local item_frames array without resetting the dictionary
+		for item in item_frames:
+			if not Global.item_frames_inside.has(item):
+				Global.item_frames_inside[item] = null
 
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):

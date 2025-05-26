@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dbcc4tcankm2c"]
+[gd_scene load_steps=52 format=4 uid="uid://dbcc4tcankm2c"]
 
 [ext_resource type="Texture2D" uid="uid://8ebrfdgbpbts" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" uid="uid://llw1lyo5an36" path="res://Script/Map/map.gd" id="1_yn8yg"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="16_5chm7"]
 [ext_resource type="PackedScene" uid="uid://tmqtdtks3u1y" path="res://Scene/LuckyBlock/LuckyBlock.tscn" id="16_geojk"]
 [ext_resource type="PackedScene" uid="uid://cbu3gbquxl3xn" path="res://Scene/HUD/Items/Weapons/CrossbowItem.tscn" id="18_u5hqo"]
-[ext_resource type="PackedScene" uid="uid://y2lgxnin8duq" path="res://Scene/HUD/Items/ItemLayer.tscn" id="19_68lke"]
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="21_r4rcy"]
 [ext_resource type="Script" uid="uid://bduou26vu2556" path="res://Script/Menu/score.gd" id="21_s1bhx"]
@@ -26062,27 +26061,21 @@ position = Vector2(168, 449)
 
 [node name="CrossbowItem5" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(750, 757)
-item_layer_scene = ExtResource("19_68lke")
 
 [node name="CrossbowItem4" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(847, 739)
-item_layer_scene = ExtResource("19_68lke")
 
 [node name="CrossbowItem2" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(692, 706)
-item_layer_scene = ExtResource("19_68lke")
 
 [node name="CrossbowItem3" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(738, 656)
-item_layer_scene = ExtResource("19_68lke")
 
 [node name="CrossbowItem6" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(830, 671)
-item_layer_scene = ExtResource("19_68lke")
 
 [node name="CrossbowItem" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(768, 663)
-item_layer_scene = ExtResource("19_68lke")
 
 [node name="HUD" parent="." instance=ExtResource("16_5chm7")]
 
