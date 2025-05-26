@@ -42,17 +42,36 @@ var item_desc: String = "I love this item!"
 @onready var item_effect: ItemEffect = $ItemEffect
 @onready var item_signals: Node = $ItemSignals
 
+# Scenes references
 @export var item_layer_scene: PackedScene = preload("res://Scene/HUD/Items/ItemLayer.tscn")
+
+# Item Animation
+var spawn_animation_playing: bool = false
 
 #region Lifecycle Methods
 func _ready() -> void:
 	initialize_item_frames()
 	setup_input_actions()
 	set_tooltip_text()
+	play_spawn_animation()
 
 func _process(_delta: float) -> void:
 	handle_place_in_frame_action()
 	handle_click_action()
+#endregion
+
+#region Animation
+func play_spawn_animation():
+	spawn_animation_playing = true
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2).set_ease(Tween.EASE_OUT)
+	tween.chain()
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.3).set_ease(Tween.EASE_IN)
+	tween.finished.connect(func(): 
+		spawn_animation_playing = false
+		scale_item_size()
+	)
 #endregion
 
 #region Item Frame Management
