@@ -11,6 +11,9 @@ extends CanvasLayer
 
 var stats_config: ConfigFile = ConfigFile.new()
 
+const LUCKY_STAT = preload("res://Scene/LuckyBlock/LuckyStat.tscn")
+
+
 var stats: Dictionary = {
 	"damage": 0, 
 	"attack_speed": 0.0, 
@@ -179,6 +182,11 @@ func set_stat(i: int, new_stat: String, player_level: int = Global.player_level)
 	set_stat_rarity(stats_rarities[i], rarity)
 	
 	set_stat_background(stats_backgrounds[i], rarity)
+	
+func instantiate_lucky_stat(lucky_block_position):
+	var lucky_stat_instance: Node = LUCKY_STAT.instantiate()
+	get_parent().add_child(lucky_stat_instance)
+	lucky_stat_instance.set_position(lucky_block_position)
 
 func on_event_level_up(player_level) -> void:
 	get_tree().paused = true
@@ -196,10 +204,6 @@ func on_lucky_event(lucky_event_category: String, lucky_block_position: Vector2)
 	var rarity: String = get_stat_rarity(stat_value["final_stat_value"], stat_value["stat_max_value_level"])
 	stats[new_stat] = stat_value["final_stat_value"]
 	#print("New stat: %s, Value: %s, Rarity: %s" % [new_stat, stat_value["final_stat_value"], rarity])
-	const LUCKY_STAT = preload("res://Scene/LuckyBlock/LuckyStat.tscn")
-	var lucky_stat_instance: Node = LUCKY_STAT.instantiate()
-	get_parent().add_child(lucky_stat_instance)
-	lucky_stat_instance.set_position(lucky_block_position)
-
+	instantiate_lucky_stat(lucky_block_position)
 	GameController.stats_progress(stats)
 	
