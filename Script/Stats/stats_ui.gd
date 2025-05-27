@@ -179,7 +179,7 @@ func set_stat(i: int, new_stat: String, player_level: int = Global.player_level)
 	set_stat_rarity(stats_rarities[i], rarity)
 	
 	set_stat_background(stats_backgrounds[i], rarity)
-		
+
 func on_event_level_up(player_level) -> void:
 	get_tree().paused = true
 	set_3_random_stats(player_level)
@@ -192,6 +192,8 @@ func on_lucky_event(lucky_event_category: String) -> void:
 	if not lucky_event_category == "stat":
 		return
 	var new_stat = get_random_stat()
-	var stat_values: Dictionary[String, Variant] = get_stat_value_number(Global.player_level, new_stat)
-	var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
-	print(stat_values, rarity)
+	var stat_value: Dictionary[String, Variant] = get_stat_value_number(Global.player_level, new_stat)
+	var rarity: String = get_stat_rarity(stat_value["final_stat_value"], stat_value["stat_max_value_level"])
+	stats[new_stat] = stat_value["final_stat_value"]
+	#print("New stat: %s, Value: %s, Rarity: %s" % [new_stat, stat_value["final_stat_value"], rarity])
+	GameController.stats_progress(stats)

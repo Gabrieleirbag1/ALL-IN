@@ -11,7 +11,7 @@ func generate_random_event():
 	if random_event == 0:
 		generate_weapon()
 	else:
-		generate_weapon()
+		generate_stat()
 
 func generate_stat():
 	GameController.lucky_event("stat")
