@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ynwspoa1qsm"]
+
+[ext_resource type="Texture2D" uid="uid://byigt40vjo405" path="res://Assets/Stats/icons/png180x/damage.png" id="1_tfovp"]
+[ext_resource type="FontFile" uid="uid://clhudws7pp0da" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="1_vvri7"]
+[ext_resource type="Script" uid="uid://komguvwd0gc3" path="res://Script/bbcode_rich_text_label.gd" id="2_tfovp"]
+
+[node name="LuckyStat" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -25.0
+offset_top = -25.0
+texture = ExtResource("1_tfovp")
+expand_mode = 1
+
+[node name="StatValue" type="RichTextLabel" parent="."]
+offset_top = -22.0
+offset_right = 104.0
+offset_bottom = 68.0
+theme_override_fonts/normal_font = ExtResource("1_vvri7")
+theme_override_font_sizes/normal_font_size = 20
+text = "+52"
+script = ExtResource("2_tfovp")
+metadata/_custom_type_script = "uid://komguvwd0gc3"

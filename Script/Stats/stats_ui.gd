@@ -188,7 +188,7 @@ func on_event_level_up(player_level) -> void:
 func on_stats_progress(_stats) -> void:
 	self.visible = false
 	
-func on_lucky_event(lucky_event_category: String) -> void:
+func on_lucky_event(lucky_event_category: String, lucky_block_position: Vector2) -> void:
 	if not lucky_event_category == "stat":
 		return
 	var new_stat = get_random_stat()
@@ -196,4 +196,10 @@ func on_lucky_event(lucky_event_category: String) -> void:
 	var rarity: String = get_stat_rarity(stat_value["final_stat_value"], stat_value["stat_max_value_level"])
 	stats[new_stat] = stat_value["final_stat_value"]
 	#print("New stat: %s, Value: %s, Rarity: %s" % [new_stat, stat_value["final_stat_value"], rarity])
+	const LUCKY_STAT = preload("res://Scene/LuckyBlock/LuckyStat.tscn")
+	var lucky_stat_instance: Node = LUCKY_STAT.instantiate()
+	get_parent().add_child(lucky_stat_instance)
+	lucky_stat_instance.set_position(lucky_block_position)
+
 	GameController.stats_progress(stats)
+	

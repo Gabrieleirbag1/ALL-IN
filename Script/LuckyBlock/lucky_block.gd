@@ -9,12 +9,12 @@ var has_player_entered = false
 func generate_random_event():
 	var random_event = randi() % 2
 	if random_event == 0:
-		generate_weapon()
+		generate_stat()
 	else:
 		generate_stat()
 
 func generate_stat():
-	GameController.lucky_event("stat")
+	GameController.lucky_event("stat", global_position)
 	
 func generate_weapon():
 	var iteam_generator_instance: Node = ITEM_GENERATOR.instantiate()
@@ -27,7 +27,7 @@ func generate_weapon():
 	elif iteam_generator_instance.get_script() and "spawn_position" in iteam_generator_instance:
 		iteam_generator_instance.spawn_position = spawn_position
 		
-	GameController.lucky_event("item")
+	GameController.lucky_event("item", global_position)
 
 func handle_open_action():
 	if Input.is_action_just_pressed("open") and has_player_entered:
