@@ -175,8 +175,9 @@ func set_stat(i: int, new_stat: String, player_level: int = Global.player_level)
 func instantiate_lucky_stat(new_stat: String, value: Variant, rarity: String, lucky_block_position: Vector2):
 	var lucky_stat_instance: Node = LUCKY_STAT.instantiate()
 	get_parent().add_child(lucky_stat_instance)
-	lucky_stat_instance.set_lucky_stat(new_stat, value, rarity)
 	lucky_stat_instance.set_position(lucky_block_position)
+	lucky_stat_instance.set_lucky_stat(new_stat, value, rarity)
+	lucky_stat_instance.play_animation()
 
 func on_event_level_up(player_level) -> void:
 	get_tree().paused = true
