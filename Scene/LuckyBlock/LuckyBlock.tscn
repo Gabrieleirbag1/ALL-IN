@@ -1,9 +1,9 @@
 [gd_scene load_steps=52 format=3 uid="uid://tmqtdtks3u1y"]
 
 [ext_resource type="Script" uid="uid://dtetjrauj0y3a" path="res://Script/LuckyBlock/lucky_block.gd" id="1_elkvx"]
-[ext_resource type="Texture2D" uid="uid://ckxkitwfrsp31" path="res://Assets/Lucky Block/Sprite_sheet_Explosion.png" id="2_hb4yh"]
-[ext_resource type="Texture2D" uid="uid://88bmp4h5v6ii" path="res://Assets/Lucky Block/mysterybox2.png" id="2_rfk7e"]
-[ext_resource type="Texture2D" uid="uid://tuapb22uwe73" path="res://Assets/Lucky Block/Sprite_sheet_Idle.png" id="4_j8lmv"]
+[ext_resource type="Texture2D" uid="uid://dcahu5x6rr62h" path="res://Assets/Lucky Block/Sprite_sheet_Explosion.png" id="2_hb4yh"]
+[ext_resource type="Texture2D" uid="uid://epwjt3hj6ye7" path="res://Assets/Lucky Block/mysterybox2.png" id="2_rfk7e"]
+[ext_resource type="Texture2D" uid="uid://ce0ot3kap8ajo" path="res://Assets/Lucky Block/Sprite_sheet_Idle.png" id="4_j8lmv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_toahk"]
 atlas = ExtResource("2_hb4yh")

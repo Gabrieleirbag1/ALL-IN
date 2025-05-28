@@ -11,6 +11,17 @@ var item_frames_inside: Dictionary[ItemFrame, Item] = {}
 var luck: float = 0.0
 var player_level: int = 0
 
+var stat_rarity_colors: Dictionary = {
+	"Annihilation": "RED",
+	"Malediction": "INDIGO",
+	"Terrible": "CADET_BLUE",
+	"Annoying": "YELLOW_GREEN",
+	"Common": "FOREST_GREEN",
+	"Rare": "BLUE",
+	"Epic": "PURPLE",
+	"Legendary": "GOLD"
+}
+
 const config_dir_path: String = "res://Config/"
 const weapon_items_dir_path: String = "res://Scene/HUD/Items/Weapons/"
 
