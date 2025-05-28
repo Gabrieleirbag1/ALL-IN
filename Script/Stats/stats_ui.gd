@@ -172,10 +172,10 @@ func set_stat(i: int, new_stat: String, player_level: int = Global.player_level)
 	
 	set_stat_background(stats_backgrounds[i], rarity)
 	
-func instantiate_lucky_stat(value: Variant, rarity: String, lucky_block_position: Vector2):
+func instantiate_lucky_stat(new_stat: String, value: Variant, rarity: String, lucky_block_position: Vector2):
 	var lucky_stat_instance: Node = LUCKY_STAT.instantiate()
 	get_parent().add_child(lucky_stat_instance)
-	lucky_stat_instance.set_lucky_stat(value, rarity)
+	lucky_stat_instance.set_lucky_stat(new_stat, value, rarity)
 	lucky_stat_instance.set_position(lucky_block_position)
 
 func on_event_level_up(player_level) -> void:
@@ -194,6 +194,6 @@ func on_lucky_event(lucky_event_category: String, lucky_block_position: Vector2)
 	var rarity: String = get_stat_rarity(stat_value["final_stat_value"], stat_value["stat_max_value_level"])
 	stats[new_stat] = stat_value["final_stat_value"]
 	#print("New stat: %s, Value: %s, Rarity: %s" % [new_stat, stat_value["final_stat_value"], rarity])
-	instantiate_lucky_stat(stat_value["final_stat_value"], rarity, lucky_block_position)
+	instantiate_lucky_stat(new_stat, stat_value["final_stat_value"], rarity, lucky_block_position)
 	GameController.stats_progress(stats)
 	
