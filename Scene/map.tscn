@@ -26044,6 +26044,10 @@ navigation_enabled = false
 position = Vector2(895, 685)
 collision_mask = 23
 
+[node name="LuckyBlock2" parent="." instance=ExtResource("16_geojk")]
+position = Vector2(871, 612)
+collision_mask = 23
+
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
 position = Vector2(812, 756)
 

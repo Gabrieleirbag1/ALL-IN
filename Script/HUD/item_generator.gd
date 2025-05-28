@@ -45,7 +45,7 @@ func generate_random_weapon():
 		return
 	queue_free()
 
-func on_lucky_event(lucky_event_category: String) -> void:
+func on_lucky_event(lucky_event_category: String, _lucky_block_position: Vector2) -> void:
 	if not lucky_event_category == "item":
 		return
 	generate_random_weapon()
