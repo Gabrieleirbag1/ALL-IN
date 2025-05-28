@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cetv3rhqv8fvb"]
+
+[ext_resource type="Texture2D" uid="uid://dln24nsti7xw7" path="res://Assets/Stats/icons/png180x/damage.png" id="1_uf6je"]
+[ext_resource type="Script" uid="uid://sclged522buh" path="res://Script/Stats/stat_icon.gd" id="2_si3eu"]
+
+[node name="StatIcon" type="TextureRect"]
+offset_left = -180.0
+offset_top = -180.0
+mouse_filter = 2
+texture = ExtResource("1_uf6je")
+script = ExtResource("2_si3eu")
+metadata/_edit_use_anchors_ = true

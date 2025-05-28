@@ -26,7 +26,12 @@ var current_hovered_body: ItemFrame
 var last_hovered_body: ItemFrame
 
 # Item property
-var item_name: String = "Default"
+var item_config: ConfigFile = ConfigFile.new()
+var item_name: String = "Item"
+var item_desc: String = "I love this item!"
+
+# Tooltip
+@onready var tooltip_control: Control = $TooltipControl
 
 # Global references
 @onready var item_frames_inside: Dictionary = Global.item_frames_inside
@@ -37,28 +42,56 @@ var item_name: String = "Default"
 @onready var item_effect: ItemEffect = $ItemEffect
 @onready var item_signals: Node = $ItemSignals
 
-@export var item_layer_scene: PackedScene
+# Scenes references
+@export var item_layer_scene: PackedScene = preload("res://Scene/HUD/Items/ItemLayer.tscn")
+
+# Item Animation
+var spawn_animation_playing: bool = false
 
 #region Lifecycle Methods
 func _ready() -> void:
 	initialize_item_frames()
 	setup_input_actions()
+	set_tooltip_text()
+	play_spawn_animation()
 
 func _process(_delta: float) -> void:
 	handle_place_in_frame_action()
 	handle_click_action()
 #endregion
 
+#region Animation
+func play_spawn_animation():
+	spawn_animation_playing = true
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "scale", Vector2(1.2, 1.2), 0.2).set_ease(Tween.EASE_OUT)
+	tween.chain()
+	tween.tween_property(self, "scale", Vector2(1, 1), 0.3).set_ease(Tween.EASE_IN)
+	tween.finished.connect(func(): 
+		spawn_animation_playing = false
+		scale_item_size()
+	)
+#endregion
+
 #region Item Frame Management
 func initialize_item_frames() -> void:
 	item_frames = get_tree().get_nodes_in_group("dropable")
-	for item in item_frames:
-		item_frames_inside[item] = null
+	
+	# Only initialize the dictionary if it's empty
+	if Global.item_frames_inside.is_empty():
+		for item in item_frames:
+			Global.item_frames_inside[item] = null
+	else:
+		# Just update the local item_frames array without resetting the dictionary
+		for item in item_frames:
+			if not Global.item_frames_inside.has(item):
+				Global.item_frames_inside[item] = null
 
 func get_empty_item_frame() -> int:
 	for i in range(item_frames.size()):
 		var item_frame: ItemFrame = item_frames[i]
-		var item: Item =  item_frames_inside[item_frame]
+		var item = item_frames_inside[item_frame]
 		if not item_frame.is_in_group("equipable") and not item:
 			return i
 	for i in range(item_frames.size()):
@@ -75,7 +108,7 @@ func weapon_is_equipped():
 		var item_body = item_frames_inside[item]
 		if item_body and is_instance_valid(item_body):
 			if item_body.item_name == self.item_name:
-				if item.is_in_group("equipable"):
+				if Global.are_in_group({item: "equipable", body_ref: "equipable"}):
 					return true
 	return false
 
@@ -310,3 +343,10 @@ func handle_dropable_exited(body):
 	scale_item_size()
 	last_hovered_body = body
 #endregion
+
+#region Tooltip
+
+func set_tooltip_text():
+	var tooltip_text: String = item_name + "\n" + item_desc
+	tooltip_control.set_tooltip_text(tooltip_text)
+	

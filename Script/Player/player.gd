@@ -13,7 +13,7 @@ class_name Player extends CharacterBody2D
 @onready var fireball_sound = $Fireball_sound
 @onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
 
-const fireball_scene = preload("res://Scene/Projectiles/FireBall.tscn")
+const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.tscn")
 @onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
 @onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
 @onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
@@ -48,24 +48,6 @@ func _ready() -> void:
 	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
-
-func on_event_xp_collected(value: int) -> void:
-	if level < 2:
-		stats["experience"] += value * 4
-	else:
-		stats["experience"] += value
-	level = MathXp.calculate_level_from_exp(stats["experience"])
-	level_label.text = str(level)
-	
-func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
-	var projectile_instance = projectile_scene.instantiate()
-	get_parent().add_child(projectile_instance)
-	projectile_instance.direction = projectile_direction
-	projectile_instance.global_position = spawn_projectile_right.global_position + projectile_position
-	projectile_instance.rotation_degrees = projectile_rotation
-	
-func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
-	handle_new_stats(new_stats_to_add)
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
@@ -270,3 +252,21 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 			play_animation("walk_shadow")
 		else:
 			play_animation("idle_shadow")
+
+func on_event_xp_collected(value: int) -> void:
+	if level < 2:
+		stats["experience"] += value * 4
+	else:
+		stats["experience"] += value
+	level = MathXp.calculate_level_from_exp(stats["experience"])
+	level_label.text = str(level)
+	
+func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
+	var projectile_instance = projectile_scene.instantiate()
+	get_parent().add_child(projectile_instance)
+	projectile_instance.direction = projectile_direction
+	projectile_instance.global_position = spawn_projectile_right.global_position + projectile_position
+	projectile_instance.rotation_degrees = projectile_rotation
+	
+func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
+	handle_new_stats(new_stats_to_add)

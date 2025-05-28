@@ -5,11 +5,13 @@ extends CanvasLayer
 @onready var stats_values: Array[BBCodeRichTextLabel] = []
 @onready var stats_backgrounds: Array[TextureRect] = []
 
-@export var stats_icon_path: String = "res://Assets/Stats/icons/png180x/"
-@export var stats_background_path: String = "res://Assets/Stats/Backgrounds/"
-@export var stats_config_file_path: String = "res://Config/stats.cfg"
+@export_dir var stats_icon_dir_path: String = "res://Assets/Stats/icons/png180x/"
+@export_dir var stats_background_dir_path: String = "res://Assets/Stats/Backgrounds/"
+@export_file("*.cfg") var stats_config_file_path: String = Global.config_dir_path + "/stats.cfg"
 
 var stats_config: ConfigFile = ConfigFile.new()
+
+const LUCKY_STAT = preload("res://Scene/LuckyBlock/LuckyStat.tscn")
 
 var stats: Dictionary = {
 	"damage": 0, 
@@ -35,20 +37,11 @@ var stats_modifier_impact_ranges: Dictionary = {
 		"Legendary": 90
 	}
 }
-var stat_rarity_colors: Dictionary = {
-	"Annihilation": "RED",
-	"Malediction": "INDIGO",
-	"Terrible": "CADET_BLUE",
-	"Annoying": "YELLOW_GREEN",
-	"Common": "FOREST_GREEN",
-	"Rare": "BLUE",
-	"Epic": "PURPLE",
-	"Legendary": "GOLD"
-}
 
 func handle_events():
 	EventController.connect("level_up", on_event_level_up)
 	EventController.connect("stats_progress", on_stats_progress)
+	EventController.connect("lucky_event", on_lucky_event)
 
 func set_stat_nodes_lists():
 	for i in range(1, 4):
@@ -59,15 +52,9 @@ func set_stat_nodes_lists():
 
 func _ready() -> void:
 	self.visible = false
-	load_cfg_file()
+	Global.load_cfg_file(stats_config, stats_config_file_path)
 	set_stat_nodes_lists()
-	handle_events()
-
-func load_cfg_file() -> void:
-	var err = stats_config.load(stats_config_file_path)
-	if err != OK:
-		push_error("Impossible de charger le fichier de configuration: %s" % "res://Config/stats.cfg")
-		return		
+	handle_events()	
 
 func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 	"""
@@ -98,9 +85,9 @@ func biased_random_around_zero(bias: float = 0.0, max_value: int = 100) -> int:
 	return int(biased_value * max_value)
 
 func set_stat_icon(stat_icon: TextureRect, random_stat: String):
-	stat_icon.texture = load(stats_icon_path + random_stat + ".png")
+	stat_icon.set_stat_icon(random_stat)
 
-func get_stat_rarity(actual_value: int, max_value: int) -> String:
+func get_stat_rarity(actual_value: Variant, max_value: int) -> String:
 	"""
 	Determines the rarity/impact level of a number based on its percentage of max_value.
 	Handles both positive values (bonuses) and negative values (maluses).
@@ -116,8 +103,8 @@ func get_stat_rarity(actual_value: int, max_value: int) -> String:
 	if absolute_value > max_value:
 		return "Legendary"
 	
-	var percentile = (float(absolute_value) / float(max_value)) * 100.0
-	var category = "Bonus" if actual_value >= 0 else "Malus"
+	var percentile: float = (float(absolute_value) / float(max_value)) * 100.0
+	var category: String = "Bonus" if actual_value >= 0 else "Malus"
 	var ranges = stats_modifier_impact_ranges[category]
 	
 	var sorted_rarities = [] # Sort thresholds in descending order
@@ -133,7 +120,7 @@ func get_stat_rarity(actual_value: int, max_value: int) -> String:
 
 func set_stat_rarity(stat_rarity: BBCodeRichTextLabel, rarity: String):
 	stat_rarity.set_bbcode_text(rarity)
-	stat_rarity.set_font_color(stat_rarity_colors[rarity])
+	stat_rarity.set_font_color(Global.stat_rarity_colors[rarity])
 
 func get_stat_value_number(player_level: int, stat: String) -> Dictionary[String, Variant]:
 	var stat_max_value: int = stats_config.get_value(stat, "max_value", 0)
@@ -153,31 +140,45 @@ func get_stat_value_number(player_level: int, stat: String) -> Dictionary[String
 
 func set_stat_value(stat_value: BBCodeRichTextLabel, stat_value_number: Variant):
 	var impact: String = "+" if stat_value_number > 0 else ""
-	var stat_value_text = impact + str(stat_value_number)
+	var stat_value_text: String = impact + str(stat_value_number)
 	stat_value.set_bbcode_text(stat_value_text)
 	
 func set_stat_background(stat_background: TextureRect, rarity):
-	var bg_color = stat_rarity_colors[rarity]
-	stat_background.texture = load(stats_background_path + "STAT_BG_" + bg_color + ".png")
-	
+	var bg_color: String = Global.stat_rarity_colors[rarity]
+	stat_background.texture = load(stats_background_dir_path + "STAT_BG_" + bg_color + ".png")
+
+func get_random_stat() -> String:
+	return stats.keys()[randi() % stats.size()]
+
 func set_3_random_stats(player_level: int):
 	var icons: Array[String] = []
 	for i in range(3):
 		var random_stat: String
 		while true:
-			random_stat = stats.keys()[randi() % stats.size()]
+			random_stat = get_random_stat()
 			if random_stat not in icons:
 				break
 		icons.append(random_stat)
-		random_stat = "luck"
+		set_stat(i, random_stat, player_level)
 		
-		set_stat_icon(stats_icons[i], random_stat)
-		var stat_values: Dictionary[String, Variant] = get_stat_value_number(player_level, random_stat)
-		set_stat_value(stats_values[i], stat_values["final_stat_value"])
-		var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
-		set_stat_rarity(stats_rarities[i], rarity)
-		set_stat_background(stats_backgrounds[i], rarity)
-		
+func set_stat(i: int, new_stat: String, player_level: int = Global.player_level):
+	set_stat_icon(stats_icons[i], new_stat)
+
+	var stat_values: Dictionary[String, Variant] = get_stat_value_number(player_level, new_stat)
+	set_stat_value(stats_values[i], stat_values["final_stat_value"])
+
+	var rarity: String = get_stat_rarity(stat_values["final_stat_value"], stat_values["stat_max_value_level"])
+	set_stat_rarity(stats_rarities[i], rarity)
+	
+	set_stat_background(stats_backgrounds[i], rarity)
+	
+func instantiate_lucky_stat(new_stat: String, value: Variant, rarity: String, lucky_block_position: Vector2):
+	var lucky_stat_instance: Node = LUCKY_STAT.instantiate()
+	get_parent().add_child(lucky_stat_instance)
+	lucky_stat_instance.set_position(lucky_block_position)
+	lucky_stat_instance.set_lucky_stat(new_stat, value, rarity)
+	lucky_stat_instance.play_animation()
+
 func on_event_level_up(player_level) -> void:
 	get_tree().paused = true
 	set_3_random_stats(player_level)
@@ -185,3 +186,15 @@ func on_event_level_up(player_level) -> void:
 
 func on_stats_progress(_stats) -> void:
 	self.visible = false
+	
+func on_lucky_event(lucky_event_category: String, lucky_block_position: Vector2) -> void:
+	if not lucky_event_category == "stat":
+		return
+	var new_stat = get_random_stat()
+	var stat_value: Dictionary[String, Variant] = get_stat_value_number(Global.player_level, new_stat)
+	var rarity: String = get_stat_rarity(stat_value["final_stat_value"], stat_value["stat_max_value_level"])
+	stats[new_stat] = stat_value["final_stat_value"]
+	#print("New stat: %s, Value: %s, Rarity: %s" % [new_stat, stat_value["final_stat_value"], rarity])
+	instantiate_lucky_stat(new_stat, stat_value["final_stat_value"], rarity, lucky_block_position)
+	GameController.stats_progress(stats)
+	
