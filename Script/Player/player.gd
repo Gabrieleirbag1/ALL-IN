@@ -94,6 +94,7 @@ func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
 		hurt_sound.playing = true
 		stats["health"] -= damage
+		GameController.health_update(stats["health_max"], stats["health_min"], stats["health"])
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
 		move_and_slide()
