@@ -57,7 +57,13 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 				stats[key] += new_stats_to_add[key]
 			if stat_label:
 				stat_label.set_text_fit(str(stats[key]))
+	handle_new_health_stats()
 	Global.luck += new_stats_to_add["luck"]	
+	
+func handle_new_health_stats():
+	if stats["health"] > stats["health_max"]:
+		stats["health"] = stats["health_max"]
+	GameController.health_update(stats["health_max"], stats["health_min"], stats["health"])
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
