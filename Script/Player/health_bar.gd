@@ -9,7 +9,6 @@ func _ready():
 	set_default_values(player.stats)
 	
 func set_default_values(player_stats: Dictionary):
-	print(player_stats)
 	self.max_value = player_stats["health_max"]
 	self.min_value = player_stats["health_min"]
 	self.value = player_stats["health"]
