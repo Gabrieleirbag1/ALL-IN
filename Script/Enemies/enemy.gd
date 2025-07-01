@@ -39,11 +39,12 @@ func take_damage(damage_amount: int):
 	if damage_amount <= 0:
 		play_animation("walk")
 		return
-	
+
+	health -= damage_amount
 	if health <= 0:
 		die()
 	else:
-		# print("Health :", health, "/", health_max )
+		print("Health :", health, "/", health_max, "/", damage_amount)
 		play_animation("hurt")
 	GameController.enemy_damaged_event(damage_amount, alive)
 

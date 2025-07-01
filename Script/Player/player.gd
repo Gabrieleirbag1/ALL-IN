@@ -45,6 +45,7 @@ func _ready() -> void:
 	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
+	handle_signals()
 	
 func handle_signals():
 	EventController.connect("xp_collected", on_event_xp_collected)
@@ -65,12 +66,17 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	
 func handle_new_health_stats(new_stats_to_add):
 	stats["health"] += new_stats_to_add["health_max"]
+	handle_health_event()
+	
+func handle_life_steal(damage_amount):
+	var regen = damage_amount / stats["life_steal"]
+	stats["health"] += regen
+	handle_health_event()
+
+func handle_health_event():
 	if stats["health"] > stats["health_max"]:
 		stats["health"] = stats["health_max"]
 	GameController.health_update(stats["health_max"], stats["health"])
-	
-func handle_life_steal(damage_amount):
-	var regen = damage_amount 
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
