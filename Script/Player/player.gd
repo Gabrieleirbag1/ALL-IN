@@ -57,13 +57,14 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 				stats[key] += new_stats_to_add[key]
 			if stat_label:
 				stat_label.set_text_fit(str(stats[key]))
-	handle_new_health_stats()
+	handle_new_health_stats(new_stats_to_add)
 	Global.luck += new_stats_to_add["luck"]	
 	
-func handle_new_health_stats():
+func handle_new_health_stats(new_stats_to_add):
+	stats["health"] += new_stats_to_add["health_max"]
 	if stats["health"] > stats["health_max"]:
 		stats["health"] = stats["health_max"]
-	GameController.health_update(stats["health_max"], stats["health_min"], stats["health"])
+	GameController.health_update(stats["health_max"], stats["health"])
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -100,7 +101,7 @@ func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
 		hurt_sound.playing = true
 		stats["health"] -= damage
-		GameController.health_update(stats["health_max"], stats["health_min"], stats["health"])
+		GameController.health_update(stats["health_max"], stats["health"])
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
 		move_and_slide()
