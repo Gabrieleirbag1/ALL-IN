@@ -19,7 +19,7 @@ const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.ts
 @onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
 @onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
 		
-@export var stats: Dictionary = {
+var stats: Dictionary = {
 	"damage": 10,
 	"attack_speed": 10.0,
 	"life_steal": 10,
