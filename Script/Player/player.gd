@@ -42,12 +42,15 @@ var is_attacking: bool = false
 var can_attack: bool = true
 
 func _ready() -> void:
-	EventController.connect("xp_collected", on_event_xp_collected)
-	EventController.connect("stats_progress", on_event_stats_progress)
-	EventController.connect("projectile_throw", on_projectile_throw)
 	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
+	
+func handle_signals():
+	EventController.connect("xp_collected", on_event_xp_collected)
+	EventController.connect("stats_progress", on_event_stats_progress)
+	EventController.connect("projectile_throw", on_projectile_throw)
+	EventController.connect("enemy_damaged_event", on_enemy_damaged_event)
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
@@ -65,6 +68,9 @@ func handle_new_health_stats(new_stats_to_add):
 	if stats["health"] > stats["health_max"]:
 		stats["health"] = stats["health_max"]
 	GameController.health_update(stats["health_max"], stats["health"])
+	
+func handle_life_steal(damage_amount):
+	var regen = damage_amount 
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -278,3 +284,6 @@ func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Ve
 	
 func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	handle_new_stats(new_stats_to_add)
+	
+func on_enemy_damaged_event(damage_amount, alive):
+	handle_life_steal(damage_amount)
