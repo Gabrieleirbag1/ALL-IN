@@ -12,6 +12,7 @@ class_name Player extends CharacterBody2D
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
 @onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
+@onready var attack_cooldown_timer: Timer = Timer.new()
 
 const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.tscn")
 @onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
@@ -21,7 +22,7 @@ const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.ts
 		
 var stats: Dictionary = {
 	"damage": Global.player_damage,
-	"attack_speed": 10.0,
+	"attack_speed": 1,
 	"life_steal": 0,
 	"critical": Global.player_critical,
 	"health": 50,
@@ -42,6 +43,10 @@ var is_attacking: bool = false
 var can_attack: bool = true
 
 func _ready() -> void:
+	attack_cooldown_timer.one_shot = true
+	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
+	add_child(attack_cooldown_timer)
+	
 	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
@@ -62,11 +67,31 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 			if stat_label:
 				stat_label.set_text_fit(str(stats[key]))
 	handle_new_health_stats(new_stats_to_add)
+	handle_new_as_stats(new_stats_to_add)
 	Global.luck += new_stats_to_add["luck"]	
 	
 func handle_new_health_stats(new_stats_to_add):
 	stats["health"] += new_stats_to_add["health_max"]
 	handle_health_event()
+	
+func handle_new_as_stats(new_stats_to_add):
+	# Check if attack_speed was modified
+	if "attack_speed" in new_stats_to_add:
+		# Get the sprite frames for the animation
+		var sprite_frames = animation.sprite_frames
+		if sprite_frames and sprite_frames.has_animation("attack_1"):
+			# Calculate speed scale based on attack_speed
+			# For attack_speed=1, we want normal speed (1.0)
+			# For attack_speed=2, we want double speed (2.0)
+			var speed_scale = stats["attack_speed"] / 1.0
+			
+			# Set the speed scale for the attack animation
+			sprite_frames.set_animation_speed("attack_1", 10 * speed_scale)
+			
+			# Also update the cooldown timer if it's running
+			if not attack_cooldown_timer.is_stopped():
+				attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
+	
 	
 func handle_life_steal(damage_amount):
 	var regen: int = 0
@@ -182,8 +207,10 @@ func attack():
 		can_attack = false
 		is_attacking = true
 		play_animation("attack_1")
-		await get_tree().create_timer(0.5).timeout 
-		can_attack = true
+		
+		# Start attack cooldown based on attack_speed
+		attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
+		attack_cooldown_timer.start()
 
 
 func spawn_fireball():
@@ -295,3 +322,6 @@ func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	
 func on_enemy_damaged_event(damage_amount, _is_enemy_alive):
 	handle_life_steal(damage_amount)
+
+func _on_attack_cooldown_timeout() -> void:
+	can_attack = true
