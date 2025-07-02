@@ -20,8 +20,22 @@ func _ready():
 func _physics_process(delta):
 	global_position += direction * projectile_range * delta
 
+func calculate_damage_amount() -> int:
+	var damage_amount: int = damage + Global.player_damage
+	return damage_amount
+
+func handle_critical_hit() -> int:
+	var critical_chance: float = Global.player_critical
+	if randi() % 100 < critical_chance:
+		var critical_multiplier: float = 1 + (Global.luck / 100)
+		return int(calculate_damage_amount() * critical_multiplier)
+	return 0
+
+func get_damage_amount() -> int:
+	return calculate_damage_amount() if not handle_critical_hit() else handle_critical_hit()
+
 func _on_body_entered(body):
-	var damage_amount = damage + Global.player_damage
+	var damage_amount: int = get_damage_amount()
 	if body is Enemy:
 		body.take_damage(damage_amount)
 		fade_out_sound()

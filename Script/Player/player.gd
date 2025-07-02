@@ -23,7 +23,7 @@ var stats: Dictionary = {
 	"damage": Global.player_damage,
 	"attack_speed": 10.0,
 	"life_steal": 0,
-	"critical": 10,
+	"critical": Global.player_critical,
 	"health": 50,
 	"health_max": 50,
 	"health_min": 0,
@@ -293,5 +293,5 @@ func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Ve
 func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	handle_new_stats(new_stats_to_add)
 	
-func on_enemy_damaged_event(damage_amount, alive):
+func on_enemy_damaged_event(damage_amount, _is_enemy_alive):
 	handle_life_steal(damage_amount)
