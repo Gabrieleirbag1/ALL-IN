@@ -70,7 +70,7 @@ func handle_new_health_stats(new_stats_to_add):
 	
 func handle_life_steal(damage_amount):
 	var regen: int = 0
-	if stats["life_steal"] >= 0:
+	if stats["life_steal"] > 0:
 		regen = damage_amount / stats["life_steal"]
 	stats["health"] += regen
 	handle_health_event()
