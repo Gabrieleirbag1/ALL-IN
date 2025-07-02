@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba85tn4c67pj3"]
+[gd_scene load_steps=8 format=3 uid="uid://ba85tn4c67pj3"]
 
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="1_5ay5y"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="1_11syi"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/HUD/Items/ItemUI.tscn" id="2_030ic"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="3_bswte"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="5_i6230"]
+[ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="6_dosg0"]
 [ext_resource type="PackedScene" uid="uid://tmqtdtks3u1y" path="res://Scene/LuckyBlock/LuckyBlock.tscn" id="6_wkrmc"]
 
 [node name="Node2D" type="Node2D"]
@@ -456,6 +457,12 @@ position = Vector2(318, 712)
 
 [node name="StatsUI" parent="." instance=ExtResource("5_i6230")]
 visible = false
+
+[node name="Slime2" parent="." instance=ExtResource("6_dosg0")]
+position = Vector2(431, 764)
+
+[node name="Slime" parent="." instance=ExtResource("6_dosg0")]
+position = Vector2(394, 743)
 
 [node name="LuckyBlock" parent="." instance=ExtResource("6_wkrmc")]
 z_index = -1
