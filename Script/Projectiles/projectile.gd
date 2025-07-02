@@ -6,7 +6,7 @@ var projectile_sound_scene
 var sound_instance: AudioStreamPlayer
 
 @export var projectile_range: float = 300
-@export var damage: int = 100
+@export var damage: int = 10
 @export var piercing: bool = false
 
 var direction: Vector2
@@ -21,8 +21,9 @@ func _physics_process(delta):
 	global_position += direction * projectile_range * delta
 
 func _on_body_entered(body):
+	var damage_amount = damage + Global.player_damage
 	if body is Enemy:
-		body.take_damage(damage)
+		body.take_damage(damage_amount)
 		fade_out_sound()
 		if not piercing:
 			queue_free()

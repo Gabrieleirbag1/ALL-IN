@@ -20,9 +20,9 @@ const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.ts
 @onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
 		
 var stats: Dictionary = {
-	"damage": 10,
+	"damage": Global.player_damage,
 	"attack_speed": 10.0,
-	"life_steal": 10,
+	"life_steal": 0,
 	"critical": 10,
 	"health": 50,
 	"health_max": 50,
@@ -69,7 +69,9 @@ func handle_new_health_stats(new_stats_to_add):
 	handle_health_event()
 	
 func handle_life_steal(damage_amount):
-	var regen = damage_amount / stats["life_steal"]
+	var regen: int = 0
+	if stats["life_steal"] >= 0:
+		regen = damage_amount / stats["life_steal"]
 	stats["health"] += regen
 	handle_health_event()
 
