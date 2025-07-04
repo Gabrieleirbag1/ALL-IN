@@ -19,6 +19,9 @@ const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.ts
 @onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
 @onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
 @onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
+
+@export_file("*.cfg") var stats_config_file_path: String = Global.config_dir_path + "/stats.cfg"
+var stats_config: ConfigFile = ConfigFile.new()
 		
 var stats: Dictionary = {
 	"damage": Global.player_damage,
@@ -43,6 +46,8 @@ var is_attacking: bool = false
 var can_attack: bool = true
 
 func _ready() -> void:
+	Global.load_cfg_file(stats_config, stats_config_file_path)
+
 	attack_cooldown_timer.one_shot = true
 	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
 	add_child(attack_cooldown_timer)
@@ -62,14 +67,30 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
 		if key in stats:
 			var stat_label: FittedLabel = hud_texture_rect.get_node_or_null(key + "Label") as Label
+			var new_value = check_min_value(key, stats[key], new_stats_to_add[key])
+			new_stats_to_add[key] = new_value
+			print(new_value, " ", new_stats_to_add)
 			if add_new_stats:
 				stats[key] += new_stats_to_add[key]
 			if stat_label:
 				stat_label.set_text_fit(str(stats[key]))
 	handle_new_health_stats(new_stats_to_add)
 	handle_new_as_stats(new_stats_to_add)
-	Global.luck += new_stats_to_add["luck"]	
-	
+	Global.luck += new_stats_to_add["luck"]
+
+func check_min_value(stat_name: String, current_value, new_value) -> Variant:
+	var min_value: Variant = stats_config.get_value(stat_name, "min_value", 0)
+	var sum_value = current_value + new_value
+	print(sum_value, "sum_value")
+	if not min_value:
+		print("not")
+		return new_value
+	if sum_value < min_value:
+		print(current_value - min_value, " yep")
+		return -(current_value - min_value)
+	print("yea")
+	return new_value
+
 func handle_new_health_stats(new_stats_to_add):
 	stats["health"] += new_stats_to_add["health_max"]
 	handle_health_event()
