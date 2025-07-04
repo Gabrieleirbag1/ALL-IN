@@ -67,7 +67,7 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
 		if key in stats:
 			var stat_label: FittedLabel = hud_texture_rect.get_node_or_null(key + "Label") as Label
-			var new_value: IntOrFloat = check_min_value(key, stats[key], new_stats_to_add[key])
+			var new_value: Variant = check_min_value(key, stats[key], new_stats_to_add[key])
 			new_stats_to_add[key] = new_value
 			if add_new_stats:
 				stats[key] += new_stats_to_add[key]
@@ -77,10 +77,10 @@ func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	handle_new_as_stats(new_stats_to_add)
 	Global.luck += new_stats_to_add["luck"]
 
-func check_min_value(stat_name: String, current_value: Variant, new_value: Variant) -> IntOrFloat:
+func check_min_value(stat_name: String, current_value: Variant, new_value: Variant) -> Variant:
 	"""Check if the new value for a stat is below the minimum allowed value.
 	If it is, return the difference needed to reach the minimum value."""
-	var min_value: IntOrFloat = stats_config.get_value(stat_name, "min_value", 0)
+	var min_value: Variant = stats_config.get_value(stat_name, "min_value", 0)
 	var sum_value: Variant = current_value + new_value
 	if not min_value:
 		return new_value

@@ -14,7 +14,10 @@ func level_up(player_level: int):
 	
 func health_update(health_max: int, health: int):
 	EventController.emit_signal("health_update", health_max, health)
-	
+
+func attack_speed_update(attack_speed: float):
+	EventController.emit_signal("attack_speed_update", attack_speed)
+
 func enemy_damaged_event(damage_amount: int, alive: bool):
 	EventController.emit_signal("enemy_damaged_event", damage_amount, alive)
 

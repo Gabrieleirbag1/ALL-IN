@@ -361,7 +361,6 @@ motion_mode = 1
 floor_snap_length = 0.0
 platform_floor_layers = 1
 script = ExtResource("2_wc0kd")
-stats_config_file_path = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

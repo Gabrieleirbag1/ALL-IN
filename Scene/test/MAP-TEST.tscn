@@ -19,7 +19,6 @@ position = Vector2(408, 684)
 
 [node name="Player" parent="." instance=ExtResource("3_bswte")]
 position = Vector2(470, 863)
-stats_config_file_path = "res://Config//stats.cfg"
 
 [node name="HUD" parent="." instance=ExtResource("1_11syi")]
 layer = -1
