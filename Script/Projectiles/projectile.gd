@@ -28,7 +28,8 @@ func handle_critical_hit() -> int:
 	var critical_chance: float = Global.player_critical
 	if randi() % 100 < critical_chance:
 		var critical_multiplier: float = 1.5 + (Global.luck / 100)
-		return calculate_damage_amount() * critical_multiplier
+		var damage_amount: int = int(calculate_damage_amount() * critical_multiplier)
+		return damage_amount
 	return 0
 
 func get_damage_amount() -> int:
