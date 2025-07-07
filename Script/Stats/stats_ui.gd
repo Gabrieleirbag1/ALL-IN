@@ -158,6 +158,7 @@ func set_3_random_stats(player_level: int):
 			random_stat = get_random_stat()
 			if random_stat not in icons:
 				break
+		random_stat = "attack_speed"
 		icons.append(random_stat)
 		set_stat(i, random_stat, player_level)
 		

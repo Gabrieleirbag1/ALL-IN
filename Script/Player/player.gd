@@ -94,6 +94,7 @@ func handle_new_health_stats(new_stats_to_add):
 	
 func handle_new_as_stats(new_stats_to_add):
 	# Check if attack_speed was modified
+	GameController.attack_speed_update(stats["attack_speed"])
 	if "attack_speed" in new_stats_to_add:
 		# Get the sprite frames for the animation
 		var sprite_frames = animation.sprite_frames
