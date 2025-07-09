@@ -2,6 +2,9 @@ extends ItemEffect
 
 const arrow_scene: PackedScene = preload("res://Scene/Projectiles/Arrow.tscn")
 
+func _init() -> void:
+	item_wait_time = 1.0
+
 func run():
 	cooldown_timer.start()
 

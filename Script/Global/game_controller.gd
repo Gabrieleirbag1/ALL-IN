@@ -11,6 +11,15 @@ func xp_progress(total_experience_value: int, min_experience: int, max_experienc
 
 func level_up(player_level: int):
 	EventController.emit_signal("level_up", player_level)
+	
+func health_update(health_max: int, health: int):
+	EventController.emit_signal("health_update", health_max, health)
+
+func attack_speed_update(attack_speed: float):
+	EventController.emit_signal("attack_speed_update", attack_speed)
+
+func enemy_damaged_event(damage_amount: int, alive: bool):
+	EventController.emit_signal("enemy_damaged_event", damage_amount, alive)
 
 func stats_progress(stats: Dictionary) -> void:
 	EventController.emit_signal("stats_progress", {

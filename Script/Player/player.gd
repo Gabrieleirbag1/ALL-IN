@@ -12,18 +12,22 @@ class_name Player extends CharacterBody2D
 @onready var hurt_sound = $Hurt_Sound
 @onready var fireball_sound = $Fireball_sound
 @onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
+@onready var attack_cooldown_timer: Timer = Timer.new()
 
 const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.tscn")
 @onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
 @onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
 @onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
 @onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
+
+@export_file("*.cfg") var stats_config_file_path: String = Global.config_dir_path + "/stats.cfg"
+var stats_config: ConfigFile = ConfigFile.new()
 		
-@export var stats: Dictionary = {
-	"damage": 10,
-	"attack_speed": 10.0,
-	"life_steal": 10,
-	"critical": 10,
+var stats: Dictionary = {
+	"damage": Global.player_damage,
+	"attack_speed": 1,
+	"life_steal": 0,
+	"critical": Global.player_critical,
 	"health": 50,
 	"health_max": 50,
 	"health_min": 0,
@@ -42,22 +46,83 @@ var is_attacking: bool = false
 var can_attack: bool = true
 
 func _ready() -> void:
-	EventController.connect("xp_collected", on_event_xp_collected)
-	EventController.connect("stats_progress", on_event_stats_progress)
-	EventController.connect("projectile_throw", on_projectile_throw)
+	Global.load_cfg_file(stats_config, stats_config_file_path)
+
+	attack_cooldown_timer.one_shot = true
+	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
+	add_child(attack_cooldown_timer)
+	
 	handle_new_stats(stats, false)
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
+	handle_signals()
+	
+func handle_signals():
+	EventController.connect("xp_collected", on_event_xp_collected)
+	EventController.connect("stats_progress", on_event_stats_progress)
+	EventController.connect("projectile_throw", on_projectile_throw)
+	EventController.connect("enemy_damaged_event", on_enemy_damaged_event)
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
 		if key in stats:
 			var stat_label: FittedLabel = hud_texture_rect.get_node_or_null(key + "Label") as Label
+			var new_value: Variant = check_min_value(key, stats[key], new_stats_to_add[key])
+			new_stats_to_add[key] = new_value
 			if add_new_stats:
 				stats[key] += new_stats_to_add[key]
 			if stat_label:
 				stat_label.set_text_fit(str(stats[key]))
-	Global.luck += new_stats_to_add["luck"]	
+	handle_new_health_stats(new_stats_to_add)
+	handle_new_as_stats(new_stats_to_add)
+	Global.luck += new_stats_to_add["luck"]
+
+func check_min_value(stat_name: String, current_value: Variant, new_value: Variant) -> Variant:
+	"""Check if the new value for a stat is below the minimum allowed value.
+	If it is, return the difference needed to reach the minimum value."""
+	var min_value: Variant = stats_config.get_value(stat_name, "min_value", 0)
+	var sum_value: Variant = current_value + new_value
+	if not min_value:
+		return new_value
+	if sum_value < min_value:
+		return -(current_value - min_value)
+	return new_value
+
+func handle_new_health_stats(new_stats_to_add):
+	stats["health"] += new_stats_to_add["health_max"]
+	handle_health_event()
+	
+func handle_new_as_stats(new_stats_to_add):
+	# Check if attack_speed was modified
+	GameController.attack_speed_update(stats["attack_speed"])
+	if "attack_speed" in new_stats_to_add:
+		# Get the sprite frames for the animation
+		var sprite_frames = animation.sprite_frames
+		if sprite_frames and sprite_frames.has_animation("attack_1"):
+			# Calculate speed scale based on attack_speed
+			# For attack_speed=1, we want normal speed (1.0)
+			# For attack_speed=2, we want double speed (2.0)
+			var speed_scale = stats["attack_speed"] / 1.0
+			
+			# Set the speed scale for the attack animation
+			sprite_frames.set_animation_speed("attack_1", 10 * speed_scale)
+			
+			# Also update the cooldown timer if it's running
+			if not attack_cooldown_timer.is_stopped():
+				attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
+	
+	
+func handle_life_steal(damage_amount):
+	var regen: int = 0
+	if stats["life_steal"] > 0:
+		regen = damage_amount / stats["life_steal"]
+	stats["health"] += regen
+	handle_health_event()
+
+func handle_health_event():
+	if stats["health"] > stats["health_max"]:
+		stats["health"] = stats["health_max"]
+	GameController.health_update(stats["health_max"], stats["health"])
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -94,6 +159,7 @@ func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
 		hurt_sound.playing = true
 		stats["health"] -= damage
+		GameController.health_update(stats["health_max"], stats["health"])
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
 		move_and_slide()
@@ -160,8 +226,10 @@ func attack():
 		can_attack = false
 		is_attacking = true
 		play_animation("attack_1")
-		await get_tree().create_timer(0.5).timeout 
-		can_attack = true
+		
+		# Start attack cooldown based on attack_speed
+		attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
+		attack_cooldown_timer.start()
 
 
 func spawn_fireball():
@@ -270,3 +338,9 @@ func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Ve
 	
 func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	handle_new_stats(new_stats_to_add)
+	
+func on_enemy_damaged_event(damage_amount, _is_enemy_alive):
+	handle_life_steal(damage_amount)
+
+func _on_attack_cooldown_timeout() -> void:
+	can_attack = true
