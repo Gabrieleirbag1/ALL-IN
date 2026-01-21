@@ -1,0 +1,13 @@
+{
+    "waves": [
+        {
+            "id": 1,
+            "enemies": [
+                {"type": "slime", "spawn_percentage": 0.7, "score": 1},
+                {"type": "orc", "spawn_percentage": 0.3, "score": 5}
+            ],
+            "score_to_reach": 100,
+            "spawn_interval": 0.1
+        }
+    ]
+}
