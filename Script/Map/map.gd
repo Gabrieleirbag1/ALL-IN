@@ -4,6 +4,7 @@ extends Node2D
 @export var orc_scene: PackedScene
 @export var xp_scene: PackedScene
 @export var waves_file: String = Global.config_dir_path + "/waves.cfg"
+@export var test_waves_file: String = Global.config_dir_path + "/test_waves.json"
 @export var orc_rider: PackedScene
 
 @onready var background_music : Node = $Background_Music
@@ -24,9 +25,64 @@ func _ready() -> void:
 		"orc": orc_scene,
 		"orc_rider": orc_rider
 	}
-	load_waves_config()
+	load_test_waves_config()
+	#load_waves_config()
 	EventController.connect("enemy_death", Callable(self, "on_event_enemy_death"))
-	start_wave()
+	#start_wave()
+
+func load_test_waves_config() -> void:
+	var file = FileAccess.open(test_waves_file, FileAccess.READ)
+	if file == null:
+		push_error("Impossible d'ouvrir le fichier de test des vagues: %s" % test_waves_file)
+		return
+	var data = file.get_as_text()
+	var json = JSON.parse_string(data)
+
+	for wave_data in json.waves:
+		start_test_wave(wave_data)
+
+func calculate_best_spawn_points(affected_spawn_points_number: int) -> Array[Node]:
+	var spawn_points: Array[Node] = [$Spawn, $Spawn2, $Spawn3, $Spawn4]
+	return spawn_points
+	
+func chose_random_enemy(enemies: Array) -> String:
+	var rand = randi() % 100
+	var cumulative_percentage = 0.0
+	for enemy_data in enemies:
+		cumulative_percentage += enemy_data.spawn_percentage * 100
+		if rand < cumulative_percentage:
+			return enemy_data.enemy_type
+	return enemies[0].enemy_type  # Fallback
+
+func spawn_mob(enemies, spawn):
+	var enemy_type = chose_random_enemy(enemies)
+	var enemy_scene = enemy_scenes.get(enemy_type, null)
+	if enemy_scene:
+		var enemy = enemy_scene.instantiate()
+		print(enemy)
+		enemy.global_position = spawn.global_position
+
+func start_test_wave(wave_data: Dictionary) -> void:
+	var wave_num = wave_data.get("wave_number", 1)
+	var affected_spawn_points_number = wave_data.get("affected_spawn_points_number", 4)
+	var score_to_reach = wave_data.get("score_to_reach", 2.0)
+	var enemies: Array = wave_data.get("enemies", [{}])
+	
+	var spawn_points: Array[Node] = calculate_best_spawn_points(affected_spawn_points_number)
+	var wait_time = wave_data.get("spawn_interval", 0.0)
+		
+	for spawn in spawn_points:
+		spawn_mob(enemies, spawn)
+		await get_tree().create_timer(wait_time).timeout
+
+
+
+
+
+
+
+
+
 
 func load_waves_config() -> void:
 	var config = ConfigFile.new()
@@ -91,7 +147,7 @@ func spawn_wave(settings: Dictionary) -> void:
 	# On ne marque pas la vague comme terminée ici, cela se fera dans spawn_next quand chaque type aura terminé
 
 func spawn_type(enemy_type: String, mob_amount: int, mob_wait_time: float) -> void:
-	var spawn_points = [$Spawn, $Spawn2, $Spawn, $Spawn4]  # Assurez-vous que ces noeuds existent dans la scène
+	var spawn_points = [$Spawn, $Spawn2, $Spawn3, $Spawn4]  # Assurez-vous que ces noeuds existent dans la scène
 	spawn_next(enemy_type, mob_amount, mob_wait_time, spawn_points, 0)
 
 func spawn_next(enemy_type: String, mob_amount: int, mob_wait_time: float, spawn_points: Array, total_spawned: int) -> void:
