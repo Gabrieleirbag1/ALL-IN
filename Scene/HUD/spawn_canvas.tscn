@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://c78oft858ans"]
+
+[ext_resource type="FontFile" uid="uid://dwydoufpjfads" path="res://Assets/Fonts/edit-undo/editundo.ttf" id="1_0tq3x"]
+[ext_resource type="Script" uid="uid://komguvwd0gc3" path="res://Script/bbcode_rich_text_label.gd" id="2_urmbw"]
+
+[node name="SpawnCanvas" type="CanvasLayer"]
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(138, 88)
+
+[node name="StatRarity" type="RichTextLabel" parent="Marker2D2"]
+anchors_preset = -1
+anchor_left = -0.110417
+anchor_right = -0.110417
+anchor_bottom = 0.00648148
+offset_left = 62.0
+offset_top = -8.0
+offset_right = 385.0
+offset_bottom = 64.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_0tq3x")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "a"
+script = ExtResource("2_urmbw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(205, 88)
+
+[node name="StatRarity" type="RichTextLabel" parent="Marker2D"]
+anchors_preset = -1
+anchor_left = -0.110417
+anchor_right = -0.110417
+anchor_bottom = 0.00648148
+offset_left = -72.0
+offset_top = -6.0
+offset_right = 251.0
+offset_bottom = 66.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_0tq3x")
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "a"
+script = ExtResource("2_urmbw")
+metadata/_edit_use_anchors_ = true
