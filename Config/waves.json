@@ -7,7 +7,7 @@
                 {"enemy_type": "orc", "spawn_percentage": 0.3, "score": 5}
             ],
             "score_to_reach": 100,
-            "spawn_interval": 0.1,
+            "spawn_interval": 1,
             "affected_spawn_points_number": 2
         }
     ]

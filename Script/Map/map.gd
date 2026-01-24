@@ -3,8 +3,7 @@ extends Node2D
 @export var slime_scene: PackedScene
 @export var orc_scene: PackedScene
 @export var xp_scene: PackedScene
-@export var waves_file: String = Global.config_dir_path + "/waves.cfg"
-@export var test_waves_file: String = Global.config_dir_path + "/test_waves.json"
+@export var test_waves_file: String = Global.config_dir_path + "/waves.json"
 @export var orc_rider: PackedScene
 
 @onready var background_music : Node = $Background_Music
@@ -12,7 +11,6 @@ extends Node2D
 var enemies_alive: int = 0
 var enemy_properties: Dictionary = {}
 var score = 0
-
 
 func _ready() -> void:
 	background_music.playing = true
