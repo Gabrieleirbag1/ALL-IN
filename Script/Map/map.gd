@@ -87,10 +87,10 @@ func start_wave(wave_data: Dictionary) -> void:
 			await get_tree().create_timer(wait_time).timeout
 	score = 0
 
-func on_event_enemy_death(xp: int, enemy_position: Vector2, _enemy_type) -> void:
+func on_event_enemy_death(xp: int, enemy_position: Vector2, enemy_type: String) -> void:
 	enemies_alive -= 1
 	drop_xp(xp, enemy_position)
-	score += enemy_properties[_enemy_type]["score"]
+	score += enemy_properties[enemy_type]["score"]
 
 func drop_xp(xp: int, enemy_position: Vector2) -> void:
 	var remaining_xp = xp
