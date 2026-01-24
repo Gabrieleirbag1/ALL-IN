@@ -3,7 +3,7 @@ class_name Enemy extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
-@onready var death_sound : Node = $Death
+#@onready var death_sound : Node = $Death
 
 var enemy_type: String = ""
 var experience: int = 0
@@ -52,7 +52,7 @@ func die():
 	if death_animation_played:
 		return
 	play_animation("death")
-	death_sound.playing = true
+	#death_sound.playing = true
 	alive = false
 	death_animation_played = true
 	set_collision_mask_value(1, false)
