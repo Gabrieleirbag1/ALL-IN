@@ -16,6 +16,11 @@ var score = 0
 
 func _ready() -> void:
 	background_music.playing = true
+	set_enemy_properties()
+	load_waves_config()
+	EventController.connect("enemy_death", Callable(self, "on_event_enemy_death"))
+	
+func set_enemy_properties() -> void:
 	enemy_properties = {
 		"slime": {
 			"scene": slime_scene,
@@ -30,8 +35,6 @@ func _ready() -> void:
 			"score": 8
 		}
 	}
-	load_waves_config()
-	EventController.connect("enemy_death", Callable(self, "on_event_enemy_death"))
 
 func load_waves_config() -> void:
 	var file = FileAccess.open(test_waves_file, FileAccess.READ)
