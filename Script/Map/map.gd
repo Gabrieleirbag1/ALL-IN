@@ -42,7 +42,7 @@ func load_test_waves_config() -> void:
 		start_test_wave(wave_data)
 
 func calculate_best_spawn_points(affected_spawn_points_number: int) -> Array[Node]:
-	var spawn_points: Array[Node] = [$Spawn, $Spawn2, $Spawn3, $Spawn4]
+	var spawn_points: Array[Node] = [$Spawn, $Spawn2]
 	return spawn_points
 	
 func chose_random_enemy(enemies: Array) -> String:
@@ -61,6 +61,7 @@ func spawn_mob(enemies, spawn):
 		var enemy = enemy_scene.instantiate()
 		print(enemy)
 		enemy.global_position = spawn.global_position
+		add_child(enemy)
 
 func start_test_wave(wave_data: Dictionary) -> void:
 	var wave_num = wave_data.get("wave_number", 1)
@@ -74,13 +75,6 @@ func start_test_wave(wave_data: Dictionary) -> void:
 	for spawn in spawn_points:
 		spawn_mob(enemies, spawn)
 		await get_tree().create_timer(wait_time).timeout
-
-
-
-
-
-
-
 
 
 
