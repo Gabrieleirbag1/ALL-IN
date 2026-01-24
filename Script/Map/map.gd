@@ -16,10 +16,19 @@ var score = 0
 
 func _ready() -> void:
 	background_music.playing = true
-	enemy_scenes = {
-		"slime": slime_scene,
-		"orc": orc_scene,
-		"orc_rider": orc_rider
+	enemy_properties = {
+		"slime": {
+			"scene": slime_scene,
+			"score": 1
+		},
+		"orc": {
+			"scene": orc_scene,
+			"score": 5
+		},
+		"orc_rider": {
+			"scene": orc_rider,
+			"score": 8
+		}
 	}
 	load_waves_config()
 	EventController.connect("enemy_death", Callable(self, "on_event_enemy_death"))
@@ -65,6 +74,8 @@ func start_wave(wave_data: Dictionary) -> void:
 	var affected_spawn_points_number = wave_data.get("affected_spawn_points_number", 4)
 	var score_to_reach = wave_data.get("score_to_reach", 2.0)
 	var enemies: Array = wave_data.get("enemies", [{}])
+
+	set_enemy_properties_score(enemies)
 	
 	var spawn_points: Array[Node] = calculate_best_spawn_points(affected_spawn_points_number)
 	var wait_time = wave_data.get("spawn_interval", 1.0)
