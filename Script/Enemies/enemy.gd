@@ -22,7 +22,6 @@ var player_chase: bool = false
 var player = null
 var active = false
 
-
 func play_animation(animation_name: String) -> void:
 	if not alive:
 		return
@@ -57,7 +56,9 @@ func die():
 		death_sound.playing = true
 	alive = false
 	death_animation_played = true
-	set_collision_mask_value(1, false)
+	collision_layer = 0
+	collision_mask = 0
+	nav_agent.avoidance_enabled = false
 	dispawn_timer.start()
 
 
@@ -103,15 +104,20 @@ func handle_navigation():
 func handle_states(state: bool):
 	visible = state
 	set_physics_process(state)
-	#collision_shape.disabled = not state
+	if state:
+		collision_layer = 4
+		collision_mask = 7
 	
 func revive():
 	alive = true
 	death_animation_played = false
 	health = health_max
+	nav_agent.avoidance_enabled = true
+	handle_states(true)
 	if player_chase and animation:
 		play_animation("walk")
-	handle_states(true)
+	else:
+		play_animation("idle")
 
 func _physics_process(_delta: float) -> void:
 	if not alive:

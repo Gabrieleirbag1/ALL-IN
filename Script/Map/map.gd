@@ -100,7 +100,6 @@ func spawn_mob(enemies, spawn):
 			enemy.global_position = spawn.global_position
 			enemy.revive()
 			enemies_alive += 1
-		enemy.global_position = spawn.global_position
 
 func start_wave(wave_data: Dictionary) -> void:
 	var wave_num = wave_data.get("wave_number", 1)
