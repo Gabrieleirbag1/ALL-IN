@@ -53,7 +53,8 @@ func die():
 	if death_animation_played:
 		return
 	play_animation("death")
-	death_sound.playing = true
+	if death_sound:
+		death_sound.playing = true
 	alive = false
 	death_animation_played = true
 	set_collision_mask_value(1, false)
