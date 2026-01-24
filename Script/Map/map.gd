@@ -3,7 +3,7 @@ extends Node2D
 @export var slime_scene: PackedScene
 @export var orc_scene: PackedScene
 @export var xp_scene: PackedScene
-@export var test_waves_file: String = Global.config_dir_path + "/waves.json"
+@export var waves_file: String = Global.config_dir_path + "/waves.json"
 @export var orc_rider: PackedScene
 
 @onready var background_music : Node = $Background_Music
@@ -35,9 +35,9 @@ func set_enemy_properties() -> void:
 	}
 
 func load_waves_config() -> void:
-	var file = FileAccess.open(test_waves_file, FileAccess.READ)
+	var file = FileAccess.open(waves_file, FileAccess.READ)
 	if file == null:
-		push_error("Impossible d'ouvrir le fichier de test des vagues: %s" % test_waves_file)
+		push_error("Impossible d'ouvrir le fichier de test des vagues: %s" % waves_file)
 		return
 	var data = file.get_as_text()
 	var json = JSON.parse_string(data)
