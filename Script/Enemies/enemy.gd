@@ -3,7 +3,7 @@ class_name Enemy extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
-#@onready var death_sound : Node = $Death
+@onready var death_sound : Node = $Death
 
 var enemy_type: String = ""
 var experience: int = 0
@@ -20,6 +20,7 @@ var death_animation_played: bool = false
 var immortal: bool = false
 var player_chase: bool = false
 var player = null
+var active = false
 
 
 func play_animation(animation_name: String) -> void:
@@ -52,7 +53,7 @@ func die():
 	if death_animation_played:
 		return
 	play_animation("death")
-	#death_sound.playing = true
+	death_sound.playing = true
 	alive = false
 	death_animation_played = true
 	set_collision_mask_value(1, false)
@@ -105,11 +106,12 @@ func _physics_process(_delta: float) -> void:
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
 	
-	if animation.animation == "hurt" and not animation.is_playing():
-		if player_chase:
-			play_animation("walk")
-		else:
-			play_animation("idle")
+	if active:
+		if animation.animation == "hurt" and not animation.is_playing():
+			if player_chase:
+				play_animation("walk")
+			else:
+				play_animation("idle")
 
 func makepath() -> void:
 	if player && is_instance_valid(player):
@@ -136,3 +138,11 @@ func _on_timer_timeout() -> void:
 func _on_dispawn_timeout() -> void:
 	GameController.enemy_death(drop_xp, position, enemy_type)
 	queue_free()
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	active = false
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	active = true
+	animation.stop()
+	

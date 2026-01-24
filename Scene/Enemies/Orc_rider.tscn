@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://evpdxdo8k70f"]
 
 [ext_resource type="Script" uid="uid://crxtcs40go4hl" path="res://Script/Enemies/orc_rider.gd" id="1_07qmf"]
-[ext_resource type="Texture2D" uid="uid://bllxkb1vkjwxe" path="res://Assets/Characters/Orc rider/Orc rider with shadows/Orc rider 2.png" id="2_obs7j"]
+[ext_resource type="Texture2D" uid="uid://crjq0k47xkthx" path="res://Assets/Characters/Orc rider/Orc rider with shadows/Orc rider 2.png" id="2_obs7j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4si4e"]
 atlas = ExtResource("2_obs7j")
@@ -228,8 +228,12 @@ one_shot = true
 position = Vector2(6, -16)
 shape = SubResource("CircleShape2D_d7jwf")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Dispawn" to="." method="_on_dispawn_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
