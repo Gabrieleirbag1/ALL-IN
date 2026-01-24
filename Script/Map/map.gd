@@ -9,13 +9,9 @@ extends Node2D
 
 @onready var background_music : Node = $Background_Music
 
-var current_wave: int = 0
 var enemies_alive: int = 0
-var wave_active: bool = false  
-var waves_settings: Dictionary = {}
-var enemy_scenes: Dictionary = {}
-var wave_spawn_complete: Dictionary = {}
-
+var enemy_properties: Dictionary = {}
+var score = 0
 
 
 func _ready() -> void:
@@ -25,12 +21,10 @@ func _ready() -> void:
 		"orc": orc_scene,
 		"orc_rider": orc_rider
 	}
-	load_test_waves_config()
-	#load_waves_config()
+	load_waves_config()
 	EventController.connect("enemy_death", Callable(self, "on_event_enemy_death"))
-	#start_wave()
 
-func load_test_waves_config() -> void:
+func load_waves_config() -> void:
 	var file = FileAccess.open(test_waves_file, FileAccess.READ)
 	if file == null:
 		push_error("Impossible d'ouvrir le fichier de test des vagues: %s" % test_waves_file)
@@ -39,7 +33,11 @@ func load_test_waves_config() -> void:
 	var json = JSON.parse_string(data)
 
 	for wave_data in json.waves:
-		start_test_wave(wave_data)
+		start_wave(wave_data)
+
+func set_enemy_properties_score(enemies) -> void:
+	for enemy in enemies:
+		enemy_properties[enemy.enemy_type]["score"] = enemy.score
 
 func calculate_best_spawn_points(affected_spawn_points_number: int) -> Array[Node]:
 	var spawn_points: Array[Node] = [$Spawn, $Spawn2]
@@ -56,118 +54,31 @@ func chose_random_enemy(enemies: Array) -> String:
 
 func spawn_mob(enemies, spawn):
 	var enemy_type = chose_random_enemy(enemies)
-	var enemy_scene = enemy_scenes.get(enemy_type, null)
-	if enemy_scene:
-		var enemy = enemy_scene.instantiate()
-		print(enemy)
+	var enemy_data = enemy_properties.get(enemy_type, null)
+	if enemy_data:
+		var enemy = enemy_data["scene"].instantiate()
 		enemy.global_position = spawn.global_position
 		add_child(enemy)
 
-func start_test_wave(wave_data: Dictionary) -> void:
+func start_wave(wave_data: Dictionary) -> void:
 	var wave_num = wave_data.get("wave_number", 1)
 	var affected_spawn_points_number = wave_data.get("affected_spawn_points_number", 4)
 	var score_to_reach = wave_data.get("score_to_reach", 2.0)
 	var enemies: Array = wave_data.get("enemies", [{}])
 	
 	var spawn_points: Array[Node] = calculate_best_spawn_points(affected_spawn_points_number)
-	var wait_time = wave_data.get("spawn_interval", 0.0)
-		
-	for spawn in spawn_points:
-		spawn_mob(enemies, spawn)
-		await get_tree().create_timer(wait_time).timeout
-
-
-
-func load_waves_config() -> void:
-	var config = ConfigFile.new()
-	var err = config.load(waves_file)
-	if err != OK:
-		push_error("Impossible de charger le fichier de configuration: %s" % waves_file)
-		return
-	for section in config.get_sections():
-		if section.begins_with("wave"):
-			var wave_num = int(section.replace("wave", ""))
-			# mob_wait_time correspond au temps d'attente entre chaque batch d'instanciation
-			var mob_wait_time = config.get_value(section, "mob_wait_time", 2.0)
-			var enemies = {}
-			# Pour chaque clé de la section (autre que mob_wait_time), on récupère le nombre d'ennemis attendu
-			for key in config.get_section_keys(section):
-				if key != "mob_wait_time":
-					enemies[key] = config.get_value(section, key, 0)
-			waves_settings[wave_num] = {"mob_wait_time": mob_wait_time, "enemies": enemies}
-
-func start_wave() -> void:
-	if wave_active:
-		return
-	wave_active = true
-	current_wave += 1
-	Global.current_wave = current_wave
-	print("Début de la vague %d" % current_wave)
-	var settings = waves_settings.get(current_wave, {"mob_wait_time": 2.0, "enemies": {}})
-	spawn_wave(settings)
+	var wait_time = wave_data.get("spawn_interval", 1.0)
+	
+	while score < score_to_reach:
+		for spawn in spawn_points:
+			spawn_mob(enemies, spawn)
+			await get_tree().create_timer(wait_time).timeout
+	score = 0
 
 func on_event_enemy_death(xp: int, enemy_position: Vector2, _enemy_type) -> void:
 	enemies_alive -= 1
 	drop_xp(xp, enemy_position)
-	check_wave_end()
-
-func check_wave_end() -> void:
-	# On considère que le spawn est terminé si, pour chaque type d'ennemi, le spawn est complet
-	var spawning_complete = true
-	for enemy_type in wave_spawn_complete.keys():
-		if wave_spawn_complete[enemy_type] == false:
-			spawning_complete = false
-			break
-	if spawning_complete and enemies_alive == 0:
-		print("Vague %d terminée !" % current_wave)
-		wave_active = false
-		# Réinitialisation pour la prochaine vague
-		wave_spawn_complete.clear()
-		if waves_settings.has(current_wave + 1):
-			start_wave()
-		else:
-			print("Toutes les vagues sont terminées !")
-
-func spawn_wave(settings: Dictionary) -> void:
-	wave_spawn_complete.clear()
-	var enemies_config: Dictionary = settings.get("enemies", {})
-	var mob_wait_time: float = settings.get("mob_wait_time", 2.0)
-	# Pour chaque type d'ennemi prévu dans la vague...
-	for enemy_type in enemies_config.keys():
-		var count: int = enemies_config[enemy_type]
-		if count > 0:
-			wave_spawn_complete[enemy_type] = false
-			spawn_type(enemy_type, count, mob_wait_time)
-	# On ne marque pas la vague comme terminée ici, cela se fera dans spawn_next quand chaque type aura terminé
-
-func spawn_type(enemy_type: String, mob_amount: int, mob_wait_time: float) -> void:
-	var spawn_points = [$Spawn, $Spawn2, $Spawn3, $Spawn4]  # Assurez-vous que ces noeuds existent dans la scène
-	spawn_next(enemy_type, mob_amount, mob_wait_time, spawn_points, 0)
-
-func spawn_next(enemy_type: String, mob_amount: int, mob_wait_time: float, spawn_points: Array, total_spawned: int) -> void:
-	# Pour chaque point de spawn, on instancie un ennemi jusqu'à atteindre le nombre requis
-	for spawn in spawn_points:
-		if total_spawned >= mob_amount:
-			break
-		var enemy_scene = enemy_scenes.get(enemy_type, null)
-		if enemy_scene:
-			var enemy = enemy_scene.instantiate()
-			enemy.global_position = spawn.global_position
-			add_child(enemy)
-			enemies_alive += 1
-			total_spawned += 1
-
-	if total_spawned < mob_amount:
-		var timer = Timer.new()
-		timer.wait_time = mob_wait_time
-		timer.one_shot = true
-		add_child(timer)
-		timer.start()
-		timer.timeout.connect(Callable(self, "spawn_next").bind(enemy_type, mob_amount, mob_wait_time, spawn_points, total_spawned))
-	else:
-		# Fin du spawn pour ce type d'ennemi
-		wave_spawn_complete[enemy_type] = true
-		check_wave_end()
+	score += enemy_properties[_enemy_type]["score"]
 
 func drop_xp(xp: int, enemy_position: Vector2) -> void:
 	var remaining_xp = xp
