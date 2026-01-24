@@ -11,6 +11,7 @@ extends Node2D
 var enemies_alive: int = 0
 var enemy_properties: Dictionary = {}
 var score = 0
+var enemy_pool: Array = []
 
 func _ready() -> void:
 	background_music.playing = true
@@ -62,13 +63,44 @@ func chose_random_enemy(enemies: Array) -> String:
 			return enemy_data.enemy_type
 	return enemies[0].enemy_type  # Fallback
 
-func spawn_mob(enemies, spawn):
-	var enemy_type = chose_random_enemy(enemies)
+func setup_enemy(enemy_type: String) -> Enemy:
 	var enemy_data = enemy_properties.get(enemy_type, null)
 	if enemy_data:
-		var enemy = enemy_data["scene"].instantiate()
+		var enemy_instance: Enemy = enemy_data["scene"].instantiate()
+		enemy_instance.handle_states(false)
+		enemy_pool.append(enemy_instance)
+		add_child(enemy_instance)
+		return enemy_instance
+	return null
+
+func set_enemy_pool(enemies: Array) -> void:
+	enemy_pool.clear()
+	var pool_size = 50
+	for i in range(pool_size):
+		var enemy_type = chose_random_enemy(enemies)
+		setup_enemy(enemy_type)
+
+func extend_pool(enemy_type: String) -> Enemy:
+	var enemy_instance = setup_enemy(enemy_type)
+	print("Extended pool with enemy: %s" % enemy_type)
+	return enemy_instance
+
+func get_pooled_enemy(enemy_type: String) -> Enemy:
+	for enemy in enemy_pool:
+		if not enemy.visible and enemy.enemy_type.begins_with(enemy_type):
+			return enemy
+	return extend_pool(enemy_type)
+
+func spawn_mob(enemies, spawn):
+	var enemy_type = chose_random_enemy(enemies)
+	var enemy_scene = enemy_properties.get(enemy_type, null)
+	if enemy_scene:
+		var enemy: Enemy = get_pooled_enemy(enemy_type)
+		if enemy:
+			enemy.global_position = spawn.global_position
+			enemy.revive()
+			enemies_alive += 1
 		enemy.global_position = spawn.global_position
-		add_child(enemy)
 
 func start_wave(wave_data: Dictionary) -> void:
 	var wave_num = wave_data.get("wave_number", 1)
@@ -77,6 +109,7 @@ func start_wave(wave_data: Dictionary) -> void:
 	var enemies: Array = wave_data.get("enemies", [{}])
 
 	set_enemy_properties_score(enemies)
+	set_enemy_pool(enemies)
 	
 	var spawn_points: Array[Node] = calculate_best_spawn_points(affected_spawn_points_number)
 	var wait_time = wave_data.get("spawn_interval", 1.0)
@@ -90,7 +123,8 @@ func start_wave(wave_data: Dictionary) -> void:
 func on_event_enemy_death(xp: int, enemy_position: Vector2, enemy_type: String) -> void:
 	enemies_alive -= 1
 	drop_xp(xp, enemy_position)
-	score += enemy_properties[enemy_type]["score"]
+	var enemy_score = enemy_properties[enemy_type]["score"]
+	score += enemy_score
 
 func drop_xp(xp: int, enemy_position: Vector2) -> void:
 	var remaining_xp = xp

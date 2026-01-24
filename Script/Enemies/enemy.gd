@@ -100,6 +100,19 @@ func handle_navigation():
 		chase_player()
 		handle_collision()
 
+func handle_states(state: bool):
+	visible = state
+	set_physics_process(state)
+	#collision_shape.disabled = not state
+	
+func revive():
+	alive = true
+	death_animation_played = false
+	health = health_max
+	if player_chase and animation:
+		play_animation("walk")
+	handle_states(true)
+
 func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
@@ -108,7 +121,7 @@ func _physics_process(_delta: float) -> void:
 		handle_navigation()
 	
 	if active:
-		if animation.animation == "hurt" and not animation.is_playing():
+		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:
 				play_animation("walk")
 			else:
@@ -138,12 +151,11 @@ func _on_timer_timeout() -> void:
 
 func _on_dispawn_timeout() -> void:
 	GameController.enemy_death(drop_xp, position, enemy_type)
-	queue_free()
+	handle_states(false)
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	active = false
+	animation.stop()
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	active = true
-	animation.stop()
-	
