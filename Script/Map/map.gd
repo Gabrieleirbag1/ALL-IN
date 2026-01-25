@@ -9,6 +9,7 @@ extends Node2D
 @onready var background_music : Node = $Background_Music
 
 var enemies_alive: int = 0
+var max_enemies_on_screen: int = 100
 var enemy_properties: Dictionary = {}
 var score = 0
 var enemy_pool: Array = []
@@ -92,6 +93,8 @@ func get_pooled_enemy(enemy_type: String) -> Enemy:
 	return extend_pool(enemy_type)
 
 func spawn_mob(enemies, spawn):
+	if enemies_alive >= max_enemies_on_screen:
+		return
 	var enemy_type = chose_random_enemy(enemies)
 	var enemy_scene = enemy_properties.get(enemy_type, null)
 	if enemy_scene:
