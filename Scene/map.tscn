@@ -26052,16 +26052,19 @@ collision_mask = 23
 position = Vector2(1062, 347)
 
 [node name="Spawn" type="Marker2D" parent="."]
-position = Vector2(1053, 268)
+position = Vector2(714, 407)
 
 [node name="Spawn2" type="Marker2D" parent="."]
-position = Vector2(971, 344)
+position = Vector2(1095, 838)
 
 [node name="Spawn3" type="Marker2D" parent="."]
-position = Vector2(1137, 341)
+position = Vector2(742, 364)
+
+[node name="Spawn5" type="Marker2D" parent="."]
+position = Vector2(660, 358)
 
 [node name="Spawn4" type="Marker2D" parent="."]
-position = Vector2(1046, 430)
+position = Vector2(720, 330)
 
 [node name="CrossbowItem5" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(750, 757)

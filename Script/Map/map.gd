@@ -50,10 +50,28 @@ func load_waves_config() -> void:
 func set_enemy_properties_score(enemies) -> void:
 	for enemy in enemies:
 		enemy_properties[enemy.enemy_type]["score"] = enemy.score
+	
+func sort_middle_short_far(a: Node, b: Node) -> bool:
+	#sort the distances to have the middle range distances first, then short, then far
+	var screen_size = get_viewport_rect().size
+	print(screen_size)
+	var middle_distance = screen_size.length() / 2
+	print(middle_distance)
+	var distance_spawn_player = a.global_position.distance_to(Global.player.global_position)
+	var a_diff = abs(distance_spawn_player - middle_distance)
+	var distance_spawn_player_b = b.global_position.distance_to(Global.player.global_position)
+	var b_diff = abs(distance_spawn_player_b - middle_distance)
+	print(a_diff, " ",b_diff)
+	return a_diff < b_diff
 
-func calculate_best_spawn_points(affected_spawn_points_number: int) -> Array[Node]:
-	var spawn_points: Array[Node] = [$Spawn, $Spawn2]
-	return spawn_points
+func select_best_spawn_points(affected_spawn_points_number: int) -> Array[Node]:
+	var spawn_points: Array[Node] = [$Spawn, $Spawn2, $Spawn3, $Spawn4, $Spawn5]
+	spawn_points.sort_custom(sort_middle_short_far)
+	print(spawn_points)
+	var selected_spawn_points: Array[Node] = []
+	for i in range(affected_spawn_points_number):
+		selected_spawn_points.append(spawn_points[i])
+	return selected_spawn_points
 	
 func chose_random_enemy(enemies: Array) -> String:
 	var rand = randi() % 100
@@ -113,7 +131,8 @@ func start_wave(wave_data: Dictionary) -> void:
 	set_enemy_properties_score(enemies)
 	set_enemy_pool(enemies)
 	
-	var spawn_points: Array[Node] = calculate_best_spawn_points(affected_spawn_points_number)
+	var spawn_points: Array[Node] = select_best_spawn_points(affected_spawn_points_number)
+	print(spawn_points)
 	var wait_time = wave_data.get("spawn_interval", 1.0)
 	
 	while score < score_to_reach:
