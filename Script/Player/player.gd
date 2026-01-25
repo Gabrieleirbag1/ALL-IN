@@ -46,6 +46,7 @@ var is_attacking: bool = false
 var can_attack: bool = true
 
 func _ready() -> void:
+	Global.player = self
 	Global.load_cfg_file(stats_config, stats_config_file_path)
 
 	attack_cooldown_timer.one_shot = true
