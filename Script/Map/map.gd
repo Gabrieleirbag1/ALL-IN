@@ -51,19 +51,6 @@ func set_enemy_properties_score(enemies) -> void:
 	for enemy in enemies:
 		enemy_properties[enemy.enemy_type]["score"] = enemy.score
 	
-func sort_middle_short_far(a: Node, b: Node) -> bool:
-	#sort the distances to have the middle range distances first, then short, then far
-	var screen_size = get_viewport_rect().size
-	print(screen_size)
-	var middle_distance = screen_size.length() / 2
-	print(middle_distance)
-	var distance_spawn_player = a.global_position.distance_to(Global.player.global_position)
-	var a_diff = abs(distance_spawn_player - middle_distance)
-	var distance_spawn_player_b = b.global_position.distance_to(Global.player.global_position)
-	var b_diff = abs(distance_spawn_player_b - middle_distance)
-	print(a_diff, " ",b_diff)
-	return a_diff < b_diff
-	
 func sort_asending_outside_viewport_descending(a: Node, b: Node) -> bool:
 	# the farest position from the viewport center, like the left top corner or right bottom corner
 	var canvas_transform = get_canvas_transform()
