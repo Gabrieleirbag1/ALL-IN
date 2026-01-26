@@ -65,17 +65,15 @@ func sort_middle_short_far(a: Node, b: Node) -> bool:
 	return a_diff < b_diff
 	
 func sort_asending_outside_viewport_descending(a: Node, b: Node) -> bool:
-	var screen_size = get_viewport_rect().size
 	# the farest position from the viewport center, like the left top corner or right bottom corner
-	var farest_position_viewport = Vector2(678, 131)
-	print("Farest position: ", farest_position_viewport)
+	var canvas_transform = get_canvas_transform()
+	var farest_position_viewport = -canvas_transform.origin / canvas_transform.get_scale()
+
 	var distance = farest_position_viewport.distance_to(Global.player.global_position)
 	var distance_spawn_player = a.global_position.distance_to(Global.player.global_position)
 	var a_diff = distance_spawn_player - distance
-	print(a_diff)
 	var distance_spawn_player_b = b.global_position.distance_to(Global.player.global_position)
 	var b_diff = distance_spawn_player_b - distance
-	print(b_diff)
 	
 	if (a_diff > 0 and b_diff > 0):
 		return a_diff < b_diff
