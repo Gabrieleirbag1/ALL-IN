@@ -20,7 +20,7 @@ var death_animation_played: bool = false
 var immortal: bool = false
 var player_chase: bool = false
 var player = null
-
+var active = false
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -52,10 +52,13 @@ func die():
 	if death_animation_played:
 		return
 	play_animation("death")
-	death_sound.playing = true
+	if death_sound:
+		death_sound.playing = true
 	alive = false
 	death_animation_played = true
-	set_collision_mask_value(1, false)
+	collision_layer = 0
+	collision_mask = 0
+	nav_agent.avoidance_enabled = false
 	dispawn_timer.start()
 
 
@@ -98,6 +101,24 @@ func handle_navigation():
 		chase_player()
 		handle_collision()
 
+func handle_states(state: bool):
+	visible = state
+	set_physics_process(state)
+	if state:
+		collision_layer = 4
+		collision_mask = 7
+	
+func revive():
+	alive = true
+	death_animation_played = false
+	health = health_max
+	nav_agent.avoidance_enabled = true
+	handle_states(true)
+	if player_chase and animation:
+		play_animation("walk")
+	else:
+		play_animation("idle")
+
 func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
@@ -105,11 +126,12 @@ func _physics_process(_delta: float) -> void:
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
 	
-	if animation.animation == "hurt" and not animation.is_playing():
-		if player_chase:
-			play_animation("walk")
-		else:
-			play_animation("idle")
+	if active:
+		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
+			if player_chase:
+				play_animation("walk")
+			else:
+				play_animation("idle")
 
 func makepath() -> void:
 	if player && is_instance_valid(player):
@@ -135,4 +157,11 @@ func _on_timer_timeout() -> void:
 
 func _on_dispawn_timeout() -> void:
 	GameController.enemy_death(drop_xp, position, enemy_type)
-	queue_free()
+	handle_states(false)
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	active = false
+	animation.stop()
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	active = true

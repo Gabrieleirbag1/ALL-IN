@@ -6,6 +6,7 @@
 
 [node name="StatsUI" type="CanvasLayer"]
 process_mode = 2
+layer = 2
 script = ExtResource("1_2xjfo")
 
 [node name="TextureRect" type="TextureRect" parent="."]

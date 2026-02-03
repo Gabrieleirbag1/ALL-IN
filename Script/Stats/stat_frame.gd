@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 func handle_click_action():
 	var stats: Dictionary = {
 		"damage": 0, 
-		"attack_speed": 10.0, 
+		"attack_speed": 0.0, 
 		"life_steal": 0, 
 		"critical": 0, 
 		"health_max": 0, 

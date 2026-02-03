@@ -1,17 +1,17 @@
 [gd_scene load_steps=52 format=4 uid="uid://dbcc4tcankm2c"]
 
-[ext_resource type="Texture2D" uid="uid://8ebrfdgbpbts" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
+[ext_resource type="Texture2D" uid="uid://bexl6c58msdx" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass.png" id="1_kv4up"]
 [ext_resource type="Script" uid="uid://llw1lyo5an36" path="res://Script/Map/map.gd" id="1_yn8yg"]
-[ext_resource type="Texture2D" uid="uid://5xux7dc3tglb" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
+[ext_resource type="Texture2D" uid="uid://jmuvvrhmu3nj" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Fields.png" id="2_jeb6o"]
 [ext_resource type="Script" uid="uid://dsw7qpkpirl2s" path="res://Script/Map/background.gd" id="2_t3r3v"]
-[ext_resource type="Texture2D" uid="uid://ceemvd06okpsw" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
-[ext_resource type="Texture2D" uid="uid://ethj6yblqkrf" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
-[ext_resource type="Texture2D" uid="uid://bk8t3hy0ng1uy" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
-[ext_resource type="Texture2D" uid="uid://daheuggmvlser" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/Atlas/Buildings.png" id="5_1mxd6"]
+[ext_resource type="Texture2D" uid="uid://vtf061vwijv8" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Grass decor.png" id="3_4nunr"]
+[ext_resource type="Texture2D" uid="uid://css3t0nnxa8mi" path="res://Assets/Shining Fields_free_v1.1/Sprites/Tileset/Walls/Walls_01.png" id="4_4gywt"]
+[ext_resource type="Texture2D" uid="uid://cybu5lm8cb8bl" path="res://Assets/Shining Fields_free_v1.1/decor.png" id="4_hk8yh"]
+[ext_resource type="Texture2D" uid="uid://bra2yreiynsqi" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/Atlas/Buildings.png" id="5_1mxd6"]
 [ext_resource type="PackedScene" uid="uid://evpdxdo8k70f" path="res://Scene/Enemies/Orc_rider.tscn" id="5_ci0s0"]
-[ext_resource type="Texture2D" uid="uid://dexsbipdeiyrt" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
-[ext_resource type="Texture2D" uid="uid://iil67oxheefb" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
-[ext_resource type="Texture2D" uid="uid://4h60t26auj36" path="res://Assets/nature free/global.png" id="8_au240"]
+[ext_resource type="Texture2D" uid="uid://c6ihbg8xmwcld" path="res://Assets/The Fan-tasy Tileset (Free) 1.4.0/The Fan-tasy Tileset (Free)/Art/Buildings/CityWall_Gate_1.png" id="5_n2s4d"]
+[ext_resource type="Texture2D" uid="uid://c6aro2pt1citl" path="res://Assets/Shining Fields_free_v1.1/TileSet_V2.png" id="8_2ygrh"]
+[ext_resource type="Texture2D" uid="uid://b7wyvcbt3jt7w" path="res://Assets/nature free/global.png" id="8_au240"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="10_7yrxj"]
 [ext_resource type="PackedScene" uid="uid://7xxtrsy5v1ck" path="res://Scene/Enemies/Orc.tscn" id="14_kwv2w"]
 [ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="14_okl5h"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://51fpbe1devhd" path="res://Scene/Menu/Pause_menu.tscn" id="19_i1ehj"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="21_r4rcy"]
 [ext_resource type="Script" uid="uid://bduou26vu2556" path="res://Script/Menu/score.gd" id="21_s1bhx"]
-[ext_resource type="AudioStream" uid="uid://dvvne5kwske8m" path="res://Sounds/title-screen.wav" id="22_oueiy"]
+[ext_resource type="AudioStream" uid="uid://7vot2vr6gwpb" path="res://Sounds/title-screen.wav" id="22_oueiy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qbygd"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -26049,19 +26049,22 @@ position = Vector2(871, 612)
 collision_mask = 23
 
 [node name="Player" parent="." instance=ExtResource("10_7yrxj")]
-position = Vector2(812, 756)
+position = Vector2(1062, 347)
 
 [node name="Spawn" type="Marker2D" parent="."]
-position = Vector2(1798, 267)
+position = Vector2(714, 407)
 
 [node name="Spawn2" type="Marker2D" parent="."]
-position = Vector2(1847, 575)
+position = Vector2(1095, 838)
 
 [node name="Spawn3" type="Marker2D" parent="."]
-position = Vector2(1258, 361)
+position = Vector2(742, 364)
+
+[node name="Spawn5" type="Marker2D" parent="."]
+position = Vector2(660, 358)
 
 [node name="Spawn4" type="Marker2D" parent="."]
-position = Vector2(168, 449)
+position = Vector2(720, 330)
 
 [node name="CrossbowItem5" parent="." instance=ExtResource("18_u5hqo")]
 position = Vector2(750, 757)

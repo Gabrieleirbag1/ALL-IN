@@ -46,6 +46,7 @@ var is_attacking: bool = false
 var can_attack: bool = true
 
 func _ready() -> void:
+	Global.player = self
 	Global.load_cfg_file(stats_config, stats_config_file_path)
 
 	attack_cooldown_timer.one_shot = true
@@ -159,7 +160,6 @@ func take_damage(enemyVelocity, knockback_force, damage):
 	if not invincible:
 		hurt_sound.playing = true
 		stats["health"] -= damage
-		GameController.health_update(stats["health_max"], stats["health"])
 		var kb_direction = (enemyVelocity - velocity).normalized() * knockback_force
 		velocity = kb_direction
 		move_and_slide()
@@ -169,6 +169,7 @@ func enemy_attack(velocity_value, knockback_force, damage):
 		take_damage(velocity_value, knockback_force, damage)
 		play_animation("hurt")
 		check_health()
+		GameController.health_update(stats["health_max"], stats["health"])
 		invincible = true
 		invincibility_timer.start()
 		hurted_timer.start()

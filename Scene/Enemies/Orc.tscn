@@ -1,11 +1,12 @@
-[gd_scene load_steps=43 format=3 uid="uid://7xxtrsy5v1ck"]
+[gd_scene load_steps=44 format=3 uid="uid://7xxtrsy5v1ck"]
 
 [ext_resource type="Script" uid="uid://cqth5j1w3sa30" path="res://Script/Enemies/orc.gd" id="1_ac1mx"]
-[ext_resource type="Texture2D" uid="uid://dnk4hd20acfad" path="res://Assets/Characters/Orc/Orc.png" id="2_6hu7m"]
-[ext_resource type="Texture2D" uid="uid://bx33pmu10cyrm" path="res://Assets/Characters/Orc/Orc-Hurt.png" id="4_mswis"]
-[ext_resource type="Texture2D" uid="uid://dl45v77tc7o0w" path="res://Assets/Characters/Orc/Orc-Idle.png" id="5_0tsua"]
-[ext_resource type="Texture2D" uid="uid://cgvjscoavxnoe" path="res://Assets/Characters/Orc/Orc-shadow.png" id="6_ke3l4"]
-[ext_resource type="Texture2D" uid="uid://dl7mo8ffvruoc" path="res://Assets/Characters/Orc/Orc-Walk.png" id="7_501lp"]
+[ext_resource type="Texture2D" uid="uid://b4pvbc6a5gjtu" path="res://Assets/Characters/Orc/Orc.png" id="2_6hu7m"]
+[ext_resource type="Texture2D" uid="uid://c3jqadrwe6yyv" path="res://Assets/Characters/Orc/Orc-Hurt.png" id="4_mswis"]
+[ext_resource type="Texture2D" uid="uid://cjbiwythms4ee" path="res://Assets/Characters/Orc/Orc-Idle.png" id="5_0tsua"]
+[ext_resource type="Texture2D" uid="uid://6bmanc7emhbr" path="res://Assets/Characters/Orc/Orc-shadow.png" id="6_ke3l4"]
+[ext_resource type="Texture2D" uid="uid://cwjd3p6k2bt7i" path="res://Assets/Characters/Orc/Orc-Walk.png" id="7_501lp"]
+[ext_resource type="AudioStream" uid="uid://200ehquj0tfj" path="res://Sounds/Death_Slime.wav" id="7_rt2mw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhceq"]
 atlas = ExtResource("2_6hu7m")
@@ -326,8 +327,16 @@ autostart = true
 wait_time = 2.0
 one_shot = true
 
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rt2mw")
+bus = &"Sfx"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Dispawn" to="." method="_on_dispawn_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
