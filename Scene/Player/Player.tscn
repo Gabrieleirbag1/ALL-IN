@@ -1,15 +1,15 @@
 [gd_scene load_steps=58 format=3 uid="uid://d1yme2tfg8o5v"]
 
-[ext_resource type="Texture2D" uid="uid://cmdl6kb55r2r0" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard-Attack02 2.png" id="2_6c06u"]
-[ext_resource type="Texture2D" uid="uid://cyd8222gokm7c" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
+[ext_resource type="Texture2D" uid="uid://dqrg0r5vhw02v" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard-Attack02 2.png" id="2_6c06u"]
+[ext_resource type="Texture2D" uid="uid://448follr1omj" path="res://Assets/Characters/Wizard/Wizard with shadows/Wizard.png" id="2_c8ssj"]
 [ext_resource type="Script" uid="uid://ddhxyx2vu3x85" path="res://Script/Player/player.gd" id="2_wc0kd"]
-[ext_resource type="Texture2D" uid="uid://du1xtbjfb5glv" path="res://Assets/XP/level-bg.png" id="4_g1kss"]
+[ext_resource type="Texture2D" uid="uid://cu7swlsjnaiab" path="res://Assets/XP/level-bg.png" id="4_g1kss"]
 [ext_resource type="Script" uid="uid://cvi7ekrnab7d1" path="res://Script/Player/health_bar.gd" id="7_t4lsi"]
 [ext_resource type="PackedScene" uid="uid://nbjb34rx2gns" path="res://Scene/Menu/Game_over.tscn" id="7_x13ln"]
-[ext_resource type="AudioStream" uid="uid://b2utk85s8gd2a" path="res://Sounds/Death.wav" id="8_lc3e7"]
-[ext_resource type="AudioStream" uid="uid://bspbnfn6oug6i" path="res://Sounds/hurt_2-[AudioTrimmer.com].wav" id="9_2d8q0"]
+[ext_resource type="AudioStream" uid="uid://dg2ryf3rqjvdm" path="res://Sounds/Death.wav" id="8_lc3e7"]
+[ext_resource type="AudioStream" uid="uid://c7s5he2sk2osq" path="res://Sounds/hurt_2-[AudioTrimmer.com].wav" id="9_2d8q0"]
 [ext_resource type="PackedScene" uid="uid://d3bfendedojt6" path="res://Scene/Projectiles/FireBall.tscn" id="9_mlot8"]
-[ext_resource type="AudioStream" uid="uid://cdgv6bctxx7fx" path="res://Sounds/fireball.mp3" id="10_mbyjr"]
+[ext_resource type="AudioStream" uid="uid://cxtinaiwwl23p" path="res://Sounds/fireball.mp3" id="10_mbyjr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f7lp"]
 atlas = ExtResource("2_6c06u")

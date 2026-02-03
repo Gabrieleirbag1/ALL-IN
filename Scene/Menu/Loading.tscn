@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dw7qfb6tjwnqq"]
 
 [ext_resource type="Script" uid="uid://rqbiqss7dlmp" path="res://Script/Menu/loading.gd" id="1_op3e0"]
-[ext_resource type="FontFile" uid="uid://d4ih17fidr480" path="res://Assets/Fonts/MinecraftTen-VGORe.ttf" id="3_5oypo"]
+[ext_resource type="FontFile" uid="uid://2p3p1x68onnt" path="res://Assets/Fonts/MinecraftTen-VGORe.ttf" id="3_5oypo"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s3lo3"]
 modulate_color = Color(0.299547, 0.299547, 0.299547, 1)
