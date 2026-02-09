@@ -9,7 +9,7 @@ extends Node2D
 @onready var background_music : Node = $Background_Music
 
 var enemies_alive: int = 0
-var max_enemies_on_screen: int = 100
+var max_enemies_on_screen: int = 70
 var enemy_properties: Dictionary = {}
 var score = 0
 var enemy_pool: Array = []
