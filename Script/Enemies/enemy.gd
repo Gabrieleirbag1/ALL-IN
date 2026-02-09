@@ -122,9 +122,6 @@ func revive():
 func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
-
-	if not visible:
-		return
 	
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
@@ -133,6 +130,8 @@ func _physics_process(_delta: float) -> void:
 		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:
 				play_animation("walk")
+				if not visible:
+					push_error("not visible")
 			else:
 				play_animation("idle")
 
