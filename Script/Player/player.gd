@@ -17,8 +17,6 @@ class_name Player extends CharacterBody2D
 const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.tscn")
 @onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
 @onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
-@onready var spawn_projectile_up: Marker2D = $SpawnProjectileUp
-@onready var spawn_projectile_down: Marker2D = $SpawnProjectileDown
 
 @export_file("*.cfg") var stats_config_file_path: String = Global.config_dir_path + "/stats.cfg"
 var stats_config: ConfigFile = ConfigFile.new()
@@ -173,8 +171,8 @@ func enemy_attack(velocity_value, knockback_force, damage):
 		check_health()
 		GameController.health_update(stats["health_max"], stats["health"])
 		invincible = true
-		invincibility_timer.start()
 		hurted_timer.start()
+		blinkin_effect()
 		is_attacking = false
 
 func get_input():
@@ -209,6 +207,14 @@ func _physics_process(_delta):
 		if input_direction.x != 0:
 			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x) ## 
 
+func blinkin_effect() -> void:
+	var blink_times = 5
+	var blink_interval = invincibility_timer.wait_time / (blink_times * 2)
+	for i in range(blink_times):
+		animation.modulate = Color(1, 1, 1, 0.5)
+		await get_tree().create_timer(blink_interval).timeout
+		animation.modulate = Color(1, 1, 1, 1)
+		await get_tree().create_timer(blink_interval).timeout
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
@@ -218,7 +224,7 @@ func _on_hurted_timeout() -> void:
 		animation.stop()
 		play_animation("idle_shadow")
 		is_taking_damage = false
-
+		invincibility_timer.start()
 
 func attack():
 	var mouse_world_pos = get_global_mouse_position()
