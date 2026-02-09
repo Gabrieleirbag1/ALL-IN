@@ -207,14 +207,7 @@ func _physics_process(_delta):
 		
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		if input_direction.x != 0:
-			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x)
-		
-		if animation.animation == "attack_1" and animation.is_playing():
-			if animation.frame == 5 and !has_spawned_fireball:
-				has_spawned_fireball = true
-				spawn_fireball()
-		else:
-			has_spawned_fireball = false
+			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x) ## 
 
 
 func _on_invincibility_timeout() -> void:
@@ -228,23 +221,7 @@ func _on_hurted_timeout() -> void:
 
 
 func attack():
-	if Input.is_action_pressed("attack") and can_attack:
-		can_attack = false
-		is_attacking = true
-		play_animation("attack_1")
-		
-		# Start attack cooldown based on attack_speed
-		attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
-		attack_cooldown_timer.start()
-
-
-func spawn_fireball():
-	var main_fireball = fireball_scene.instantiate()
-	fireball_sound.playing = true
-	get_parent().add_child(main_fireball)
-
 	var mouse_world_pos = get_global_mouse_position()
-	print("Mouse World Position: ", mouse_world_pos)
 	var spawn_pos = spawn_projectile_right.global_position if animation.scale.x > 0 else spawn_projectile_left.global_position
 	var attack_direction = (mouse_world_pos - spawn_pos).normalized()
 	
@@ -252,12 +229,31 @@ func spawn_fireball():
 	var max_angle = deg_to_rad(45)
 	var current_angle = attack_direction.angle()
 
-	# if player and mouse position are opposite, turn the player
-	if animation.scale.x > 0 and mouse_world_pos.x < global_position.x:
-		animation.scale.x = -abs(animation.scale.x)
-	elif animation.scale.x < 0 and mouse_world_pos.x > global_position.x:
-		animation.scale.x = abs(animation.scale.x)
-	
+	if Input.is_action_pressed("attack") and can_attack:
+		# if player and mouse position are opposite, turn the player
+		if sign(mouse_world_pos.x - global_position.x) != sign(animation.scale.x):
+			animation.scale.x = -animation.scale.x
+
+		can_attack = false
+		is_attacking = true
+		play_animation("attack_1")
+			
+		# Start attack cooldown based on attack_speed
+		attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
+		attack_cooldown_timer.start()
+
+	if animation.animation == "attack_1" and animation.is_playing():
+		if animation.frame == 5 and !has_spawned_fireball:
+			has_spawned_fireball = true
+			spawn_fireball(max_angle, current_angle, attack_direction)
+	else:
+		has_spawned_fireball = false
+
+
+func spawn_fireball(max_angle, current_angle, attack_direction):
+	var main_fireball = fireball_scene.instantiate()
+	fireball_sound.playing = true
+	get_parent().add_child(main_fireball)	
 	# Determine base direction based on player facing
 	var base_angle = 0.0 if animation.scale.x > 0 else PI
 	
