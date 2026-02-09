@@ -130,6 +130,8 @@ func _physics_process(_delta: float) -> void:
 		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:
 				play_animation("walk")
+				if not visible:
+					push_error("not visible")
 			else:
 				play_animation("idle")
 
@@ -165,3 +167,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	active = true
+	animation.play()
