@@ -127,6 +127,11 @@ func _physics_process(_delta: float) -> void:
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
 	
+	if Global.player.invincible:
+		set_collision_mask_value(1, false)
+	else:
+		set_collision_mask_value(1, true)
+	
 	if active:
 		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:

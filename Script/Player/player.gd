@@ -218,12 +218,14 @@ func blinkin_effect() -> void:
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
+	set_collision_mask_value(3, true)
 
 func _on_hurted_timeout() -> void:
 	if alive:
 		animation.stop()
 		play_animation("idle_shadow")
 		is_taking_damage = false
+		set_collision_mask_value(3, false)
 		invincibility_timer.start()
 
 func attack():
