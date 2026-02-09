@@ -43,8 +43,8 @@ var death_animation_played : bool = false
 var immortal: bool = false
 var is_taking_damage: bool = false
 var invincible: bool = false
-var is_attacking: bool = false
-var can_attack: bool = true
+var is_attacking: bool = false #related to attack animation
+var can_attack: bool = true #related to (projectile) attack_cooldown
 
 func _ready() -> void:
 	Global.player = self
