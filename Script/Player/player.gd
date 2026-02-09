@@ -41,6 +41,7 @@ var level: int = 1
 var alive : bool = true
 var death_animation_played : bool = false
 var immortal: bool = false
+var is_taking_damage: bool = false
 var invincible: bool = false
 var is_attacking: bool = false
 var can_attack: bool = true
@@ -166,6 +167,7 @@ func take_damage(enemyVelocity, knockback_force, damage):
 
 func enemy_attack(velocity_value, knockback_force, damage):
 	if alive and not invincible:
+		is_taking_damage = true
 		take_damage(velocity_value, knockback_force, damage)
 		play_animation("hurt")
 		check_health()
@@ -184,21 +186,23 @@ func _input(_event):
 		if animation.animation == "attack_1" and animation.is_playing():
 			return
 		
-		if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN):
-			play_animation("walk_shadow")
-		elif Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
-			play_animation("walk_shadow")
-			animation.scale.x = abs(animation.scale.x)
-		elif Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_LEFT):
-			play_animation("walk_shadow")
-			animation.scale.x = -abs(animation.scale.x)
-		else:
-			play_animation("idle_shadow")
+		if not is_attacking:
+			if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN):
+				play_animation("walk_shadow")
+			elif Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
+				play_animation("walk_shadow")
+				animation.scale.x = abs(animation.scale.x)
+			elif Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_LEFT):
+				play_animation("walk_shadow")
+				animation.scale.x = -abs(animation.scale.x)
+			else:
+				play_animation("idle_shadow")
 
 func _physics_process(_delta):
 	if alive:
 		get_input()
-		move_and_slide()
+		if not is_attacking and not is_taking_damage:
+			move_and_slide()
 		attack()
 		
 		var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -220,6 +224,7 @@ func _on_hurted_timeout() -> void:
 	if alive:
 		animation.stop()
 		play_animation("idle_shadow")
+		is_taking_damage = false
 
 
 func attack():
@@ -238,11 +243,39 @@ func spawn_fireball():
 	fireball_sound.playing = true
 	get_parent().add_child(main_fireball)
 
-	# Get mouse position in world coordinates
 	var mouse_world_pos = get_global_mouse_position()
-	# Calculate direction from fireball spawn point to mouse
+	print("Mouse World Position: ", mouse_world_pos)
 	var spawn_pos = spawn_projectile_right.global_position if animation.scale.x > 0 else spawn_projectile_left.global_position
 	var attack_direction = (mouse_world_pos - spawn_pos).normalized()
+	
+	# Clamp the angle to max allowed range
+	var max_angle = deg_to_rad(45)
+	var current_angle = attack_direction.angle()
+
+	# if player and mouse position are opposite, turn the player
+	if animation.scale.x > 0 and mouse_world_pos.x < global_position.x:
+		animation.scale.x = -abs(animation.scale.x)
+	elif animation.scale.x < 0 and mouse_world_pos.x > global_position.x:
+		animation.scale.x = abs(animation.scale.x)
+	
+	# Determine base direction based on player facing
+	var base_angle = 0.0 if animation.scale.x > 0 else PI
+	
+	# Calculate angle difference from base direction
+	var angle_diff = current_angle - base_angle
+	
+	# Normalize angle difference to -PI to PI range
+	while angle_diff > PI:
+		angle_diff -= 2 * PI
+	while angle_diff < -PI:
+		angle_diff += 2 * PI
+	
+	# Clamp the angle difference
+	angle_diff = clamp(angle_diff, -max_angle, max_angle)
+	
+	# Apply clamped angle
+	var clamped_angle = base_angle + angle_diff
+	attack_direction = Vector2(cos(clamped_angle), sin(clamped_angle))
 
 	main_fireball.piercing = false
 	main_fireball.direction = attack_direction
@@ -252,7 +285,6 @@ func spawn_fireball():
 	else:
 		main_fireball.global_position = spawn_projectile_left.global_position
 
-# Calculate rotation based on direction
 	main_fireball.rotation = attack_direction.angle()
 
 	is_attacking = false
