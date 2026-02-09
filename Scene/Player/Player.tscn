@@ -366,7 +366,7 @@ script = ExtResource("2_wc0kd")
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_68fhg")
-animation = &"attack_1"
+animation = &"hurt"
 offset = Vector2(0, -5)
 
 [node name="Level" type="Node2D" parent="."]
@@ -443,7 +443,6 @@ position_smoothing_enabled = true
 editor_draw_limits = true
 
 [node name="Invincibility" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [node name="Hurted" type="Timer" parent="."]
@@ -461,12 +460,6 @@ position = Vector2(46, -15)
 
 [node name="SpawnProjectileLeft" type="Marker2D" parent="."]
 position = Vector2(-46, -9)
-
-[node name="SpawnProjectileUp" type="Marker2D" parent="."]
-position = Vector2(-1, -54)
-
-[node name="SpawnProjectileDown" type="Marker2D" parent="."]
-position = Vector2(-1, 31)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
