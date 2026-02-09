@@ -238,70 +238,22 @@ func spawn_fireball():
 	fireball_sound.playing = true
 	get_parent().add_child(main_fireball)
 
+	# Get mouse position in world coordinates
+	var mouse_world_pos = get_global_mouse_position()
+	# Calculate direction from fireball spawn point to mouse
+	var spawn_pos = spawn_projectile_right.global_position if animation.scale.x > 0 else spawn_projectile_left.global_position
+	var attack_direction = (mouse_world_pos - spawn_pos).normalized()
+
+	main_fireball.piercing = false
+	main_fireball.direction = attack_direction
+
 	if animation.scale.x > 0:
-		main_fireball.direction = Vector2.RIGHT
 		main_fireball.global_position = spawn_projectile_right.global_position
 	else:
-		main_fireball.direction = Vector2.LEFT
 		main_fireball.global_position = spawn_projectile_left.global_position
-		main_fireball.rotation_degrees = 180
 
-	main_fireball.rotation_degrees = 0 if main_fireball.direction == Vector2.RIGHT else 180
-
-	var left_fireball = null
-	var right_fireball = null
-	var up_fireball = null
-	var down_fireball = null
-
-	if level >= 1:
-		var second_fireball = fireball_scene.instantiate()
-		get_parent().add_child(second_fireball)
-
-		second_fireball.direction = main_fireball.direction
-		second_fireball.global_position = main_fireball.global_position + Vector2(0, 20)
-		second_fireball.rotation_degrees = main_fireball.rotation_degrees
-	
-	if level >= 5:
-		left_fireball = fireball_scene.instantiate()
-		right_fireball = fireball_scene.instantiate()
-		
-		get_parent().add_child(left_fireball)
-		get_parent().add_child(right_fireball)
-
-		left_fireball.direction = Vector2.LEFT
-		left_fireball.global_position = spawn_projectile_left.global_position
-		left_fireball.rotation_degrees = 180
-
-		right_fireball.direction = Vector2.RIGHT
-		right_fireball.global_position = spawn_projectile_right.global_position
-		right_fireball.rotation_degrees = 0
-
-	if level >= 10:
-		up_fireball = fireball_scene.instantiate()
-		down_fireball = fireball_scene.instantiate()
-		
-		get_parent().add_child(up_fireball)
-		get_parent().add_child(down_fireball)
-
-		up_fireball.direction = Vector2.UP
-		up_fireball.global_position = spawn_projectile_up.global_position
-		up_fireball.rotation_degrees = -90
-
-		down_fireball.direction = Vector2.DOWN
-		down_fireball.global_position = spawn_projectile_down.global_position
-		down_fireball.rotation_degrees = 90
-
-	if level >= 15:
-		main_fireball.piercing = true
-
-		if left_fireball:
-			left_fireball.piercing = true
-		if right_fireball:
-			right_fireball.piercing = true
-		if up_fireball:
-			up_fireball.piercing = true
-		if down_fireball:
-			down_fireball.piercing = true
+# Calculate rotation based on direction
+	main_fireball.rotation = attack_direction.angle()
 
 	is_attacking = false
 
