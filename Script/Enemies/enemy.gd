@@ -28,6 +28,7 @@ func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
 func _ready() -> void:
+	handle_states(false)
 	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
 	nav_agent.max_speed = 300
