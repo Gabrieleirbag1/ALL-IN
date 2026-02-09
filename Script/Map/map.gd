@@ -134,11 +134,10 @@ func start_wave(wave_data: Dictionary) -> void:
 	set_enemy_properties_score(enemies)
 	set_enemy_pool(enemies)
 	
-	var spawn_points: Array[Node] = select_best_spawn_points(affected_spawn_points_number)
-	print(spawn_points)
 	var wait_time = wave_data.get("spawn_interval", 1.0)
 	
 	while score < score_to_reach:
+		var spawn_points: Array[Node] = select_best_spawn_points(affected_spawn_points_number)
 		for spawn in spawn_points:
 			spawn_mob(enemies, spawn)
 			await get_tree().create_timer(wait_time).timeout
