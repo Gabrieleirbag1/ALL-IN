@@ -122,6 +122,9 @@ func revive():
 func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
+
+	if not visible:
+		return
 	
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
@@ -165,3 +168,4 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	active = true
+	animation.play()
