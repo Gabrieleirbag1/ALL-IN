@@ -43,3 +43,6 @@ func item_trash_display(is_disposable: bool):
 	
 func projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
 	EventController.emit_signal("projectile_throw", projectile_scene, projectile_direction, projectile_position, projectile_rotation)
+
+func player_hit(is_hit: bool):
+	EventController.emit_signal("player_hit", is_hit)

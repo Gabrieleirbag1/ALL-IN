@@ -111,7 +111,6 @@ func handle_new_as_stats(new_stats_to_add):
 			if not attack_cooldown_timer.is_stopped():
 				attack_cooldown_timer.wait_time = 1.0 / stats["attack_speed"]
 	
-	
 func handle_life_steal(damage_amount):
 	var regen: int = 0
 	if stats["life_steal"] > 0:
@@ -170,10 +169,14 @@ func enemy_attack(velocity_value, knockback_force, damage):
 		play_animation("hurt")
 		check_health()
 		GameController.health_update(stats["health_max"], stats["health"])
-		invincible = true
-		hurted_timer.start()
-		blinkin_effect()
-		is_attacking = false
+		make_hurt_state()
+
+func make_hurt_state():
+	invincible = true
+	EventController.emit_signal("player_hit", true)
+	hurted_timer.start()
+	blinkin_effect()
+	is_attacking = false
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -203,9 +206,10 @@ func _physics_process(_delta):
 			move_and_slide()
 		attack()
 		
-		var input_direction = Input.get_vector("left", "right", "up", "down")
-		if input_direction.x != 0:
-			animation.scale.x = sign(input_direction.x) * abs(animation.scale.x) ## 
+		if not is_attacking:
+			var input_direction = Input.get_vector("left", "right", "up", "down")
+			if input_direction.x != 0:
+				animation.scale.x = sign(input_direction.x) * abs(animation.scale.x) ## 
 
 func blinkin_effect() -> void:
 	var blink_times = 5
@@ -218,6 +222,7 @@ func blinkin_effect() -> void:
 
 func _on_invincibility_timeout() -> void:
 	invincible = false
+	EventController.emit_signal("player_hit", false)
 	set_collision_mask_value(3, true)
 
 func _on_hurted_timeout() -> void:
