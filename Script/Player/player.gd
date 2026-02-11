@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 @onready var animation : AnimatedSprite2D = $AnimatedSprite2D
 @onready var invincibility_timer: Timer = $Invincibility
-@onready var hurted_timer: Timer = $Hurted
+@onready var hurt_timer: Timer = $Hurt
 @onready var zoom_timer: Timer = $Zoom
 @onready var texture_rect: TextureRect = $Level/Control/TextureRect
 @onready var level_label: Label = $Level/Control/Level_label
@@ -174,7 +174,7 @@ func enemy_attack(velocity_value, knockback_force, damage):
 func make_hurt_state():
 	invincible = true
 	EventController.emit_signal("player_hit", true)
-	hurted_timer.start()
+	hurt_timer.start()
 	blinkin_effect()
 	is_attacking = false
 
@@ -225,7 +225,7 @@ func _on_invincibility_timeout() -> void:
 	EventController.emit_signal("player_hit", false)
 	set_collision_mask_value(3, true)
 
-func _on_hurted_timeout() -> void:
+func _on_hurt_timeout() -> void:
 	if alive:
 		animation.stop()
 		play_animation("idle_shadow")

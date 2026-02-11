@@ -445,7 +445,7 @@ editor_draw_limits = true
 [node name="Invincibility" type="Timer" parent="."]
 one_shot = true
 
-[node name="Hurted" type="Timer" parent="."]
+[node name="Hurt" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
 
@@ -489,4 +489,4 @@ bus = &"Sfx"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]
-[connection signal="timeout" from="Hurted" to="." method="_on_hurted_timeout"]
+[connection signal="timeout" from="Hurt" to="." method="_on_hurt_timeout"]
