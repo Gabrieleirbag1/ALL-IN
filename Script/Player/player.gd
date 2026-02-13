@@ -269,11 +269,11 @@ func attack():
 	if animation.animation == "attack_1" and animation.is_playing():
 		if animation.frame == 5 and !has_spawned_projectile:
 			has_spawned_projectile = true
-			spawn_fireball(max_angle, current_angle, attack_direction)
+			spawn_projectile(max_angle, current_angle, attack_direction)
 	else:
 		has_spawned_projectile = false
 
-func spawn_fireball(max_angle, current_angle, attack_direction):
+func spawn_projectile(max_angle, current_angle, attack_direction):
 	var main_fireball = projectile_scene.instantiate()
 	projectile_sound.playing = true
 	get_parent().add_child(main_fireball)	
