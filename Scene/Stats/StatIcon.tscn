@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cetv3rhqv8fvb"]
+[gd_scene format=3 uid="uid://cetv3rhqv8fvb"]
 
-[ext_resource type="Texture2D" uid="uid://dln24nsti7xw7" path="res://Assets/Stats/icons/png180x/damage.png" id="1_uf6je"]
+[ext_resource type="Texture2D" uid="uid://i12ym0i8oigi" path="res://Assets/Stats/icons/png180x/damage.png" id="1_uf6je"]
 [ext_resource type="Script" uid="uid://sclged522buh" path="res://Script/Stats/stat_icon.gd" id="2_si3eu"]
 
-[node name="StatIcon" type="TextureRect"]
-offset_left = -180.0
-offset_top = -180.0
+[node name="StatIcon" type="TextureRect" unique_id=638174863]
+anchors_preset = -1
+anchor_bottom = 0.16666667
+offset_right = 180.0
 mouse_filter = 2
 texture = ExtResource("1_uf6je")
+expand_mode = 1
 script = ExtResource("2_si3eu")
 metadata/_edit_use_anchors_ = true
