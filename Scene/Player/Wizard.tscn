@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c0cdxerco826p"]
+
+[ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="1_fa8w0"]
+[ext_resource type="Script" uid="uid://c6h8ht0cl5s4v" path="res://Scene/Player/wizard.gd" id="2_0307y"]
+
+[node name="Wizard" unique_id=2025602150 instance=ExtResource("1_fa8w0")]
+script = ExtResource("2_0307y")
