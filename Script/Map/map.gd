@@ -9,7 +9,7 @@ extends Node2D
 @onready var background_music : Node = $Background_Music
 
 var enemies_alive: int = 0
-var max_enemies_on_screen: int = 100
+var max_enemies_on_screen: int = 70
 var enemy_properties: Dictionary = {}
 var score = 0
 var enemy_pool: Array = []
@@ -70,7 +70,6 @@ func sort_asending_outside_viewport_descending(a: Node, b: Node) -> bool:
 func select_best_spawn_points(affected_spawn_points_number: int) -> Array[Node]:
 	var spawn_points: Array[Node] = [$Spawn, $Spawn2, $Spawn3, $Spawn4, $Spawn5]
 	spawn_points.sort_custom(sort_asending_outside_viewport_descending)
-	print(spawn_points)
 	var selected_spawn_points: Array[Node] = []
 	for i in range(affected_spawn_points_number):
 		selected_spawn_points.append(spawn_points[i])
@@ -134,11 +133,10 @@ func start_wave(wave_data: Dictionary) -> void:
 	set_enemy_properties_score(enemies)
 	set_enemy_pool(enemies)
 	
-	var spawn_points: Array[Node] = select_best_spawn_points(affected_spawn_points_number)
-	print(spawn_points)
 	var wait_time = wave_data.get("spawn_interval", 1.0)
 	
 	while score < score_to_reach:
+		var spawn_points: Array[Node] = select_best_spawn_points(affected_spawn_points_number)
 		for spawn in spawn_points:
 			spawn_mob(enemies, spawn)
 			await get_tree().create_timer(wait_time).timeout

@@ -28,10 +28,15 @@ func play_animation(animation_name: String) -> void:
 	animation.play(animation_name)
 
 func _ready() -> void:
+	handle_signals()
+	handle_states(false)
 	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
 	nav_agent.max_speed = 300
 
+func handle_signals():
+	EventController.connect("player_hit", on_player_hit)
+	
 func take_damage(damage_amount: int):
 	if not alive or immortal:
 		return
@@ -125,11 +130,13 @@ func _physics_process(_delta: float) -> void:
 	
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
-	
+
 	if active:
 		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:
 				play_animation("walk")
+				if not visible:
+					push_error("not visible")
 			else:
 				play_animation("idle")
 
@@ -165,3 +172,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	active = true
+	animation.play()
+	
+func on_player_hit(is_hit: bool) -> void:
+	set_collision_mask_value(1, !is_hit)
