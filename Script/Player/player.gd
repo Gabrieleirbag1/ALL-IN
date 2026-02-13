@@ -60,8 +60,8 @@ func _ready() -> void:
 func handle_signals():
 	EventController.connect("xp_collected", on_event_xp_collected)
 	EventController.connect("stats_progress", on_event_stats_progress)
-	EventController.connect("projectile_throw", on_projectile_throw)
-	EventController.connect("enemy_damaged_event", on_enemy_damaged_event)
+	EventController.connect("projectile_throw", on_event_projectile_throw)
+	EventController.connect("enemy_damaged_event", on_event_enemy_damaged)
 	
 func handle_new_stats(new_stats_to_add: Dictionary, add_new_stats: bool = true):
 	for key in new_stats_to_add.keys():
@@ -323,7 +323,7 @@ func on_event_xp_collected(value: int) -> void:
 	level = MathXp.calculate_level_from_exp(stats["experience"])
 	level_label.text = str(level)
 	
-func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
+func on_event_projectile_throw(projectile_scene: PackedScene, projectile_direction: Vector2, projectile_position: Vector2, projectile_rotation: int):
 	var projectile_instance = projectile_scene.instantiate()
 	get_parent().add_child(projectile_instance)
 	projectile_instance.direction = projectile_direction
@@ -333,7 +333,7 @@ func on_projectile_throw(projectile_scene: PackedScene, projectile_direction: Ve
 func on_event_stats_progress(new_stats_to_add: Dictionary) -> void:
 	handle_new_stats(new_stats_to_add)
 	
-func on_enemy_damaged_event(damage_amount, _is_enemy_alive):
+func on_event_enemy_damaged(damage_amount, _is_enemy_alive):
 	handle_life_steal(damage_amount)
 
 func _on_attack_cooldown_timeout() -> void:
