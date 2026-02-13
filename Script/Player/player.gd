@@ -10,11 +10,11 @@ class_name Player extends CharacterBody2D
 @onready var game_over = $GameOver
 @onready var death_sound = $Death_Sound
 @onready var hurt_sound = $Hurt_Sound
-@onready var fireball_sound = $Fireball_sound
+@onready var projectile_sound = $Fireball_sound
 @onready var hud_texture_rect: TextureRect = $"../HUD/HUDTextureRect"
 @onready var attack_cooldown_timer: Timer = Timer.new()
 
-const fireball_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.tscn")
+const projectile_scene: PackedScene = preload("res://Scene/Projectiles/FireBall.tscn")
 @onready var spawn_projectile_right: Marker2D = $SpawnProjectileRight
 @onready var spawn_projectile_left: Marker2D = $SpawnProjectileLeft
 
@@ -34,7 +34,7 @@ var stats: Dictionary = {
 	"luck": Global.luck
 }
 
-var has_spawned_fireball: bool = false
+var has_spawned_projectile: bool = false
 var level: int = 1
 var alive : bool = true
 var death_animation_played : bool = false
@@ -181,6 +181,12 @@ func make_hurt_state():
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction * stats["speed"]
+	
+func get_frame_count_for_animation(animation_name: String) -> int:
+	var sprite_frames = animation.sprite_frames
+	if sprite_frames and sprite_frames.has_animation(animation_name):
+		return sprite_frames.get_frame_count(animation_name)
+	return 0 
 
 func _input(_event):
 	if alive:
@@ -188,16 +194,8 @@ func _input(_event):
 			return
 		
 		if not is_attacking:
-			if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN):
-				play_animation("walk_shadow")
-			elif Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
-				play_animation("walk_shadow")
-				animation.scale.x = abs(animation.scale.x)
-			elif Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_LEFT):
-				play_animation("walk_shadow")
-				animation.scale.x = -abs(animation.scale.x)
-			else:
-				play_animation("idle_shadow")
+			move_animation()
+			
 
 func _physics_process(_delta):
 	if alive:
@@ -233,6 +231,19 @@ func _on_hurt_timeout() -> void:
 		set_collision_mask_value(3, false)
 		invincibility_timer.start()
 
+#region Inheritance methods
+func move_animation():
+	if Input.is_key_pressed(KEY_Z) or Input.is_key_pressed(KEY_S) or Input.is_key_pressed(KEY_UP) or Input.is_key_pressed(KEY_DOWN):
+		play_animation("walk_shadow")
+	elif Input.is_key_pressed(KEY_RIGHT) or Input.is_key_pressed(KEY_D):
+		play_animation("walk_shadow")
+		animation.scale.x = abs(animation.scale.x)
+	elif Input.is_key_pressed(KEY_Q) or Input.is_key_pressed(KEY_LEFT):
+		play_animation("walk_shadow")
+		animation.scale.x = -abs(animation.scale.x)
+	else:
+		play_animation("idle_shadow")
+
 func attack():
 	var mouse_world_pos = get_global_mouse_position()
 	var spawn_pos = spawn_projectile_right.global_position if animation.scale.x > 0 else spawn_projectile_left.global_position
@@ -256,16 +267,15 @@ func attack():
 		attack_cooldown_timer.start()
 
 	if animation.animation == "attack_1" and animation.is_playing():
-		if animation.frame == 5 and !has_spawned_fireball:
-			has_spawned_fireball = true
+		if animation.frame == 5 and !has_spawned_projectile:
+			has_spawned_projectile = true
 			spawn_fireball(max_angle, current_angle, attack_direction)
 	else:
-		has_spawned_fireball = false
-
+		has_spawned_projectile = false
 
 func spawn_fireball(max_angle, current_angle, attack_direction):
-	var main_fireball = fireball_scene.instantiate()
-	fireball_sound.playing = true
+	var main_fireball = projectile_scene.instantiate()
+	projectile_sound.playing = true
 	get_parent().add_child(main_fireball)	
 	# Determine base direction based on player facing
 	var base_angle = 0.0 if animation.scale.x > 0 else PI
@@ -298,11 +308,7 @@ func spawn_fireball(max_angle, current_angle, attack_direction):
 
 	is_attacking = false
 
-func get_frame_count_for_animation(animation_name: String) -> int:
-	var sprite_frames = animation.sprite_frames
-	if sprite_frames and sprite_frames.has_animation(animation_name):
-		return sprite_frames.get_frame_count(animation_name)
-	return 0 
+#endregion
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if animation.animation == "attack_1":
