@@ -1,8 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://f0m4bpogt4c3"]
+[gd_scene format=3 uid="uid://f0m4bpogt4c3"]
 
-[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/slime.gd" id="1_svxxn"]
-[ext_resource type="Texture2D" uid="uid://nplxq6y72ojp" path="res://Assets/Characters/2 Directional/Slime/Slime/Slime.png" id="1_yboy2"]
-[ext_resource type="AudioStream" uid="uid://200ehquj0tfj" path="res://Sounds/Death_Slime.wav" id="3_ovqcx"]
+[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/2D/slime.gd" id="1_svxxn"]
+[ext_resource type="Texture2D" uid="uid://be6d7dew6jml3" path="res://Assets/Characters/2 Directional/Slime/Slime/Slime.png" id="1_yboy2"]
+[ext_resource type="AudioStream" uid="uid://bbh8lp2oxgr3g" path="res://Sounds/Death_Slime.wav" id="3_ovqcx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fqu8"]
 atlas = ExtResource("1_yboy2")
@@ -184,7 +184,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" unique_id=495256128]
 position = Vector2(131, 77)
 collision_layer = 4
 collision_mask = 7
@@ -192,46 +192,46 @@ motion_mode = 1
 platform_floor_layers = 1
 script = ExtResource("1_svxxn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=207099705]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_t508g")
 animation = &"walk"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=396498003]
 visible = false
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1147664685]
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_fk40c")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1174327492]
 position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
 polygon = PackedVector2Array(110.458, 132.672, 106.594, 130.983, 107.985, 129.334, 113.584, 125.288, 116.205, 123.661, 122.321, 123.661, 126.541, 127.11, 126.689, 130.983, 124.942, 132.61)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1183241443]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
 avoidance_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=367854316]
 wait_time = 0.1
 autostart = true
 
-[node name="Dispawn" type="Timer" parent="."]
+[node name="Dispawn" type="Timer" parent="." unique_id=713984225]
 one_shot = true
 
-[node name="Death" type="AudioStreamPlayer" parent="."]
+[node name="Death" type="AudioStreamPlayer" parent="." unique_id=1953564417]
 stream = ExtResource("3_ovqcx")
 bus = &"Sfx"
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=910782903]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

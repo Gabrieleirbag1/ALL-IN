@@ -1,472 +1,472 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba85tn4c67pj3"]
+[gd_scene format=3 uid="uid://ba85tn4c67pj3"]
 
 [ext_resource type="PackedScene" uid="uid://cjavyio768a13" path="res://Scene/XP/XP.tscn" id="1_5ay5y"]
 [ext_resource type="PackedScene" uid="uid://c5s5mjecos86l" path="res://Scene/HUD/HUD.tscn" id="1_11syi"]
 [ext_resource type="PackedScene" uid="uid://lj1vhb8ywbbe" path="res://Scene/HUD/Items/ItemUI.tscn" id="2_030ic"]
 [ext_resource type="PackedScene" uid="uid://d1yme2tfg8o5v" path="res://Scene/Player/Player.tscn" id="3_bswte"]
 [ext_resource type="PackedScene" uid="uid://da3w5n5l5q2dd" path="res://Scene/Stats/StatsUI.tscn" id="5_i6230"]
-[ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/Slime.tscn" id="6_dosg0"]
+[ext_resource type="PackedScene" uid="uid://f0m4bpogt4c3" path="res://Scene/Enemies/2D/Slime.tscn" id="6_dosg0"]
 [ext_resource type="PackedScene" uid="uid://tmqtdtks3u1y" path="res://Scene/LuckyBlock/LuckyBlock.tscn" id="6_wkrmc"]
 [ext_resource type="PackedScene" uid="uid://c78oft858ans" path="res://Scene/HUD/spawn_canvas.tscn" id="8_lklja"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" unique_id=1742426449]
 
-[node name="XP" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP" parent="." unique_id=1006750031 instance=ExtResource("1_5ay5y")]
 position = Vector2(559, 746)
 
-[node name="Item" parent="." instance=ExtResource("2_030ic")]
+[node name="Item" parent="." unique_id=1459942883 instance=ExtResource("2_030ic")]
 z_index = 10
 position = Vector2(408, 684)
 
-[node name="Player" parent="." instance=ExtResource("3_bswte")]
+[node name="Player" parent="." unique_id=2137100620 instance=ExtResource("3_bswte")]
 position = Vector2(470, 863)
 
-[node name="HUD" parent="." instance=ExtResource("1_11syi")]
+[node name="HUD" parent="." unique_id=1063327411 instance=ExtResource("1_11syi")]
 layer = -1
 
-[node name="XP2" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP2" parent="." unique_id=70740910 instance=ExtResource("1_5ay5y")]
 position = Vector2(593, 771)
 
-[node name="XP3" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP3" parent="." unique_id=1904306347 instance=ExtResource("1_5ay5y")]
 position = Vector2(589, 715)
 
-[node name="XP4" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP4" parent="." unique_id=1902983804 instance=ExtResource("1_5ay5y")]
 position = Vector2(643, 781)
 
-[node name="XP5" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP5" parent="." unique_id=1311428241 instance=ExtResource("1_5ay5y")]
 position = Vector2(586, 798)
 
-[node name="XP6" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP6" parent="." unique_id=1950724716 instance=ExtResource("1_5ay5y")]
 position = Vector2(649, 694)
 
-[node name="XP7" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP7" parent="." unique_id=1763983995 instance=ExtResource("1_5ay5y")]
 position = Vector2(620, 715)
 
-[node name="XP8" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP8" parent="." unique_id=215658905 instance=ExtResource("1_5ay5y")]
 position = Vector2(6210, 755)
 
-[node name="XP9" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP9" parent="." unique_id=458715712 instance=ExtResource("1_5ay5y")]
 position = Vector2(594, 692)
 
-[node name="XP10" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP10" parent="." unique_id=499860318 instance=ExtResource("1_5ay5y")]
 position = Vector2(660, 741)
 
-[node name="XP11" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP11" parent="." unique_id=1579949425 instance=ExtResource("1_5ay5y")]
 position = Vector2(680, 773)
 
-[node name="XP12" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP12" parent="." unique_id=677633934 instance=ExtResource("1_5ay5y")]
 position = Vector2(677, 717)
 
-[node name="XP13" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP13" parent="." unique_id=1717010713 instance=ExtResource("1_5ay5y")]
 position = Vector2(730, 783)
 
-[node name="XP14" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP14" parent="." unique_id=509327404 instance=ExtResource("1_5ay5y")]
 position = Vector2(674, 800)
 
-[node name="XP15" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP15" parent="." unique_id=111584202 instance=ExtResource("1_5ay5y")]
 position = Vector2(737, 696)
 
-[node name="XP16" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP16" parent="." unique_id=1474504683 instance=ExtResource("1_5ay5y")]
 position = Vector2(708, 717)
 
-[node name="XP17" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP17" parent="." unique_id=1550859033 instance=ExtResource("1_5ay5y")]
 position = Vector2(713, 757)
 
-[node name="XP18" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP18" parent="." unique_id=1142032437 instance=ExtResource("1_5ay5y")]
 position = Vector2(683, 694)
 
-[node name="XP19" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP19" parent="." unique_id=1331481739 instance=ExtResource("1_5ay5y")]
 position = Vector2(748, 743)
 
-[node name="XP20" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP20" parent="." unique_id=1065464747 instance=ExtResource("1_5ay5y")]
 position = Vector2(553, 881)
 
-[node name="XP21" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP21" parent="." unique_id=1456221808 instance=ExtResource("1_5ay5y")]
 position = Vector2(549, 825)
 
-[node name="XP22" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP22" parent="." unique_id=1467931874 instance=ExtResource("1_5ay5y")]
 position = Vector2(603, 891)
 
-[node name="XP23" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP23" parent="." unique_id=2017702064 instance=ExtResource("1_5ay5y")]
 position = Vector2(546, 908)
 
-[node name="XP24" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP24" parent="." unique_id=809782397 instance=ExtResource("1_5ay5y")]
 position = Vector2(609, 804)
 
-[node name="XP25" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP25" parent="." unique_id=1220666519 instance=ExtResource("1_5ay5y")]
 position = Vector2(580, 825)
 
-[node name="XP26" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP26" parent="." unique_id=916529747 instance=ExtResource("1_5ay5y")]
 position = Vector2(5810, 865)
 
-[node name="XP27" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP27" parent="." unique_id=1185661861 instance=ExtResource("1_5ay5y")]
 position = Vector2(554, 802)
 
-[node name="XP28" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP28" parent="." unique_id=1873303540 instance=ExtResource("1_5ay5y")]
 position = Vector2(620, 851)
 
-[node name="XP29" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP29" parent="." unique_id=1044324438 instance=ExtResource("1_5ay5y")]
 position = Vector2(640, 883)
 
-[node name="XP30" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP30" parent="." unique_id=1684103499 instance=ExtResource("1_5ay5y")]
 position = Vector2(637, 827)
 
-[node name="XP31" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP31" parent="." unique_id=775679434 instance=ExtResource("1_5ay5y")]
 position = Vector2(690, 893)
 
-[node name="XP32" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP32" parent="." unique_id=1724843214 instance=ExtResource("1_5ay5y")]
 position = Vector2(634, 910)
 
-[node name="XP33" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP33" parent="." unique_id=1992351060 instance=ExtResource("1_5ay5y")]
 position = Vector2(697, 806)
 
-[node name="XP34" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP34" parent="." unique_id=857230735 instance=ExtResource("1_5ay5y")]
 position = Vector2(668, 827)
 
-[node name="XP35" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP35" parent="." unique_id=762049551 instance=ExtResource("1_5ay5y")]
 position = Vector2(673, 867)
 
-[node name="XP36" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP36" parent="." unique_id=1858869492 instance=ExtResource("1_5ay5y")]
 position = Vector2(643, 804)
 
-[node name="XP37" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP37" parent="." unique_id=1330881127 instance=ExtResource("1_5ay5y")]
 position = Vector2(708, 853)
 
-[node name="XP38" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP38" parent="." unique_id=1865380098 instance=ExtResource("1_5ay5y")]
 position = Vector2(303, 719)
 
-[node name="XP39" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP39" parent="." unique_id=320500322 instance=ExtResource("1_5ay5y")]
 position = Vector2(300, 663)
 
-[node name="XP40" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP40" parent="." unique_id=1030679008 instance=ExtResource("1_5ay5y")]
 position = Vector2(353, 729)
 
-[node name="XP41" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP41" parent="." unique_id=408727096 instance=ExtResource("1_5ay5y")]
 position = Vector2(297, 746)
 
-[node name="XP42" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP42" parent="." unique_id=2054428229 instance=ExtResource("1_5ay5y")]
 position = Vector2(360, 642)
 
-[node name="XP43" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP43" parent="." unique_id=1303001773 instance=ExtResource("1_5ay5y")]
 position = Vector2(331, 663)
 
-[node name="XP44" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP44" parent="." unique_id=943642723 instance=ExtResource("1_5ay5y")]
 position = Vector2(336, 703)
 
-[node name="XP45" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP45" parent="." unique_id=1788660078 instance=ExtResource("1_5ay5y")]
 position = Vector2(3010, 640)
 
-[node name="XP46" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP46" parent="." unique_id=1306795574 instance=ExtResource("1_5ay5y")]
 position = Vector2(371, 689)
 
-[node name="XP47" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP47" parent="." unique_id=374440655 instance=ExtResource("1_5ay5y")]
 position = Vector2(391, 721)
 
-[node name="XP48" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP48" parent="." unique_id=1487701311 instance=ExtResource("1_5ay5y")]
 position = Vector2(388, 665)
 
-[node name="XP49" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP49" parent="." unique_id=1409149658 instance=ExtResource("1_5ay5y")]
 position = Vector2(441, 731)
 
-[node name="XP50" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP50" parent="." unique_id=1897889309 instance=ExtResource("1_5ay5y")]
 position = Vector2(3810, 748)
 
-[node name="XP51" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP51" parent="." unique_id=447331810 instance=ExtResource("1_5ay5y")]
 position = Vector2(448, 644)
 
-[node name="XP52" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP52" parent="." unique_id=439284911 instance=ExtResource("1_5ay5y")]
 position = Vector2(419, 665)
 
-[node name="XP53" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP53" parent="." unique_id=2048646751 instance=ExtResource("1_5ay5y")]
 position = Vector2(424, 705)
 
-[node name="XP54" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP54" parent="." unique_id=1352627390 instance=ExtResource("1_5ay5y")]
 position = Vector2(393, 642)
 
-[node name="XP55" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP55" parent="." unique_id=778928161 instance=ExtResource("1_5ay5y")]
 position = Vector2(459, 691)
 
-[node name="XP56" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP56" parent="." unique_id=1801330608 instance=ExtResource("1_5ay5y")]
 position = Vector2(263, 829)
 
-[node name="XP57" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP57" parent="." unique_id=1150106109 instance=ExtResource("1_5ay5y")]
 position = Vector2(260, 773)
 
-[node name="XP58" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP58" parent="." unique_id=453955871 instance=ExtResource("1_5ay5y")]
 position = Vector2(313, 839)
 
-[node name="XP59" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP59" parent="." unique_id=1295223241 instance=ExtResource("1_5ay5y")]
 position = Vector2(257, 856)
 
-[node name="XP60" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP60" parent="." unique_id=1308986371 instance=ExtResource("1_5ay5y")]
 position = Vector2(320, 752)
 
-[node name="XP61" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP61" parent="." unique_id=1109140302 instance=ExtResource("1_5ay5y")]
 position = Vector2(291, 773)
 
-[node name="XP62" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP62" parent="." unique_id=397799114 instance=ExtResource("1_5ay5y")]
 position = Vector2(296, 813)
 
-[node name="XP63" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP63" parent="." unique_id=1449863659 instance=ExtResource("1_5ay5y")]
 position = Vector2(2610, 750)
 
-[node name="XP64" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP64" parent="." unique_id=1564195214 instance=ExtResource("1_5ay5y")]
 position = Vector2(331, 799)
 
-[node name="XP65" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP65" parent="." unique_id=712380579 instance=ExtResource("1_5ay5y")]
 position = Vector2(351, 831)
 
-[node name="XP66" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP66" parent="." unique_id=252052065 instance=ExtResource("1_5ay5y")]
 position = Vector2(348, 775)
 
-[node name="XP67" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP67" parent="." unique_id=1880343872 instance=ExtResource("1_5ay5y")]
 position = Vector2(401, 841)
 
-[node name="XP68" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP68" parent="." unique_id=1799868129 instance=ExtResource("1_5ay5y")]
 position = Vector2(3410, 858)
 
-[node name="XP69" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP69" parent="." unique_id=1129744776 instance=ExtResource("1_5ay5y")]
 position = Vector2(408, 754)
 
-[node name="XP70" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP70" parent="." unique_id=179551020 instance=ExtResource("1_5ay5y")]
 position = Vector2(379, 775)
 
-[node name="XP71" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP71" parent="." unique_id=659296923 instance=ExtResource("1_5ay5y")]
 position = Vector2(384, 815)
 
-[node name="XP72" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP72" parent="." unique_id=1091782520 instance=ExtResource("1_5ay5y")]
 position = Vector2(353, 752)
 
-[node name="XP73" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP73" parent="." unique_id=78558127 instance=ExtResource("1_5ay5y")]
 position = Vector2(419, 801)
 
-[node name="XP74" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP74" parent="." unique_id=987618866 instance=ExtResource("1_5ay5y")]
 position = Vector2(491, 682)
 
-[node name="XP75" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP75" parent="." unique_id=1602443328 instance=ExtResource("1_5ay5y")]
 position = Vector2(488, 626)
 
-[node name="XP76" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP76" parent="." unique_id=313562379 instance=ExtResource("1_5ay5y")]
 position = Vector2(541, 692)
 
-[node name="XP77" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP77" parent="." unique_id=778833288 instance=ExtResource("1_5ay5y")]
 position = Vector2(4810, 709)
 
-[node name="XP78" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP78" parent="." unique_id=1889988951 instance=ExtResource("1_5ay5y")]
 position = Vector2(548, 605)
 
-[node name="XP79" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP79" parent="." unique_id=206486343 instance=ExtResource("1_5ay5y")]
 position = Vector2(519, 626)
 
-[node name="XP80" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP80" parent="." unique_id=1493553921 instance=ExtResource("1_5ay5y")]
 position = Vector2(524, 666)
 
-[node name="XP81" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP81" parent="." unique_id=470836746 instance=ExtResource("1_5ay5y")]
 position = Vector2(493, 603)
 
-[node name="XP82" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP82" parent="." unique_id=1458216260 instance=ExtResource("1_5ay5y")]
 position = Vector2(559, 652)
 
-[node name="XP83" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP83" parent="." unique_id=1833267156 instance=ExtResource("1_5ay5y")]
 position = Vector2(579, 684)
 
-[node name="XP84" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP84" parent="." unique_id=1004463476 instance=ExtResource("1_5ay5y")]
 position = Vector2(576, 628)
 
-[node name="XP85" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP85" parent="." unique_id=2140594853 instance=ExtResource("1_5ay5y")]
 position = Vector2(629, 694)
 
-[node name="XP86" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP86" parent="." unique_id=1286429340 instance=ExtResource("1_5ay5y")]
 position = Vector2(573, 711)
 
-[node name="XP87" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP87" parent="." unique_id=397272524 instance=ExtResource("1_5ay5y")]
 position = Vector2(636, 607)
 
-[node name="XP88" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP88" parent="." unique_id=347977898 instance=ExtResource("1_5ay5y")]
 position = Vector2(607, 628)
 
-[node name="XP89" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP89" parent="." unique_id=1870482009 instance=ExtResource("1_5ay5y")]
 position = Vector2(613, 668)
 
-[node name="XP90" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP90" parent="." unique_id=924915679 instance=ExtResource("1_5ay5y")]
 position = Vector2(581, 605)
 
-[node name="XP91" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP91" parent="." unique_id=1272494474 instance=ExtResource("1_5ay5y")]
 position = Vector2(647, 654)
 
-[node name="XP92" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP92" parent="." unique_id=1449396308 instance=ExtResource("1_5ay5y")]
 position = Vector2(451, 792)
 
-[node name="XP93" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP93" parent="." unique_id=69471067 instance=ExtResource("1_5ay5y")]
 position = Vector2(448, 736)
 
-[node name="XP94" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP94" parent="." unique_id=1340316725 instance=ExtResource("1_5ay5y")]
 position = Vector2(501, 802)
 
-[node name="XP95" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP95" parent="." unique_id=1911330970 instance=ExtResource("1_5ay5y")]
 position = Vector2(4410, 819)
 
-[node name="XP96" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP96" parent="." unique_id=990506977 instance=ExtResource("1_5ay5y")]
 position = Vector2(508, 715)
 
-[node name="XP97" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP97" parent="." unique_id=824043224 instance=ExtResource("1_5ay5y")]
 position = Vector2(479, 736)
 
-[node name="XP98" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP98" parent="." unique_id=1981580779 instance=ExtResource("1_5ay5y")]
 position = Vector2(484, 776)
 
-[node name="XP99" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP99" parent="." unique_id=866146326 instance=ExtResource("1_5ay5y")]
 position = Vector2(453, 713)
 
-[node name="XP100" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP100" parent="." unique_id=337778312 instance=ExtResource("1_5ay5y")]
 position = Vector2(519, 762)
 
-[node name="XP101" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP101" parent="." unique_id=1092250890 instance=ExtResource("1_5ay5y")]
 position = Vector2(539, 794)
 
-[node name="XP102" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP102" parent="." unique_id=282049884 instance=ExtResource("1_5ay5y")]
 position = Vector2(536, 738)
 
-[node name="XP103" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP103" parent="." unique_id=1723252837 instance=ExtResource("1_5ay5y")]
 position = Vector2(589, 804)
 
-[node name="XP104" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP104" parent="." unique_id=1476251012 instance=ExtResource("1_5ay5y")]
 position = Vector2(533, 821)
 
-[node name="XP105" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP105" parent="." unique_id=2016910453 instance=ExtResource("1_5ay5y")]
 position = Vector2(596, 717)
 
-[node name="XP106" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP106" parent="." unique_id=217164824 instance=ExtResource("1_5ay5y")]
 position = Vector2(567, 738)
 
-[node name="XP107" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP107" parent="." unique_id=572602471 instance=ExtResource("1_5ay5y")]
 position = Vector2(573, 778)
 
-[node name="XP108" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP108" parent="." unique_id=1637000495 instance=ExtResource("1_5ay5y")]
 position = Vector2(541, 715)
 
-[node name="XP109" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP109" parent="." unique_id=2067700480 instance=ExtResource("1_5ay5y")]
 position = Vector2(607, 764)
 
-[node name="XP110" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP110" parent="." unique_id=1815375769 instance=ExtResource("1_5ay5y")]
 position = Vector2(203, 630)
 
-[node name="XP111" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP111" parent="." unique_id=2046637893 instance=ExtResource("1_5ay5y")]
 position = Vector2(199, 574)
 
-[node name="XP112" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP112" parent="." unique_id=816812179 instance=ExtResource("1_5ay5y")]
 position = Vector2(253, 640)
 
-[node name="XP113" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP113" parent="." unique_id=1556636115 instance=ExtResource("1_5ay5y")]
 position = Vector2(196, 657)
 
-[node name="XP114" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP114" parent="." unique_id=1630053589 instance=ExtResource("1_5ay5y")]
 position = Vector2(259, 553)
 
-[node name="XP115" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP115" parent="." unique_id=2064067738 instance=ExtResource("1_5ay5y")]
 position = Vector2(230, 574)
 
-[node name="XP116" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP116" parent="." unique_id=1618854165 instance=ExtResource("1_5ay5y")]
 position = Vector2(2310, 614)
 
-[node name="XP117" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP117" parent="." unique_id=1425835743 instance=ExtResource("1_5ay5y")]
 position = Vector2(204, 551)
 
-[node name="XP118" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP118" parent="." unique_id=1142098631 instance=ExtResource("1_5ay5y")]
 position = Vector2(270, 600)
 
-[node name="XP119" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP119" parent="." unique_id=238800005 instance=ExtResource("1_5ay5y")]
 position = Vector2(290, 632)
 
-[node name="XP120" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP120" parent="." unique_id=2127316964 instance=ExtResource("1_5ay5y")]
 position = Vector2(287, 576)
 
-[node name="XP121" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP121" parent="." unique_id=1033554039 instance=ExtResource("1_5ay5y")]
 position = Vector2(340, 642)
 
-[node name="XP122" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP122" parent="." unique_id=1857277554 instance=ExtResource("1_5ay5y")]
 position = Vector2(284, 659)
 
-[node name="XP123" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP123" parent="." unique_id=685461913 instance=ExtResource("1_5ay5y")]
 position = Vector2(347, 555)
 
-[node name="XP124" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP124" parent="." unique_id=1682872370 instance=ExtResource("1_5ay5y")]
 position = Vector2(318, 576)
 
-[node name="XP125" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP125" parent="." unique_id=828131757 instance=ExtResource("1_5ay5y")]
 position = Vector2(323, 616)
 
-[node name="XP126" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP126" parent="." unique_id=305862261 instance=ExtResource("1_5ay5y")]
 position = Vector2(293, 553)
 
-[node name="XP127" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP127" parent="." unique_id=1926559783 instance=ExtResource("1_5ay5y")]
 position = Vector2(358, 602)
 
-[node name="XP128" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP128" parent="." unique_id=102994674 instance=ExtResource("1_5ay5y")]
 position = Vector2(163, 740)
 
-[node name="XP129" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP129" parent="." unique_id=836695832 instance=ExtResource("1_5ay5y")]
 position = Vector2(159, 684)
 
-[node name="XP130" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP130" parent="." unique_id=1727065000 instance=ExtResource("1_5ay5y")]
 position = Vector2(213, 750)
 
-[node name="XP131" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP131" parent="." unique_id=1483940006 instance=ExtResource("1_5ay5y")]
 position = Vector2(156, 767)
 
-[node name="XP132" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP132" parent="." unique_id=1045657749 instance=ExtResource("1_5ay5y")]
 position = Vector2(219, 663)
 
-[node name="XP133" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP133" parent="." unique_id=912913648 instance=ExtResource("1_5ay5y")]
 position = Vector2(190, 684)
 
-[node name="XP134" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP134" parent="." unique_id=1775942320 instance=ExtResource("1_5ay5y")]
 position = Vector2(1910, 724)
 
-[node name="XP135" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP135" parent="." unique_id=2105374449 instance=ExtResource("1_5ay5y")]
 position = Vector2(164, 661)
 
-[node name="XP136" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP136" parent="." unique_id=514925659 instance=ExtResource("1_5ay5y")]
 position = Vector2(230, 710)
 
-[node name="XP137" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP137" parent="." unique_id=2080795848 instance=ExtResource("1_5ay5y")]
 position = Vector2(250, 742)
 
-[node name="XP138" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP138" parent="." unique_id=1631115196 instance=ExtResource("1_5ay5y")]
 position = Vector2(247, 686)
 
-[node name="XP139" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP139" parent="." unique_id=1328073744 instance=ExtResource("1_5ay5y")]
 position = Vector2(300, 752)
 
-[node name="XP140" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP140" parent="." unique_id=1570612029 instance=ExtResource("1_5ay5y")]
 position = Vector2(244, 769)
 
-[node name="XP141" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP141" parent="." unique_id=1493176760 instance=ExtResource("1_5ay5y")]
 position = Vector2(307, 665)
 
-[node name="XP142" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP142" parent="." unique_id=1726274786 instance=ExtResource("1_5ay5y")]
 position = Vector2(278, 686)
 
-[node name="XP143" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP143" parent="." unique_id=884607901 instance=ExtResource("1_5ay5y")]
 position = Vector2(283, 726)
 
-[node name="XP144" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP144" parent="." unique_id=1856861860 instance=ExtResource("1_5ay5y")]
 position = Vector2(253, 663)
 
-[node name="XP145" parent="." instance=ExtResource("1_5ay5y")]
+[node name="XP145" parent="." unique_id=1388740774 instance=ExtResource("1_5ay5y")]
 position = Vector2(318, 712)
 
-[node name="StatsUI" parent="." instance=ExtResource("5_i6230")]
+[node name="StatsUI" parent="." unique_id=1326903259 instance=ExtResource("5_i6230")]
 visible = false
 
-[node name="Slime2" parent="." instance=ExtResource("6_dosg0")]
+[node name="Slime2" parent="." unique_id=2111515615 instance=ExtResource("6_dosg0")]
 position = Vector2(431, 764)
 
-[node name="Slime" parent="." instance=ExtResource("6_dosg0")]
+[node name="Slime" parent="." unique_id=1190822761 instance=ExtResource("6_dosg0")]
 position = Vector2(394, 743)
 
-[node name="LuckyBlock" parent="." instance=ExtResource("6_wkrmc")]
+[node name="LuckyBlock" parent="." unique_id=153415052 instance=ExtResource("6_wkrmc")]
 z_index = -1
 position = Vector2(559, 849)
 
-[node name="SpawnCanvas" parent="." instance=ExtResource("8_lklja")]
+[node name="SpawnCanvas" parent="." unique_id=524062637 instance=ExtResource("8_lklja")]
