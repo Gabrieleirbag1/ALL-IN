@@ -5,6 +5,9 @@ class_name Enemy extends CharacterBody2D
 @onready var dispawn_timer: Timer = $Dispawn
 @onready var death_sound : Node = $Death
 
+const diections: Array = ["d", "u", "l", "r"]
+var current_direction = "d"
+var cancelable_animations = ["idle", "walk", "run"]
 var enemy_type: String = ""
 var experience: int = 0
 var drop_xp: int = 100
@@ -25,7 +28,7 @@ var active = false
 func play_animation(animation_name: String) -> void:
 	if not alive:
 		return
-	animation.play(animation_name)
+	animation.play(animation_name + "_" + current_direction)
 
 func _ready() -> void:
 	handle_signals()
@@ -70,7 +73,7 @@ func die():
 func get_animation() -> String:
 	return animation.animation
 	
-	
+## @deprecated
 func turn_body():
 	if player && is_instance_valid(player):
 		if player.position.x < position.x:
@@ -92,17 +95,27 @@ func chase_player():
 	
 	move_and_slide()
 
+func handle_direction():
+	var direction = current_direction
+	var velocity_direction = velocity.normalized()
+	if abs(velocity_direction.x) > abs(velocity_direction.y):
+		current_direction = "r" if velocity_direction.x > 0 else "l"
+	else:
+		current_direction = "d" if velocity_direction.y > 0 else "u"
+	if direction != current_direction:
+		if animation.animation.split("_")[0] in cancelable_animations:
+			play_animation(animation.animation.split("_")[0])
+	
 func handle_collision():
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision:
 			var collider = collision.get_collider()
-			if collider.name == "Player":
+			if collider is Player:
 				collider.enemy_attack(velocity, knockback_force, damage)
 
 func handle_navigation():
 	if alive:
-		turn_body()
 		chase_player()
 		handle_collision()
 
@@ -127,12 +140,14 @@ func revive():
 func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
+		
+	handle_direction()
 	
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
 
 	if active:
-		if animation.animation == "hurt" and not animation.is_playing(): #animation quand ennemi prend des dégâts
+		if animation.animation.begins_with("hurt") and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:
 				play_animation("walk")
 				if not visible:
