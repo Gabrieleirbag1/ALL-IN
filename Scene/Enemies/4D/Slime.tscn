@@ -1,12 +1,13 @@
-[gd_scene format=3 uid="uid://dt86chc22l0we"]
+[gd_scene format=3 uid="uid://dnr0a0cej4lw"]
 
-[ext_resource type="Script" uid="uid://ciyur8750b0ns" path="res://Script/Enemies/enemy.gd" id="1_na10s"]
+[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/2D/slime.gd" id="1_akbyh"]
 [ext_resource type="Texture2D" uid="uid://bt45qy73c4p32" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Attack/Slime2_Attack_full.png" id="2_p6dsv"]
 [ext_resource type="Texture2D" uid="uid://c8e8kukmbtyyy" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Death/Slime2_Death_full.png" id="3_r0ecy"]
 [ext_resource type="Texture2D" uid="uid://bk6pjf33c3ij0" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Hurt/Slime2_Hurt_full.png" id="4_na10s"]
 [ext_resource type="Texture2D" uid="uid://bwm4u35otxura" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Idle/Slime2_Idle_full.png" id="4_r0ecy"]
 [ext_resource type="Texture2D" uid="uid://bqw76qvyti7yn" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Walk/Slime2_Walk_full.png" id="5_na10s"]
 [ext_resource type="Texture2D" uid="uid://bp1ebtru63ffs" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Run/Slime2_Run_full.png" id="6_na10s"]
+[ext_resource type="AudioStream" uid="uid://bbh8lp2oxgr3g" path="res://Sounds/Death_Slime.wav" id="8_akbyh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akbyh"]
 atlas = ExtResource("2_p6dsv")
@@ -776,7 +777,7 @@ region = Rect2(384, 64, 64, 64)
 atlas = ExtResource("5_na10s")
 region = Rect2(448, 64, 64, 64)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_50q33"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_0r21t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -1475,56 +1476,70 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d0ruq"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u4t5g"]
-radius = 22.27468
+[sub_resource type="CircleShape2D" id="CircleShape2D_akbyh"]
+radius = 9.892906
 
-[node name="Slime" type="CharacterBody2D" unique_id=2044330675]
-script = ExtResource("1_na10s")
+[node name="Slime" type="CharacterBody2D" unique_id=495256128]
+position = Vector2(131, 77)
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+platform_floor_layers = 1
+script = ExtResource("1_akbyh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1162204178]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=586399877]
 texture_filter = 1
-scale = Vector2(2.2, 2.2)
-sprite_frames = SubResource("SpriteFrames_50q33")
-animation = &"hurt_u"
-frame = 4
-frame_progress = 1.0
+sprite_frames = SubResource("SpriteFrames_0r21t")
+animation = &"idle_d"
+frame = 2
+frame_progress = 0.39592895
 offset = Vector2(0, -5)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1507827569]
+[node name="Area2D" type="Area2D" parent="." unique_id=396498003]
+visible = false
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
+collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1135609755]
-visible = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1147664685]
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
-shape = SubResource("CircleShape2D_d0ruq")
+shape = SubResource("CircleShape2D_fk40c")
 
-[node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=1381951975]
-position = Vector2(1, -10)
+[node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=785743082]
+position = Vector2(1, -5)
 scale = Vector2(1.21299, 1.19844)
-shape = SubResource("CircleShape2D_u4t5g")
+shape = SubResource("CircleShape2D_akbyh")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1001952162]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1183241443]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
 avoidance_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="." unique_id=881913453]
+[node name="Timer" type="Timer" parent="." unique_id=367854316]
 wait_time = 0.1
 autostart = true
 
-[node name="Dispawn" type="Timer" parent="." unique_id=1299495002]
-wait_time = 2.0
+[node name="Dispawn" type="Timer" parent="." unique_id=713984225]
 one_shot = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1193781312]
-rect = Rect2(-27, -40, 55, 57)
+[node name="Death" type="AudioStreamPlayer" parent="." unique_id=1953564417]
+stream = ExtResource("8_akbyh")
+bus = &"Sfx"
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=910782903]
+position = Vector2(-7, -1)
+rect = Rect2(-4, -16, 24, 24)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Dispawn" to="." method="_on_dispawn_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
