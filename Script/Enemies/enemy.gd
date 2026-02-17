@@ -141,12 +141,11 @@ func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
 		
-	handle_direction()
-	
 	if not nav_agent.is_navigation_finished():
 		handle_navigation()
 
 	if active:
+		handle_direction()
 		if animation.animation.begins_with("hurt") and not animation.is_playing(): #animation quand ennemi prend des dégâts
 			if player_chase:
 				play_animation("walk")
