@@ -82,8 +82,7 @@ func check_min_value(stat_name: String, current_value: Variant, new_value: Varia
 	If it is, return the difference needed to reach the minimum value."""
 	var min_value: Variant = stats_config.get_value(stat_name, "min_value", 0)
 	var sum_value: Variant = current_value + new_value
-	if not min_value:
-		return new_value
+	
 	if sum_value < min_value:
 		return -(current_value - min_value)
 	return new_value
