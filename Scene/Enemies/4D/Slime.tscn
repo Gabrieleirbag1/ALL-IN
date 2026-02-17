@@ -1483,7 +1483,6 @@ radius = 8.08778
 radius = 9.892906
 
 [node name="Slime" type="CharacterBody2D" unique_id=495256128]
-position = Vector2(131, 77)
 collision_layer = 4
 collision_mask = 7
 motion_mode = 1
@@ -1493,9 +1492,9 @@ script = ExtResource("1_akbyh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=586399877]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0r21t")
-animation = &"idle_d"
-frame = 2
-frame_progress = 0.39592895
+animation = &"attack_d"
+frame = 10
+frame_progress = 1.0
 offset = Vector2(0, -5)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=396498003]
