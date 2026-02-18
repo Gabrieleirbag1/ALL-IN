@@ -1480,7 +1480,7 @@ animations = [{
 radius = 8.08778
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_akbyh"]
-radius = 9.892906
+radius = 7.419682
 
 [node name="Slime" type="CharacterBody2D" unique_id=495256128]
 collision_layer = 4
@@ -1509,15 +1509,17 @@ scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_fk40c")
 
 [node name="CollisionPolygon2D" type="CollisionShape2D" parent="." unique_id=785743082]
-position = Vector2(1, -5)
+position = Vector2(1, -4)
 scale = Vector2(1.21299, 1.19844)
 shape = SubResource("CircleShape2D_akbyh")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1183241443]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
+navigation_layers = 255
 path_postprocessing = 1
 avoidance_enabled = true
+debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=367854316]
@@ -1533,7 +1535,7 @@ bus = &"Sfx"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=910782903]
 position = Vector2(-7, -1)
-rect = Rect2(-4, -16, 24, 24)
+rect = Rect2(-3, -13, 22, 20)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

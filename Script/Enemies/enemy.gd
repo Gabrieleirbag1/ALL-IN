@@ -8,6 +8,8 @@ class_name Enemy extends CharacterBody2D
 const diections: Array = ["d", "u", "l", "r"]
 var current_direction: String = "d"
 var cancelable_animations: Array[String] = ["idle", "walk", "run"]
+var is_hit = false
+
 var enemy_type: String = ""
 var experience: int = 0
 var drop_xp: int = 100
@@ -53,6 +55,7 @@ func take_damage(damage_amount: int):
 		die()
 	else:
 		#print("Health :", health, "/", health_max, "/", damage_amount)
+		is_hit = true
 		play_animation("hurt")
 	GameController.enemy_damaged_event(damage_amount, alive)
 
@@ -141,12 +144,13 @@ func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
 		
-	if not nav_agent.is_navigation_finished():
+	if not is_hit and not nav_agent.is_navigation_finished():
 		handle_navigation()
 
 	if active:
 		handle_direction()
 		if animation.animation.begins_with("hurt") and not animation.is_playing(): #animation quand ennemi prend des dégâts
+			is_hit = false
 			if player_chase:
 				play_animation("walk")
 				if not visible:

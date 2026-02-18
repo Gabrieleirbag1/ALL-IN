@@ -1011,7 +1011,7 @@ animations = [{
 radius = 8.08778
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2hbmc"]
-radius = 11.541727
+radius = 8.244091
 height = 26.70138
 
 [node name="Orc" type="CharacterBody2D" unique_id=1233798582]
@@ -1062,7 +1062,7 @@ bus = &"Sfx"
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1440269970]
 position = Vector2(3, -2)
-rect = Rect2(-17, -22, 27, 32)
+rect = Rect2(-15, -22, 24, 32)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
