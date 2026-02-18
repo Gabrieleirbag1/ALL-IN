@@ -6,8 +6,8 @@ class_name Enemy extends CharacterBody2D
 @onready var death_sound : Node = $Death
 
 const diections: Array = ["d", "u", "l", "r"]
-var current_direction = "d"
-var cancelable_animations = ["idle", "walk", "run"]
+var current_direction: String = "d"
+var cancelable_animations: Array[String] = ["idle", "walk", "run"]
 var enemy_type: String = ""
 var experience: int = 0
 var drop_xp: int = 100

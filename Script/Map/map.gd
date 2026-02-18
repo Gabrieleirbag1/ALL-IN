@@ -9,7 +9,8 @@ extends Node2D
 @onready var background_music : Node = $Background_Music
 
 var enemies_alive: int = 0
-var max_enemies_on_screen: int = 70
+const pool_size: int = 70
+const max_enemies_on_screen: int = 70
 var enemy_properties: Dictionary = {}
 var score = 0
 var enemy_pool: Array = []
@@ -96,7 +97,6 @@ func setup_enemy(enemy_type: String) -> Enemy:
 
 func set_enemy_pool(enemies: Array) -> void:
 	enemy_pool.clear()
-	var pool_size = 50
 	for i in range(pool_size):
 		var enemy_type = chose_random_enemy(enemies)
 		setup_enemy(enemy_type)
