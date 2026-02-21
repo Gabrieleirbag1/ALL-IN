@@ -3,12 +3,15 @@ class_name Enemy extends CharacterBody2D
 @onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 @onready var nav_agent:= $NavigationAgent2D as NavigationAgent2D
 @onready var dispawn_timer: Timer = $Dispawn
+@onready var attack_timer: Timer = $AttackTimer
 @onready var death_sound : Node = $Death
 
 const diections: Array = ["d", "u", "l", "r"]
 var current_direction: String = "d"
 var cancelable_animations: Array[String] = ["idle", "walk", "run"]
 var is_hit = false
+var can_attack = false
+var is_attacking = false
 
 var enemy_type: String = ""
 var experience: int = 0
@@ -139,24 +142,38 @@ func revive():
 		play_animation("walk")
 	else:
 		play_animation("idle")
+		
+func attack():
+	is_attacking = true
+	can_attack = true
+	print("attack")
+	play_animation("attack")
+	
+func clear_animation_state():
+	if player_chase:
+		play_animation("walk")
+		if not visible:
+			push_error("not visible")
+	else:
+		play_animation("idle")
 
 func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
 		
-	if not is_hit and not nav_agent.is_navigation_finished():
+	if not is_hit and not is_attacking and not nav_agent.is_navigation_finished():
 		handle_navigation()
 
 	if active:
 		handle_direction()
-		if animation.animation.begins_with("hurt") and not animation.is_playing(): #animation quand ennemi prend des dégâts
-			is_hit = false
-			if player_chase:
-				play_animation("walk")
-				if not visible:
-					push_error("not visible")
+		if not animation.is_playing():
+			if animation.animation.begins_with("hurt"): #animation quand ennemi prend des dégâts
+				is_hit = false
+			elif animation.animation.begins_with("attack"):
+				is_attacking = false
 			else:
-				play_animation("idle")
+				return
+			clear_animation_state()
 
 func makepath() -> void:
 	if player && is_instance_valid(player):
@@ -174,6 +191,15 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player_chase = false
 		play_animation("idle")
 
+func _on_attack_area_2d_body_entered(body: Node2D) -> void:
+	if body is Player:
+		attack()
+		attack_timer.start(2)
+
+func _on_attack_area_2d_body_exited(body: Node2D) -> void:
+	if body is Player:
+		can_attack = false
+
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
 
@@ -183,6 +209,10 @@ func _on_timer_timeout() -> void:
 func _on_dispawn_timeout() -> void:
 	GameController.enemy_death(drop_xp, position, enemy_type)
 	handle_states(false)
+	
+func _on_attack_timer_timeout() -> void:
+	if can_attack and not is_attacking:
+		attack()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	active = false
