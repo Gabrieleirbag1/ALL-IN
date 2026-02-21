@@ -122,7 +122,8 @@ func handle_collision():
 
 func handle_navigation():
 	if alive:
-		chase_player()
+		if not is_attacking:
+			chase_player()
 		handle_collision()
 
 func handle_states(state: bool):
@@ -146,7 +147,6 @@ func revive():
 func attack():
 	is_attacking = true
 	can_attack = true
-	print("attack")
 	play_animation("attack")
 	
 func clear_animation_state():
@@ -161,7 +161,7 @@ func _physics_process(_delta: float) -> void:
 	if not alive:
 		return
 		
-	if not is_hit and not is_attacking and not nav_agent.is_navigation_finished():
+	if not is_hit and not nav_agent.is_navigation_finished():
 		handle_navigation()
 
 	if active:
