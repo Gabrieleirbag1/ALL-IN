@@ -1,12 +1,12 @@
-[gd_scene load_steps=52 format=3 uid="uid://cdngsiqmi0dvx"]
+[gd_scene format=3 uid="uid://cdngsiqmi0dvx"]
 
 [ext_resource type="Script" uid="uid://ciyur8750b0ns" path="res://Script/Enemies/enemy.gd" id="1_qj8sg"]
-[ext_resource type="Texture2D" uid="uid://c1d00qw7vowic" path="res://Assets/Characters/2 Directional/Orc/Orc.png" id="2_ameu4"]
-[ext_resource type="Texture2D" uid="uid://bw6flphgeoite" path="res://Assets/Characters/2 Directional/Orc/Orc-Death.png" id="3_opmh0"]
-[ext_resource type="Texture2D" uid="uid://biphg5lkk270k" path="res://Assets/Characters/2 Directional/Orc/Orc-Hurt.png" id="4_nijju"]
-[ext_resource type="Texture2D" uid="uid://ct54pfc3u60jg" path="res://Assets/Characters/2 Directional/Orc/Orc-Idle.png" id="5_dg6ik"]
-[ext_resource type="Texture2D" uid="uid://d25sdtx8rc0aq" path="res://Assets/Characters/2 Directional/Orc/Orc-shadow.png" id="6_ivf0b"]
-[ext_resource type="Texture2D" uid="uid://daocyxwsfqq1r" path="res://Assets/Characters/2 Directional/Orc/Orc-Walk.png" id="7_6f17n"]
+[ext_resource type="Texture2D" uid="uid://cifhclmdlwb02" path="res://Assets/Characters/2 Directional/Orc/Orc.png" id="2_ameu4"]
+[ext_resource type="Texture2D" uid="uid://ctd8trj30pvkl" path="res://Assets/Characters/2 Directional/Orc/Orc-Death.png" id="3_opmh0"]
+[ext_resource type="Texture2D" uid="uid://srk61sguhsly" path="res://Assets/Characters/2 Directional/Orc/Orc-Hurt.png" id="4_nijju"]
+[ext_resource type="Texture2D" uid="uid://b6g714iafv6w8" path="res://Assets/Characters/2 Directional/Orc/Orc-Idle.png" id="5_dg6ik"]
+[ext_resource type="Texture2D" uid="uid://xghp5xggdo12" path="res://Assets/Characters/2 Directional/Orc/Orc-shadow.png" id="6_ivf0b"]
+[ext_resource type="Texture2D" uid="uid://cnvqcb53gc82x" path="res://Assets/Characters/2 Directional/Orc/Orc-Walk.png" id="7_6f17n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fhceq"]
 atlas = ExtResource("2_ameu4")
@@ -340,49 +340,66 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hj5kn"]
+radius = 27.2055
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_d0ruq"]
 radius = 8.08778
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=907893219]
 script = ExtResource("1_qj8sg")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653812044]
 texture_filter = 1
 scale = Vector2(2.2, 2.2)
 sprite_frames = SubResource("SpriteFrames_50q33")
 animation = &"hurt"
 offset = Vector2(0, -5)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="AttackArea2D" type="Area2D" parent="." unique_id=377533497]
+position = Vector2(-142.985, -152)
+scale = Vector2(1.21299, 1.19844)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=892749119]
+position = Vector2(116.22931, 116.81854)
+shape = SubResource("CircleShape2D_hj5kn")
+
+[node name="NavigationArea2D" type="Area2D" parent="." unique_id=1459814626]
+visible = false
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationArea2D" unique_id=2069058060]
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_d0ruq")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1571160280]
 position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
 polygon = PackedVector2Array(110.458, 132.672, 106.594, 130.983, 107.985, 129.334, 113.584, 125.288, 116.205, 123.661, 122.321, 123.661, 126.541, 127.11, 126.689, 130.983, 124.942, 132.61)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1493478798]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
 path_postprocessing = 1
 avoidance_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." unique_id=2016589611]
 wait_time = 0.1
 autostart = true
 
-[node name="Dispawn" type="Timer" parent="."]
+[node name="Dispawn" type="Timer" parent="." unique_id=227259783]
 wait_time = 2.0
 one_shot = true
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="AttackTimer" type="Timer" parent="." unique_id=642021422]
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=2062708751]
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

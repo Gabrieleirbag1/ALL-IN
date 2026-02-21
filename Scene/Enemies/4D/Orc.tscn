@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://bgf4s6wova5k4"]
 
 [ext_resource type="Script" uid="uid://cqth5j1w3sa30" path="res://Script/Enemies/2D/orc.gd" id="1_shm8r"]
-[ext_resource type="Texture2D" uid="uid://ckf7gbms8arij" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_death/orc1_death_full.png" id="2_6htub"]
-[ext_resource type="Texture2D" uid="uid://x8xk1tmdvm1m" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_hurt/orc1_hurt_full.png" id="2_65b1f"]
-[ext_resource type="Texture2D" uid="uid://cgtet5774dmw5" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_idle/orc1_idle_full.png" id="3_6htub"]
-[ext_resource type="Texture2D" uid="uid://4hto4x2rrt6l" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_run/orc1_run_full.png" id="4_5ht1j"]
-[ext_resource type="Texture2D" uid="uid://bqgd3cv4lquva" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_walk/orc1_walk_full.png" id="5_vh3jx"]
-[ext_resource type="AudioStream" uid="uid://bbh8lp2oxgr3g" path="res://Sounds/Death_Slime.wav" id="7_3pvoe"]
+[ext_resource type="Texture2D" uid="uid://cjubv0yekk0rg" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_death/orc1_death_full.png" id="2_6htub"]
+[ext_resource type="Texture2D" uid="uid://t0beh7aj5foq" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_hurt/orc1_hurt_full.png" id="2_65b1f"]
+[ext_resource type="Texture2D" uid="uid://do0vd2xapw8hb" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_idle/orc1_idle_full.png" id="3_6htub"]
+[ext_resource type="Texture2D" uid="uid://ir4se8xh8i68" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_run/orc1_run_full.png" id="4_5ht1j"]
+[ext_resource type="Texture2D" uid="uid://cr218hhjda6am" path="res://Assets/Characters/4 Directional/Orc/PNG/Orc1/Orc1_walk/orc1_walk_full.png" id="5_vh3jx"]
+[ext_resource type="AudioStream" uid="uid://dt5cgxvfvtaqh" path="res://Sounds/Death_Slime.wav" id="7_3pvoe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ht1j"]
 atlas = ExtResource("2_6htub")
@@ -1007,6 +1007,9 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6htub"]
+radius = 18.961409
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
 
@@ -1026,12 +1029,20 @@ sprite_frames = SubResource("SpriteFrames_ijymu")
 animation = &"death_u"
 offset = Vector2(0, -5)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=815088762]
+[node name="AttackArea2D" type="Area2D" parent="." unique_id=1828350981]
+position = Vector2(-142.985, -152)
+scale = Vector2(1.21299, 1.19844)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=1100693694]
+position = Vector2(117.87813, 120.99062)
+shape = SubResource("CircleShape2D_6htub")
+
+[node name="NavigationArea2D" type="Area2D" parent="." unique_id=815088762]
 visible = false
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=247854180]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationArea2D" unique_id=247854180]
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_fk40c")
@@ -1056,6 +1067,8 @@ autostart = true
 wait_time = 2.0
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=1228232992]
+
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=633765501]
 stream = ExtResource("7_3pvoe")
 bus = &"Sfx"
@@ -1064,10 +1077,13 @@ bus = &"Sfx"
 position = Vector2(3, -2)
 rect = Rect2(-15, -22, 24, 32)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="body_entered" from="NavigationArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="NavigationArea2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Dispawn" to="." method="_on_dispawn_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

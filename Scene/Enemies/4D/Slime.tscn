@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dnr0a0cej4lw"]
 
 [ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/2D/slime.gd" id="1_akbyh"]
-[ext_resource type="Texture2D" uid="uid://bt45qy73c4p32" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Attack/Slime2_Attack_full.png" id="2_p6dsv"]
-[ext_resource type="Texture2D" uid="uid://c8e8kukmbtyyy" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Death/Slime2_Death_full.png" id="3_r0ecy"]
-[ext_resource type="Texture2D" uid="uid://bk6pjf33c3ij0" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Hurt/Slime2_Hurt_full.png" id="4_na10s"]
-[ext_resource type="Texture2D" uid="uid://bwm4u35otxura" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Idle/Slime2_Idle_full.png" id="4_r0ecy"]
-[ext_resource type="Texture2D" uid="uid://bqw76qvyti7yn" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Walk/Slime2_Walk_full.png" id="5_na10s"]
-[ext_resource type="Texture2D" uid="uid://bp1ebtru63ffs" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Run/Slime2_Run_full.png" id="6_na10s"]
-[ext_resource type="AudioStream" uid="uid://bbh8lp2oxgr3g" path="res://Sounds/Death_Slime.wav" id="8_akbyh"]
+[ext_resource type="Texture2D" uid="uid://blvt3oo01avjg" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Attack/Slime2_Attack_full.png" id="2_p6dsv"]
+[ext_resource type="Texture2D" uid="uid://b2hlrl0ayth81" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Death/Slime2_Death_full.png" id="3_r0ecy"]
+[ext_resource type="Texture2D" uid="uid://dfj11vnq40yai" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Hurt/Slime2_Hurt_full.png" id="4_na10s"]
+[ext_resource type="Texture2D" uid="uid://5c5yi43qwl6k" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Idle/Slime2_Idle_full.png" id="4_r0ecy"]
+[ext_resource type="Texture2D" uid="uid://dr5h83pc2oxxo" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Walk/Slime2_Walk_full.png" id="5_na10s"]
+[ext_resource type="Texture2D" uid="uid://xtrsei0agaln" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Run/Slime2_Run_full.png" id="6_na10s"]
+[ext_resource type="AudioStream" uid="uid://dt5cgxvfvtaqh" path="res://Sounds/Death_Slime.wav" id="8_akbyh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akbyh"]
 atlas = ExtResource("2_p6dsv")
@@ -1476,6 +1476,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0r21t"]
+radius = 13.190545
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
 
@@ -1497,13 +1500,21 @@ frame = 10
 frame_progress = 1.0
 offset = Vector2(0, -5)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=396498003]
+[node name="AttackArea2D" type="Area2D" parent="." unique_id=463057606]
+position = Vector2(-142.985, -152)
+scale = Vector2(1.21299, 1.19844)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=168526219]
+position = Vector2(118.70254, 122.659454)
+shape = SubResource("CircleShape2D_0r21t")
+
+[node name="NavigationArea2D" type="Area2D" parent="." unique_id=396498003]
 visible = false
 position = Vector2(-306, -327)
 scale = Vector2(4.91539, 5.27889)
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1147664685]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationArea2D" unique_id=1147664685]
 position = Vector2(62.8638, 63.0814)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_fk40c")
@@ -1529,6 +1540,8 @@ autostart = true
 [node name="Dispawn" type="Timer" parent="." unique_id=713984225]
 one_shot = true
 
+[node name="AttackTimer" type="Timer" parent="." unique_id=2094298234]
+
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=1953564417]
 stream = ExtResource("8_akbyh")
 bus = &"Sfx"
@@ -1537,10 +1550,13 @@ bus = &"Sfx"
 position = Vector2(-7, -1)
 rect = Rect2(-3, -13, 22, 20)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
+[connection signal="body_entered" from="NavigationArea2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="NavigationArea2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Dispawn" to="." method="_on_dispawn_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
