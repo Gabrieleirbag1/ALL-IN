@@ -20,4 +20,6 @@ func _init() -> void:
 func on_ability_attack():
 	if animation.animation.begins_with("attack"):
 		if animation.frame > 5 and animation.frame < 8 and player_in_range: #frame 6 7
-			player.enemy_attack(velocity, knockback_force, ability_attack_damage)
+			# Use position-based direction for knockback since velocity is 0 during attack
+			var knockback_direction = (player.global_position - global_position).normalized() * speed
+			player.enemy_attack(knockback_direction, knockback_force, ability_attack_damage)
