@@ -1477,7 +1477,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0r21t"]
-radius = 13.190545
+radius = 17.332687
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
@@ -1495,7 +1495,7 @@ script = ExtResource("1_akbyh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=586399877]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_0r21t")
-animation = &"attack_d"
+animation = &"attack_l"
 frame = 10
 frame_progress = 1.0
 offset = Vector2(0, -5)
@@ -1503,6 +1503,7 @@ offset = Vector2(0, -5)
 [node name="AttackArea2D" type="Area2D" parent="." unique_id=463057606]
 position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=168526219]
 position = Vector2(118.70254, 122.659454)
@@ -1530,7 +1531,6 @@ target_desired_distance = 5.0
 navigation_layers = 255
 path_postprocessing = 1
 avoidance_enabled = true
-debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
 [node name="Timer" type="Timer" parent="." unique_id=367854316]
@@ -1541,6 +1541,7 @@ autostart = true
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=2094298234]
+one_shot = true
 
 [node name="Death" type="AudioStreamPlayer" parent="." unique_id=1953564417]
 stream = ExtResource("8_akbyh")

@@ -10,8 +10,14 @@ func _init() -> void:
 	health_max = 150
 	health_min = 0
 	damage = 2
+	ability_attack_damage = 20
 	alive = true
 	death_animation_played = false
 	immortal = false
 	player_chase = false
 	player = null
+
+func on_ability_attack():
+	if animation.animation.begins_with("attack"):
+		if animation.frame > 5 and animation.frame < 8 and player_in_range: #frame 6 7
+			player.enemy_attack(velocity, knockback_force, ability_attack_damage)

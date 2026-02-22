@@ -10,8 +10,10 @@ const diections: Array = ["d", "u", "l", "r"]
 var current_direction: String = "d"
 var cancelable_animations: Array[String] = ["idle", "walk", "run"]
 var is_hit = false
-var can_attack = false
+var player_in_range = false
 var is_attacking = false
+var current_speed: int = 30
+var ability_attack_damage: int = 5
 
 var enemy_type: String = ""
 var experience: int = 0
@@ -27,7 +29,7 @@ var alive: bool = true
 var death_animation_played: bool = false
 var immortal: bool = false
 var player_chase: bool = false
-var player = null
+var player: Player = null
 var active = false
 
 func play_animation(animation_name: String) -> void:
@@ -40,6 +42,7 @@ func _ready() -> void:
 	handle_states(false)
 	level = MathXp.calculate_level_from_exp(experience)
 	play_animation("idle")
+	current_speed = speed
 	nav_agent.max_speed = 300
 
 func handle_signals():
@@ -93,7 +96,7 @@ func chase_player():
 	
 	var current_agent_pos = global_position
 	var next_path_pos = nav_agent.get_next_path_position()
-	var new_velocity = current_agent_pos.direction_to(next_path_pos) * speed
+	var new_velocity = current_agent_pos.direction_to(next_path_pos) * current_speed
 	if nav_agent.avoidance_enabled:
 		nav_agent.set_velocity(new_velocity)
 	else:
@@ -122,8 +125,7 @@ func handle_collision():
 
 func handle_navigation():
 	if alive:
-		if not is_attacking:
-			chase_player()
+		chase_player()
 		handle_collision()
 
 func handle_states(state: bool):
@@ -144,9 +146,10 @@ func revive():
 	else:
 		play_animation("idle")
 		
-func attack():
+func ability_attack():
 	is_attacking = true
-	can_attack = true
+	player_in_range = true
+	current_speed = 0
 	play_animation("attack")
 	
 func clear_animation_state():
@@ -166,14 +169,19 @@ func _physics_process(_delta: float) -> void:
 
 	if active:
 		handle_direction()
+		on_ability_attack()
 		if not animation.is_playing():
 			if animation.animation.begins_with("hurt"): #animation quand ennemi prend des dégâts
 				is_hit = false
 			elif animation.animation.begins_with("attack"):
 				is_attacking = false
+				current_speed = speed
 			else:
 				return
 			clear_animation_state()
+
+func on_ability_attack():
+	return
 
 func makepath() -> void:
 	if player && is_instance_valid(player):
@@ -193,12 +201,12 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_attack_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
-		attack()
+		ability_attack()
 		attack_timer.start(2)
 
 func _on_attack_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
-		can_attack = false
+		player_in_range = false
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	velocity = safe_velocity
@@ -211,8 +219,8 @@ func _on_dispawn_timeout() -> void:
 	handle_states(false)
 	
 func _on_attack_timer_timeout() -> void:
-	if can_attack and not is_attacking:
-		attack()
+	if player_in_range and not is_attacking:
+		ability_attack()
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	active = false
