@@ -10,10 +10,7 @@ func _init() -> void:
 	health_max = 300
 	health_min = 0
 	damage = 10
-	alive = true
-	death_animation_played = false
-	immortal = false
-	player_chase = false
-	player = null
-	min_attack_frame = 2
-	max_attack_frame = 5
+	ability_attack_damage = 20
+	ability_attack_cooldown = 3
+	min_ability_attack_frame = 2
+	max_ability_attack_frame = 5

@@ -19,7 +19,12 @@ var is_hit = false
 var player_in_range = false
 var is_attacking = false
 var current_speed: int = 30
-var ability_attack_damage: int = 5
+var alive: bool = true
+var death_animation_played: bool = false
+var immortal: bool = false
+var player_chase: bool = false
+var player: Player = null
+var active: bool = false
 
 #override
 var enemy_type: String = ""
@@ -32,14 +37,10 @@ var health: int = 50
 var health_max: int = 50
 var health_min: int = 0
 var damage: int = 3
-var alive: bool = true
-var death_animation_played: bool = false
-var immortal: bool = false
-var player_chase: bool = false
-var player: Player = null
-var active: bool = false
-var min_attack_frame: int = 6
-var max_attack_frame: int = 7
+var ability_attack_damage: int = 5
+var ability_attack_cooldown: float = 2.0
+var min_ability_attack_frame: int = 6
+var max_ability_attack_frame: int = 7
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
@@ -207,7 +208,7 @@ func _physics_process(_delta: float) -> void:
 
 func on_ability_attack():
 	if animation.animation.begins_with("attack"):
-		if animation.frame >= min_attack_frame and animation.frame <= max_attack_frame and player_in_range: #frame 6 7
+		if animation.frame >= min_ability_attack_frame and animation.frame <= max_ability_attack_frame and player_in_range: #frame 6 7
 			# Use position-based direction for knockback since velocity is 0 during attack
 			var knockback_direction = (player.global_position - global_position).normalized() * speed
 			player.enemy_attack(knockback_direction, knockback_force, ability_attack_damage)
@@ -231,7 +232,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_attack_area_2d_body_entered(body: Node2D) -> void:
 	if body is Player:
 		ability_attack()
-		attack_timer.start(2)
+		attack_timer.start(ability_attack_cooldown)
 
 func _on_attack_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
