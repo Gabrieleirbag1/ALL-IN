@@ -676,9 +676,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jpy16")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_d",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -705,9 +705,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ynlev")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_l",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -734,9 +734,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ri42s")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_r",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -763,9 +763,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_gogqn")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_u",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1271,7 +1271,7 @@ script = ExtResource("1_shm8r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1092795980]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ijymu")
-animation = &"attack_r"
+animation = &"attack_u"
 offset = Vector2(0, -5)
 
 [node name="AttackArea2D" type="Area2D" parent="." unique_id=1828350981]
