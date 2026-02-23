@@ -360,6 +360,22 @@ offset = Vector2(0, -5)
 position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
 
+[node name="DownMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1832049749]
+position = Vector2(117.87813, 141.5173)
+scale = Vector2(1.8137, 1.83572)
+
+[node name="LeftMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=2135939537]
+position = Vector2(96.11372, 112.14579)
+scale = Vector2(1.8137, 1.83572)
+
+[node name="RightMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1081639091]
+position = Vector2(139.64253, 112.14579)
+scale = Vector2(1.8137, 1.83572)
+
+[node name="UpMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1921667491]
+position = Vector2(117.87813, 82.77428)
+scale = Vector2(1.8137, 1.83572)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=892749119]
 position = Vector2(116.22931, 116.81854)
 shape = SubResource("CircleShape2D_hj5kn")

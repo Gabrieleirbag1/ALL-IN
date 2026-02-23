@@ -1252,8 +1252,8 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6htub"]
-radius = 18.961409
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ht1j"]
+size = Vector2(34.732273, 20)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
@@ -1271,16 +1271,32 @@ script = ExtResource("1_shm8r")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1092795980]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ijymu")
-animation = &"attack_u"
+animation = &"attack_l"
 offset = Vector2(0, -5)
 
 [node name="AttackArea2D" type="Area2D" parent="." unique_id=1828350981]
 position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=1100693694]
-position = Vector2(117.87813, 120.99062)
-shape = SubResource("CircleShape2D_6htub")
+[node name="DownMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=2074959522]
+position = Vector2(117.87813, 133.5069)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="LeftMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1926391192]
+position = Vector2(107.98522, 120.156204)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="RightMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1719785202]
+position = Vector2(127.771034, 120.156204)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="UpMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1149620805]
+position = Vector2(117.87813, 106.80551)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=959174821]
+position = Vector2(117.87813, 133.5069)
+shape = SubResource("RectangleShape2D_5ht1j")
 
 [node name="NavigationArea2D" type="Area2D" parent="." unique_id=815088762]
 visible = false

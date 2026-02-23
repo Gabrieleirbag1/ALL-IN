@@ -1476,8 +1476,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0r21t"]
-radius = 17.332687
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akbyh"]
+size = Vector2(24.759045, 13.974888)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk40c"]
 radius = 8.08778
@@ -1494,6 +1494,7 @@ script = ExtResource("1_akbyh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=586399877]
 texture_filter = 1
+position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_0r21t")
 animation = &"attack_l"
 frame = 10
@@ -1505,9 +1506,25 @@ position = Vector2(-142.985, -152)
 scale = Vector2(1.21299, 1.19844)
 collision_layer = 16
 
+[node name="DownMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=468644723]
+position = Vector2(117.87813, 131.83807)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="LeftMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1273644948]
+position = Vector2(109.63403, 123.493866)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="RightMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1408883717]
+position = Vector2(127.771034, 122.65945)
+scale = Vector2(0.82440907, 0.8344181)
+
+[node name="UpMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=2027397239]
+position = Vector2(117.87813, 115.149666)
+scale = Vector2(0.82440907, 0.8344181)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=168526219]
-position = Vector2(118.70254, 122.659454)
-shape = SubResource("CircleShape2D_0r21t")
+position = Vector2(117.87813, 131.83806)
+shape = SubResource("RectangleShape2D_akbyh")
 
 [node name="NavigationArea2D" type="Area2D" parent="." unique_id=396498003]
 visible = false
