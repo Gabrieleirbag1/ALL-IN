@@ -15,3 +15,5 @@ func _init() -> void:
 	immortal = false
 	player_chase = false
 	player = null
+	min_attack_frame = 2
+	max_attack_frame = 5

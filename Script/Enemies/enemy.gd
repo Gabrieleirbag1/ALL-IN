@@ -5,8 +5,14 @@ class_name Enemy extends CharacterBody2D
 @onready var dispawn_timer: Timer = $Dispawn
 @onready var attack_timer: Timer = $AttackTimer
 @onready var death_sound : Node = $Death
+@onready var down_marker_2d: Marker2D = $AttackArea2D/DownMarker2D
+@onready var left_marker_2d: Marker2D = $AttackArea2D/LeftMarker2D
+@onready var right_marker_2d: Marker2D = $AttackArea2D/RightMarker2D
+@onready var up_marker_2d: Marker2D = $AttackArea2D/UpMarker2D
+@onready var attack_collision_shape_2d: CollisionShape2D = $AttackArea2D/CollisionShape2D
 
-const diections: Array = ["d", "u", "l", "r"]
+#no override
+var directions: Dictionary
 var current_direction: String = "d"
 var cancelable_animations: Array[String] = ["idle", "walk", "run"]
 var is_hit = false
@@ -15,6 +21,7 @@ var is_attacking = false
 var current_speed: int = 30
 var ability_attack_damage: int = 5
 
+#override
 var enemy_type: String = ""
 var experience: int = 0
 var drop_xp: int = 100
@@ -30,14 +37,25 @@ var death_animation_played: bool = false
 var immortal: bool = false
 var player_chase: bool = false
 var player: Player = null
-var active = false
+var active: bool = false
+var min_attack_frame: int = 6
+var max_attack_frame: int = 7
 
 func play_animation(animation_name: String) -> void:
 	if not alive:
 		return
 	animation.play(animation_name + "_" + current_direction)
+	
+func set_directions() -> void:
+	directions = {
+		"d": {"marker": down_marker_2d, "rotate": 0}, 
+		"l": {"marker": left_marker_2d, "rotate": 90}, 
+		"r": {"marker": right_marker_2d, "rotate": -90}, 
+		"u": {"marker": up_marker_2d, "rotate": 180}
+	}
 
 func _ready() -> void:
+	set_directions()
 	handle_signals()
 	handle_states(false)
 	level = MathXp.calculate_level_from_exp(experience)
@@ -78,7 +96,6 @@ func die():
 	nav_agent.avoidance_enabled = false
 	dispawn_timer.start()
 
-
 func get_animation() -> String:
 	return animation.animation
 	
@@ -103,6 +120,12 @@ func chase_player():
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
 	
 	move_and_slide()
+	
+func move_attack_collision_shape():
+	var direction_data = directions[current_direction]
+	attack_collision_shape_2d.rotation_degrees = direction_data["rotate"]
+	attack_collision_shape_2d.position = direction_data["marker"].position
+	
 
 func handle_direction():
 	var direction = current_direction
@@ -112,8 +135,10 @@ func handle_direction():
 	else:
 		current_direction = "d" if velocity_direction.y > 0 else "u"
 	if direction != current_direction:
-		if animation.animation.split("_")[0] in cancelable_animations:
-			play_animation(animation.animation.split("_")[0])
+		var animation_name: String = animation.animation.split("_")[0]
+		if animation_name in cancelable_animations:
+			move_attack_collision_shape()
+			play_animation(animation_name)
 	
 func handle_collision():
 	for i in get_slide_collision_count():
@@ -181,7 +206,11 @@ func _physics_process(_delta: float) -> void:
 			clear_animation_state()
 
 func on_ability_attack():
-	return
+	if animation.animation.begins_with("attack"):
+		if animation.frame >= min_attack_frame and animation.frame <= max_attack_frame and player_in_range: #frame 6 7
+			# Use position-based direction for knockback since velocity is 0 during attack
+			var knockback_direction = (player.global_position - global_position).normalized() * speed
+			player.enemy_attack(knockback_direction, knockback_force, ability_attack_damage)
 
 func makepath() -> void:
 	if player && is_instance_valid(player):
