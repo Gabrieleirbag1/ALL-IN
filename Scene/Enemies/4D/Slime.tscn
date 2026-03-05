@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://5c5yi43qwl6k" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Idle/Slime2_Idle_full.png" id="4_r0ecy"]
 [ext_resource type="Texture2D" uid="uid://dr5h83pc2oxxo" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Walk/Slime2_Walk_full.png" id="5_na10s"]
 [ext_resource type="Texture2D" uid="uid://xtrsei0agaln" path="res://Assets/Characters/4 Directional/Slimes/Slime 1/PNG/Slime2/Run/Slime2_Run_full.png" id="6_na10s"]
-[ext_resource type="AudioStream" uid="uid://dt5cgxvfvtaqh" path="res://Sounds/Death_Slime.wav" id="8_akbyh"]
+[ext_resource type="AudioStream" uid="uid://br6jbwuo3ne8h" path="res://Sounds/Death_Slime.wav" id="8_akbyh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_akbyh"]
 atlas = ExtResource("2_p6dsv")
@@ -1270,7 +1270,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_d",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1299,7 +1299,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_l",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1328,7 +1328,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run_r",
-"speed": 6.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1496,9 +1496,7 @@ script = ExtResource("1_akbyh")
 texture_filter = 1
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_0r21t")
-animation = &"attack_l"
-frame = 10
-frame_progress = 1.0
+animation = &"run_u"
 offset = Vector2(0, -5)
 
 [node name="AttackArea2D" type="Area2D" parent="." unique_id=463057606]
