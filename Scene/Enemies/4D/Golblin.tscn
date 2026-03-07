@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://r155pixo5ug3"]
 
-[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/2D/slime.gd" id="1_ycptm"]
+[ext_resource type="Script" uid="uid://bv0rqjm6eh6bx" path="res://Script/Enemies/golblin.gd" id="1_ycptm"]
 [ext_resource type="Texture2D" uid="uid://df27qgeam2kdg" path="res://Assets/Characters/4 Directional/Goblin/PNG/Goblin1/Attack/Attack0_full.png" id="2_t7r41"]
 [ext_resource type="Texture2D" uid="uid://dbqxkeshc1dsf" path="res://Assets/Characters/4 Directional/Goblin/PNG/Goblin1/Death/Death0_full.png" id="3_85grx"]
 [ext_resource type="Texture2D" uid="uid://ddpa8brx0xw8o" path="res://Assets/Characters/4 Directional/Goblin/PNG/Goblin1/Hurt/Hurt0_full.png" id="4_85grx"]

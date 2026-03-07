@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cr0ch08c140tj"]
 
-[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/2D/slime.gd" id="1_4801s"]
+[ext_resource type="Script" uid="uid://bksgck1mpoxs1" path="res://Script/Enemies/golem.gd" id="1_4801s"]
 [ext_resource type="Texture2D" uid="uid://irqv1chiqwl2" path="res://Assets/Characters/4 Directional/Golem/PNG/Golem1/Attack/Golem1_Attack_full.png" id="2_0il62"]
 [ext_resource type="Texture2D" uid="uid://btpymrwhf2gof" path="res://Assets/Characters/4 Directional/Golem/PNG/Golem1/Death/Golem1_Death_full.png" id="3_5kekq"]
 [ext_resource type="Texture2D" uid="uid://dqe4x62pxvxjm" path="res://Assets/Characters/4 Directional/Golem/PNG/Golem1/Hurt/Golem1_Hurt_full.png" id="4_5kekq"]
@@ -1297,7 +1297,7 @@ script = ExtResource("1_4801s")
 texture_filter = 1
 position = Vector2(-1, 0)
 sprite_frames = SubResource("SpriteFrames_0r21t")
-animation = &"attack_l"
+animation = &"attack_d"
 frame = 8
 frame_progress = 1.0
 offset = Vector2(0, -5)
