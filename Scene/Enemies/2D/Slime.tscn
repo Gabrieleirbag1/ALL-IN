@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://f0m4bpogt4c3"]
 
-[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/2D/slime.gd" id="1_svxxn"]
-[ext_resource type="Texture2D" uid="uid://be6d7dew6jml3" path="res://Assets/Characters/2 Directional/Slime/Slime/Slime.png" id="1_yboy2"]
-[ext_resource type="AudioStream" uid="uid://bbh8lp2oxgr3g" path="res://Sounds/Death_Slime.wav" id="3_ovqcx"]
+[ext_resource type="Script" uid="uid://dpigw6yorpseq" path="res://Script/Enemies/slime.gd" id="1_svxxn"]
+[ext_resource type="Texture2D" uid="uid://dmpnhd5s5bksr" path="res://Assets/Characters/2 Directional/Slime/Slime/Slime.png" id="1_yboy2"]
+[ext_resource type="AudioStream" uid="uid://br6jbwuo3ne8h" path="res://Sounds/Death_Slime.wav" id="3_ovqcx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5fqu8"]
 atlas = ExtResource("1_yboy2")

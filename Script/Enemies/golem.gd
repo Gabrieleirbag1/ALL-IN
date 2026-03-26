@@ -12,6 +12,6 @@ func _init() -> void:
 	damage = 2
 	ability_attack_damage = 7
 	ability_attack_cooldown = 2
-	min_ability_attack_frame = 6
-	max_ability_attack_frame = 7
+	min_ability_attack_frame = 5
+	max_ability_attack_frame = 8
 	
