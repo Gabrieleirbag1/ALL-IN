@@ -1710,7 +1710,7 @@ position = Vector2(131.39844, 149.69461)
 scale = Vector2(1.8137, 1.83572)
 
 [node name="UpMarker2D" type="Marker2D" parent="AttackArea2D" unique_id=1921667491]
-position = Vector2(117.87813, 126.99844)
+position = Vector2(115.40489, 172.057)
 scale = Vector2(1.8137, 1.83572)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea2D" unique_id=892749119]
